@@ -99,40 +99,7 @@ const SlidingCard = () => {
       </VStack>
 
       {/* Left Arrow */}
-      <IconButton
-        aria-label="Previous"
-           bg="cyan.600"
-        onClick={prev}
-        position="absolute"
-        top="50%"
-        left="2%"
-        transform="translateY(-50%)"
-        rounded="full"
-        size="lg"
-        color="white"
-        _hover={{ bg: "whiteAlpha.400" }}
-        zIndex={5}
-      >
-        <ArrowLeft />
-      </IconButton>
-
-      {/* Right Arrow */}
-      <IconButton
-        aria-label="Next"
-        icon={<ArrowRight />}
-        onClick={next}
-        position="absolute"
-        top="50%"
-        right="2%"
-        transform="translateY(-50%)"
-        rounded="full"
-        size="lg"
-        color="white"
-             bg="cyan.600"
-        zIndex={5}
-      >
-        <ArrowRight />
-      </IconButton>
+  
 
       {/* Slides */}
       <HStack
