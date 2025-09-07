@@ -15,6 +15,7 @@ const FreeQuote = () => {
       boxShadow="0 8px 24px rgba(0,0,0,0.08)"
       p={6}
       textAlign="center"
+      border={"5px solid #06b6d4"}
     >
       {/* Heading */}
 

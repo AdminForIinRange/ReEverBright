@@ -93,6 +93,7 @@ const SlidingCard = () => {
       py={{ base: "80px", md: "100px", lg: "120px" }}
       position="relative"
       overflow="hidden"
+    
     >
       <VStack
         justify="center"
@@ -160,8 +161,8 @@ const SlidingCard = () => {
         {visible.map((slide) => (
           <Box
             key={slide.id}
-            flex="1 1 0"
-            maxW="480px"
+            flex={["none", "none", "1 1 0", "1 1 0", "1 1 0", "1 1 0"]}
+            maxW={["100%", "100%", "480px", "480px", "480px", "480px"]}
             bg="white"
             borderRadius="xl"
             border="1px solid"
