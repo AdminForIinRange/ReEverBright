@@ -90,7 +90,7 @@ const Page = () => {
 
   return (
     <Box mt={"-70px"}>
-      <HStack justifyContent={"center"} align={"center"} className="animate__animated animate__fadeIn">
+      <HStack justifyContent={"center"} align={"center"} >
         <Box 
           borderRadius={"50px"}
           backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
@@ -122,6 +122,7 @@ const Page = () => {
           borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
         ></Box>
       </HStack>
+  
       <HStack
         // data-aos="fade-up"
 
@@ -176,11 +177,13 @@ const Page = () => {
           </Box>
         </HStack>
       </HStack>
+      
       <ServiceLayout />
       <About />
+
       <Box>
         <Box
-          py={["50px", "50px", "50px", "50px", "50px", "50px"]}
+         pt={"50px"}
    
           bg={"cyan.600"}
         >
@@ -298,8 +301,8 @@ const Page = () => {
                   
                     borderRadius="30px"
                     bgGradient="linear(to-br, blue.100, white)"
-                    boxShadow="0 10px 30px rgba(10,15,41,0.12)"
-                    bg={"white"}
+                    // boxShadow="0 10px 30px rgba(10,15,41,0.12)"
+                    // bg={"white"}
                   >
                     <Box
                   mb={"-20px"}
