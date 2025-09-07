@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import Google from "@/public/Google.png";
 import Adl from "@/public/Shayal.png";
+import shayalv2 from "@/public/shayalv2.png";
 import Shayal from "@/public/Shayal.png"; // <-- Add this line (update path/filename as needed)
 import { FaStar } from "react-icons/fa";
 import FreeQuote from "@/components/comp/FreeQuote";
@@ -287,34 +288,11 @@ const Page = () => {
 
                 {/* Image area with decorative frame */}
                 <Box
-                  position="relative"
-                  h={{ base: "100%", md: "100%", xl: "100%" }}
-                  w={{ base: "100%", md: "100%" }}
-                  display="flex"
-                  justifyContent="end"
+              
                 >
-                  <Box
-                    position="relative"
-                    h={{ base: "100%", md: "100%" }}
-                    w={{ base: "100%", md: "100%" }}
-                    // subtle gradient border frame
-                  
-                    borderRadius="30px"
-                    bgGradient="linear(to-br, blue.100, white)"
-                    // boxShadow="0 10px 30px rgba(10,15,41,0.12)"
-                    // bg={"white"}
-                  >
-                    <Box
-                  mb={"-20px"}
-                      backgroundImage={` url('Shayal.png')`}
-                      backgroundRepeat="no-repeat"
-                      backgroundPosition="center"
-                      backgroundSize="cover"
-                      h="400px"
-                      w="100%"
-                      overflow="hidden"
-                    ></Box>
-                  </Box>
+               
+                 <Image  src={shayalv2} alt="Shayal" width={400} height={400} />
+             
                 </Box>
               </HStack>
             </HStack>
