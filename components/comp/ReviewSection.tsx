@@ -465,7 +465,7 @@ export default function ReviewSection() {
     <Box
      
    
-        px={{ base: "4%", md: "6%", xl: "10%" }}
+        px={{ base: "4%", md: "6%", xl: "16%" }}
         my={"100px"}
     
     >

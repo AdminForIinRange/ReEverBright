@@ -44,49 +44,34 @@ function ServiceLayout() {
   return (
     <>
       <VStack
+        mt={{ base: "100px", xl: "280px" }}
         justify="center"
         align="center"
         w="100%"
         textAlign="center"
-        px={{ base: "4%", md: "6%", xl: "10%" }}
+        px={{ base: "4%", md: "6%", xl: "16%" }}
       >
-        <VStack
-          py={"50px"}
-          borderRadius={["25px", "25px", "25px", "25px", "25px", "25px"]}
-          bg={"cyan.500"}
-          justify="center"
-          align="center"
-          textAlign="center"
-          px={"4%"}
-          w="100%"
-        >
-          <Text
-            fontSize={["16px", "18px", "24px"]}
-            fontFamily="poppins"
-            fontWeight={700}
-            lineHeight="1.6"
-            color={"black"}
+                 <VStack
+            justify={"center"}
+            align={"center"}
+            w={"100%"}
+            textAlign={"center"}
+            px={["4%", "4%", "6%", "6%", "6%", "10%"]}
           >
-           Be amazed at how good your property can look!
-          </Text>
-          <Text
-            fontSize={["36px", "48px", "56px"]}
-            fontWeight={700}
-            fontFamily="poppins"
-            lineHeight="1.1"
-            color={"white"}
-          >
-            Restoring Your Most Valuable Asset
-          </Text>
-        </VStack>
+            <SectionHeading
+              eyebrow="See the difference we make"
+              title="How we can help you home"
+              color="bule.100"
+            />
+          </VStack>
       </VStack>
       <HStack
-        wrap={"wrap"}
+        wrap={[ "wrap", "wrap", "wrap", "wrap", "wrap", "wrap" ]}
         justify={"center"}
         align={"center"}
         gap={["20px", "20px", "20px", "20px", "20px", "20px"]}
         py={"50px"}
-        px={["4%", "4%", "6%", "6%", "6%", "10%"]}
+              px={{ base: "4%", md: "6%", xl: "16%" }}
       >
         {services.map((s) => (
           <ServicesBox key={s.title} title={s.title} image={s.image} />

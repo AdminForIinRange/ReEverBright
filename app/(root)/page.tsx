@@ -173,14 +173,12 @@ const Page = () => {
           </Box>
         </HStack>
       </HStack>
-
+      <ServiceLayout />
       <About />
 
       <SlindingBanner />
 
       <Box pt={["50px", "50px", "50px", "100px", "100px", "100px"]}>
-        <ServiceLayout />
-
         <Box mt={["100px", "100px", "100px", "100px", "100px", "100px"]}>
           {/* Another spot where SectionHeading matches your style */}
           <VStack
@@ -199,7 +197,7 @@ const Page = () => {
 
           <HStack
             zIndex={3}
-            px={{ base: "4%", md: "6%", xl: "10%" }}
+            px={{ base: "4%", md: "6%", xl: "16%" }}
             justify="center"
             align="center"
             w="100%"
