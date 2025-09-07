@@ -246,7 +246,7 @@ const Page = () => {
                   <VStack
                     h={"100%"}
                     align="start"
-                    color="cyan.100"
+                    color="white"
                     fontSize="lg"
                     lineHeight="1.8"
                     fontFamily={"poppins"}
@@ -272,7 +272,7 @@ const Page = () => {
                       <Text
                         fontFamily={"poppins"}
                         fontWeight="700"
-                        color="cyan.100"
+                          color="white"
                       >
                         Shayal - Owner
                       </Text>
