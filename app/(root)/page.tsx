@@ -24,6 +24,8 @@ import About from "@/components/comp/About";
 import SlidingCard from "@/components/comp/SlidingCard";
 import SlindingBanner from "@/components/comp/SlindingBanner";
 
+
+
 import icon1 from "@/public/images/Icons/1.png";
 import icon2 from "@/public/images/Icons/2.png";
 import icon3 from "@/public/images/Icons/3.png";
@@ -274,7 +276,7 @@ const Page = () => {
                         fontWeight="700"
                           color="white"
                       >
-                        Shayal - Owner
+                        - Shayal
                       </Text>
                     </Box>
                   </VStack>
@@ -293,14 +295,15 @@ const Page = () => {
                     h={{ base: "100%", md: "100%" }}
                     w={{ base: "100%", md: "100%" }}
                     // subtle gradient border frame
-                    p="2"
+                  
                     borderRadius="30px"
                     bgGradient="linear(to-br, blue.100, white)"
                     boxShadow="0 10px 30px rgba(10,15,41,0.12)"
+                    bg={"white"}
                   >
                     <Box
-                      borderRadius={"50px"}
-                      backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
+                  mb={"-20px"}
+                      backgroundImage={` url('Shayal.png')`}
                       backgroundRepeat="no-repeat"
                       backgroundPosition="center"
                       backgroundSize="cover"

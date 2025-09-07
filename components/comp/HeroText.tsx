@@ -45,7 +45,7 @@ const HeroText = () => {
         driveways to decks, we make everything look brand new.
       </Text>
       <HStack
-         className="animate__animated animate__fadeInDownBig"
+      
         mt={"15px"}
         rounded={"2xl"}
         // bg={"gray.50"}
@@ -75,7 +75,7 @@ const HeroText = () => {
           </HStack>
         </HStack>
       </HStack>
-      <Box     className="animate__animated animate__fadeInDownBig" mt={["20px", "20px", "20px", "20px", "20px", "20px"]} >
+      <Box     mt={["20px", "20px", "20px", "20px", "20px", "20px"]} >
         <VStack
           textAlign={["center", "center", "center", "left", "left", "left"]}
           align={["center", "center", "center", "start", "start"]}
@@ -114,7 +114,7 @@ const HeroText = () => {
         </VStack>
         <VStack
         ml={["20px", "20px", "20px", "0px", "0px", "0px"]}
-   className="animate__animated animate__fadeInDownBig"
+
        
          textAlign={["center", "center", "center", "left", "left", "left"]}
           align={["center", "center", "center", "start", "start"]}
@@ -152,7 +152,7 @@ const HeroText = () => {
           </HStack>
         </VStack>
       </Box>
-      <HStack    className="animate__animated animate__fadeInDownBig"
+      <HStack   
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         justify={["center", "center", "center", "start", "start", "start"]}
         align={"start"}
