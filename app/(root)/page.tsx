@@ -124,7 +124,7 @@ const Page = () => {
         // data-aos="fade-up"
 
         zIndex={4}
-        px={["3%", "3%", "6%", "6%", "6%", "15%"]}
+        px={{ base: "4%", md: "6%", xl: "16%" }}
         justify={"center"} // !!
         align={"center"}
         w={"100%"}
@@ -189,7 +189,7 @@ const Page = () => {
             align={"center"}
             w={"100%"}
             textAlign={"center"}
-              px={["3%", "3%", "6%", "6%", "6%", "15%"]}
+              px={{ base: "4%", md: "6%", xl: "16%" }}
           >
             <SectionHeading
               eyebrow={`You'll be amazed at how good your property can look!`}

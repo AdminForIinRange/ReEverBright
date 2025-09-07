@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import SectionHeading from "./compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
@@ -22,6 +22,7 @@ const srOnly = {
 };
 
 function StarRating({ value }) {
+  // render 5 stars using unicode, tint the filled ones
   return (
     <div
       aria-label={`${value} out of 5 stars`}
@@ -48,26 +49,7 @@ function StarRating({ value }) {
   );
 }
 
-function Chip({ text, bg = "#F0FFF4", border = "#C6F6D5", color = "#2F855A" }) {
-  return (
-    <span
-      style={{
-        display: "inline-block",
-        padding: "2px 8px",
-        borderRadius: 999,
-        border: `1px solid ${border}`,
-        background: bg,
-        color,
-        fontSize: 10,
-        fontWeight: 800,
-        letterSpacing: ".04em",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {text}
-    </span>
-  );
-}
+
 
 /* ====== Review Card (snap-aligned, responsive width) ====== */
 function ReviewCard({
@@ -86,7 +68,7 @@ function ReviewCard({
       : platform === "facebook"
       ? "Facebook"
       : "Review";
-  const badgeText = verified ? "Verified" : platformLabel;
+
 
   return (
     <div
@@ -111,12 +93,7 @@ function ReviewCard({
     >
       {/* badge */}
       <div style={{ position: "absolute", top: 12, right: 12 }}>
-        <Chip
-          text={badgeText}
-          bg={verified ? "#EBF8FF" : "#F0FFF4"}
-          border={verified ? "#BEE3F8" : "#C6F6D5"}
-          color={verified ? "#2B6CB0" : "#2F855A"}
-        />
+    
       </div>
 
       {/* header */}
@@ -177,7 +154,7 @@ function ReviewCard({
         <StarRating value={stars} />
       </div>
 
-      {/* body */}
+      {/* body (fixed region + line clamp) */}
       <div
         style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
       >
@@ -202,35 +179,54 @@ function ReviewCard({
   );
 }
 
-/* ====== Reviews Scroller (native scroll + snap, no buttons/dots) ====== */
+/* ====== Reviews Scroller (native scroll + visible custom scrollbar) ====== */
 function ReviewsScroller({ reviews }) {
-  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [thumb, setThumb] = useState({ leftPx: 0, widthPx: 0 });
 
-  const updateEdges = () => {
+  const recalc = () => {
     const el = viewportRef.current;
-    if (!el) return;
-    const start = el.scrollLeft <= 1;
-    const end = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
-    setAtStart(start);
-    setAtEnd(end);
+    const tr = trackRef.current;
+    if (!el || !tr) return;
+
+    const vw = el.clientWidth || 1;
+    const sw = el.scrollWidth || 1;
+    const sl = el.scrollLeft || 0;
+    const tw = tr.offsetWidth || 1;
+
+    const scrollMax = Math.max(sw - vw, 1);
+    const ratio = vw / sw;
+    const thumbWidthPx = Math.max(tw * ratio, 32); // keep it grabbable
+    const maxThumbLeft = Math.max(tw - thumbWidthPx, 1);
+    const thumbLeftPx = (sl / scrollMax) * maxThumbLeft;
+
+    setThumb({ leftPx: thumbLeftPx, widthPx: thumbWidthPx });
+
+    setAtStart(sl <= 1);
+    setAtEnd(sl + vw >= sw - 1);
   };
 
   useEffect(() => {
+    recalc();
     const el = viewportRef.current;
     if (!el) return;
-    updateEdges();
-    el.addEventListener("scroll", updateEdges, { passive: true });
-    window.addEventListener("resize", updateEdges);
+
+    const onScroll = () => recalc();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", recalc);
+
     return () => {
-      el.removeEventListener("scroll", updateEdges as any);
-      window.removeEventListener("resize", updateEdges);
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", recalc);
     };
   }, []);
 
-  // let users with a mouse wheel scroll horizontally without holding shift
-  const onWheel = (e: React.WheelEvent) => {
+  // wheel → horizontal for mouse users
+  const onWheel = (e) => {
     const el = viewportRef.current;
     if (!el) return;
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
@@ -239,7 +235,7 @@ function ReviewsScroller({ reviews }) {
     }
   };
 
-  const onKeyDown = (e: React.KeyboardEvent) => {
+  const onKeyDown = (e) => {
     const el = viewportRef.current;
     if (!el) return;
     const step = CARD_W + CARD_GAP;
@@ -258,29 +254,68 @@ function ReviewsScroller({ reviews }) {
     }
   };
 
+  // drag the thumb
+  const onThumbMouseDown = (e) => {
+    e.preventDefault();
+    const el = viewportRef.current;
+    const tr = trackRef.current;
+    if (!el || !tr) return;
+
+    const startX = e.clientX;
+    const startLeft = thumb.leftPx;
+
+    const vw = el.clientWidth || 1;
+    const sw = el.scrollWidth || 1;
+    const tw = tr.offsetWidth || 1;
+    const scrollMax = Math.max(sw - vw, 1);
+    const maxThumbLeft = Math.max(tw - thumb.widthPx, 1);
+
+    const onMove = (me) => {
+      const dx = me.clientX - startX;
+      const nextLeft = Math.min(Math.max(startLeft + dx, 0), maxThumbLeft);
+      const pct = nextLeft / maxThumbLeft;
+      el.scrollLeft = pct * scrollMax;
+      recalc();
+    };
+    const onUp = () => {
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", onUp);
+      document.body.style.userSelect = "";
+      document.body.style.cursor = "";
+    };
+
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+    document.body.style.userSelect = "none";
+    document.body.style.cursor = "grabbing";
+  };
+
+  // click on the track to jump
+
   // subtle edge fade to hint overflow
-  const maskImage = atStart && atEnd
-    ? "none"
-    : `linear-gradient(to right, ${atStart ? "black" : "transparent"} 0, black 24px, black calc(100% - 24px), ${atEnd ? "black" : "transparent"} 100%)`;
+  const maskImage =
+    atStart && atEnd
+      ? "none"
+      : `linear-gradient(to right, ${
+          atStart ? "black" : "transparent"
+        } 0, black 24px, black calc(100% - 24px), ${
+          atEnd ? "black" : "transparent"
+        } 100%)`;
 
   return (
     <Box style={{ margin: "0 auto" }}>
+      {/* viewport (note: we do NOT hide scrollbars via CSS anymore) */}
       <Box
-        ref={viewportRef as any}
+        ref={viewportRef}
         role="region"
         aria-label="Customer reviews (scroll horizontally to browse)"
         tabIndex={0}
         onWheel={onWheel}
         onKeyDown={onKeyDown}
-        sx={{
-          "::-webkit-scrollbar": { display: "none" }, // hide scrollbar (still scrollable)
-        }}
         style={{
           overflowX: "auto",
           overflowY: "hidden",
           WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
           scrollSnapType: "x mandatory",
           scrollPadding: "0px 24px",
           maskImage,
@@ -303,8 +338,31 @@ function ReviewsScroller({ reviews }) {
         </div>
       </Box>
 
-      {/* screen-reader helper text */}
-      <span style={srOnly}>Scroll horizontally to browse more review cards.</span>
+      {/* visible custom scrollbar */}
+      <div
+   
+      >
+        <div
+          data-thumb="1"
+          onMouseDown={onThumbMouseDown}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: thumb.leftPx,
+            height: 8,
+            width: thumb.widthPx,
+            borderRadius: 999,
+            background: "#A0AEC0",
+            cursor: "grab",
+          }}
+          title="Drag to scroll"
+        />
+      </div>
+
+      {/* SR hint */}
+      <span style={srOnly}>
+        Use the scrollbar below or your mouse/trackpad to scroll the reviews.
+      </span>
     </Box>
   );
 }
@@ -361,6 +419,7 @@ export default function ReviewSection() {
 
   return (
     <Box px={{ base: "4%", md: "6%", xl: "16%" }} my={"100px"}>
+      {/* header */}
       <SectionHeading
         eyebrow={"What our customers say"}
         title={"See what they're saying about us"}
