@@ -245,7 +245,7 @@ const Navbar = () => {
       bg={scrolled ? "cyan.700" : "transparent"}
       backdropFilter={scrolled ? "blur(10px)" : "none"}
       transition="background-color 200ms ease"
-      borderBottom={scrolled ? "2px solid #E2E8F0" : "NONE"}
+      borderBottom={"2px solid #E2E8F0"}
     >
       {/* Main Nav */}
       <Box w="100%" py="10px" transition="all 0.3s ease">
