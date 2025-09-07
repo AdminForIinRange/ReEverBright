@@ -87,7 +87,7 @@ const HeroText = () => {
             <HStack color="green.300" fontWeight={"700"} fontSize="24px">
               <CheckCircle />
               <Span
-                fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
+                fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
                 fontFamily={"poppins"}
                 color="WHITE"
                 fontWeight={"500"}
@@ -99,7 +99,7 @@ const HeroText = () => {
             <HStack color="green.300" fontWeight={"700"} fontSize="24px">
               <CheckCircle />
               <Span
-                fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
+                fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
                 fontFamily={"poppins"}
                 color="WHITE"
                 fontWeight={"500"}
@@ -126,7 +126,7 @@ const HeroText = () => {
             <HStack color="green.300" fontWeight={"700"} fontSize="24px">
               <CheckCircle />
               <Span
-                fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
+                fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
                 fontFamily={"poppins"}
                 color="WHITE"
                 fontWeight={"500"}
@@ -138,7 +138,7 @@ const HeroText = () => {
             <HStack ml={["10px", "10px", "10px", "10px", "10px", "10px"]} color="green.300" fontWeight={"700"} fontSize="24px">
               <CheckCircle />
               <Span
-                fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
+                fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
                 fontFamily={"poppins"}
                 color="WHITE"
                 fontWeight={"500"}
