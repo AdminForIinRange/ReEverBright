@@ -1,0 +1,40 @@
+// {
+//   "extends": [
+//     "next/core-web-vitals",
+//     "next/typescript",
+//     "standard",
+//     "plugin:tailwindcss/recommended",
+//     "plugin:import/recommended",
+//     "plugin:import/typescript",
+//     "prettier"
+//   ],
+//   "plugins": ["import"],
+//   "parser": "@typescript-eslint/parser",
+//   "parserOptions": {
+//     "project": "./tsconfig.json"
+//   },
+//   "rules": {
+//     "react/no-unescaped-entities": 0,
+//     "no-unused-vars": "off",
+//     "no-undef": "off",
+
+//     // Orphan-file checker: scan app, components, lib, and hooks
+//     "import/no-unused-modules": [
+//       "warn",
+//       {
+//         "unusedExports": true,
+//         "src": ["app", "components", "lib", "hooks"]
+//       }
+//     ]
+//   },
+//   "settings": {
+//     "tailwindcss": {
+//       "groupByResponsive": true,
+//       "prependCustom": true,
+//       "officialSorting": true
+//     },
+//     "import/resolver": {
+//       "typescript": {}
+//     }
+//   }
+// }
