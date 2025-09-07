@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SectionHeading from "./compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
+
 /* ====== Tunables ====== */
-const CARD_W = 340;
+const CARD_W = 340; // max card width
 const CARD_H = 220;
 const CARD_GAP = 24; // px gap between cards
-const SLIDE_DURATION_MS = 4000; // banner auto-advance
 
 /* ====== Small utilities ====== */
 const srOnly = {
@@ -22,7 +22,6 @@ const srOnly = {
 };
 
 function StarRating({ value }) {
-  // render 5 stars using unicode, tint the filled ones
   return (
     <div
       aria-label={`${value} out of 5 stars`}
@@ -62,6 +61,7 @@ function Chip({ text, bg = "#F0FFF4", border = "#C6F6D5", color = "#2F855A" }) {
         fontSize: 10,
         fontWeight: 800,
         letterSpacing: ".04em",
+        whiteSpace: "nowrap",
       }}
     >
       {text}
@@ -69,7 +69,7 @@ function Chip({ text, bg = "#F0FFF4", border = "#C6F6D5", color = "#2F855A" }) {
   );
 }
 
-/* ====== Review Card (fixed size) ====== */
+/* ====== Review Card (snap-aligned, responsive width) ====== */
 function ReviewCard({
   name,
   date,
@@ -84,16 +84,17 @@ function ReviewCard({
     platform === "google"
       ? "Google"
       : platform === "facebook"
-        ? "Facebook"
-        : "Review";
+      ? "Facebook"
+      : "Review";
+  const badgeText = verified ? "Verified" : platformLabel;
 
   return (
     <div
       role="listitem"
       aria-label={`${stars} star review by ${name} on ${platformLabel}`}
       style={{
-        width: CARD_W,
-        minWidth: CARD_W,
+        width: `clamp(260px, 80vw, ${CARD_W}px)`,
+        minWidth: `clamp(260px, 80vw, ${CARD_W}px)`,
         height: CARD_H,
         background: "#fff",
         border: "1px solid #E2E8F0",
@@ -104,9 +105,20 @@ function ReviewCard({
         flexDirection: "column",
         position: "relative",
         transition: "box-shadow .25s ease, border-color .25s ease",
+        scrollSnapAlign: "start",
+        scrollSnapStop: "always",
       }}
     >
-      {/* platform pill */}
+      {/* badge */}
+      <div style={{ position: "absolute", top: 12, right: 12 }}>
+        <Chip
+          text={badgeText}
+          bg={verified ? "#EBF8FF" : "#F0FFF4"}
+          border={verified ? "#BEE3F8" : "#C6F6D5"}
+          color={verified ? "#2B6CB0" : "#2F855A"}
+        />
+      </div>
+
       {/* header */}
       <div
         style={{
@@ -165,7 +177,7 @@ function ReviewCard({
         <StarRating value={stars} />
       </div>
 
-      {/* body (fixed region + line clamp) */}
+      {/* body */}
       <div
         style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
       >
@@ -190,110 +202,109 @@ function ReviewCard({
   );
 }
 
-/* ====== Banner Slider (auto + buttons) ====== */
+/* ====== Reviews Scroller (native scroll + snap, no buttons/dots) ====== */
+function ReviewsScroller({ reviews }) {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
-/* ====== Reviews Carousel (buttons + dots) ====== */
-function ReviewsCarousel({ reviews }) {
-  const visible = 3; // how many cards are visible in desktop viewport
-  const maxIndex = Math.max(0, reviews.length - visible);
-  const [index, setIndex] = useState(0);
-
-  const trackRef = useRef(null);
-
-  const goPrev = () => setIndex((i) => Math.max(0, i - 1));
-  const goNext = () => setIndex((i) => Math.min(maxIndex, i + 1));
-  const goTo = (i) => setIndex(() => Math.min(maxIndex, Math.max(0, i)));
+  const updateEdges = () => {
+    const el = viewportRef.current;
+    if (!el) return;
+    const start = el.scrollLeft <= 1;
+    const end = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+    setAtStart(start);
+    setAtEnd(end);
+  };
 
   useEffect(() => {
-    if (!trackRef.current) return;
-    const offset = index * (CARD_W + CARD_GAP);
-    trackRef.current.style.transform = `translateX(-${offset}px)`;
-  }, [index]);
+    const el = viewportRef.current;
+    if (!el) return;
+    updateEdges();
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges as any);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, []);
+
+  // let users with a mouse wheel scroll horizontally without holding shift
+  const onWheel = (e: React.WheelEvent) => {
+    const el = viewportRef.current;
+    if (!el) return;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      el.scrollBy({ left: e.deltaY, behavior: "smooth" });
+    }
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const el = viewportRef.current;
+    if (!el) return;
+    const step = CARD_W + CARD_GAP;
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      el.scrollBy({ left: step, behavior: "smooth" });
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      el.scrollBy({ left: -step, behavior: "smooth" });
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else if (e.key === "End") {
+      e.preventDefault();
+      el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+    }
+  };
+
+  // subtle edge fade to hint overflow
+  const maskImage = atStart && atEnd
+    ? "none"
+    : `linear-gradient(to right, ${atStart ? "black" : "transparent"} 0, black 24px, black calc(100% - 24px), ${atEnd ? "black" : "transparent"} 100%)`;
 
   return (
-    <Box  style={{ margin: "0 auto" }}>
-      {/* controls */}
-  
-
-      {/* viewport */}
-      <div
+    <Box style={{ margin: "0 auto" }}>
+      <Box
+        ref={viewportRef as any}
+        role="region"
+        aria-label="Customer reviews (scroll horizontally to browse)"
+        tabIndex={0}
+        onWheel={onWheel}
+        onKeyDown={onKeyDown}
+        sx={{
+          "::-webkit-scrollbar": { display: "none" }, // hide scrollbar (still scrollable)
+        }}
         style={{
-          overflow: "hidden",
-          position: "relative",
+          overflowX: "auto",
+          overflowY: "hidden",
+          WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          scrollSnapType: "x mandatory",
+          scrollPadding: "0px 24px",
+          maskImage,
+          WebkitMaskImage: maskImage,
           paddingBottom: 8,
         }}
       >
         <div
-          ref={trackRef}
+          role="list"
+          aria-label="Customer reviews"
           style={{
             display: "flex",
             gap: CARD_GAP,
-            willChange: "transform",
-            transition: "transform 400ms ease",
+            padding: "0 24px",
           }}
-          aria-label="Customer reviews"
-          role="list"
         >
           {reviews.map((r, i) => (
             <ReviewCard key={i} {...r} />
           ))}
         </div>
-      </div>
-
-          <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 8,
-          marginBottom: 12,
-        }}
-      >
-        <button
-    
-          type="button"
-          onClick={goPrev}
-          disabled={index === 0}
-          style={navBtnStyle}
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          onClick={goNext}
-          disabled={index === maxIndex}
-          style={navBtnStyle}
-        >
-          Next
-        </button>
-      </div>
-
-      {/* dots (one per possible index position) */}
-      <Box
-      mt={"15px"}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 8,
-
-        }}
-      >
-        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            aria-label={`Go to set ${i + 1}`}
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              border: "none",
-              background: i === index ? "#2D3748" : "#CBD5E0",
-              cursor: "pointer",
-            }}
-          />
-        ))}
       </Box>
+
+      {/* screen-reader helper text */}
+      <span style={srOnly}>Scroll horizontally to browse more review cards.</span>
     </Box>
   );
 }
@@ -349,44 +360,17 @@ export default function ReviewSection() {
   ];
 
   return (
-    <Box
-     
-   
-        px={{ base: "4%", md: "6%", xl: "16%" }}
-        my={"100px"}
-    
-    >
-      {/* header */}
+    <Box px={{ base: "4%", md: "6%", xl: "16%" }} my={"100px"}>
       <SectionHeading
         eyebrow={"What our customers say"}
         title={"See what they're saying about us"}
         color="black"
       />
-      {/* moving banner */}
-      
 
-      {/* reviews carousel */}
-      <div style={{ padding: "0 24px" }}>
-        <ReviewsCarousel reviews={reviews} />
+      {/* reviews scroller */}
+      <div style={{ padding: "0 0px" }}>
+        <ReviewsScroller reviews={reviews} />
       </div>
-
-      {/* screen-reader helper text */}
-      <span style={srOnly}>
-        Use left and right buttons to navigate the review cards.
-      </span>
     </Box>
   );
 }
-
-/* ====== shared button style ====== */
-const navBtnStyle = {
-  width: "100%",
-  appearance: "none",
-  background: "#fff",
-  border: "1px solid #CBD5E0",
-  borderRadius: 8,
-  padding: "8px 12px",
-  fontWeight: 700,
-  cursor: "pointer",
-  transition: "background .2s ease, border-color .2s ease",
-};
