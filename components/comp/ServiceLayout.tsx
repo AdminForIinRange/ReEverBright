@@ -61,11 +61,11 @@ function ServiceLayout() {
           <SectionHeading
             eyebrow="See the difference we make"
             title="How we can help you home"
-            color="bule.100"
+            color="cyan.600"
           />
         </VStack>
       </VStack>
-      
+
       <HStack
         wrap={["wrap", "wrap", "wrap", "wrap", "wrap", "wrap"]}
         justify={"center"}

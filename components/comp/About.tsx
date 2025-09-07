@@ -23,7 +23,7 @@ const About = () => {
         <SectionHeading
           eyebrow={`You'll be amazed at how good your property can look!`}
           title={`Restoring Your Most\nValuable Asset`}
-          color="blue.900"
+         
         />
       </VStack>
 

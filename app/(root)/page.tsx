@@ -177,7 +177,6 @@ const Page = () => {
       <ServiceLayout />
       <About />
 
-      <BannerSlider />
 
       <Box pt={["50px", "50px", "50px", "100px", "100px", "100px"]}>
   
@@ -287,6 +286,10 @@ const Page = () => {
           </HStack>
         </Box>
       </Box>
+
+
+      <BannerSlider />
+
 
       <ReviewSection />
 
