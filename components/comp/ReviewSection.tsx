@@ -4,11 +4,10 @@ import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 
 /* ====== Tunables ====== */
-const CARD_W = 340; // max card width
-const CARD_H = 220;
-const CARD_GAP = 24; // px gap between cards
+const CARD_W = 340;         // max card width
+const CARD_H = 220;         // card height
+const CARD_GAP = 24;        // px gap between cards
 const MARQUEE_PX_PER_SEC = 50; // autoplay speed; 40–80 feels good
-const RESUME_IDLE_MS = 1200; // wait after user interaction before resuming
 
 /* ====== Small utilities ====== */
 const srOnly = {
@@ -23,13 +22,9 @@ const srOnly = {
   border: 0,
 };
 
-function StarRating({ value }) {
-  // render 5 stars using unicode, tint the filled ones
+function StarRating({ value = 5 }) {
   return (
-    <div
-      aria-label={`${value} out of 5 stars`}
-      style={{ display: "flex", gap: 4 }}
-    >
+    <div aria-label={`${value} out of 5 stars`} style={{ display: "flex", gap: 4 }}>
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
@@ -37,10 +32,7 @@ function StarRating({ value }) {
           style={{
             fontSize: 16,
             lineHeight: 1,
-            filter:
-              i < value
-                ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))"
-                : "none",
+            filter: i < value ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))" : "none",
             color: i < value ? "#F6AD55" : "#E2E8F0",
           }}
         >
@@ -51,28 +43,17 @@ function StarRating({ value }) {
   );
 }
 
-/* ====== Review Card (snap-aligned, responsive width) ====== */
-function ReviewCard({
-  name,
-  date,
-  reviewText,
-  stars,
-  platform,
-  avatar,
-  verified = false,
-}) {
+/* ====== Review Card ====== */
+function ReviewCard({ name, date, reviewText, stars, platform, avatar, verified = false }) {
   const initial = (name || "•").trim().charAt(0).toUpperCase();
   const platformLabel =
-    platform === "google"
-      ? "Google"
-      : platform === "facebook"
-      ? "Facebook"
-      : "Review";
+    platform === "google" ? "Google" : platform === "facebook" ? "Facebook" : "Review";
 
   return (
     <div
       role="listitem"
       aria-label={`${stars} star review by ${name} on ${platformLabel}`}
+      className="rvw-card"
       style={{
         width: `clamp(260px, 80vw, ${CARD_W}px)`,
         minWidth: `clamp(260px, 80vw, ${CARD_W}px)`,
@@ -89,14 +70,7 @@ function ReviewCard({
       }}
     >
       {/* header */}
-      <div
-        style={{
-          display: "flex",
-          gap: 12,
-          alignItems: "center",
-          flexShrink: 0,
-        }}
-      >
+      <div style={{ display: "flex", gap: 12, alignItems: "center", flexShrink: 0 }}>
         <div
           style={{
             width: 44,
@@ -134,10 +108,27 @@ function ReviewCard({
             >
               {name}
             </div>
+            {verified && (
+              <span
+                aria-label="Verified"
+                title="Verified"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 10,
+                  fontWeight: 700,
+                  padding: "2px 6px",
+                  borderRadius: 999,
+                  color: "#22543D",
+                  background: "#C6F6D5",
+                }}
+              >
+                Verified
+              </span>
+            )}
           </div>
-          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>
-            {date}
-          </div>
+          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>{date}</div>
         </div>
       </div>
 
@@ -146,10 +137,8 @@ function ReviewCard({
         <StarRating value={stars} />
       </div>
 
-      {/* body (fixed region + line clamp) */}
-      <div
-        style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
-      >
+      {/* body */}
+      <div style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}>
         <p
           style={{
             margin: 0,
@@ -171,216 +160,133 @@ function ReviewCard({
   );
 }
 
-/* ====== Reviews Marquee (infinite loop + user-controlled scroll) ====== */
-function ReviewsScroller({ reviews }) {
-  const viewportRef = useRef(null);
-  const firstHalfRef = useRef(null);
-
-  // autoplay state
-  const rafRef = useRef(null);
-  const lastTsRef = useRef(0);
-  const pausedRef = useRef(false);
-  const resumeTimerRef = useRef(null);
-
-  // measurement
-  const halfWidthRef = useRef(0);
-
-  // drag state
-  const draggingRef = useRef(false);
-  const dragStartXRef = useRef(0);
-  const dragStartLeftRef = useRef(0);
-
-  // measure width of first half (exact, padding-safe)
-  const measureHalf = () => {
-    const el = firstHalfRef.current;
-    if (!el) return;
-    halfWidthRef.current = el.offsetWidth || 0;
-  };
-
-  const ensureWrapped = () => {
-    const scroller = viewportRef.current;
-    const half = halfWidthRef.current;
-    if (!scroller || !half) return;
-    if (scroller.scrollLeft >= half) scroller.scrollLeft -= half;
-    else if (scroller.scrollLeft < 0) scroller.scrollLeft += half;
-  };
-
-  const startRaf = () => {
-    if (rafRef.current) return;
-    const tick = (ts) => {
-      const scroller = viewportRef.current;
-      if (!scroller) return;
-
-      // re-measure if needed (e.g., fonts/layout settle)
-      if (!halfWidthRef.current) measureHalf();
-
-      ensureWrapped();
-
-      if (!pausedRef.current && halfWidthRef.current > 0) {
-        const dt = Math.max(0, ts - (lastTsRef.current || ts));
-        scroller.scrollLeft += (MARQUEE_PX_PER_SEC * dt) / 1000;
-      }
-
-      lastTsRef.current = ts;
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    lastTsRef.current = performance.now();
-    rafRef.current = requestAnimationFrame(tick);
-  };
-
-  const pauseAuto = () => {
-    pausedRef.current = true;
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => {
-      pausedRef.current = false;
-      // avoid big jump from accumulated dt
-      lastTsRef.current = performance.now();
-    }, RESUME_IDLE_MS);
-  };
-
-  useEffect(() => {
-    // start after mount
-    measureHalf();
-    startRaf();
-
-    const onResize = () => {
-      measureHalf();
-      ensureWrapped();
-    };
-
-    const scroller = viewportRef.current;
-    const onScroll = () => ensureWrapped();
-
-    if (scroller) scroller.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-      if (scroller) scroller.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-    };
+/* ====== Reviews Marquee (CSS-driven, seamless, no extra imports) ====== */
+function ReviewsMarquee({ reviews }) {
+  const halfRef = useRef(null);
+  const [duration, setDuration] = useState(20); // seconds, recalculated
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    try {
+      return window.matchMedia("(prefers-reduced-motion: reduce)")?.matches || false;
+    } catch {
+      return false;
+    }
   }, []);
 
-  // wheel → horizontal, pauses autoplay
-  const onWheel = (e) => {
-    const scroller = viewportRef.current;
-    if (!scroller) return;
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault();
-      scroller.scrollLeft += e.deltaY;
-      pauseAuto();
+  // Measure first half width -> compute duration based on MARQUEE_PX_PER_SEC
+  useEffect(() => {
+    const el = halfRef.current;
+    if (!el) return;
+
+    const compute = () => {
+      const halfWidth = el.offsetWidth || 0;
+      if (halfWidth > 0) {
+        const seconds = halfWidth / MARQUEE_PX_PER_SEC;
+        setDuration(Math.max(6, Math.min(seconds, 120))); // clamp sane range
+      }
+    };
+
+    compute();
+
+    // Keep fresh on resize / content changes
+    let ro;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => compute());
+      ro.observe(el);
+    } else {
+      const onResize = () => compute();
+      window.addEventListener("resize", onResize);
+      return () => window.removeEventListener("resize", onResize);
     }
-  };
 
-  // keyboard control
-  const onKeyDown = (e) => {
-    const scroller = viewportRef.current;
-    if (!scroller) return;
-    const step = CARD_W + CARD_GAP;
-    if (e.key === "ArrowRight") {
-      e.preventDefault();
-      scroller.scrollLeft += step;
-      pauseAuto();
-    } else if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      scroller.scrollLeft -= step;
-      pauseAuto();
-    }
-  };
-
-  // drag (mouse)
-  const onMouseDown = (e) => {
-    const scroller = viewportRef.current;
-    if (!scroller) return;
-    draggingRef.current = true;
-    dragStartXRef.current = e.clientX;
-    dragStartLeftRef.current = scroller.scrollLeft;
-    document.body.style.userSelect = "none";
-    document.body.style.cursor = "grabbing";
-    pauseAuto();
-  };
-  const onMouseMove = (e) => {
-    const scroller = viewportRef.current;
-    if (!scroller || !draggingRef.current) return;
-    const dx = e.clientX - dragStartXRef.current;
-    scroller.scrollLeft = dragStartLeftRef.current - dx;
-  };
-  const onMouseUp = () => {
-    if (!draggingRef.current) return;
-    draggingRef.current = false;
-    document.body.style.userSelect = "";
-    document.body.style.cursor = "";
-  };
-
-  // drag (touch)
-  const tStartRef = useRef(0);
-  const tLeftRef = useRef(0);
-  const onTouchStart = (e) => {
-    const scroller = viewportRef.current;
-    if (!scroller) return;
-    tStartRef.current = e.touches[0].clientX;
-    tLeftRef.current = scroller.scrollLeft;
-    pauseAuto();
-  };
-  const onTouchMove = (e) => {
-    const scroller = viewportRef.current;
-    if (!scroller) return;
-    const dx = e.touches[0].clientX - tStartRef.current;
-    scroller.scrollLeft = tLeftRef.current - dx;
-  };
+    return () => {
+      if (ro) ro.disconnect();
+    };
+  }, [reviews]);
 
   return (
-    <Box style={{ margin: "0 auto" }}>
-      {/* wrapper adds side padding without affecting track width */}
-      <div style={{ padding: "0 24px" }}>
-        <Box
-          ref={viewportRef}
-          role="region"
-          aria-label="Customer reviews (marquee; interact to control)"
-          tabIndex={0}
-          onWheel={onWheel}
-          onKeyDown={onKeyDown}
-          onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUp}
-          onMouseLeave={onMouseUp}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
+    <div className="rvw-wrap" style={{ padding: "0 24px" }}>
+      <div
+        className="rvw-viewport"
+        role="region"
+        aria-label="Customer reviews (marquee; hover or focus to pause)"
+        tabIndex={0}
+        style={{
+          outline: "none",
+        }}
+      >
+        {/* Track = two equal halves for seamless wrap.
+            We animate the track from 0 to -50% so the second half slides into place. */}
+        <div
+          className="rvw-track"
           style={{
-            overflowX: "auto",
-            overflowY: "hidden",
-            WebkitOverflowScrolling: "touch",
-            paddingBottom: 8,
+            gap: CARD_GAP,
+            // expose vars for CSS
+            ["--rvw-gap"]: `${CARD_GAP}px`,
+            ["--rvw-dur"]: `${duration}s`,
+            ["--rvw-play"]: prefersReducedMotion ? "paused" : "running",
           }}
         >
-          {/* Track = two equal halves for seamless wrap */}
-          <div style={{ display: "flex" }}>
-            <div
-              ref={firstHalfRef}
-              style={{ display: "flex", gap: CARD_GAP }}
-              role="list"
-              aria-label="Customer reviews"
-            >
-              {reviews.map((r, i) => (
-                <ReviewCard key={`a-${i}`} {...r} />
-              ))}
-            </div>
-            <div style={{ display: "flex", gap: CARD_GAP }} aria-hidden="true">
-              {reviews.map((r, i) => (
-                <ReviewCard key={`b-${i}`} {...r} />
-              ))}
-            </div>
+          <div ref={halfRef} className="rvw-half" role="list" aria-label="Customer reviews">
+            {reviews.map((r, i) => (
+              <ReviewCard key={`h1-${i}`} {...r} />
+            ))}
           </div>
-        </Box>
+          <div className="rvw-half" aria-hidden="true">
+            {reviews.map((r, i) => (
+              <ReviewCard key={`h2-${i}`} {...r} />
+            ))}
+          </div>
+        </div>
       </div>
 
       <span style={srOnly}>
-        Reviews auto-scroll horizontally. Interact with your mouse, touch, or
-        keyboard to take control; autoplay resumes after a moment.
+        Reviews auto-scroll horizontally. Hover, focus, or touch to pause. Motion respects your
+        system’s “reduced motion” preference.
       </span>
-    </Box>
+
+      {/* Scoped styles – no new imports */}
+      <style>{`
+        .rvw-viewport {
+          overflow: hidden;
+          padding-bottom: 8px;
+        }
+
+        .rvw-track {
+          display: flex;
+          width: max-content;           /* track is as wide as its contents */
+          will-change: transform;
+          animation: rvw-scroll var(--rvw-dur, 20s) linear infinite;
+          animation-play-state: var(--rvw-play, running);
+        }
+
+        /* Pause on hover/focus within for user control */
+        .rvw-viewport:hover .rvw-track,
+        .rvw-viewport:focus-within .rvw-track {
+          animation-play-state: paused;
+        }
+
+        .rvw-half {
+          display: flex;
+          gap: var(--rvw-gap, 24px);
+        }
+
+        @keyframes rvw-scroll {
+          from { transform: translate3d(0,0,0); }
+          to   { transform: translate3d(-50%,0,0); } /* exactly one half width */
+        }
+
+        /* Touch devices: allow tap to pause with :active */
+        @media (hover: none) and (pointer: coarse) {
+          .rvw-viewport:active .rvw-track { animation-play-state: paused; }
+        }
+
+        /* Reduced motion – stop animation entirely */
+        @media (prefers-reduced-motion: reduce) {
+          .rvw-track { animation: none; transform: translate3d(0,0,0); }
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -441,9 +347,7 @@ export default function ReviewSection() {
         title={"Read Some Of Our Reviews!"}
         color="black"
       />
-      <div style={{ padding: "0 0px" }}>
-        <ReviewsScroller reviews={reviews} />
-      </div>
+      <ReviewsMarquee reviews={reviews} />
     </Box>
   );
 }
