@@ -5,20 +5,17 @@ import Google from "@/public/Google.png";
 import Adl from "@/public/images/aerial-city-adelaide.jpeg";
 import { FaStar } from "react-icons/fa";
 import FreeQuote from "@/components/comp/FreeQuote";
+import { CheckCircle } from "lucide-react";
 
 const HeroText = () => {
   return (
     <>
       <HStack
-
         justify={["center", "center", "center", "start", "start", "start"]}
         align={["center", "center", "center", "start", "start", "start"]}
-      >
-       
-      </HStack>{" "}
+      ></HStack>{" "}
       <Text
         as={"h2"}
-        textShadow={"0px 0px 1000px black"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         mt={["15px", "15px", "15px", "15px", "15px", "15px"]}
         fontSize={{ base: "42px", md: "42px", lg: "72px" }}
@@ -26,95 +23,43 @@ const HeroText = () => {
         fontFamily={"poppins"}
         bgClip="text"
         textAlign={["center", "center", "center", "left", "left", "left"]}
-        color={"white"}
+        color={"cyan.600"}
         bgGradient="linear(to-r, teal, blue)"
         lineHeight={"0.9"}
       >
-        Because a Clean Home Feels Like a New Home
+        Because a Clean Home Feels Like a{" "}
+        <Span color={"cyan.500"}>New Home</Span>
       </Text>
       <Text
-        textShadow={"0px 0px 100px black"}
         as={"p"}
-        textStyle={"subheading"}
+        fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         textAlign={["center", "center", "center", "left", "left", "left"]}
         fontFamily={"poppins"}
-        color={"cyan.100"}
+        color={"cyan.900"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-        fontWeight={"700"}
+        fontWeight={"500"}
       >
-        Adelaide’s #1 Choice for Remarkable Exterior Cleaning!
+        Restore your home's beauty with expert pressure washing services. From
+        driveways to decks, we make everything look brand new.
       </Text>
-      <Box>
-        <VStack
-          justify={["center", "center", "center", "start", "start"]}
-          align={["center", "center", "center", "start", "start"]}
-        >
-          <HStack
-            justify={["center", "center", "center", "start", "start"]}
-            align={["center", "center", "center", "start", "start"]}
+      <HStack
+        textAlign={["left", "left", "left", "left", "left", "left"]}
+        align={["start", "start", "start", "start", "start"]}
+      >
+        <Text color="green.300" fontWeight={"700"} fontSize="24px">
+          <CheckCircle />
+          <Span
+            fontSize={["14px", "16px", "16px", "20px", "20px", "20px"]}
+            fontFamily={"poppins"}
+            color="cyan.900"
+            fontWeight={"500"}
           >
-            <Text color="green.300" fontWeight={"700"} textStyle={"subheading"}>
-              ✓{" "}
-              <Span
-                fontSize={["16px", "16px", "16px", "20px", "20px", "20px"]}
-                fontFamily={"poppins"}
-                color="white"
-                fontWeight={"500"}
-              >
-                {" "}
-                        Gutter Cleaning
-              </Span>
-            </Text>
-            <Text color="green.300" fontSize="24px" fontWeight={"700"}>
-              ✓{" "}
-              <Span
-                fontSize={["16px", "16px", "16px", "20px", "20px", "20px"]}
-                fontFamily={"poppins"}
-                color="white"
-                fontWeight={"500"}
-              >
-                {" "}
-                Roof Washing
-              </Span>
-            </Text>
-          </HStack>
-        </VStack>
-        <VStack
-          justify={["center", "center", "center", "start", "start"]}
-          align={["center", "center", "center", "start", "start"]}
-        >
-          <HStack
-            justify={["center", "center", "center", "start", "start"]}
-            align={["center", "center", "center", "start", "start"]}
-          >
-            <Text color="green.300" fontSize="24px" fontWeight={"700"}>
-              ✓{" "}
-              <Span
-                fontSize={["16px", "16px", "16px", "20px", "20px", "20px"]}
-                fontFamily={"poppins"}
-                color="white"
-                fontWeight={"500"}
-              >
-                {" "}
-                Solar Cleaning
-              </Span>
-            </Text>
-            <Text color="green.300" fontSize="24px" fontWeight={"700"}>
-              ✓{" "}
-              <Span
-                fontSize={["16px", "16px", "16px", "20px", "20px", "20px"]}
-                fontFamily={"poppins"}
-                color="white"
-                fontWeight={"500"}
-              >
-                {" "}
-               Pressure Washing
-              </Span>
-            </Text>
-          </HStack>
-        </VStack>
-      </Box>
+            {" "}
+            Gutter Cleaning
+          </Span>
+        </Text>
+      </HStack>
       <HStack
         justify={["center", "center", "center", "start", "start", "start"]}
         align={"start"}
@@ -137,7 +82,7 @@ const HeroText = () => {
             scale: 1.1,
             fontWeight: "700",
             px: "80px",
-            bg: "black",
+            bg: "cyan.400",
           }}
           p={4}
           color={"white"}

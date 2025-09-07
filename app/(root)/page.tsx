@@ -29,34 +29,35 @@ import icon2 from "@/public/images/Icons/2.png";
 import icon3 from "@/public/images/Icons/3.png";
 import icon4 from "@/public/images/Icons/4.png";
 
-
 const Page = () => {
- const services = [
-  {
-    title: "Pressure Washing",
-    image:
-      "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
-    desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
-  },
-  {
-    title: "Solar Cleaning",
-    image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
-    desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
-  },
-  {
-    title: "Roof Cleaning",
-    image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
-    desc: "Safely lift moss and dark streaks to restore curb appeal.",
-  },
-  {
-    title: "Gutter Cleaning",
-    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
-    desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
-  },
-];
+  const services = [
+    {
+      title: "Pressure Washing",
+      image:
+        "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
+      desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
+    },
+    {
+      title: "Solar Cleaning",
+      image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
+      desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
+    },
+    {
+      title: "Roof Cleaning",
+      image:
+        "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
+      desc: "Safely lift moss and dark streaks to restore curb appeal.",
+    },
+    {
+      title: "Gutter Cleaning",
+      image:
+        "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
+      desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
+    },
+  ];
 
   // ✅ NEW: small data arrays to map the repeated items
- const badges = [
+  const badges = [
     {
       text: "Guarantee Satisfaction",
       Images: icon1,
@@ -86,35 +87,6 @@ const Page = () => {
 
   return (
     <Box mt={"-70px"}>
-      <HStack justifyContent={"center"} align={"center"}>
-        <Box
-        
-          borderRadius={"150px"}
-          backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
-          backgroundRepeat="no-repeat"
-          backgroundPosition="center"
-          backgroundSize="cover"
-          position={"absolute"}
-          backgroundAttachment="fixed"
-          zIndex={-1}
-          w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-          h={["1650px", "1650px", "1650px", "1650px", "1450px", "1450px"]}
-          opacity={1}
-
-        ></Box>
-        <Box
-                  borderRadius={"150px"}
-
-          position={"absolute"}
-          zIndex={-1}
-          w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-          h={["1650px", "1650px", "1650px", "1650px", "1450px", "1450px"]}
-          bg="cyan.700"
-          opacity={0.6}
-    
-        ></Box>
-      </HStack>
-
       <HStack
         // data-aos="fade-up"
 
@@ -157,9 +129,9 @@ const Page = () => {
                 p={["5px", "5px", "10px", "10px", "10px", "10px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
                 borderRadius={["20px", "20px", "20px", "20px", "20px", "20px"]}
-               bg={["white", "white", "none", "none", "none", "none"]}
+                bg={["white", "white", "none", "none", "none", "none"]}
               >
-                <HStack
+                {/* <HStack
                   justify="start"
                   align="start"
                   gap={["0px", "8px", "8px", "8px", "8px", "8px"]}
@@ -169,11 +141,42 @@ const Page = () => {
                   {badges.map((badge, idx) => (
                     <BadgeItem key={idx} image={badge.Images} text={badge.text}  />
                   ))}
-                </HStack>
+                </HStack> */}
               </Box>
             </HStack>
           </Box>
-          <FreeQuote />
+
+          <Box
+            position="relative"
+            h={{ base: "100%", md: "100%", xl: "100%" }}
+            w={{ base: "100%", md: "100%" }}
+            display="flex"
+            justifyContent="end"
+          >
+            <Box
+              position="relative"
+              h={{ base: "100%", md: "100%" }}
+              w={{ base: "100%", md: "100%" }}
+              // subtle gradient border frame
+              p="2"
+              borderRadius="30px"
+              bgGradient="linear(to-br, blue.100, white)"
+              boxShadow="0 10px 30px rgba(10,15,41,0.12)"
+            >
+              <Box
+                border={"5px solid white"}
+                borderRadius={"50px"}
+                backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
+                backgroundRepeat="no-repeat"
+                backgroundPosition="center"
+                backgroundSize="cover"
+                h="600px"
+                w="100%"
+                overflow="hidden"
+              ></Box>
+            </Box>
+          </Box>
+
         </HStack>
       </HStack>
 
@@ -251,7 +254,6 @@ const Page = () => {
                     >
                       Shayal - Owner
                     </Text>
-                   
                   </Box>
                 </VStack>
               </Box>

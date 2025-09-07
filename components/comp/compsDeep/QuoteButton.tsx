@@ -21,7 +21,7 @@ const QuoteButton = () => {
    
         fontWeight: "700",
         px: "80px",
-        bg: "black",
+        bg: "cyan",
       }}
       p={4}
       color="white"
