@@ -108,25 +108,7 @@ function ReviewCard({ name, date, reviewText, stars, platform, avatar, verified 
             >
               {name}
             </div>
-            {verified && (
-              <span
-                aria-label="Verified"
-                title="Verified"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  padding: "2px 6px",
-                  borderRadius: 999,
-                  color: "#22543D",
-                  background: "#C6F6D5",
-                }}
-              >
-                Verified
-              </span>
-            )}
+       
           </div>
           <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>{date}</div>
         </div>
