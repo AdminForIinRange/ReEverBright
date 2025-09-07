@@ -7,6 +7,8 @@ import Image from "next/image";
 const CARD_W = 340; // max card width
 const CARD_H = 220;
 const CARD_GAP = 24; // px gap between cards
+const MARQUEE_PX_PER_SEC = 1; // auto-scroll speed
+const RESUME_IDLE_MS = 20; // after user interaction, wait before resuming
 
 /* ====== Small utilities ====== */
 const srOnly = {
@@ -49,8 +51,6 @@ function StarRating({ value }) {
   );
 }
 
-
-
 /* ====== Review Card (snap-aligned, responsive width) ====== */
 function ReviewCard({
   name,
@@ -68,7 +68,6 @@ function ReviewCard({
       : platform === "facebook"
       ? "Facebook"
       : "Review";
-
 
   return (
     <div
@@ -88,14 +87,8 @@ function ReviewCard({
         position: "relative",
         transition: "box-shadow .25s ease, border-color .25s ease",
         scrollSnapAlign: "start",
-        scrollSnapStop: "always",
       }}
     >
-      {/* badge */}
-      <div style={{ position: "absolute", top: 12, right: 12 }}>
-    
-      </div>
-
       {/* header */}
       <div
         style={{
@@ -179,148 +172,190 @@ function ReviewCard({
   );
 }
 
-/* ====== Reviews Scroller (native scroll + visible custom scrollbar) ====== */
+/* ====== Reviews Marquee (infinite loop + user-controlled scroll) ====== */
 function ReviewsScroller({ reviews }) {
   const viewportRef = useRef(null);
-  const trackRef = useRef(null);
 
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
-  const [thumb, setThumb] = useState({ leftPx: 0, widthPx: 0 });
+  // for auto-marquee
+  const rafRef = useRef(null);
+  const lastTsRef = useRef(0);
+  const pausedRef = useRef(false);
+  const idleTimerRef = useRef(null);
 
-  const recalc = () => {
-    const el = viewportRef.current;
-    const tr = trackRef.current;
-    if (!el || !tr) return;
+  // drag-to-scroll
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartLeftRef = useRef(0);
 
-    const vw = el.clientWidth || 1;
-    const sw = el.scrollWidth || 1;
-    const sl = el.scrollLeft || 0;
-    const tw = tr.offsetWidth || 1;
+  // duplicate items for a seamless loop
+  const items = useMemo(() => [...reviews, ...reviews], [reviews]);
 
-    const scrollMax = Math.max(sw - vw, 1);
-    const ratio = vw / sw;
-    const thumbWidthPx = Math.max(tw * ratio, 32); // keep it grabbable
-    const maxThumbLeft = Math.max(tw - thumbWidthPx, 1);
-    const thumbLeftPx = (sl / scrollMax) * maxThumbLeft;
+  const stopAuto = () => {
+    pausedRef.current = true;
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    idleTimerRef.current = setTimeout(() => {
+      pausedRef.current = false;
+      lastTsRef.current = performance.now();
+      startRaf();
+    }, RESUME_IDLE_MS);
+  };
 
-    setThumb({ leftPx: thumbLeftPx, widthPx: thumbWidthPx });
+  const startRaf = () => {
+    if (rafRef.current) return;
+    const loop = (ts) => {
+      const el = viewportRef.current;
+      if (!el) return;
+      if (pausedRef.current) {
+        rafRef.current = requestAnimationFrame(loop);
+        return;
+      }
 
-    setAtStart(sl <= 1);
-    setAtEnd(sl + vw >= sw - 1);
+      // if content isn't wider than viewport, don't auto-scroll
+      const canScroll = el.scrollWidth > el.clientWidth + 2;
+      if (!canScroll) {
+        rafRef.current = requestAnimationFrame(loop);
+        return;
+      }
+
+      const dt = Math.max(0, ts - (lastTsRef.current || ts));
+      lastTsRef.current = ts;
+
+      const step = (MARQUEE_PX_PER_SEC * dt) / 1000;
+      el.scrollLeft += step;
+
+      const half = el.scrollWidth / 2;
+      // when we’ve scrolled through the first copy, snap back by half
+      if (el.scrollLeft >= half) {
+        el.scrollLeft -= half;
+      }
+
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    lastTsRef.current = performance.now();
+    rafRef.current = requestAnimationFrame(loop);
   };
 
   useEffect(() => {
-    recalc();
-    const el = viewportRef.current;
-    if (!el) return;
-
-    const onScroll = () => recalc();
-    el.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", recalc);
-
+    // kick off marquee on mount
+    startRaf();
     return () => {
-      el.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", recalc);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // wheel → horizontal for mouse users
+  // wheel → horizontal, pauses marquee
   const onWheel = (e) => {
     const el = viewportRef.current;
     if (!el) return;
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
-      el.scrollBy({ left: e.deltaY, behavior: "smooth" });
+      el.scrollLeft += e.deltaY;
+      stopAuto();
     }
   };
 
+  // keyboard control, pauses marquee
   const onKeyDown = (e) => {
     const el = viewportRef.current;
     if (!el) return;
     const step = CARD_W + CARD_GAP;
     if (e.key === "ArrowRight") {
       e.preventDefault();
-      el.scrollBy({ left: step, behavior: "smooth" });
+      el.scrollLeft += step;
+      stopAuto();
     } else if (e.key === "ArrowLeft") {
       e.preventDefault();
-      el.scrollBy({ left: -step, behavior: "smooth" });
+      el.scrollLeft -= step;
+      stopAuto();
     } else if (e.key === "Home") {
       e.preventDefault();
-      el.scrollTo({ left: 0, behavior: "smooth" });
+      el.scrollLeft = 0;
+      stopAuto();
     } else if (e.key === "End") {
       e.preventDefault();
-      el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+      el.scrollLeft = el.scrollWidth;
+      stopAuto();
     }
   };
 
-  // drag the thumb
-  const onThumbMouseDown = (e) => {
-    e.preventDefault();
+  // drag-to-scroll, pauses marquee
+  const onMouseDown = (e) => {
     const el = viewportRef.current;
-    const tr = trackRef.current;
-    if (!el || !tr) return;
-
-    const startX = e.clientX;
-    const startLeft = thumb.leftPx;
-
-    const vw = el.clientWidth || 1;
-    const sw = el.scrollWidth || 1;
-    const tw = tr.offsetWidth || 1;
-    const scrollMax = Math.max(sw - vw, 1);
-    const maxThumbLeft = Math.max(tw - thumb.widthPx, 1);
-
-    const onMove = (me) => {
-      const dx = me.clientX - startX;
-      const nextLeft = Math.min(Math.max(startLeft + dx, 0), maxThumbLeft);
-      const pct = nextLeft / maxThumbLeft;
-      el.scrollLeft = pct * scrollMax;
-      recalc();
-    };
-    const onUp = () => {
-      document.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseup", onUp);
-      document.body.style.userSelect = "";
-      document.body.style.cursor = "";
-    };
-
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseup", onUp);
+    if (!el) return;
+    draggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartLeftRef.current = el.scrollLeft;
     document.body.style.userSelect = "none";
     document.body.style.cursor = "grabbing";
+    stopAuto();
+  };
+  const onMouseMove = (e) => {
+    const el = viewportRef.current;
+    if (!el || !draggingRef.current) return;
+    const dx = e.clientX - dragStartXRef.current;
+    el.scrollLeft = dragStartLeftRef.current - dx;
+  };
+  const endMouseDrag = () => {
+    if (!draggingRef.current) return;
+    draggingRef.current = false;
+    document.body.style.userSelect = "";
+    document.body.style.cursor = "";
   };
 
-  // click on the track to jump
+  // touch drag
+  const touchStartXRef = useRef(0);
+  const touchStartLeftRef = useRef(0);
+  const onTouchStart = (e) => {
+    const el = viewportRef.current;
+    if (!el) return;
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartLeftRef.current = el.scrollLeft;
+    stopAuto();
+  };
+  const onTouchMove = (e) => {
+    const el = viewportRef.current;
+    if (!el) return;
+    const dx = e.touches[0].clientX - touchStartXRef.current;
+    el.scrollLeft = touchStartLeftRef.current - dx;
+  };
 
-  // subtle edge fade to hint overflow
-  const maskImage =
-    atStart && atEnd
-      ? "none"
-      : `linear-gradient(to right, ${
-          atStart ? "black" : "transparent"
-        } 0, black 24px, black calc(100% - 24px), ${
-          atEnd ? "black" : "transparent"
-        } 100%)`;
+  // resize fix: if user resizes, keep marquee smooth
+  useEffect(() => {
+    const onResize = () => {
+      const el = viewportRef.current;
+      if (!el) return;
+      // keep scroll in first half
+      const half = el.scrollWidth / 2;
+      if (el.scrollLeft >= half) el.scrollLeft -= half;
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <Box style={{ margin: "0 auto" }}>
-      {/* viewport (note: we do NOT hide scrollbars via CSS anymore) */}
       <Box
         ref={viewportRef}
         role="region"
-        aria-label="Customer reviews (scroll horizontally to browse)"
+        aria-label="Customer reviews (marquee; interact to control)"
         tabIndex={0}
         onWheel={onWheel}
         onKeyDown={onKeyDown}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={endMouseDrag}
+        onMouseLeave={endMouseDrag}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={() => {}}
         style={{
           overflowX: "auto",
           overflowY: "hidden",
           WebkitOverflowScrolling: "touch",
-          scrollSnapType: "x mandatory",
-          scrollPadding: "0px 24px",
-          maskImage,
-          WebkitMaskImage: maskImage,
           paddingBottom: 8,
+          // no scroll-snap during marquee; user controls freely
         }}
       >
         <div
@@ -332,36 +367,15 @@ function ReviewsScroller({ reviews }) {
             padding: "0 24px",
           }}
         >
-          {reviews.map((r, i) => (
-            <ReviewCard key={i} {...r} />
+          {items.map((r, i) => (
+            <ReviewCard key={`${i}`} {...r} />
           ))}
         </div>
       </Box>
 
-      {/* visible custom scrollbar */}
-      <div
-   
-      >
-        <div
-          data-thumb="1"
-          onMouseDown={onThumbMouseDown}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: thumb.leftPx,
-            height: 8,
-            width: thumb.widthPx,
-            borderRadius: 999,
-            background: "#A0AEC0",
-            cursor: "grab",
-          }}
-          title="Drag to scroll"
-        />
-      </div>
-
-      {/* SR hint */}
       <span style={srOnly}>
-        Use the scrollbar below or your mouse/trackpad to scroll the reviews.
+        Reviews auto-scroll horizontally. Interact with your mouse, touch, or
+        keyboard to take control; auto-scroll resumes after a moment.
       </span>
     </Box>
   );
@@ -419,14 +433,11 @@ export default function ReviewSection() {
 
   return (
     <Box px={{ base: "4%", md: "6%", xl: "16%" }} my={"100px"}>
-      {/* header */}
       <SectionHeading
         eyebrow={"What our customers say"}
         title={"See what they're saying about us"}
         color="black"
       />
-
-      {/* reviews scroller */}
       <div style={{ padding: "0 0px" }}>
         <ReviewsScroller reviews={reviews} />
       </div>
