@@ -6,7 +6,7 @@ import SectionHeading from "./compsDeep/SectionHeading";
 
 const About = () => {
   return (
-    <Box as="section" mt={{ base: "100px", xl: "280px" }} aria-label="About">
+    <Box as="section" mt={{ base: "100px", xl: "180px" }} aria-label="About">
 
 
 

@@ -28,6 +28,7 @@ import icon1 from "@/public/images/Icons/1.png";
 import icon2 from "@/public/images/Icons/2.png";
 import icon3 from "@/public/images/Icons/3.png";
 import icon4 from "@/public/images/Icons/4.png";
+import BannerSlider from "@/components/comp/compsDeep/BannerSlider";
 
 const Page = () => {
   const services = [
@@ -176,9 +177,11 @@ const Page = () => {
       <ServiceLayout />
       <About />
 
-      <SlindingBanner />
+      <BannerSlider />
 
       <Box pt={["50px", "50px", "50px", "100px", "100px", "100px"]}>
+  
+
         <Box mt={["100px", "100px", "100px", "100px", "100px", "100px"]}>
           {/* Another spot where SectionHeading matches your style */}
           <VStack
@@ -186,7 +189,7 @@ const Page = () => {
             align={"center"}
             w={"100%"}
             textAlign={"center"}
-            px={["4%", "4%", "6%", "6%", "6%", "10%"]}
+              px={["3%", "3%", "6%", "6%", "6%", "15%"]}
           >
             <SectionHeading
               eyebrow={`You'll be amazed at how good your property can look!`}

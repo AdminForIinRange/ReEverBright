@@ -51,27 +51,28 @@ function ServiceLayout() {
         textAlign="center"
         px={{ base: "4%", md: "6%", xl: "16%" }}
       >
-                 <VStack
-            justify={"center"}
-            align={"center"}
-            w={"100%"}
-            textAlign={"center"}
-            px={["4%", "4%", "6%", "6%", "6%", "10%"]}
-          >
-            <SectionHeading
-              eyebrow="See the difference we make"
-              title="How we can help you home"
-              color="bule.100"
-            />
-          </VStack>
+        <VStack
+          justify={"center"}
+          align={"center"}
+          w={"100%"}
+          textAlign={"center"}
+          px={["4%", "4%", "6%", "6%", "6%", "10%"]}
+        >
+          <SectionHeading
+            eyebrow="See the difference we make"
+            title="How we can help you home"
+            color="bule.100"
+          />
+        </VStack>
       </VStack>
+      
       <HStack
-        wrap={[ "wrap", "wrap", "wrap", "wrap", "wrap", "wrap" ]}
+        wrap={["wrap", "wrap", "wrap", "wrap", "wrap", "wrap"]}
         justify={"center"}
         align={"center"}
         gap={["20px", "20px", "20px", "20px", "20px", "20px"]}
         py={"50px"}
-              px={{ base: "4%", md: "6%", xl: "16%" }}
+        px={{ base: "4%", md: "6%", xl: "16%" }}
       >
         {services.map((s) => (
           <ServicesBox key={s.title} title={s.title} image={s.image} />
