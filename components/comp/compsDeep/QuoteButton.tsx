@@ -6,7 +6,7 @@ const QuoteButton = () => {
   const router = useRouter();
   return (
     <Box
-      w={["100%", "100%"]}
+  
       bg="cyan.500"
    
       display="flex"

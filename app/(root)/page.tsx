@@ -87,6 +87,38 @@ const Page = () => {
 
   return (
     <Box mt={"-70px"}>
+      <HStack justifyContent={"center"} align={"center"}>
+        <Box
+          borderRadius={"50px"}
+          backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
+          backgroundRepeat="no-repeat"
+          backgroundPosition="center"
+          backgroundSize="cover"
+          position={"absolute"}
+          backgroundAttachment="fixed"
+          zIndex={-1}
+          w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+          h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
+          opacity={1}
+          borderBottomRightRadius={"2000px"}
+          borderBottomLeftRadius={"1000px"}
+        ></Box>
+        <Box
+          borderRadius={"50px"}
+          backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
+          backgroundRepeat="no-repeat"
+          backgroundPosition="center"
+          backgroundSize="cover"
+          position={"absolute"}
+          zIndex={-1}
+          w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+          h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
+          bg="cyan.700"
+          opacity={0.8}
+          borderBottomRightRadius={["2000px"]}
+          borderBottomLeftRadius={"1000px"}
+        ></Box>
+      </HStack>
       <HStack
         // data-aos="fade-up"
 
@@ -108,44 +140,7 @@ const Page = () => {
         >
           <Box w={["100%", "100%", "100%", "100%", "100%", "100%"]}>
             <HeroText />
-
-            <HStack
-              p={["5px", "5px", "0px", "0px", "0px", "0px"]}
-              w={"100%"}
-              justify={[
-                "center",
-                "center",
-                "center",
-                "start",
-                "start",
-                "start",
-              ]}
-              align={["center", "center", "center", "start", "start", "start"]}
-            >
-              <Box
-                mt={"20px"}
-                rounded={"10px"}
-                h={"100%"}
-                p={["5px", "5px", "10px", "10px", "10px", "10px"]}
-                w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-                borderRadius={["20px", "20px", "20px", "20px", "20px", "20px"]}
-                bg={["white", "white", "none", "none", "none", "none"]}
-              >
-                {/* <HStack
-                  justify="start"
-                  align="start"
-                  gap={["0px", "8px", "8px", "8px", "8px", "8px"]}
-                  w={"100%"}
-                
-                >
-                  {badges.map((badge, idx) => (
-                    <BadgeItem key={idx} image={badge.Images} text={badge.text}  />
-                  ))}
-                </HStack> */}
-              </Box>
-            </HStack>
           </Box>
-
           <Box
             position="relative"
             h={{ base: "100%", md: "100%", xl: "100%" }}
@@ -157,26 +152,25 @@ const Page = () => {
               position="relative"
               h={{ base: "100%", md: "100%" }}
               w={{ base: "100%", md: "100%" }}
-              // subtle gradient border frame
-              p="2"
-              borderRadius="30px"
-              bgGradient="linear(to-br, blue.100, white)"
-              boxShadow="0 10px 30px rgba(10,15,41,0.12)"
             >
               <Box
-                border={"5px solid white"}
+                bgGradient="linear(to-br, blue.100, white)"
+                boxShadow="0 0px 100px rgba(0, 0, 0, 0.2)"
+                border={"10px solid white"}
                 borderRadius={"50px"}
-                backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
+                backgroundImage={`url('/images/aerial-city-adelaide.jpeg')`}
                 backgroundRepeat="no-repeat"
                 backgroundPosition="center"
                 backgroundSize="cover"
                 h="600px"
                 w="100%"
                 overflow="hidden"
-              ></Box>
+                position="relative"
+              >
+                {/* Floating overlay box */}
+              </Box>
             </Box>
           </Box>
-
         </HStack>
       </HStack>
 
@@ -294,46 +288,6 @@ const Page = () => {
       </Box>
 
       <ReviewSection />
-
-      {/* <HStack bg={"blue.700"} py={"25px"}>
-        <VStack
-          justify={"center"}
-          align={"center"}
-          w={"100%"}
-          textAlign={"center"}
-          px={["4%", "4%", "6%", "6%", "6%", "10%"]}
-        >
-          <Text
-            fontSize={["30px", "48px", "56px"]}
-            fontWeight={700}
-            fontFamily="poppins"
-            color="white"
-            lineHeight="1.1"
-          >
-            Ready to bring your home back to life
-          </Text>
-
-          <Box display="flex" justifyContent="center" h={"100%"} width="100%">
-            <HStack
-              justify={[
-                "center",
-                "center",
-                "center",
-                "center",
-                "center",
-                "center",
-              ]}
-              align={"center"}
-              w={"100%"}
-              transition={"all 0.2s ease-in-out"}
-              zIndex={4}
-            >
-          
-              <QuoteButton />
-            </HStack>
-          </Box>
-        </VStack>
-      </HStack> */}
 
       {/* Floating geometric shapes */}
 
