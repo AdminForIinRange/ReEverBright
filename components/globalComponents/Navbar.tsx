@@ -242,7 +242,7 @@ const Navbar = () => {
       top="0"
       zIndex="100"
       /* NEW: background changes when scrolled */
-      bg={scrolled ? "cyan.700" : "transparent"}
+      bg={scrolled ? "cyan.500" : "transparent"}
       backdropFilter={scrolled ? "blur(10px)" : "none"}
       transition="background-color 200ms ease"
       borderBottom={"2px solid #E2E8F0"}
