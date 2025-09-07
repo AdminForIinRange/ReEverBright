@@ -250,7 +250,7 @@ const Page = () => {
                     align="start"
                     color="white"
                     fontSize="lg"
-                    lineHeight="1.8"
+             
                     fontFamily={"poppins"}
                   >
                     <Text>
