@@ -22,7 +22,7 @@ const HeroText = () => {
         fontFamily={"poppins"}
         bgClip="text"
         textAlign={["center", "center", "center", "left", "left", "left"]}
-        color={"cyan.100"}
+        color={"cyan.300"}
         bgGradient="linear(to-r, teal, blue)"
         lineHeight={"0.9"}
         className="animate__animated animate__fadeInDownBig"

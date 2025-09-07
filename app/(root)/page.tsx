@@ -146,7 +146,7 @@ const Page = () => {
           <Box w={["100%", "100%", "100%", "100%", "100%", "100%"]}>
             <HeroText />
           </Box>
-          <Box    className="animate__animated animate__fadeInRight"
+          <Box  
             position="relative"
             h={{ base: "100%", md: "100%", xl: "100%" }}
             w={{ base: "100%", md: "100%" }}
