@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import SectionHeading from "./compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
-
+import Image from "next/image";
 /* ====== Tunables ====== */
 const CARD_W = 340;
 const CARD_H = 320;
@@ -107,24 +107,6 @@ function ReviewCard({
       }}
     >
       {/* platform pill */}
-      <div style={{ position: "absolute", top: 12, right: 12 }}>
-        <span
-          style={{
-            display: "inline-block",
-            padding: "6px 10px",
-            borderRadius: 999,
-            border: "1px solid #E2E8F0",
-            background: "#F7FAFC",
-            color: "#4A5568",
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: ".02em",
-          }}
-        >
-          {platformLabel}
-        </span>
-      </div>
-
       {/* header */}
       <div
         style={{
@@ -171,7 +153,6 @@ function ReviewCard({
             >
               {name}
             </div>
-            {verified && <Chip text="VERIFIED" />}
           </div>
           <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>
             {date}
@@ -211,104 +192,84 @@ function ReviewCard({
 
 /* ====== Banner Slider (auto + buttons) ====== */
 function BannerSlider() {
-  const slides = useMemo(
-    () => [
-      "⭐️ 1,000+ satisfied customers and counting.",
-      "🧼 Crisp before/after results on every job.",
-      "⏱️ On-time, polite, and professional service.",
-    ],
-    []
-  );
+const services = [
+  {
+    title: "Pressure Washing",
+    image: "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
+    desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
+  },
+  {
+    title: "Solar Cleaning",
+    image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
+    desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
+  },
+  {
+    title: "Roof Cleaning",
+    image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
+    desc: "Safely lift moss and dark streaks to restore curb appeal.",
+  },
+  {
+    title: "Gutter Cleaning",
+    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
+    desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
+  },
+];
+
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(
-      () => setIdx((i) => (i + 1) % slides.length),
+      () => setIdx((i) => (i + 1) % services.length),
       SLIDE_DURATION_MS
     );
     return () => clearInterval(id);
-  }, [slides.length]);
+  }, [services.length]);
 
   return (
-    <div
-      style={{
-        border: "1px solid #E2E8F0",
-        borderRadius: 12,
-        background: "#fff",
-        overflow: "hidden",
-        maxWidth: 1120,
-        margin: "0 auto",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "12px 16px",
-          background: "#F7FAFC",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ fontWeight: 800, fontSize: 14, color: "#4A5568" }}>
-          What customers love
-        </div>
-        <div style={{ display: "flex", gap: 8 }}>
-          <button
-            type="button"
-            onClick={() =>
-              setIdx((i) => (i - 1 + slides.length) % slides.length)
-            }
-            style={navBtnStyle}
-          >
-            Prev
-          </button>
-          <button
-            type="button"
-            onClick={() => setIdx((i) => (i + 1) % slides.length)}
-            style={navBtnStyle}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+    <div>
+
 
       <div
         style={{
           overflow: "hidden",
           position: "relative",
-          height: 72,
+          height: "100%",
+   
         }}
       >
         <div
           style={{
             display: "flex",
-            width: `${slides.length * 100}%`,
-            transform: `translateX(-${(100 / slides.length) * idx}%)`,
+            width: `${services.length * 100}%`,
+            transform: `translateX(-${(100 / services.length) * idx}%)`,
             transition: "transform 400ms ease",
           }}
         >
-          {slides.map((text, i) => (
+          {services.map((service, i) => (
             <div
               key={i}
               style={{
-                minWidth: `${100 / slides.length}%`,
+                minWidth: `${100 / services.length}%`,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 padding: "16px 20px",
               }}
             >
-              <div
-                style={{
-                  fontWeight: 700,
-                  fontSize: 16,
-                  color: "#1A202C",
-                  textAlign: "center",
-                  maxWidth: 900,
-                }}
-              >
-                {text}
-              </div>
+              <Box position="relative" h="260px" w="100%" overflow="hidden">
+                <Image
+                  quality={80}
+                  loading="lazy"
+                  src={service.image}
+                  alt={`${service.title} service`}
+                  fill
+                  style={{
+                    borderRadius: " 20px",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
+              </Box>
             </div>
           ))}
         </div>
@@ -321,10 +282,10 @@ function BannerSlider() {
           justifyContent: "center",
           gap: 8,
           padding: "10px 0",
-          background: "#F7FAFC",
+
         }}
       >
-        {slides.map((_, i) => (
+        {services.map((_, i) => (
           <button
             key={i}
             onClick={() => setIdx(i)}
@@ -363,33 +324,9 @@ function ReviewsCarousel({ reviews }) {
   }, [index]);
 
   return (
-    <Box  px={{ base: "4%", md: "6%", xl: "10%" }} style={{ margin: "0 auto" }}>
+    <Box  style={{ margin: "0 auto" }}>
       {/* controls */}
-      <div 
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 8,
-          marginBottom: 12,
-        }}
-      >
-        <button
-          type="button"
-          onClick={goPrev}
-          disabled={index === 0}
-          style={navBtnStyle}
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          onClick={goNext}
-          disabled={index === maxIndex}
-          style={navBtnStyle}
-        >
-          Next
-        </button>
-      </div>
+  
 
       {/* viewport */}
       <div
@@ -416,13 +353,42 @@ function ReviewsCarousel({ reviews }) {
         </div>
       </div>
 
+          <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: 8,
+          marginBottom: 12,
+        }}
+      >
+        <button
+    
+          type="button"
+          onClick={goPrev}
+          disabled={index === 0}
+          style={navBtnStyle}
+        >
+          Prev
+        </button>
+        <button
+          type="button"
+          onClick={goNext}
+          disabled={index === maxIndex}
+          style={navBtnStyle}
+        >
+          Next
+        </button>
+      </div>
+
       {/* dots (one per possible index position) */}
-      <div
+      <Box
+      mt={"15px"}
         style={{
           display: "flex",
           justifyContent: "center",
           gap: 8,
-          marginTop: 8,
+
         }}
       >
         {Array.from({ length: maxIndex + 1 }).map((_, i) => (
@@ -440,7 +406,7 @@ function ReviewsCarousel({ reviews }) {
             }}
           />
         ))}
-      </div>
+      </Box>
     </Box>
   );
 }
@@ -496,21 +462,21 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section
-      style={{
-        background: "linear-gradient(180deg,#f8fafc,#edf2f7)",
-        padding: "56px 0",
-      }}
+    <Box
+     
+   
+        px={{ base: "4%", md: "6%", xl: "10%" }}
+        my={"100px"}
+    
     >
       {/* header */}
       <SectionHeading
-    
         eyebrow={"What our customers say"}
         title={"See what they're saying about us"}
         color="black"
       />
       {/* moving banner */}
-      <div style={{ padding: "0 24px", marginBottom: 32 }}>
+      <div style={{  marginBottom: 32 }}>
         <BannerSlider />
       </div>
 
@@ -523,12 +489,13 @@ export default function ReviewSection() {
       <span style={srOnly}>
         Use left and right buttons to navigate the review cards.
       </span>
-    </section>
+    </Box>
   );
 }
 
 /* ====== shared button style ====== */
 const navBtnStyle = {
+  width: "100%",
   appearance: "none",
   background: "#fff",
   border: "1px solid #CBD5E0",

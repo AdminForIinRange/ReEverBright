@@ -14,17 +14,7 @@ const HeroText = () => {
         justify={["center", "center", "center", "start", "start", "start"]}
         align={["center", "center", "center", "start", "start", "start"]}
       >
-        <Box p={3} bg="white" borderRadius="full" w={"fit-content"}>
-          <Text
-            textAlign={"center"}
-            fontSize="xs"
-            fontWeight="600"
-            color="cyan.900"
-            fontFamily={"poppins"}
-          >
-            Adelaide’s #1 Choice for Remarkable Exterior Cleaning!
-          </Text>
-        </Box>
+       
       </HStack>{" "}
       <Text
         as={"h2"}
@@ -73,7 +63,7 @@ const HeroText = () => {
                 fontWeight={"500"}
               >
                 {" "}
-                Pressure Cleaning
+                        Gutter Cleaning
               </Span>
             </Text>
             <Text color="green.300" fontSize="24px" fontWeight={"700"}>
@@ -85,7 +75,7 @@ const HeroText = () => {
                 fontWeight={"500"}
               >
                 {" "}
-                Pressure Cleaning
+                Roof Washing
               </Span>
             </Text>
           </HStack>
@@ -107,7 +97,7 @@ const HeroText = () => {
                 fontWeight={"500"}
               >
                 {" "}
-                Pressure Cleaning
+                Solar Cleaning
               </Span>
             </Text>
             <Text color="green.300" fontSize="24px" fontWeight={"700"}>
@@ -119,7 +109,7 @@ const HeroText = () => {
                 fontWeight={"500"}
               >
                 {" "}
-                Pressure Cleaning
+               Pressure Washing
               </Span>
             </Text>
           </HStack>

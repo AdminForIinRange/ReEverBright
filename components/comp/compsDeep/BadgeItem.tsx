@@ -1,31 +1,32 @@
-import { VStack, Box, Text } from "@chakra-ui/react";
-import { ReactNode } from "react";
+"use client";
+
+import { VStack, Text } from "@chakra-ui/react";
+import Image, { StaticImageData } from "next/image";
 
 interface BadgeItemProps {
   text: string;
-  icon: ReactNode;
+  image: string | StaticImageData; // ← singular 'image'
 }
 
-const BadgeItem = ({ text, icon }: BadgeItemProps) => (
+const BadgeItem = ({ text, image }: BadgeItemProps) => (
   <VStack
-    p={4}
-    w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-    justify={"start"}
-    align={"center"}
-    h={"100%"}
-    bg={[ "none", "none", "white", "white", "white", "white"]}
-    borderRadius={["0px", "0px", "20px", "20px", "20px", "20px"]}
+    py={4}
+    w={["120px"]}
+    justify="start"
+    align="center"
+    h={"130px"}
+    bg={"white"}
+    borderRadius={["20px", "20px", "20px", "20px", "20px", "20px"]}
   >
-    <Box bg="cyan.300" p={2} borderRadius="full">
-      {icon}
-    </Box>
+    <Image src={image} alt={text} width={58} height={58} />{" "}
+    {/* width/height added */}
     <Text
-      textShadow={"0px 0px 100px white"}
+      textShadow="0px 0px 100px white"
       textAlign="center"
-      fontSize={["10px", "14px", "16px", "16px", "16px", "16px"]}
-      fontWeight="500"
+      fontSize={["9px", "9px", "12px", "12px", "12px", "12px"]}
+      fontWeight="700"
       fontFamily="poppins"
-      color={"black"}
+      color="cyan.900"
     >
       {text}
     </Text>

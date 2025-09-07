@@ -17,30 +17,29 @@ import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import BadgeItem from "@/components/comp/compsDeep/BadgeItem";
 import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
-
 const services = [
   {
     title: "Pressure Washing",
-    image: "https://images.pexels.com/photos/5652626/pexels-photo-5652626.jpeg",
+    image:
+      "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
     desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
   },
   {
     title: "Solar Cleaning",
-    image: "https://images.pexels.com/photos/8853508/pexels-photo-8853508.jpeg",
+    image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
     desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
   },
   {
     title: "Roof Cleaning",
-    image: "https://images.pexels.com/photos/6474451/pexels-photo-6474451.jpeg",
+    image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
     desc: "Safely lift moss and dark streaks to restore curb appeal.",
   },
   {
     title: "Gutter Cleaning",
-    image: "https://images.pexels.com/photos/4894655/pexels-photo-4894655.jpeg",
+    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
   },
 ];
-
 function ServiceLayout() {
   return (
     <>

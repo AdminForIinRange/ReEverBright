@@ -9,7 +9,6 @@ import { FaStar } from "react-icons/fa";
 const FreeQuote = () => {
   return (
     <Box
-    
       w={["100%", "100%", "600px"]}
       bg="white"
       borderRadius={["20px", "20px"]}
@@ -18,11 +17,9 @@ const FreeQuote = () => {
       textAlign="center"
     >
       {/* Heading */}
-      <Text fontSize="md" fontWeight="600" color="blue.600" mb={1}>
-        Get Your No-Obligation
-      </Text>
+
       <Text
-      fontFamily={"poppins"}
+        fontFamily={"poppins"}
         fontSize={["28px", "36px"]}
         fontWeight="900"
         color="blue.900"
@@ -31,11 +28,25 @@ const FreeQuote = () => {
       >
         FREE QUOTE <br /> TODAY!
       </Text>
+      <Text
+        textAlign={"center"}
+        fontSize="sm"
+        w={"100%"}
+        fontWeight="600"
+        px={4}
+        color="blue.900"
+   
+      >
+        30 Seconds to Your Free Quote No Commitments
+      </Text>
 
       {/* Reviews Row */}
-      <HStack justify="center" spacing={4} mb={6} wrap="wrap">
+      <HStack justify="center" spacing={4} mb={6}  pt={4}>
         {/* Google */}
         <HStack
+          w={"90%"}
+          justify={"center"}
+          align="center"
           px={3}
           py={2}
           bg="blue.50"
@@ -43,54 +54,21 @@ const FreeQuote = () => {
           border="1px solid #dbeafe"
           spacing={2}
         >
-          <Image src={Google} alt="Google" width={18} height={18} />
+          <Image src={Google} alt="Google" width={28} height={28} />
           <HStack spacing={0.5}>
             {Array.from({ length: 5 }).map((_, i) => (
-              <FaStar key={i} color="#fbbf24" size={12} />
+              <FaStar key={i} color="#fbbf24" size={18} />
             ))}
           </HStack>
-          <Text fontSize="xs" fontWeight="600" color="blue.900">
+          <Text fontSize="md" fontWeight="600" color="blue.900">
             4.9 / 5
-          </Text>
-        </HStack>
-
-        {/* Facebook */}
-        <HStack
-          px={3}
-          py={2}
-          bg="blue.100"
-          borderRadius="full"
-          border="1px solid #bfdbfe"
-          spacing={2}
-        >
-          <Box
-            w="18px"
-            h="18px"
-            borderRadius="full"
-            bg="blue.600"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            color="white"
-            fontSize="xs"
-            fontWeight="bold"
-          >
-            f
-          </Box>
-          <HStack spacing={0.5}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <FaStar key={i} color="#fbbf24" size={12} />
-            ))}
-          </HStack>
-          <Text fontSize="xs" fontWeight="600" color="blue.900">
-            4.8 / 5
           </Text>
         </HStack>
       </HStack>
 
       {/* Inputs (styled boxes only, since no Chakra Input) */}
       <VStack spacing={3} align="stretch">
-        <HStack>
+        <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
           <Box
             as="input"
             placeholder="Name"
@@ -112,7 +90,7 @@ const FreeQuote = () => {
             fontSize="sm"
           />
         </HStack>
-        <HStack>
+          <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
           <Box
             as="input"
             placeholder="Email"
@@ -152,24 +130,23 @@ const FreeQuote = () => {
           px={3}
           fontSize="sm"
         />
-              <Box
-        as="button"
-        w="100%"
-        mt={5}
-        py={3}
-        borderRadius="md"
-    bg="cyan.500"
-        color="white"
-        fontWeight="700"
-        fontSize="md"
-        _hover={{ opacity: 0.9 }}
-      >
-        Submit
-      </Box>
+        <Box
+          as="button"
+          w="100%"
+          mt={5}
+          py={3}
+          borderRadius="md"
+          bg="cyan.500"
+          color="white"
+          fontWeight="700"
+          fontSize="md"
+          _hover={{ opacity: 0.9 }}
+        >
+          Submit
+        </Box>
       </VStack>
 
       {/* CTA Button */}
-
     </Box>
   );
 };

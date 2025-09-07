@@ -24,75 +24,54 @@ import About from "@/components/comp/About";
 import SlidingCard from "@/components/comp/SlidingCard";
 import SlindingBanner from "@/components/comp/SlindingBanner";
 
+import icon1 from "@/public/images/Icons/1.png";
+import icon2 from "@/public/images/Icons/2.png";
+import icon3 from "@/public/images/Icons/3.png";
+import icon4 from "@/public/images/Icons/4.png";
+
+
 const Page = () => {
-  const services = [
-    {
-      title: "Pressure Washing",
-      image:
-        "https://images.pexels.com/photos/5652626/pexels-photo-5652626.jpeg",
-      desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
-    },
-    {
-      title: "Solar Cleaning",
-      image:
-        "https://images.pexels.com/photos/8853508/pexels-photo-8853508.jpeg",
-      desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
-    },
-    {
-      title: "Roof Cleaning",
-      image:
-        "https://images.pexels.com/photos/6474451/pexels-photo-6474451.jpeg",
-      desc: "Safely lift moss and dark streaks to restore curb appeal.",
-    },
-    {
-      title: "Gutter Cleaning",
-      image:
-        "https://images.pexels.com/photos/4894655/pexels-photo-4894655.jpeg",
-      desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
-    },
-    {
-      title: "Window Cleaning",
-      image:
-        "https://images.pexels.com/photos/5852922/pexels-photo-5852922.jpeg",
-      desc: "Crystal-clear glass inside and out for a brighter home.",
-    },
-    {
-      title: "Softwashing",
-      image:
-        "https://images.pexels.com/photos/5691505/pexels-photo-5691505.jpeg",
-      desc: "Low-pressure wash with eco detergents—safe for siding and paint.",
-    },
-    {
-      title: "Commercial Jobs",
-      image:
-        "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg",
-      desc: "Reliable large-scale cleaning tailored to business schedules.",
-    },
-    {
-      title: "Driveway & Concrete",
-      image:
-        "https://images.pexels.com/photos/4870704/pexels-photo-4870704.jpeg",
-      desc: "Remove oil spots and tire marks for a fresh, even finish.",
-    },
-  ];
+ const services = [
+  {
+    title: "Pressure Washing",
+    image:
+      "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
+    desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
+  },
+  {
+    title: "Solar Cleaning",
+    image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
+    desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
+  },
+  {
+    title: "Roof Cleaning",
+    image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
+    desc: "Safely lift moss and dark streaks to restore curb appeal.",
+  },
+  {
+    title: "Gutter Cleaning",
+    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
+    desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
+  },
+];
 
   // ✅ NEW: small data arrays to map the repeated items
-  const badges = [
+ const badges = [
     {
-      text: "100% Guarantee",
-      icon: <Shield />,
+      text: "Guarantee Satisfaction",
+      Images: icon1,
     },
     {
       text: "Fully Insured",
-      icon: <Shield />,
+      Images: icon2,
     },
     {
-      text: "Locally Owned &",
-      icon: <Home />,
+      text: "Locally Owned",
+      Images: icon3,
     },
     {
       text: "ECO Friendly",
-      icon: <Leaf />,
+      Images: icon4,
     },
   ];
 
@@ -109,7 +88,8 @@ const Page = () => {
     <Box mt={"-70px"}>
       <HStack justifyContent={"center"} align={"center"}>
         <Box
-          borderRadius={"50px"}
+        
+          borderRadius={"150px"}
           backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
           backgroundRepeat="no-repeat"
           backgroundPosition="center"
@@ -118,32 +98,20 @@ const Page = () => {
           backgroundAttachment="fixed"
           zIndex={-1}
           w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-          h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
+          h={["1650px", "1650px", "1650px", "1650px", "1450px", "1450px"]}
           opacity={1}
-          borderBottomRadius={[
-            "50px",
-            "150px0px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
-          ]}
+
         ></Box>
         <Box
+                  borderRadius={"150px"}
+
           position={"absolute"}
           zIndex={-1}
           w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-          h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
+          h={["1650px", "1650px", "1650px", "1650px", "1450px", "1450px"]}
           bg="cyan.700"
           opacity={0.6}
-          borderBottomRadius={[
-            "50px",
-            "50px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
-          ]}
+    
         ></Box>
       </HStack>
 
@@ -158,7 +126,7 @@ const Page = () => {
         h={"100%"}
       >
         <HStack
-          mt={"150px"}
+          mt={"100px"}
           justify={"center"}
           align={["center", "center", "center", "start", "start", "start"]}
           w={"100%"}
@@ -188,17 +156,18 @@ const Page = () => {
                 h={"100%"}
                 p={["5px", "5px", "10px", "10px", "10px", "10px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-                borderRadius={["30px", "30px", "30px", "30px", "30px", "30px"]}
-                bg={["white", "white", "none", "none", "none", "none"]}
+                borderRadius={["20px", "20px", "20px", "20px", "20px", "20px"]}
+               bg={["white", "white", "none", "none", "none", "none"]}
               >
                 <HStack
                   justify="start"
                   align="start"
                   gap={["0px", "8px", "8px", "8px", "8px", "8px"]}
                   w={"100%"}
+                
                 >
                   {badges.map((badge, idx) => (
-                    <BadgeItem key={idx} text={badge.text} icon={badge.icon} />
+                    <BadgeItem key={idx} image={badge.Images} text={badge.text}  />
                   ))}
                 </HStack>
               </Box>
