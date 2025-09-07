@@ -100,8 +100,8 @@ const Page = () => {
           w={["100%", "100%", "100%", "100%", "100%", "100%"]}
           h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
           opacity={1}
-          borderBottomRightRadius={"2000px"}
-          borderBottomLeftRadius={"1000px"}
+          borderBottomRightRadius={["500px", "500px", "500px", "2000px"]}
+          borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
         ></Box>
         <Box
           borderRadius={"50px"}
@@ -115,8 +115,8 @@ const Page = () => {
           h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
           bg="cyan.700"
           opacity={0.8}
-          borderBottomRightRadius={["2000px"]}
-          borderBottomLeftRadius={"1000px"}
+          borderBottomRightRadius={["500px", "500px", "500px", "2000px"]}
+          borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
         ></Box>
       </HStack>
       <HStack

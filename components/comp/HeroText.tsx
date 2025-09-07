@@ -10,18 +10,14 @@ import { CheckCircle, Phone } from "lucide-react";
 const HeroText = () => {
   return (
     <>
-    
-      <HStack
-        justify={["center", "center", "center", "start", "start", "start"]}
-        align={["center", "center", "center", "start", "start", "start"]}
-      ></HStack>{" "}
+
 
       
       <Text
         as={"h2"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         mt={["15px", "15px", "15px", "15px", "15px", "15px"]}
-        fontSize={{ base: "42px", md: "42px", lg: "72px" }}
+        fontSize={{ base: "42px", md: "52px", lg: "72px" }}
         fontWeight={600}
         fontFamily={"poppins"}
         bgClip="text"
@@ -29,13 +25,14 @@ const HeroText = () => {
         color={"cyan.100"}
         bgGradient="linear(to-r, teal, blue)"
         lineHeight={"0.9"}
+        className="animate__animated animate__fadeInDownBig"
       >
         Because a Clean Home Feels Like a{" "}
         <Span color={"WHITE"}>New Home</Span>
       </Text>
       <Text
         as={"p"}
-        fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
+        fontSize={["14px", "14px", "19px", "19px", "19px", "19px"]}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         textAlign={["center", "center", "center", "left", "left", "left"]}
         fontFamily={"poppins"}
@@ -76,10 +73,11 @@ const HeroText = () => {
           </HStack>
         </HStack>
       </HStack>
-      <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]}>
+      <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]} >
         <VStack
           textAlign={["center", "center", "center", "left", "left", "left"]}
           align={["center", "center", "center", "start", "start"]}
+       
         >
           <HStack
             justify={["center", "center", "center", "start", "start"]}
@@ -113,6 +111,9 @@ const HeroText = () => {
           </HStack>
         </VStack>
         <VStack
+        ml={["20px", "20px", "20px", "0px", "0px", "0px"]}
+
+       
          textAlign={["center", "center", "center", "left", "left", "left"]}
           align={["center", "center", "center", "start", "start"]}
         >
@@ -134,7 +135,7 @@ const HeroText = () => {
                 Solar Cleaning
               </Span>
             </HStack>
-            <HStack color="green.300" fontWeight={"700"} fontSize="24px">
+            <HStack ml={["10px", "10px", "10px", "10px", "10px", "10px"]} color="green.300" fontWeight={"700"} fontSize="24px">
               <CheckCircle />
               <Span
                 fontSize={["14px", "14px", "14px", "14px", "14px", "19px"]}
