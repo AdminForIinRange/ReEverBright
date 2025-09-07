@@ -31,6 +31,7 @@ const HeroText = () => {
         <Span color={"WHITE"}>New Home</Span>
       </Text>
       <Text
+         className="animate__animated animate__fadeInDownBig"
         as={"p"}
         fontSize={["14px", "14px", "19px", "19px", "19px", "19px"]}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
@@ -44,6 +45,7 @@ const HeroText = () => {
         driveways to decks, we make everything look brand new.
       </Text>
       <HStack
+         className="animate__animated animate__fadeInDownBig"
         mt={"15px"}
         rounded={"2xl"}
         // bg={"gray.50"}
@@ -73,7 +75,7 @@ const HeroText = () => {
           </HStack>
         </HStack>
       </HStack>
-      <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]} >
+      <Box     className="animate__animated animate__fadeInDownBig" mt={["20px", "20px", "20px", "20px", "20px", "20px"]} >
         <VStack
           textAlign={["center", "center", "center", "left", "left", "left"]}
           align={["center", "center", "center", "start", "start"]}
@@ -112,7 +114,7 @@ const HeroText = () => {
         </VStack>
         <VStack
         ml={["20px", "20px", "20px", "0px", "0px", "0px"]}
-
+   className="animate__animated animate__fadeInDownBig"
        
          textAlign={["center", "center", "center", "left", "left", "left"]}
           align={["center", "center", "center", "start", "start"]}
@@ -150,7 +152,7 @@ const HeroText = () => {
           </HStack>
         </VStack>
       </Box>
-      <HStack
+      <HStack    className="animate__animated animate__fadeInDownBig"
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         justify={["center", "center", "center", "start", "start", "start"]}
         align={"start"}

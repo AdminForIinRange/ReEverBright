@@ -7,8 +7,8 @@ import Image from "next/image";
 const CARD_W = 340; // max card width
 const CARD_H = 220;
 const CARD_GAP = 24; // px gap between cards
-const MARQUEE_PX_PER_SEC = 1; // auto-scroll speed
-const RESUME_IDLE_MS = 20; // after user interaction, wait before resuming
+const MARQUEE_PX_PER_SEC = 50; // autoplay speed; 40–80 feels good
+const RESUME_IDLE_MS = 1200; // wait after user interaction before resuming
 
 /* ====== Small utilities ====== */
 const srOnly = {
@@ -86,7 +86,6 @@ function ReviewCard({
         flexDirection: "column",
         position: "relative",
         transition: "box-shadow .25s ease, border-color .25s ease",
-        scrollSnapAlign: "start",
       }}
     >
       {/* header */}
@@ -175,207 +174,211 @@ function ReviewCard({
 /* ====== Reviews Marquee (infinite loop + user-controlled scroll) ====== */
 function ReviewsScroller({ reviews }) {
   const viewportRef = useRef(null);
+  const firstHalfRef = useRef(null);
 
-  // for auto-marquee
+  // autoplay state
   const rafRef = useRef(null);
   const lastTsRef = useRef(0);
   const pausedRef = useRef(false);
-  const idleTimerRef = useRef(null);
+  const resumeTimerRef = useRef(null);
 
-  // drag-to-scroll
+  // measurement
+  const halfWidthRef = useRef(0);
+
+  // drag state
   const draggingRef = useRef(false);
   const dragStartXRef = useRef(0);
   const dragStartLeftRef = useRef(0);
 
-  // duplicate items for a seamless loop
-  const items = useMemo(() => [...reviews, ...reviews], [reviews]);
+  // measure width of first half (exact, padding-safe)
+  const measureHalf = () => {
+    const el = firstHalfRef.current;
+    if (!el) return;
+    halfWidthRef.current = el.offsetWidth || 0;
+  };
 
-  const stopAuto = () => {
-    pausedRef.current = true;
-    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
-    idleTimerRef.current = setTimeout(() => {
-      pausedRef.current = false;
-      lastTsRef.current = performance.now();
-      startRaf();
-    }, RESUME_IDLE_MS);
+  const ensureWrapped = () => {
+    const scroller = viewportRef.current;
+    const half = halfWidthRef.current;
+    if (!scroller || !half) return;
+    if (scroller.scrollLeft >= half) scroller.scrollLeft -= half;
+    else if (scroller.scrollLeft < 0) scroller.scrollLeft += half;
   };
 
   const startRaf = () => {
     if (rafRef.current) return;
-    const loop = (ts) => {
-      const el = viewportRef.current;
-      if (!el) return;
-      if (pausedRef.current) {
-        rafRef.current = requestAnimationFrame(loop);
-        return;
+    const tick = (ts) => {
+      const scroller = viewportRef.current;
+      if (!scroller) return;
+
+      // re-measure if needed (e.g., fonts/layout settle)
+      if (!halfWidthRef.current) measureHalf();
+
+      ensureWrapped();
+
+      if (!pausedRef.current && halfWidthRef.current > 0) {
+        const dt = Math.max(0, ts - (lastTsRef.current || ts));
+        scroller.scrollLeft += (MARQUEE_PX_PER_SEC * dt) / 1000;
       }
 
-      // if content isn't wider than viewport, don't auto-scroll
-      const canScroll = el.scrollWidth > el.clientWidth + 2;
-      if (!canScroll) {
-        rafRef.current = requestAnimationFrame(loop);
-        return;
-      }
-
-      const dt = Math.max(0, ts - (lastTsRef.current || ts));
       lastTsRef.current = ts;
-
-      const step = (MARQUEE_PX_PER_SEC * dt) / 1000;
-      el.scrollLeft += step;
-
-      const half = el.scrollWidth / 2;
-      // when we’ve scrolled through the first copy, snap back by half
-      if (el.scrollLeft >= half) {
-        el.scrollLeft -= half;
-      }
-
-      rafRef.current = requestAnimationFrame(loop);
+      rafRef.current = requestAnimationFrame(tick);
     };
+
     lastTsRef.current = performance.now();
-    rafRef.current = requestAnimationFrame(loop);
+    rafRef.current = requestAnimationFrame(tick);
+  };
+
+  const pauseAuto = () => {
+    pausedRef.current = true;
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      pausedRef.current = false;
+      // avoid big jump from accumulated dt
+      lastTsRef.current = performance.now();
+    }, RESUME_IDLE_MS);
   };
 
   useEffect(() => {
-    // kick off marquee on mount
+    // start after mount
+    measureHalf();
     startRaf();
+
+    const onResize = () => {
+      measureHalf();
+      ensureWrapped();
+    };
+
+    const scroller = viewportRef.current;
+    const onScroll = () => ensureWrapped();
+
+    if (scroller) scroller.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
+
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      if (scroller) scroller.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // wheel → horizontal, pauses marquee
+  // wheel → horizontal, pauses autoplay
   const onWheel = (e) => {
-    const el = viewportRef.current;
-    if (!el) return;
+    const scroller = viewportRef.current;
+    if (!scroller) return;
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
-      el.scrollLeft += e.deltaY;
-      stopAuto();
+      scroller.scrollLeft += e.deltaY;
+      pauseAuto();
     }
   };
 
-  // keyboard control, pauses marquee
+  // keyboard control
   const onKeyDown = (e) => {
-    const el = viewportRef.current;
-    if (!el) return;
+    const scroller = viewportRef.current;
+    if (!scroller) return;
     const step = CARD_W + CARD_GAP;
     if (e.key === "ArrowRight") {
       e.preventDefault();
-      el.scrollLeft += step;
-      stopAuto();
+      scroller.scrollLeft += step;
+      pauseAuto();
     } else if (e.key === "ArrowLeft") {
       e.preventDefault();
-      el.scrollLeft -= step;
-      stopAuto();
-    } else if (e.key === "Home") {
-      e.preventDefault();
-      el.scrollLeft = 0;
-      stopAuto();
-    } else if (e.key === "End") {
-      e.preventDefault();
-      el.scrollLeft = el.scrollWidth;
-      stopAuto();
+      scroller.scrollLeft -= step;
+      pauseAuto();
     }
   };
 
-  // drag-to-scroll, pauses marquee
+  // drag (mouse)
   const onMouseDown = (e) => {
-    const el = viewportRef.current;
-    if (!el) return;
+    const scroller = viewportRef.current;
+    if (!scroller) return;
     draggingRef.current = true;
     dragStartXRef.current = e.clientX;
-    dragStartLeftRef.current = el.scrollLeft;
+    dragStartLeftRef.current = scroller.scrollLeft;
     document.body.style.userSelect = "none";
     document.body.style.cursor = "grabbing";
-    stopAuto();
+    pauseAuto();
   };
   const onMouseMove = (e) => {
-    const el = viewportRef.current;
-    if (!el || !draggingRef.current) return;
+    const scroller = viewportRef.current;
+    if (!scroller || !draggingRef.current) return;
     const dx = e.clientX - dragStartXRef.current;
-    el.scrollLeft = dragStartLeftRef.current - dx;
+    scroller.scrollLeft = dragStartLeftRef.current - dx;
   };
-  const endMouseDrag = () => {
+  const onMouseUp = () => {
     if (!draggingRef.current) return;
     draggingRef.current = false;
     document.body.style.userSelect = "";
     document.body.style.cursor = "";
   };
 
-  // touch drag
-  const touchStartXRef = useRef(0);
-  const touchStartLeftRef = useRef(0);
+  // drag (touch)
+  const tStartRef = useRef(0);
+  const tLeftRef = useRef(0);
   const onTouchStart = (e) => {
-    const el = viewportRef.current;
-    if (!el) return;
-    touchStartXRef.current = e.touches[0].clientX;
-    touchStartLeftRef.current = el.scrollLeft;
-    stopAuto();
+    const scroller = viewportRef.current;
+    if (!scroller) return;
+    tStartRef.current = e.touches[0].clientX;
+    tLeftRef.current = scroller.scrollLeft;
+    pauseAuto();
   };
   const onTouchMove = (e) => {
-    const el = viewportRef.current;
-    if (!el) return;
-    const dx = e.touches[0].clientX - touchStartXRef.current;
-    el.scrollLeft = touchStartLeftRef.current - dx;
+    const scroller = viewportRef.current;
+    if (!scroller) return;
+    const dx = e.touches[0].clientX - tStartRef.current;
+    scroller.scrollLeft = tLeftRef.current - dx;
   };
-
-  // resize fix: if user resizes, keep marquee smooth
-  useEffect(() => {
-    const onResize = () => {
-      const el = viewportRef.current;
-      if (!el) return;
-      // keep scroll in first half
-      const half = el.scrollWidth / 2;
-      if (el.scrollLeft >= half) el.scrollLeft -= half;
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
 
   return (
     <Box style={{ margin: "0 auto" }}>
-      <Box
-        ref={viewportRef}
-        role="region"
-        aria-label="Customer reviews (marquee; interact to control)"
-        tabIndex={0}
-        onWheel={onWheel}
-        onKeyDown={onKeyDown}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={endMouseDrag}
-        onMouseLeave={endMouseDrag}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={() => {}}
-        style={{
-          overflowX: "auto",
-          overflowY: "hidden",
-          WebkitOverflowScrolling: "touch",
-          paddingBottom: 8,
-          // no scroll-snap during marquee; user controls freely
-        }}
-      >
-        <div
-          role="list"
-          aria-label="Customer reviews"
+      {/* wrapper adds side padding without affecting track width */}
+      <div style={{ padding: "0 24px" }}>
+        <Box
+          ref={viewportRef}
+          role="region"
+          aria-label="Customer reviews (marquee; interact to control)"
+          tabIndex={0}
+          onWheel={onWheel}
+          onKeyDown={onKeyDown}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseUp}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
           style={{
-            display: "flex",
-            gap: CARD_GAP,
-            padding: "0 24px",
+            overflowX: "auto",
+            overflowY: "hidden",
+            WebkitOverflowScrolling: "touch",
+            paddingBottom: 8,
           }}
         >
-          {items.map((r, i) => (
-            <ReviewCard key={`${i}`} {...r} />
-          ))}
-        </div>
-      </Box>
+          {/* Track = two equal halves for seamless wrap */}
+          <div style={{ display: "flex" }}>
+            <div
+              ref={firstHalfRef}
+              style={{ display: "flex", gap: CARD_GAP }}
+              role="list"
+              aria-label="Customer reviews"
+            >
+              {reviews.map((r, i) => (
+                <ReviewCard key={`a-${i}`} {...r} />
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: CARD_GAP }} aria-hidden="true">
+              {reviews.map((r, i) => (
+                <ReviewCard key={`b-${i}`} {...r} />
+              ))}
+            </div>
+          </div>
+        </Box>
+      </div>
 
       <span style={srOnly}>
         Reviews auto-scroll horizontally. Interact with your mouse, touch, or
-        keyboard to take control; auto-scroll resumes after a moment.
+        keyboard to take control; autoplay resumes after a moment.
       </span>
     </Box>
   );
@@ -435,7 +438,7 @@ export default function ReviewSection() {
     <Box px={{ base: "4%", md: "6%", xl: "16%" }} my={"100px"}>
       <SectionHeading
         eyebrow={"What our customers say"}
-        title={"See what they're saying about us"}
+        title={"Read Some Of Our Reviews!"}
         color="black"
       />
       <div style={{ padding: "0 0px" }}>

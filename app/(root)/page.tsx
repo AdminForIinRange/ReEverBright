@@ -88,8 +88,8 @@ const Page = () => {
 
   return (
     <Box mt={"-70px"}>
-      <HStack justifyContent={"center"} align={"center"}>
-        <Box
+      <HStack justifyContent={"center"} align={"center"} className="animate__animated animate__fadeIn">
+        <Box 
           borderRadius={"50px"}
           backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
           backgroundRepeat="no-repeat"
@@ -142,7 +142,7 @@ const Page = () => {
           <Box w={["100%", "100%", "100%", "100%", "100%", "100%"]}>
             <HeroText />
           </Box>
-          <Box
+          <Box    className="animate__animated animate__fadeInRight"
             position="relative"
             h={{ base: "100%", md: "100%", xl: "100%" }}
             w={{ base: "100%", md: "100%" }}
@@ -176,120 +176,147 @@ const Page = () => {
       </HStack>
       <ServiceLayout />
       <About />
-
-
-      <Box pt={["50px", "50px", "50px", "100px", "100px", "100px"]}>
-  
-
-        <Box mt={["100px", "100px", "100px", "100px", "100px", "100px"]}>
-          {/* Another spot where SectionHeading matches your style */}
-          <VStack
-            justify={"center"}
-            align={"center"}
-            w={"100%"}
-            textAlign={"center"}
+      <Box>
+        <Box
+          py={["50px", "50px", "50px", "50px", "50px", "50px"]}
+   
+          bg={"cyan.600"}
+        >
+          <Box>
+            {/* Another spot where SectionHeading matches your style */}
+            <VStack
+              justify={"center"}
+              align={"center"}
+              w={"100%"}
+              textAlign={"center"}
               px={{ base: "4%", md: "6%", xl: "16%" }}
-          >
-            <SectionHeading
-              eyebrow={`You'll be amazed at how good your property can look!`}
-              title="Adelaide Exterior Cleaning"
-              color="bule.100"
-            />
-          </VStack>
-
-          <HStack
-            zIndex={3}
-            px={{ base: "4%", md: "6%", xl: "16%" }}
-            justify="center"
-            align="center"
-            w="100%"
-            my={{ base: "0px", md: "50px", xl: "100px" }}
-          >
-            <HStack
-              justify="center"
-              align={{ base: "center", md: "start" }}
-              w="100%"
-              gap={{ base: "15px", md: "50px" }}
-              flexWrap={["wrap", "wrap", "wrap", "nowrap", "nowrap", "nowrap"]}
             >
-              {/* Copy card */}
-              <Box w={{ base: "100%", md: "100%" }}>
-                <VStack
-                  h={"100%"}
-                  align="start"
-                  color="gray.800"
-                  fontSize="lg"
-                  lineHeight="1.8"
-                  fontFamily={"poppins"}
-                >
-                  <Text>
-                    I started EverBright Pressure Washing here in South
-                    Australia to help homeowners feel proud of their property. I
-                    treat every home as if it were my own, offering honest
-                    advice, paying close attention to detail, and making sure
-                    the job's done right the first time.
-                  </Text>
-
-                  <Text>
-                    My team shares that approach. We know life is busy, so we'll
-                    take care of the dirty work, giving you more time to enjoy
-                    what matters most.
-                  </Text>
-
-                  {/* quick-hit trust chips */}
-
-                  {/* CTA line */}
-                  <Box pt={2}>
-                    <Text
-                      fontFamily={"poppins"}
-                      fontWeight="700"
-                      color="#0a0f29"
-                      mb={3}
-                    >
-                      Shayal - Owner
-                    </Text>
-                  </Box>
-                </VStack>
-              </Box>
-
-              {/* Image area with decorative frame */}
-              <Box
-                position="relative"
-                h={{ base: "100%", md: "100%", xl: "100%" }}
-                w={{ base: "100%", md: "100%" }}
-                display="flex"
-                justifyContent="end"
+              <VStack
+                justify="center"
+                align="center"
+                textAlign="center"
+                w="100%"
               >
+                <Text
+                  fontSize={["16px", "18px", "24px"]}
+                  fontFamily="poppins"
+                  fontWeight={700}
+                  lineHeight="1.6"
+                  color="cyan.900"
+                >
+                  EVERBRIGHT PRESSURE WASHING
+                </Text>
+                <Text
+                  fontSize={["36px", "48px", "56px"]}
+                  fontWeight={700}
+                  fontFamily="poppins"
+                  lineHeight="1.1"
+                  color="cyan.100"
+                >
+                  A Local Business you can rely on
+                </Text>
+                <Box my="25px" w={["1px", "600px"]} borderWidth="1px" />
+              </VStack>
+            </VStack>
+
+            <HStack
+              zIndex={3}
+              px={{ base: "4%", md: "6%", xl: "16%" }}
+              justify="center"
+              align="center"
+              w="100%"
+              my={{ base: "0px", md: "50px", xl: "50px" }}
+            >
+              <HStack
+                justify="center"
+                align={{ base: "center", md: "start" }}
+                w="100%"
+                gap={{ base: "15px", md: "50px" }}
+                flexWrap={[
+                  "wrap",
+                  "wrap",
+                  "wrap",
+                  "nowrap",
+                  "nowrap",
+                  "nowrap",
+                ]}
+              >
+                {/* Copy card */}
+                <Box w={{ base: "100%", md: "100%" }}>
+                  <VStack
+                    h={"100%"}
+                    align="start"
+                    color="cyan.100"
+                    fontSize="lg"
+                    lineHeight="1.8"
+                    fontFamily={"poppins"}
+                  >
+                    <Text>
+                      I started EverBright Pressure Washing here in South
+                      Australia to help homeowners feel proud of their property.
+                      I treat every home as if it were my own, offering honest
+                      advice, paying close attention to detail, and making sure
+                      the job's done right the first time.
+                    </Text>
+
+                    <Text>
+                      My team shares that approach. We know life is busy, so
+                      we'll take care of the dirty work, giving you more time to
+                      enjoy what matters most.
+                    </Text>
+
+                    {/* quick-hit trust chips */}
+
+                    {/* CTA line */}
+                    <Box pt={2}>
+                      <Text
+                        fontFamily={"poppins"}
+                        fontWeight="700"
+                        color="cyan.100"
+                      >
+                        Shayal - Owner
+                      </Text>
+                    </Box>
+                  </VStack>
+                </Box>
+
+                {/* Image area with decorative frame */}
                 <Box
                   position="relative"
-                  h={{ base: "100%", md: "100%" }}
+                  h={{ base: "100%", md: "100%", xl: "100%" }}
                   w={{ base: "100%", md: "100%" }}
-                  // subtle gradient border frame
-                  p="2"
-                  borderRadius="30px"
-                  bgGradient="linear(to-br, blue.100, white)"
-                  boxShadow="0 10px 30px rgba(10,15,41,0.12)"
+                  display="flex"
+                  justifyContent="end"
                 >
                   <Box
-                    borderRadius={"50px"}
-                    backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
-                    backgroundRepeat="no-repeat"
-                    backgroundPosition="center"
-                    backgroundSize="cover"
-                    h="400px"
-                    w="100%"
-                    overflow="hidden"
-                  ></Box>
+                    position="relative"
+                    h={{ base: "100%", md: "100%" }}
+                    w={{ base: "100%", md: "100%" }}
+                    // subtle gradient border frame
+                    p="2"
+                    borderRadius="30px"
+                    bgGradient="linear(to-br, blue.100, white)"
+                    boxShadow="0 10px 30px rgba(10,15,41,0.12)"
+                  >
+                    <Box
+                      borderRadius={"50px"}
+                      backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
+                      backgroundRepeat="no-repeat"
+                      backgroundPosition="center"
+                      backgroundSize="cover"
+                      h="400px"
+                      w="100%"
+                      overflow="hidden"
+                    ></Box>
+                  </Box>
                 </Box>
-              </Box>
+              </HStack>
             </HStack>
-          </HStack>
+          </Box>
         </Box>
       </Box>
 
-
       <BannerSlider />
-
 
       <ReviewSection />
 

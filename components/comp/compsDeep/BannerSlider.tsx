@@ -45,7 +45,7 @@ function BannerSlider() {
   }, [services.length]);
 
   return (
-    <Box px={{ base: "4%", md: "6%", xl: "16%" }}>
+    <Box px={{ base: "4%", md: "6%", xl: "16%" }} py={"50px"}>
       <div
         style={{
           overflow: "hidden",

@@ -72,11 +72,6 @@ const mod = (n: number, m: number) => ((n % m) + m) % m;
 const SlidingCard = () => {
   const [start, setStart] = useState(0);
   const total = SLIDES.length;
-  const [blue800, blue200, whiteAlpha] = useToken("colors", [
-    "blue.800",
-    "blue.200",
-    "whiteAlpha.300",
-  ]);
 
   const visible = useMemo(
     () => [start, start + 1, start + 2].map((i) => SLIDES[mod(i, total)]),
@@ -88,111 +83,100 @@ const SlidingCard = () => {
 
   return (
     <Box
-      fontFamily={"poppins"}
-      bg="blue.800"
+      fontFamily="poppins"
+      bg="cyan.200"
       py={{ base: "80px", md: "100px", lg: "120px" }}
       position="relative"
       overflow="hidden"
-    
     >
-      <VStack
-        justify="center"
-        align="center"
-        w="100%"
-        textAlign="center"
-        px={{ base: "4%", md: "6%", lg: "10%" }}
-      >
-        <VStack
-          justify={"center"}
-          align={"center"}
-          w={"100%"}
-          textAlign={"center"}
-          px={["4%", "4%", "6%", "6%", "6%", "10%"]}
-        >
-          <SectionHeading
-            eyebrow={`You'll be amazed at how good your property can look!`}
-            title="Adelaide Exterior Cleaning"
-            color="white"
-          />
-        </VStack>
+      {/* Heading */}
+      <VStack spacing={8} textAlign="center" px={{ base: "6%", md: "10%" }}>
+        <SectionHeading
+          eyebrow="You'll be amazed at how good your property can look!"
+          title="Adelaide Exterior Cleaning"
+          color="white"
+        />
       </VStack>
 
       {/* Left Arrow */}
       <IconButton
         aria-label="Previous"
-        icon={<ArrowLeft />}
+           bg="cyan.600"
         onClick={prev}
-        variant="ghost"
         position="absolute"
         top="50%"
-        left={{ base: "6px", md: "18px" }}
+        left="2%"
         transform="translateY(-50%)"
-        zIndex={5}
+        rounded="full"
         size="lg"
         color="white"
-        _hover={{ bg: "whiteAlpha.200" }}
-      />
+        _hover={{ bg: "whiteAlpha.400" }}
+        zIndex={5}
+      >
+        <ArrowLeft />
+      </IconButton>
 
       {/* Right Arrow */}
       <IconButton
         aria-label="Next"
         icon={<ArrowRight />}
         onClick={next}
-        variant="ghost"
         position="absolute"
         top="50%"
-        right={{ base: "6px", md: "18px" }}
+        right="2%"
         transform="translateY(-50%)"
-        zIndex={5}
+        rounded="full"
         size="lg"
         color="white"
-        _hover={{ bg: "whiteAlpha.200" }}
-      />
+             bg="cyan.600"
+        zIndex={5}
+      >
+        <ArrowRight />
+      </IconButton>
 
-      {/* 3-up sliding cards */}
+      {/* Slides */}
       <HStack
-        px={{ base: "4%", md: "6%", lg: "10%" }}
+        px={{ base: "6%", md: "10%" }}
         justify="center"
         align="stretch"
-        w="100%"
-        gap={{ base: "16px", md: "24px", lg: "28px" }}
-        wrap={"wrap"}
+        spacing={{ base: 6, md: 8, lg: 10 }}
+        mt={12}
+        wrap="wrap"
       >
         {visible.map((slide) => (
           <Box
             key={slide.id}
-            flex={["none", "none", "1 1 0", "1 1 0", "1 1 0", "1 1 0"]}
-            maxW={["100%", "100%", "480px", "480px", "480px", "480px"]}
+            flex={["1 1 100%", "1 1 45%", "1 1 30%"]}
+            maxW="420px"
             bg="white"
             borderRadius="xl"
-            border="1px solid"
-            borderColor="whiteAlpha.200"
-            p={{ base: 6, md: 7 }}
-            transition="transform 200ms ease, background 150ms ease"
-            _hover={{ transform: "translateY(-4px)", bg: "gray.100" }}
+            shadow="md"
+            p={{ base: 6, md: 8 }}
+            transition="all 250ms ease"
+            _hover={{ transform: "scale(1.03)", shadow: "xl" }}
           >
-            <VStack align="start" spacing={4}>
+            <VStack align="start" spacing={5}>
               <Box
-                w="48px"
-                h="48px"
+                w="52px"
+                h="52px"
                 borderRadius="full"
                 display="grid"
                 placeItems="center"
-                bg="BlackAlpha.200"
+                bg="blue.100"
               >
-                <Icon as={slide.icon} boxSize={6} color="Black" />
+                <Icon as={slide.icon} boxSize={7} color="blue.600" />
               </Box>
 
               <Text
-                color="Black"
-                fontWeight="800"
+                color="gray.800"
+                fontWeight="700"
                 fontSize={{ base: "lg", md: "xl" }}
               >
                 {slide.title}
               </Text>
 
               <Text
-                color="BlackAlpha.900"
+                color="gray.600"
                 fontSize={{ base: "md", md: "lg" }}
                 lineHeight="1.7"
               >
