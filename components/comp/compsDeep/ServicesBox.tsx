@@ -5,7 +5,7 @@ import { BiRightArrow, BiRightArrowAlt } from "react-icons/bi";
 function ServicesBox({ title, image }: { title: string; image: string }) {
   return (
     <Box
-      w={{ base: "100%", md: "100%", lg: "520px" }}
+      w={{ base: "100%", md: "320px", lg: "420px" }}
       transition="transform 0.35s ease, filter 0.35s ease"
       willChange="transform"
       _hover={{ transform: "translateY(-10px) rotate3d(1, 0.2, 0, 1deg)" }}

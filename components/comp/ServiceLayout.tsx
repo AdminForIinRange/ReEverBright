@@ -44,7 +44,7 @@ function ServiceLayout() {
   return (
     <>
       <VStack
-        mt={{ base: "100px", xl: "280px" }}
+        mt={{ base: "280px", xl: "280px" }}
         justify="center"
         align="center"
         w="100%"

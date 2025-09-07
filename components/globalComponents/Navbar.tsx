@@ -219,24 +219,12 @@ const Navbar = () => {
         { label: "Our Journey", link: "/about/journey", description: "See how EverBright has evolved" },
       ],
     },
-    {
-      name: "Services",
-      path: "/services",
-      hasDropdown: true,
-      items: [
-        { label: "Property Management", link: "/services/property-management", description: "Full-service management for luxury properties" },
-        { label: "Cleaning & Linen", link: "/services/cleaning-and-linen", description: "Premium cleaning and linen services" },
-        { label: "Furnishing & Styling", link: "/services/furnishing-and-styling", description: "Expert interior design and furnishing" },
-        { label: "Photography", link: "/services/photography", description: "Professional property photography" },
-      ],
-    },
-    { name: "Pricing", path: "/pricing", hasDropdown: false },
-    { name: "Gallery", path: "/gallery", hasDropdown: false },
-    { name: "Contact", path: "/contact", hasDropdown: false },
+   
   ];
 
   return (
     <Box
+      as="nav"
       w="100%"
       position="sticky"
       top="0"
@@ -370,11 +358,11 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <Box
         position="fixed"
-        top="70px"
+        top="85px"
         left="0"
         right="0"
         bottom="0"
-        bg="white"
+        bg="cyan.500"
         zIndex="99"
         transform={mobileMenuOpen ? "translateY(0)" : "translateY(-100vh)"}
         opacity={mobileMenuOpen ? "1" : "0"}
@@ -403,8 +391,8 @@ const Navbar = () => {
               >
                 <Text
                   textStyle={"smallText"}
-                  fontWeight={activePage === item.path ? "600" : "500"}
-                  color={activePage === item.path ? "#000" : "#444"}
+                  fontWeight={activePage === item.path ? "600" : "700"}
+                  color={activePage === item.path ? "#000" : "cyan.100"}
                 >
                   {item.name}
                 </Text>
@@ -434,7 +422,7 @@ const Navbar = () => {
           {/* Mobile CTA */}
           <Box
             mt="24px"
-            bg="#0A0F29"
+            bg="cyan.100"
             color="white"
             py="12px"
             borderRadius="4px"
@@ -443,30 +431,13 @@ const Navbar = () => {
             onClick={() => handleNavigate("/contact")}
             textAlign="center"
           >
-            <Text textStyle={"smallText"} fontWeight="500">
+            <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
               Get a Quote
             </Text>
           </Box>
 
           {/* Mobile Contact Info */}
-          <Box mt="32px" pt="20px" borderTop="1px solid #eee">
-            <Text textStyle={"smallText"} color="#666" mb="12px">
-              luxemanagemnets.info@gmail.com
-            </Text>
-            <Text textStyle={"smallText"} color="#666" mb="12px">
-              +61 406 631 461
-            </Text>
-            <Text
-              textStyle={"smallText"}
-              fontWeight="500"
-              color="#333"
-              cursor="pointer"
-              _hover={{ color: "#000" }}
-              onClick={() => handleNavigate("/contact")}
-            >
-              Request a Quote
-            </Text>
-          </Box>
+        
         </Box>
       </Box>
     </Box>

@@ -27,23 +27,14 @@ const Footer = () => {
         {/* Logo section */}
         <Box mb={{ base: "40px", md: "0" }}>
           <Box display="flex" alignItems="center" gap="12px">
-            <Box w={{ base: "40px", md: "50px" }} h="auto" position="relative">
-              <Image
-                quality={70}
-                loading="lazy"
-                src={Presure || "/placeholder.svg"}
-                alt="EverBright Logo"
-                title="EverBright Logo"
-              />
-            </Box>
+         
             <Text
               fontSize={{ base: "16px", md: "18px" }}
               fontWeight="700"
               fontFamily="arial"
             >
-             EverBright Pressure Washing
-Shayal - Owner            </Text>
-            
+              EverBright Pressure Washing
+            </Text>
           </Box>
         </Box>
 
@@ -105,7 +96,7 @@ Shayal - Owner            </Text>
                 Instagram
               </Text>
             </Box>
-             <Box>
+            <Box>
               <Text
                 as="a"
                 title="EverBright Tiktok"

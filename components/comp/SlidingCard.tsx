@@ -84,22 +84,37 @@ const SlidingCard = () => {
   return (
     <Box
       fontFamily="poppins"
-      bg="cyan.200"
+      bg="cyan.600"
       py={{ base: "80px", md: "100px", lg: "120px" }}
       position="relative"
       overflow="hidden"
     >
       {/* Heading */}
       <VStack spacing={8} textAlign="center" px={{ base: "6%", md: "10%" }}>
-        <SectionHeading
-          eyebrow="You'll be amazed at how good your property can look!"
-          title="Adelaide Exterior Cleaning"
-          color="white"
-        />
+        <VStack justify="center" align="center" textAlign="center" w="100%">
+          <Text
+            fontSize={["16px", "18px", "24px"]}
+            fontFamily="poppins"
+            fontWeight={700}
+            lineHeight="1.6"
+            color="cyan.900"
+          >
+            EVERBRIGHT PRESSURE WASHING
+          </Text>
+          <Text
+            fontSize={["36px", "48px", "56px"]}
+            fontWeight={700}
+            fontFamily="poppins"
+            lineHeight="1.1"
+            color="cyan.100"
+          >
+            A Local Business you can rely on
+          </Text>
+          <Box my="25px" w={["1px", "600px"]} borderWidth="1px" />
+        </VStack>
       </VStack>
 
       {/* Left Arrow */}
-  
 
       {/* Slides */}
       <HStack
