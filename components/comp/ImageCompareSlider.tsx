@@ -7,61 +7,77 @@ const ImageCompareSlider = () => {
   const topImage = goodImg.src;
   const bottomImage = badImg.src;
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [sliderY, setSliderY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
 
+  // Keep height/slider in sync with container size
   useEffect(() => {
     const updateHeight = () => {
-      if (containerRef.current) {
-        const height = containerRef.current.offsetHeight;
-        setContainerHeight(height);
-        setSliderY(height / 2);
-      }
+      if (!containerRef.current) return;
+      const height = containerRef.current.offsetHeight;
+      setContainerHeight(height);
+      setSliderY((y) => (y === 0 ? height / 2 : Math.min(Math.max(y, 0), height)));
     };
     updateHeight();
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
-  const handleMouseDown = () => setIsDragging(true);
-  const handleMouseMove = (e) => {
-    if (!isDragging || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    let newY = e.clientY - rect.top;
-    if (newY < 0) newY = 0;
-    if (newY > containerHeight) newY = containerHeight;
-    setSliderY(newY);
-  };
-  const handleMouseUp = () => setIsDragging(false);
+  const clampY = (y: number) => Math.min(Math.max(y, 0), containerHeight);
 
-  const handleTouchStart = () => setIsDragging(true);
-  const handleTouchMove = (e) => {
-    if (!isDragging || !containerRef.current) return;
+  const updateFromClientY = (clientY: number) => {
+    if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    let newY = e.touches[0].clientY - rect.top;
-    if (newY < 0) newY = 0;
-    if (newY > containerHeight) newY = containerHeight;
-    setSliderY(newY);
+    setSliderY(clampY(clientY - rect.top));
   };
-  const handleTouchEnd = () => setIsDragging(false);
+
+  // Pointer events unify mouse + touch and let us prevent scrolling cleanly
+  const handlePointerDown: React.PointerEventHandler<HTMLDivElement> = (e) => {
+    setIsDragging(true);
+    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+    e.preventDefault(); // stop page gestures
+    updateFromClientY(e.clientY);
+  };
+
+  const handlePointerMove: React.PointerEventHandler<HTMLDivElement> = (e) => {
+    if (!isDragging) return;
+    e.preventDefault(); // keep the page from scrolling
+    updateFromClientY(e.clientY);
+  };
+
+  const endDrag: React.PointerEventHandler<HTMLDivElement> = (e) => {
+    setIsDragging(false);
+    try {
+      (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId);
+    } catch {}
+  };
 
   return (
     <Box
       ref={containerRef}
       position="relative"
       width="100%"
+      /* pick one of these height strategies:
+         - fixed: height="320px"
+         - responsive ratio: use Chakra's aspectRatio prop if available (Box as AspectRatio)
+         For now, keep 100% if parent controls height. */
       height="100%"
       overflow="hidden"
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onPointerLeave={endDrag}
       cursor={isDragging ? "grabbing" : "grab"}
-      style={{ userSelect: "none" }}
+      // CRUCIAL: disable native touch scrolling inside the slider
+      sx={{
+        touchAction: "none",
+        overscrollBehavior: "contain",
+        WebkitUserSelect: "none",
+        userSelect: "none",
+      }}
     >
       {/* Base image */}
       <Box
@@ -72,12 +88,12 @@ const ImageCompareSlider = () => {
         display="block"
         objectFit="cover"
         draggable={false}
-        style={{ userSelect: "none", pointerEvents: "none" }}
+        pointerEvents="none"
+        sx={{ WebkitUserDrag: "none", userSelect: "none" }}
       />
 
       {/* Overlay image with vertical clipping */}
       <Box
-      
         as="img"
         src={bottomImage}
         position="absolute"
@@ -87,11 +103,11 @@ const ImageCompareSlider = () => {
         height="100%"
         objectFit="cover"
         draggable={false}
-        style={{
-          clipPath: `inset(0 0 ${containerHeight - sliderY}px 0)`,
+        pointerEvents="none"
+        sx={{
+          clipPath: `inset(0 0 ${Math.max(containerHeight - sliderY, 0)}px 0)`,
+          WebkitUserDrag: "none",
           userSelect: "none",
-          pointerEvents: "none",
-          filter: "blur(1px)",
         }}
       />
 
@@ -134,23 +150,24 @@ const ImageCompareSlider = () => {
         height="4px"
         bg="white"
         zIndex="2"
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
         cursor="ns-resize"
+        // The bar itself also captures pointer to begin dragging
+        onPointerDown={handlePointerDown}
       >
         <Box
           position="absolute"
           left="50%"
           top="-15px"
           transform="translateX(-50%)"
-          width="30px"
-          height="30px"
+          width="36px"
+          height="36px"
           bg="white"
           borderRadius="full"
           border="2px solid teal"
           boxShadow="lg"
-          _hover={{ transform: "translateX(-50%) scale(1.1)" }}
+          _hover={{ transform: "translateX(-50%) scale(1.06)" }}
           transition="transform 0.2s ease"
+          pointerEvents="none" // knob is decorative; the bar handles input
         />
       </Box>
     </Box>

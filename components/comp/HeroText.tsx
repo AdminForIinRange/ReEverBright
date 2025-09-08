@@ -45,6 +45,7 @@ const HeroText = () => {
         driveways to decks, we make everything look brand new.
       </Text>
       <HStack
+      // RDC
       display={["none", "none", "none", "flex", "flex", "flex"]}
         mt={"15px"}
         rounded={"2xl"}

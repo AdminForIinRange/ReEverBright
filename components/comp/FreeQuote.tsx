@@ -41,31 +41,7 @@ const FreeQuote = () => {
         30 Seconds to Your Free Quote No Commitments
       </Text>
 
-      {/* Reviews Row */}
-      <HStack justify="center" spacing={4} mb={6}  pt={4}>
-        {/* Google */}
-        <HStack
-          w={"90%"}
-          justify={"center"}
-          align="center"
-          px={3}
-          py={2}
-          bg="blue.50"
-          borderRadius="full"
-          border="1px solid #dbeafe"
-          spacing={2}
-        >
-          <Image src={Google} alt="Google" width={28} height={28} />
-          <HStack spacing={0.5}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <FaStar key={i} color="#fbbf24" size={18} />
-            ))}
-          </HStack>
-          <Text fontSize="md" fontWeight="600" color="blue.900">
-            4.9 / 5
-          </Text>
-        </HStack>
-      </HStack>
+
 
       {/* Inputs (styled boxes only, since no Chakra Input) */}
       <VStack spacing={3} align="stretch">
