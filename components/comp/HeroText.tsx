@@ -45,7 +45,7 @@ const HeroText = () => {
         driveways to decks, we make everything look brand new.
       </Text>
       <HStack
-      
+      display={["none", "none", "none", "flex", "flex", "flex"]}
         mt={"15px"}
         rounded={"2xl"}
         // bg={"gray.50"}
@@ -152,6 +152,8 @@ const HeroText = () => {
           </HStack>
         </VStack>
       </Box>
+
+      
       <HStack   
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         justify={["center", "center", "center", "start", "start", "start"]}
@@ -192,6 +194,38 @@ const HeroText = () => {
 
           {/* <Icon as={ArrowRight}> </Icon> */}
         </Box>
+      </HStack>
+
+            <HStack
+      
+        mt={"15px"}
+        rounded={"2xl"}
+        // bg={"gray.50"}
+        // border={"1px solid lightgray"}
+        width={{ base: "100%", md: "100%" }}
+        textAlign={["center", "center", "center", "start", "start", "start"]}
+        justify={["center", "center", "center", "start", "start", "start"]}
+        position="relative"
+      >
+        <HStack
+          alignItems="center"
+          justifyContent="center"
+          borderRadius="full"
+          py={2}
+          px={4}
+          bg={"gray.100"}
+          border={"1px solid lightgray"}
+        >
+          <Image src={Google} alt="Google" width={34} height={34} />
+          <HStack>
+            <Text fontSize="xl" fontWeight="600" color="#fbbf24">
+              5 / 5
+            </Text>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <FaStar key={i} color="#fbbf24" size={20} />
+            ))}
+          </HStack>
+        </HStack>
       </HStack>
       <HStack
         rounded={"2xl"}
