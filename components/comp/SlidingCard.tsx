@@ -91,7 +91,7 @@ const SlidingCard = () => {
           top={0}
           bottom={0}
           w="1px"
-          bg="gray.200"
+          bg="cyan.200"
         />
         <Box
           position="absolute"
@@ -99,7 +99,7 @@ const SlidingCard = () => {
           left={0}
           right={0}
           h="1px"
-          bg="gray.200"
+          bg="cyan.200"
         />
 
         {/* 4 slides → 4 quadrants */}
@@ -122,7 +122,7 @@ const SlidingCard = () => {
               p={{ base: 4, md: 6, lg: 8 }}
               pr={{ base: 4, md: 8 }}
               overflow="hidden"
-              _hover={{ bg: "gray.50" }}
+              _hover={{ bg: "cyan.50" }}
               transition="background 180ms ease"
             >
               <VStack align="start" spacing={{ base: 2.5, md: 3 }}>
@@ -132,18 +132,18 @@ const SlidingCard = () => {
                   borderRadius="full"
                   display="grid"
                   placeItems="center"
-                  bg="blue.100"
+                  bg="cyan.100"
                   flexShrink={0}
                 >
                   <Icon
                     as={slide.icon}
                     boxSize={{ base: 5, md: 6 }}
-                    color="blue.600"
+                    color="cyan.600"
                   />
                 </Box>
 
                 <Text
-                  color="gray.800"
+                  color="cyan.600"
                   fontWeight="700"
                   fontSize={{ base: "clamp(14px, 2.8vw, 16px)", md: "lg" }}
                   noOfLines={2}
@@ -153,7 +153,7 @@ const SlidingCard = () => {
 
                 <Box overflowY="auto">
                   <Text
-                    color="gray.600"
+                    color="cyan.900"
                     fontSize={{ base: "clamp(13px, 2.6vw, 15px)", md: "md" }}
                     lineHeight="1.6"
                   >
