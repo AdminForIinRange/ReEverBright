@@ -31,143 +31,140 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: 1,
-    title: "Spotless Results",
-    body: "Couldn’t believe the difference. Driveway looks brand new and the crew was on time and friendly.",
+    title: "100% Satisfaction Guarantee",
+    body: "If you're not happy, we're not happy. We'll work with you to make it right.",
     icon: Sparkles,
   },
   {
     id: 2,
-    title: "Reliable & Professional",
-    body: "Communication was excellent from quote to finish. Fast turnaround and zero mess left behind.",
+    title: "Fully Insured",
+    body: "We're fully insured, so you can have peace of mind.",
     icon: ShieldCheck,
   },
   {
     id: 3,
-    title: "Great Value",
-    body: "Fair pricing for top quality work. They explained everything and delivered exactly what they promised.",
+    title: "Always On Time",
+    body: "We show up on time, every time. No exceptions.",
     icon: Star,
   },
   {
     id: 4,
-    title: "Trusted Team",
-    body: "I felt comfortable the whole time. Respectful, efficient, and they took care around our garden.",
+    title: "Only Professional-Grade Equipment",
+    body: "We only use the best equipment to ensure the best results.",
     icon: ThumbsUp,
-  },
-  {
-    id: 5,
-    title: "Five-Star Service",
-    body: "From booking to completion, the process was seamless. Highly recommend to family and friends.",
-    icon: Quote,
-  },
-  {
-    id: 6,
-    title: "Attention to Detail",
-    body: "They got into all the edges and corners most people miss. Looks amazing in photos too!",
-    icon: Sparkles,
   },
 ];
 
-const mod = (n: number, m: number) => ((n % m) + m) % m;
-
 const SlidingCard = () => {
-  const [start, setStart] = useState(0);
-  const total = SLIDES.length;
-
-  const visible = useMemo(
-    () => [start, start + 1, start + 2].map((i) => SLIDES[mod(i, total)]),
-    [start, total]
-  );
-
-  const next = useCallback(() => setStart((s) => mod(s + 1, total)), [total]);
-  const prev = useCallback(() => setStart((s) => mod(s - 1, total)), [total]);
-
+  // we keep state/hooks minimal; no arrows, no rotation
   return (
     <Box
-      fontFamily="poppins"
-      bg="cyan.600"
-      py={{ base: "80px", md: "100px", lg: "120px" }}
+      px={{ base: "6%", md: "10%" }}
+      mt={{ base: 10, md: 12 }}
       position="relative"
-      overflow="hidden"
     >
-      {/* Heading */}
-      <VStack spacing={8} textAlign="center" px={{ base: "6%", md: "10%" }}>
-        <VStack justify="center" align="center" textAlign="center" w="100%">
-          <Text
-            fontSize={["16px", "18px", "24px"]}
-            fontFamily="poppins"
-            fontWeight={700}
-            lineHeight="1.6"
-            color="cyan.900"
-          >
-            EVERBRIGHT PRESSURE WASHING
-          </Text>
-          <Text
-            fontSize={["36px", "48px", "56px"]}
-            fontWeight={700}
-            fontFamily="poppins"
-            lineHeight="1.1"
-            color="cyan.100"
-          >
-            A Local Business you can rely on
-          </Text>
-          <Box my="25px" w={["1px", "600px"]} borderWidth="1px" />
-        </VStack>
-      </VStack>
+      <Box py={{ base: "56px", md: "80px" }}>
+        <SectionHeading
+          eyebrow="Why Choose Us?"
+          title="We're the best in the business"
+        />
+      </Box>
 
-      {/* Left Arrow */}
-
-      {/* Slides */}
-      <HStack
-        px={{ base: "6%", md: "10%" }}
-        justify="center"
-        align="stretch"
-        spacing={{ base: 6, md: 8, lg: 10 }}
-        mt={12}
-        wrap="wrap"
+      {/* Single square with 4 quadrants */}
+      <Box
+        mx="auto"
+        maxW={{ base: "720px", md: "900px" }}
+        bg="white"
+        borderRadius="xl"
+        boxShadow="md"
+        overflow="hidden"
+        position="relative"
+        w="100%"
+        // responsive square: a bit taller on small screens for readability
+        pb={{ base: "140%", sm: "100%", md: "70%", lg: "50%", xl: "40%" }}
+        minH="340px"
       >
-        {visible.map((slide) => (
-          <Box
-            key={slide.id}
-            flex={["1 1 100%", "1 1 45%", "1 1 30%"]}
-            maxW="420px"
-            bg="white"
-            borderRadius="xl"
-            shadow="md"
-            p={{ base: 6, md: 8 }}
-            transition="all 250ms ease"
-            _hover={{ transform: "scale(1.03)", shadow: "xl" }}
-          >
-            <VStack align="start" spacing={5}>
-              <Box
-                w="52px"
-                h="52px"
-                borderRadius="full"
-                display="grid"
-                placeItems="center"
-                bg="blue.100"
-              >
-                <Icon as={slide.icon} boxSize={7} color="blue.600" />
-              </Box>
+        {/* Divider lines */}
+        <Box
+          position="absolute"
+          left="50%"
+          top={0}
+          bottom={0}
+          w="1px"
+          bg="gray.200"
+        />
+        <Box
+          position="absolute"
+          top="50%"
+          left={0}
+          right={0}
+          h="1px"
+          bg="gray.200"
+        />
 
-              <Text
-                color="gray.800"
-                fontWeight="700"
-                fontSize={{ base: "lg", md: "xl" }}
-              >
-                {slide.title}
-              </Text>
+        {/* 4 slides → 4 quadrants */}
+        {([0, 1, 2, 3] as const).map((i) => {
+          const slide = SLIDES[i];
+          const positions = [
+            { top: 0, left: 0 }, // TL
+            { top: 0, left: "50%" }, // TR
+            { top: "50%", left: 0 }, // BL
+            { top: "50%", left: "50%" }, // BR
+          ][i];
 
-              <Text
-                color="gray.600"
-                fontSize={{ base: "md", md: "lg" }}
-                lineHeight="1.7"
-              >
-                {slide.body}
-              </Text>
-            </VStack>
-          </Box>
-        ))}
-      </HStack>
+          return (
+            <Box
+              key={slide.id}
+              position="absolute"
+              {...positions}
+              w="50%"
+              h="50%"
+              p={{ base: 4, md: 6, lg: 8 }}
+              pr={{ base: 4, md: 8 }}
+              overflow="hidden"
+              _hover={{ bg: "gray.50" }}
+              transition="background 180ms ease"
+            >
+              <VStack align="start" spacing={{ base: 2.5, md: 3 }}>
+                <Box
+                  w={{ base: "40px", md: "48px" }}
+                  h={{ base: "40px", md: "48px" }}
+                  borderRadius="full"
+                  display="grid"
+                  placeItems="center"
+                  bg="blue.100"
+                  flexShrink={0}
+                >
+                  <Icon
+                    as={slide.icon}
+                    boxSize={{ base: 5, md: 6 }}
+                    color="blue.600"
+                  />
+                </Box>
+
+                <Text
+                  color="gray.800"
+                  fontWeight="700"
+                  fontSize={{ base: "clamp(14px, 2.8vw, 16px)", md: "lg" }}
+                  noOfLines={2}
+                >
+                  {slide.title}
+                </Text>
+
+                <Box overflowY="auto">
+                  <Text
+                    color="gray.600"
+                    fontSize={{ base: "clamp(13px, 2.6vw, 15px)", md: "md" }}
+                    lineHeight="1.6"
+                  >
+                    {slide.body}
+                  </Text>
+                </Box>
+              </VStack>
+            </Box>
+          );
+        })}
+      </Box>
     </Box>
   );
 };
