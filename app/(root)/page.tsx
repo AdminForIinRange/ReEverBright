@@ -223,11 +223,12 @@ const Page = () => {
                 >
                   A Local Business you can rely on
                 </Text>
-                <Box my="25px" w={["1px", "600px"]} borderWidth="1px" />
+              
               </VStack>
             </VStack>
 
             <HStack
+       
               zIndex={3}
               px={{ base: "4%", md: "6%", xl: "16%" }}
               justify="center"
@@ -250,7 +251,7 @@ const Page = () => {
                 ]}
               >
                 {/* Copy card */}
-                <Box w={{ base: "100%", md: "100%" }}>
+                <Box w={{ base: "100%", md: "100%" }} mt={"50px"}>
                   <VStack
                     h={"100%"}
                     align="start"

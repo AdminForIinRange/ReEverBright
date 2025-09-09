@@ -45,7 +45,7 @@ function BannerSlider() {
   }, [services.length]);
 
   return (
-    <Box px={{ base: "4%", md: "6%", xl: "16%" }} py={"50px"}>
+    <Box px={{ base: "0%", md: "6%", xl: "16%" }} py={"50px"}>
       <div
         style={{
           overflow: "hidden",
@@ -96,9 +96,9 @@ function BannerSlider() {
             <HStack
             
               justify={[
-                "center",
-                "center",
-                "center",
+                "start",
+                "start",
+                "start",
                 "start",
                 "start",
                 "start",
@@ -132,10 +132,10 @@ function BannerSlider() {
                   px: "80px",
                   bg: "cyan.400",
                 }}
-                p={4}
+                p={["2", "4", "4", "4", "4", "4"]}
                 color={"white"}
                 rounded={"30px"}
-                px={"12"}
+                px={[ "6", "8", "10", "12", "12", "12"]}
                 fontWeight={"500"}
                 onClick={() => router.push("/services")}
               >
