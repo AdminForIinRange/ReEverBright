@@ -27,7 +27,7 @@ const HeroText = () => {
         fontWeight={600}
         fontFamily={"poppins"}
         bgClip="text"
-        textAlign={["center", "center", "center", "left", "left", "left"]}
+        textAlign={["left", "left", "left", "left", "left", "left"]}
         color={"cyan.300"}
         bgGradient="linear(to-r, teal, blue)"
         lineHeight={"0.9"}
@@ -35,21 +35,48 @@ const HeroText = () => {
       >
         Because a Clean Home Feels Like a <Span color={"WHITE"}>New Home</Span>
       </Text>
+
       <Text
-        className="animate__animated animate__fadeInDownBig"
+        textShadow={"0px 0px 100px black"}
+        as={"p"}
+        textStyle={"subheading"}
+        mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
+        textAlign={["left", "left", "left", "left", "left", "left"]}
+        fontFamily={"poppins"}
+        color={"cyan.100"}
+        w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+        fontWeight={"700"}
+      >
+        Adelaide’s #1 Choice for Remarkable Exterior Cleaning!
+      </Text>
+
+      <HStack
         as={"p"}
         fontSize={["14px", "14px", "19px", "19px", "19px", "19px"]}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-        textAlign={["center", "center", "center", "left", "left", "left"]}
+        textAlign={["left", "left", "left", "left", "left", "left"]}
         fontFamily={"poppins"}
         color={"WHITE"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         fontWeight={"500"}
+        wrap={"wrap"}
       >
-        Restore your home's beauty with expert pressure washing services. From
-        driveways to decks, we make everything look brand new.
-      </Text>
+        Gutter Cleaning <CheckCircle size={15} /> Roof Washing{" "}
+        <CheckCircle size={15} /> Solar Cleaning <CheckCircle size={15} />{" "}
+        Pressure Washing
+        <CheckCircle size={15} />{" "}
+      </HStack>
 
+      <Text
+        as={"p"}
+        fontSize={["14px", "14px", "19px", "19px", "19px", "19px"]}
+        mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
+        textAlign={["left", "left", "left", "left", "left", "left"]}
+        fontFamily={"poppins"}
+        color={"WHITE"}
+        w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+        fontWeight={"500"}
+      ></Text>
       <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]}>
         <VStack
           textAlign={["center", "center", "center", "left", "left", "left"]}
@@ -58,7 +85,7 @@ const HeroText = () => {
           <HStack
             justify={["center", "center", "center", "start", "start"]}
             align={["center", "center", "center", "start", "start"]}
-                       gap={"20px"}
+            gap={"20px"}
           >
             <HStack spacing={3} alignItems="start" justifyContent="start">
               <Box
@@ -218,33 +245,50 @@ const HeroText = () => {
         // RDC
         display={["flex", "flex", "flex", "none", "none", "none"]}
         mt={"15px"}
-        rounded={"2xl"}
+        rounded={"5px"}
         // bg={"gray.50"}
         // border={"1px solid lightgray"}
         width={{ base: "100%", md: "100%" }}
-        textAlign={["center", "center", "center", "start", "start", "start"]}
-        justify={["center", "center", "center", "start", "start", "start"]}
+        textAlign={["start", "start", "start", "start", "start", "start"]}
+        justify={["start", "start", "start", "start", "start", "start"]}
         position="relative"
       >
-        <HStack
+        <VStack
+          w={"100%"}
+          h={"100%"}
           alignItems="center"
           justifyContent="center"
-          borderRadius="full"
+       rounded={"15px"}
           py={2}
           px={4}
-          bg={"gray.100"}
+          bg={"white"}
           border={"1px solid lightgray"}
         >
-          <Image src={Google} alt="Google" width={34} height={34} />
           <HStack>
-            <Text fontSize="xl" fontWeight="600" color="#fbbf24">
-              5 / 5
-            </Text>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <FaStar key={i} color="#fbbf24" size={20} />
-            ))}
+            <Image src={Google} alt="Google" width={34} height={34} />
+            <HStack>
+              <Text fonESize="xl" fontWeight="600" color="#fbbf24">
+                5 / 5
+              </Text>
+
+              {Array.from({ length: 5 }).map((_, i) => (
+                <FaStar key={i} color="#fbbf24" size={20} />
+              ))}
+            </HStack>
           </HStack>
-        </HStack>
+          <Text
+            textShadow={"0px 0px 100px black"}
+            as={"p"}
+         
+            textAlign={["center", "center", "left", "left", "left", "left"]}
+            fontFamily={"poppins"}
+            color={"cyan.900"}
+            w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+            fontWeight={"700"}
+          >
+            Over 160+ Verified 5-Star Reviews
+          </Text>
+        </VStack>
       </HStack>
       <HStack
         rounded={"2xl"}
