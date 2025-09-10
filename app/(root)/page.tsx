@@ -182,7 +182,7 @@ const Page = () => {
       <ServiceLayout />
       <About />
 
-      <Box>
+      <Box >
         <Box pt={"50px"} bg={"cyan.600"}>
           <Box>
             {/* Another spot where SectionHeading matches your style */}

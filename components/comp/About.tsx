@@ -93,6 +93,7 @@ const About = () => {
 
           {/* Image area with decorative frame */}
           <Box
+            my={"50px"}
             position="relative"
             h={{ base: "550px", md: "550px", xl: "550px" }}
             w={{ base: "100%", md: "100%" }}
@@ -115,6 +116,7 @@ const About = () => {
                 borderRadius="24px"
                 overflow="hidden"
                 bg="gray.200" // fallback
+           
               >
                 <ImageCompareSlider />
               </Box>

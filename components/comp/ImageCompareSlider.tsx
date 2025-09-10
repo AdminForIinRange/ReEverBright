@@ -61,6 +61,7 @@ const ImageCompareSlider = () => {
 
   return (
     <Box
+
       ref={containerRef}
       position="relative"
       width="100%"
