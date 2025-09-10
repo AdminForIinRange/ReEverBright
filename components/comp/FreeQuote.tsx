@@ -94,7 +94,7 @@ const FreeQuote = () => {
    
         <Box
           as="textarea"
-          placeholder="How can we help"
+          placeholder="How can we help your home"
           border="1px solid #e2e8f0"
           borderRadius="md"
           py={2}
