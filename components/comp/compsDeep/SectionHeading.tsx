@@ -11,13 +11,18 @@ const SectionHeading = ({
   title,
   color = "white",
 }: SectionHeadingProps) => (
-  <VStack justify="center" align="center" textAlign="center" w="100%">
+  <VStack
+    justify="center"
+    align={["start", "center", "center", "center", "center", "center"]}
+    textAlign={["start", "center", "center", "center", "center", "center"]}
+    w="100%"
+  >
     <Text
       fontSize={["16px", "18px", "24px"]}
       fontFamily="poppins"
       fontWeight={700}
       lineHeight="1.6"
-             color="cyan.900"
+      color="cyan.600"
     >
       {eyebrow}
     </Text>
@@ -26,7 +31,7 @@ const SectionHeading = ({
       fontWeight={700}
       fontFamily="poppins"
       lineHeight="1.1"
-          color={"cyan.500"}
+      color={"cyan.400"}
     >
       {title}
     </Text>
