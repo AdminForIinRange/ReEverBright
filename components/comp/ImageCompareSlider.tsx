@@ -12,38 +12,43 @@ const ImageCompareSlider = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
 
-  // Keep height/slider in sync with container size
+  // Keep height/slider in sync with container size (ResizeObserver is more reliable on mobile)
   useEffect(() => {
-    const updateHeight = () => {
-      if (!containerRef.current) return;
-      const height = containerRef.current.offsetHeight;
-      setContainerHeight(height);
-      setSliderY((y) => (y === 0 ? height / 2 : Math.min(Math.max(y, 0), height)));
-    };
-    updateHeight();
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
+    if (!containerRef.current) return;
+
+    const el = containerRef.current;
+    const ro = new ResizeObserver(() => {
+      const h = el.offsetHeight || 0;
+      setContainerHeight(h);
+      setSliderY((y) => (y === 0 ? h / 2 : Math.min(Math.max(y, 0), h)));
+    });
+
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
   const clampY = (y: number) => Math.min(Math.max(y, 0), containerHeight);
 
   const updateFromClientY = (clientY: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
     setSliderY(clampY(clientY - rect.top));
   };
 
-  // Pointer events unify mouse + touch and let us prevent scrolling cleanly
   const handlePointerDown: React.PointerEventHandler<HTMLDivElement> = (e) => {
     setIsDragging(true);
-    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
-    e.preventDefault(); // stop page gestures
+    try {
+      (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+    } catch {}
+    // Prevent the browser from initiating native scroll/zoom
+    e.preventDefault();
     updateFromClientY(e.clientY);
   };
 
   const handlePointerMove: React.PointerEventHandler<HTMLDivElement> = (e) => {
     if (!isDragging) return;
-    e.preventDefault(); // keep the page from scrolling
+    e.preventDefault(); // keep the page from scrolling while dragging
     updateFromClientY(e.clientY);
   };
 
@@ -59,11 +64,8 @@ const ImageCompareSlider = () => {
       ref={containerRef}
       position="relative"
       width="100%"
-      /* pick one of these height strategies:
-         - fixed: height="320px"
-         - responsive ratio: use Chakra's aspectRatio prop if available (Box as AspectRatio)
-         For now, keep 100% if parent controls height. */
-      height="100%"
+      // pick one: set a fixed height, or wrap in an AspectRatio
+      height="320px"
       overflow="hidden"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -71,13 +73,15 @@ const ImageCompareSlider = () => {
       onPointerCancel={endDrag}
       onPointerLeave={endDrag}
       cursor={isDragging ? "grabbing" : "grab"}
-      // CRUCIAL: disable native touch scrolling inside the slider
+      // Key: disable native touch gestures inside the slider
       sx={{
         touchAction: "none",
         overscrollBehavior: "contain",
         WebkitUserSelect: "none",
         userSelect: "none",
       }}
+      aria-label="Image comparison slider"
+      role="group"
     >
       {/* Base image */}
       <Box
@@ -90,6 +94,7 @@ const ImageCompareSlider = () => {
         draggable={false}
         pointerEvents="none"
         sx={{ WebkitUserDrag: "none", userSelect: "none" }}
+        alt="After"
       />
 
       {/* Overlay image with vertical clipping */}
@@ -109,6 +114,7 @@ const ImageCompareSlider = () => {
           WebkitUserDrag: "none",
           userSelect: "none",
         }}
+        alt="Before"
       />
 
       {/* Labels */}
@@ -151,8 +157,10 @@ const ImageCompareSlider = () => {
         bg="white"
         zIndex="2"
         cursor="ns-resize"
-        // The bar itself also captures pointer to begin dragging
         onPointerDown={handlePointerDown}
+        // Also disable native gestures on the draggable bar itself
+        sx={{ touchAction: "none" }}
+        aria-label="Drag to compare images"
       >
         <Box
           position="absolute"
@@ -167,7 +175,7 @@ const ImageCompareSlider = () => {
           boxShadow="lg"
           _hover={{ transform: "translateX(-50%) scale(1.06)" }}
           transition="transform 0.2s ease"
-          pointerEvents="none" // knob is decorative; the bar handles input
+          pointerEvents="none"
         />
       </Box>
     </Box>

@@ -18,10 +18,10 @@ const About = () => {
         align="center"
         w="100%"
         textAlign="center"
-             px={{ base: "3%", md: "6%", xl: "16%" }}
+             px={{ base: "2%", md: "6%", xl: "16%" }}
       >
         <SectionHeading
-          eyebrow={`You'll be amazed at how good your property can look!`}
+          eyebrow={`Be amazed at your property's`}
           title={`Restoring Your Most\nValuable Asset`}
          
         />
@@ -30,7 +30,7 @@ const About = () => {
       {/* Content */}
       <HStack
         zIndex={3}
-             px={{ base: "3%", md: "6%", xl: "16%" }}
+             px={{ base: "2%", md: "6%", xl: "16%" }}
         justify="center"
         align="center"
         w="100%"

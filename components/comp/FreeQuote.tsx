@@ -21,7 +21,7 @@ const FreeQuote = () => {
 
       <Text
         fontFamily={"poppins"}
-        fontSize={["28px", "36px"]}
+        fontSize={["32px", "36px"]}
         fontWeight="700"
         color="blue.900"
         lineHeight="1.1"
@@ -35,7 +35,7 @@ const FreeQuote = () => {
         textAlign={"center"}
         fontSize="sm"
         w={"100%"}
-        fontWeight="600"
+        fontWeight="700"
         px={4}
         color="blue.900"
    

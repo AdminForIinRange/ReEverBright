@@ -59,7 +59,7 @@ const SlidingCard = () => {
   // we keep state/hooks minimal; no arrows, no rotation
   return (
     <Box
-      px={{ base: "6%", md: "10%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
       mt={{ base: 10, md: 12 }}
       position="relative"
     >
@@ -119,13 +119,13 @@ const SlidingCard = () => {
               {...positions}
               w="50%"
               h="50%"
-              p={{ base: 4, md: 6, lg: 8 }}
-              pr={{ base: 4, md: 8 }}
+              p={{ base: 2, md: 6, lg: 8 }}
+              pr={{ base: 2, md: 8 }}
               overflow="hidden"
               _hover={{ bg: "cyan.50" }}
               transition="background 180ms ease"
             >
-              <VStack align="start" spacing={{ base: 2.5, md: 3 }}>
+              <VStack align="start" >
                 <Box
                   w={{ base: "40px", md: "48px" }}
                   h={{ base: "40px", md: "48px" }}
