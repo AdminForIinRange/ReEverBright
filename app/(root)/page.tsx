@@ -128,7 +128,7 @@ const Page = () => {
         // data-aos="fade-up"
 
         zIndex={4}
-        px={{ base: "4%", md: "6%", xl: "16%" }}
+        px={{ base: "3%", md: "6%", xl: "16%" }}
         justify={"center"} // !!
         align={"center"}
         w={"100%"}
@@ -197,7 +197,7 @@ const Page = () => {
               align={"center"}
               w={"100%"}
               textAlign={"center"}
-              px={{ base: "4%", md: "6%", xl: "16%" }}
+                   px={{ base: "3%", md: "6%", xl: "16%" }}
             >
               <VStack
                 justify="center"
@@ -230,7 +230,7 @@ const Page = () => {
             <HStack
        
               zIndex={3}
-              px={{ base: "4%", md: "6%", xl: "16%" }}
+                   px={{ base: "3%", md: "6%", xl: "16%" }}
               justify="center"
               align="center"
               w="100%"

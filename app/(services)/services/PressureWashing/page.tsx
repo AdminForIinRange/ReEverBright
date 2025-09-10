@@ -100,7 +100,7 @@ const PressureWashing = () => {
 
       {/* INTRO SPLIT */}
       <HStack
-        px={{ base: "4%", md: "6%", xl: "16%" }}
+             px={{ base: "3%", md: "6%", xl: "16%" }}
         justify="center"
         align="center"
         w="100%"

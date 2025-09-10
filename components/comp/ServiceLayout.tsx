@@ -49,7 +49,7 @@ function ServiceLayout() {
         align="center"
         w="100%"
         textAlign="center"
-        px={{ base: "4%", md: "6%", xl: "16%" }}
+             px={{ base: "3%", md: "6%", xl: "16%" }}
       >
         <VStack
           justify={"center"}
@@ -72,7 +72,7 @@ function ServiceLayout() {
         align={"center"}
         gap={["20px", "20px", "20px", "20px", "20px", "20px"]}
         py={"50px"}
-        px={{ base: "4%", md: "6%", xl: "16%" }}
+             px={{ base: "3%", md: "6%", xl: "16%" }}
       >
         {services.map((s) => (
           <ServicesBox key={s.title} title={s.title} image={s.image} />

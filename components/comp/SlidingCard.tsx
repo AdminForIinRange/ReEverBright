@@ -66,7 +66,7 @@ const SlidingCard = () => {
       <Box py={{ base: "56px", md: "80px" }}>
         <SectionHeading
           eyebrow="Why Choose Us?"
-          title="We're the best in the business"
+          title="What We Promise"
         />
       </Box>
 
