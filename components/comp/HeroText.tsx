@@ -79,12 +79,12 @@ const HeroText = () => {
       ></Text>
       <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]}>
         <VStack
-          textAlign={["center", "center", "center", "left", "left", "left"]}
-          align={["center", "center", "center", "start", "start"]}
+          textAlign={["start", "center", "center", "left", "left", "left"]}
+          align={["start", "center", "center", "start", "start"]}
         >
           <HStack
-            justify={["center", "center", "center", "start", "start"]}
-            align={["center", "center", "center", "start", "start"]}
+            justify={["start", "center", "center", "start", "start"]}
+            align={["start", "center", "center", "start", "start"]}
             gap={"20px"}
           >
             <HStack spacing={3} alignItems="start" justifyContent="start">
@@ -106,7 +106,7 @@ const HeroText = () => {
                 >
                   Fast Service
                 </Text>
-                <Text fontSize="sm" color="cyan.100">
+                <Text   fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
                   Same Day Available
                 </Text>
               </VStack>
@@ -123,7 +123,7 @@ const HeroText = () => {
               >
                 <Award size={20} color="white" />
               </Box>
-              <VStack gap={0} align="start">
+              <VStack gap={0} align="start" justify={"start"}>
                 <Text
                   fontWeight="bold"
                   fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
@@ -131,7 +131,7 @@ const HeroText = () => {
                 >
                   Premium Quality
                 </Text>
-                <Text fontSize="sm" color="cyan.100">
+                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
                   Guaranteed Results
                 </Text>
               </VStack>
@@ -139,12 +139,12 @@ const HeroText = () => {
           </HStack>
         </VStack>
         <VStack
-          textAlign={["center", "center", "center", "left", "left", "left"]}
-          align={["center", "center", "center", "start", "start"]}
+          textAlign={["start", "center", "center", "left", "left", "left"]}
+          align={["start", "center", "center", "start", "start"]}
         >
           <HStack
-            textAlign={["center", "center", "center", "left", "left", "left"]}
-            align={["center", "center", "center", "start", "start"]}
+            textAlign={["start", "center", "center", "left", "left", "left"]}
+            align={["start", "center", "center", "start", "start"]}
             gap={"20px"}
             mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
           >
@@ -167,7 +167,7 @@ const HeroText = () => {
                 >
                   Fully Insured
                 </Text>
-                <Text fontSize="sm" color="cyan.100">
+                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
                   Complete Protection
                 </Text>
               </VStack>
@@ -191,7 +191,7 @@ const HeroText = () => {
                 >
                   Fully Insured
                 </Text>
-                <Text fontSize="sm" color="cyan.100">
+                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
                   Complete Protection
                 </Text>
               </VStack>

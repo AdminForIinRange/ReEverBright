@@ -56,7 +56,7 @@ function ServiceLayout() {
           align={"center"}
           w={"100%"}
           textAlign={"center"}
-          px={["4%", "4%", "6%", "6%", "6%", "10%"]}
+
         >
           <SectionHeading
             eyebrow="See the difference we make"
@@ -71,7 +71,7 @@ function ServiceLayout() {
         justify={"center"}
         align={"center"}
         gap={["20px", "20px", "20px", "20px", "20px", "20px"]}
-        py={"50px"}
+       
              px={{ base: "3%", md: "6%", xl: "16%" }}
       >
         {services.map((s) => (

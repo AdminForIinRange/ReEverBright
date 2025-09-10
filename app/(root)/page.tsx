@@ -25,8 +25,6 @@ import About from "@/components/comp/About";
 import SlidingCard from "@/components/comp/SlidingCard";
 import SlindingBanner from "@/components/comp/SlindingBanner";
 
-
-
 import icon1 from "@/public/images/Icons/1.png";
 import icon2 from "@/public/images/Icons/2.png";
 import icon3 from "@/public/images/Icons/3.png";
@@ -91,8 +89,8 @@ const Page = () => {
 
   return (
     <Box mt={"-70px"}>
-      <HStack justifyContent={"center"} align={"center"} >
-        <Box 
+      <HStack justifyContent={"center"} align={"center"}>
+        <Box
           borderRadius={"50px"}
           backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
           backgroundRepeat="no-repeat"
@@ -123,7 +121,7 @@ const Page = () => {
           borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
         ></Box>
       </HStack>
-  
+
       <HStack
         // data-aos="fade-up"
 
@@ -180,16 +178,12 @@ const Page = () => {
           </Box> */}
         </HStack>
       </HStack>
-      
+
       <ServiceLayout />
       <About />
 
       <Box>
-        <Box
-         pt={"50px"}
-   
-          bg={"cyan.600"}
-        >
+        <Box pt={"50px"} bg={"cyan.600"}>
           <Box>
             {/* Another spot where SectionHeading matches your style */}
             <VStack
@@ -197,7 +191,7 @@ const Page = () => {
               align={"center"}
               w={"100%"}
               textAlign={"center"}
-                   px={{ base: "3%", md: "6%", xl: "16%" }}
+              px={{ base: "3%", md: "6%", xl: "16%" }}
             >
               <VStack
                 justify="center"
@@ -223,14 +217,12 @@ const Page = () => {
                 >
                   A Local Business you can rely on
                 </Text>
-              
               </VStack>
             </VStack>
 
             <HStack
-       
               zIndex={3}
-                   px={{ base: "3%", md: "6%", xl: "16%" }}
+              px={{ base: "3%", md: "6%", xl: "16%" }}
               justify="center"
               align="center"
               w="100%"
@@ -257,7 +249,6 @@ const Page = () => {
                     align="start"
                     color="white"
                     fontSize="lg"
-             
                     fontFamily={"poppins"}
                   >
                     <Text>
@@ -281,7 +272,7 @@ const Page = () => {
                       <Text
                         fontFamily={"poppins"}
                         fontWeight="700"
-                          color="white"
+                        color="white"
                       >
                         - Shayal
                       </Text>
@@ -290,12 +281,8 @@ const Page = () => {
                 </Box>
 
                 {/* Image area with decorative frame */}
-                <Box
-              
-                >
-               
-                 <Image  src={shayalv2} alt="Shayal" width={400} height={400} />
-             
+                <Box>
+                  <Image src={shayalv2} alt="Shayal" width={400} height={400} />
                 </Box>
               </HStack>
             </HStack>
@@ -310,6 +297,17 @@ const Page = () => {
       {/* Floating geometric shapes */}
 
       <SlidingCard />
+      <HStack
+         px={{ base: "3%", md: "6%", xl: "16%" }}
+        mt={"100px"}
+        justify={"center"}
+        align={["center", "center", "center", "start", "start", "start"]}
+        w={"100%"}
+        h={"100%"}
+
+      >
+        <FreeQuote />
+      </HStack>
     </Box>
   );
 };

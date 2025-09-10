@@ -22,7 +22,7 @@ const FreeQuote = () => {
       <Text
         fontFamily={"poppins"}
         fontSize={["28px", "36px"]}
-        fontWeight="900"
+        fontWeight="700"
         color="blue.900"
         lineHeight="1.1"
         mb={4}
@@ -30,6 +30,8 @@ const FreeQuote = () => {
         FREE QUOTE <br /> TODAY!
       </Text>
       <Text
+       mb={4}
+        fontFamily={"poppins"}
         textAlign={"center"}
         fontSize="sm"
         w={"100%"}

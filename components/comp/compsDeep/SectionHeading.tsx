@@ -35,7 +35,7 @@ const SectionHeading = ({
     >
       {title}
     </Text>
-    <Box my="25px" w={["1px", "600px"]} borderWidth="1px" />
+    <Box my="25px" borderColor={"cyan.500"} w={["100%", "600px"]} borderWidth="1px" />
   </VStack>
 );
 
