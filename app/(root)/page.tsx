@@ -151,7 +151,7 @@ const Page = () => {
   p="4"
   borderRadius="15px"
   mt={{ base: "0", md: "20px" }}
-  bg="cyan.900"
+  bg="cyan.500"
 >
   <Grid templateColumns={{ base: "1fr 1fr" }} gap={8}>
     {/* Left column */}
