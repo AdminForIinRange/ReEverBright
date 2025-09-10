@@ -41,7 +41,7 @@ const HeroText = () => {
         as={"p"}
         textStyle={"subheading"}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-        textAlign={["left", "left", "left", "left", "left", "left"]}
+        textAlign={["start", "start", "start", "start", "start", "start"]}
         fontFamily={"poppins"}
         color={"cyan.100"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
@@ -50,25 +50,85 @@ const HeroText = () => {
         Adelaide’s #1 Choice for Remarkable Exterior Cleaning!
       </Text>
 
-      <HStack
-        as={"p"}
-        fontSize={["18px", "18px", "19px", "19px", "19px", "19px"]}
-        mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-        textAlign={["left", "left", "left", "left", "left", "left"]}
-        fontFamily={"poppins"}
-        color={"WHITE"}
-        w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-        fontWeight={"500"}
-        wrap={"wrap"}
-      >
-        Gutter Cleaning <CheckCircle size={15} /> Roof Washing{" "}
-        <CheckCircle size={15} /> Solar Cleaning <CheckCircle size={15} />{" "}
-        Pressure Washing
-        <CheckCircle size={15} />{" "}
-      </HStack>
-
-
-
+      <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]}>
+        <VStack
+          textAlign={["start", "start", "start", "start", "start"]}
+          align={["start", "start", "start", "start", "start"]}
+        >
+          <HStack
+            justify={["start", "start", "start", "start", "start"]}
+            align={["start", "start", "start", "start", "start"]}
+            gap={"20px"}
+          >
+            <HStack color="green.300" fontWeight={"700"} fontSize="24px">
+              <CheckCircle />
+              <Span
+                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                fontFamily={"poppins"}
+                color="WHITE"
+                fontWeight={"500"}
+              >
+                {" "}
+                Gutter Cleaning
+              </Span>
+            </HStack>
+            <HStack color="green.300" fontWeight={"700"} fontSize="24px">
+              <CheckCircle />
+              <Span
+                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                fontFamily={"poppins"}
+                color="WHITE"
+                fontWeight={"500"}
+              >
+                {" "}
+                Roof Washing
+              </Span>
+            </HStack>
+          </HStack>
+        </VStack>
+        <VStack
+          justify={["start", "start", "start", "start", "start"]}
+          textAlign={["start", "start", "start", "start", "start", "start"]}
+          align={["start", "start", "start", "start", "start"]}
+        >
+          <HStack
+            textAlign={["start", "start", "start", "start", "start"]}
+            align={["start", "start", "start", "start", "start"]}
+            gap={"20px"}
+            mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
+          >
+            <HStack color="green.300" fontWeight={"700"} fontSize="24px">
+              <CheckCircle />
+              <Span
+                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                fontFamily={"poppins"}
+                color="WHITE"
+                fontWeight={"500"}
+              >
+                {" "}
+                Solar Cleaning
+              </Span>
+            </HStack>
+            <HStack
+              ml={["10px", "10px", "10px", "10px", "10px", "10px"]}
+              color="green.300"
+              fontWeight={"700"}
+              fontSize="24px"
+            >
+              <CheckCircle />
+              <Span
+                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                fontFamily={"poppins"}
+                color="WHITE"
+                fontWeight={"500"}
+              >
+                {" "}
+                ressure Washing
+              </Span>
+            </HStack>
+          </HStack>
+        </VStack>
+      </Box>
 
       <HStack
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
@@ -128,7 +188,7 @@ const HeroText = () => {
           h={"100%"}
           alignItems="center"
           justifyContent="center"
-       rounded={"15px"}
+          rounded={"15px"}
           py={2}
           px={4}
           bg={"white"}
@@ -137,8 +197,6 @@ const HeroText = () => {
           <HStack>
             <Image src={Google} alt="Google" width={34} height={34} />
             <HStack>
-       
-
               {Array.from({ length: 5 }).map((_, i) => (
                 <FaStar key={i} color="#fbbf24" size={20} />
               ))}
@@ -147,141 +205,16 @@ const HeroText = () => {
           <Text
             textShadow={"0px 0px 100px black"}
             as={"p"}
-         
             textAlign={["center", "center", "left", "left", "left", "left"]}
             fontFamily={"poppins"}
             color={"cyan.900"}
             w={["100%", "100%", "100%", "100%", "100%", "100%"]}
             fontWeight={"700"}
           >
-           Verified 5-Star Reviews
+            Verified 5-Star Reviews
           </Text>
         </VStack>
       </HStack>
-      <Box p={"4"} borderRadius={"15px"} mt={["20px", "20px", "20px", "20px", "20px", "20px"]} bg={"cyan.500"} >
-        <VStack
-          textAlign={["start", "start", "start", "start", "start", "start"]}
-          align={["center", "center", "center", "start", "start"]}
-        >
-          <HStack
-            justify={["center", "center", "center", "start", "start"]}
-            align={["center", "center", "center", "start", "start"]}
-            gap={"20px"}
-          >
-            <HStack spacing={3} alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-                bg="cyan.700"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Zap size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start">
-                <Text
-                  fontWeight="bold"
-                  color="white"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                >
-                  Fast Service
-                </Text>
-                <Text   fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Same Day Available
-                </Text>
-              </VStack>
-            </HStack>
-
-            <HStack alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-              bg="cyan.700"
-                display="flex"
-                alignItems="start"
-                justifyContent="start"
-              >
-                <Award size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start" justify={"start"}>
-                <Text
-                  fontWeight="bold"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                  color={"white"}
-                >
-                  Premium Quality
-                </Text>
-                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Guaranteed Results
-                </Text>
-              </VStack>
-            </HStack>
-          </HStack>
-        </VStack>
-      <VStack
-          textAlign={["start", "start", "start", "start", "start", "start"]}
-          align={["center", "center", "center", "start", "start"]}
-        >
-          <HStack
-            justify={["center", "center", "center", "start", "start"]}
-            align={["center", "center", "center", "start", "start"]}
-
-          
-            gap={"20px"}
-            mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-          >
-            <HStack spacing={3} alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-              bg="cyan.700"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <ShieldCheck size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start">
-                <Text
-                  fontWeight="bold"
-                  color="white"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                >
-                  Fully Insured
-                </Text>
-                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Complete Protection
-                </Text>
-              </VStack>
-            </HStack>
-            <HStack spacing={3} alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-   bg="cyan.700"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <ShieldCheck size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start">
-                <Text
-                  fontWeight="bold"
-                  color="white"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                >
-                  Fully Insured
-                </Text>
-                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Complete Protection
-                </Text>
-              </VStack>
-            </HStack>
-          </HStack>
-        </VStack>
-      </Box>
     </>
   );
 };

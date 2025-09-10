@@ -20,7 +20,7 @@ import BadgeItem from "@/components/comp/compsDeep/BadgeItem";
 import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import ServiceLayout from "@/components/comp/ServiceLayout";
-import { Shield, Home, Leaf } from "lucide-react";
+import { Shield, Home, Leaf, ShieldCheck, Zap, Award } from "lucide-react";
 import About from "@/components/comp/About";
 import SlidingCard from "@/components/comp/SlidingCard";
 import SlindingBanner from "@/components/comp/SlindingBanner";
@@ -146,6 +146,202 @@ const Page = () => {
           </Box>
 
           <FreeQuote />
+          <Box
+          
+            p={"4"}
+            borderRadius={"15px"}
+            mt={["00px", "00px", "20px", "20px", "20px", "20px"]}
+            bg={"cyan.500"}
+          >
+            <VStack
+              textAlign={["start", "start", "start", "start", "start", "start"]}
+              align={["center", "center", "center", "start", "start"]}
+            >
+              <HStack
+                justify={["center", "center", "center", "start", "start"]}
+                align={["center", "center", "center", "start", "start"]}
+                gap={"20px"}
+              >
+                <HStack spacing={3} alignItems="start" justifyContent="start">
+                  <Box
+                    p={2}
+                    rounded="full"
+                    bg="cyan.700"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Zap size={20} color="white" />
+                  </Box>
+                  <VStack gap={0} align="start">
+                    <Text
+                      fontWeight="bold"
+                      color="white"
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                    >
+                      Fast Service
+                    </Text>
+                    <Text
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                      color="cyan.100"
+                    >
+                      Same Day Available
+                    </Text>
+                  </VStack>
+                </HStack>
+
+                <HStack alignItems="start" justifyContent="start">
+                  <Box
+                    p={2}
+                    rounded="full"
+                    bg="cyan.700"
+                    display="flex"
+                    alignItems="start"
+                    justifyContent="start"
+                  >
+                    <Award size={20} color="white" />
+                  </Box>
+                  <VStack gap={0} align="start" justify={"start"}>
+                    <Text
+                      fontWeight="bold"
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                      color={"white"}
+                    >
+                      Premium Quality
+                    </Text>
+                    <Text
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                      color="cyan.100"
+                    >
+                      Guaranteed Results
+                    </Text>
+                  </VStack>
+                </HStack>
+              </HStack>
+            </VStack>
+            <VStack
+              textAlign={["start", "start", "start", "start", "start", "start"]}
+              align={["center", "center", "center", "start", "start"]}
+            >
+              <HStack
+                justify={["center", "center", "center", "start", "start"]}
+                align={["center", "center", "center", "start", "start"]}
+                gap={"20px"}
+                mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
+              >
+                <HStack spacing={3} alignItems="start" justifyContent="start">
+                  <Box
+                    p={2}
+                    rounded="full"
+                    bg="cyan.700"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <ShieldCheck size={20} color="white" />
+                  </Box>
+                  <VStack gap={0} align="start">
+                    <Text
+                      fontWeight="bold"
+                      color="white"
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                    >
+                      Fully Insured
+                    </Text>
+                    <Text
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                      color="cyan.100"
+                    >
+                      Complete Protection
+                    </Text>
+                  </VStack>
+                </HStack>
+                <HStack spacing={3} alignItems="start" justifyContent="start">
+                  <Box
+                    p={2}
+                    rounded="full"
+                    bg="cyan.700"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <ShieldCheck size={20} color="white" />
+                  </Box>
+                  <VStack gap={0} align="start">
+                    <Text
+                      fontWeight="bold"
+                      color="white"
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                    >
+                      Fully Insured
+                    </Text>
+                    <Text
+                      fontSize={[
+                        "12px",
+                        "12px",
+                        "14px",
+                        "14px",
+                        "14px",
+                        "19px",
+                      ]}
+                      color="cyan.100"
+                    >
+                      Complete Protection
+                    </Text>
+                  </VStack>
+                </HStack>
+              </HStack>
+            </VStack>
+          </Box>
           {/* <Box  
             position="relative"
             h={{ base: "100%", md: "100%", xl: "100%" }}
@@ -182,7 +378,7 @@ const Page = () => {
       <ServiceLayout />
       <About />
 
-      <Box >
+      <Box>
         <Box pt={"50px"} bg={"cyan.600"}>
           <Box>
             {/* Another spot where SectionHeading matches your style */}
@@ -298,13 +494,12 @@ const Page = () => {
 
       <SlidingCard />
       <HStack
-         px={{ base: "2%", md: "6%", xl: "16%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
         mt={"100px"}
         justify={"center"}
         align={["center", "center", "center", "start", "start", "start"]}
         w={"100%"}
         h={"100%"}
-
       >
         <FreeQuote />
       </HStack>

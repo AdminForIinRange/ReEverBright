@@ -47,13 +47,7 @@ const services = [
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
     badge: "Essential",
   },
-  {
-    key: "Washing",
-    title: "Washing",
-    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
-    desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
-    badge: "Essential",
-  },
+
 ];
 function ServiceLayout() {
   return (
