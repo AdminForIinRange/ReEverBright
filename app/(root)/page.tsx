@@ -147,7 +147,7 @@ const Page = () => {
 
           <FreeQuote />
           <Box
-          w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+            w={["100%", "100%", "100%", "100%", "100%", "100%"]}
             p={"4"}
             borderRadius={"15px"}
             mt={["00px", "00px", "20px", "20px", "20px", "20px"]}
@@ -158,9 +158,15 @@ const Page = () => {
               align={["center", "center", "center", "start", "start"]}
             >
               <HStack
-                justify={["space-between", "center", "center", "start", "start"]}
+                justify={[
+                  "space-between",
+                  "center",
+                  "center",
+                  "start",
+                  "start",
+                ]}
                 align={["center", "center", "center", "start", "start"]}
-           gap={"30px"}
+                gap={"30px"}
               >
                 <HStack spacing={3} alignItems="start" justifyContent="start">
                   <Box
@@ -186,7 +192,7 @@ const Page = () => {
                         "19px",
                       ]}
                     >
-                       Guaranteed
+                      Guaranteed
                     </Text>
                     <Text
                       fontSize={[
@@ -199,7 +205,7 @@ const Page = () => {
                       ]}
                       color="cyan.100"
                     >
-                      Full Satisfaction 
+                      Full Satisfaction
                     </Text>
                   </VStack>
                 </HStack>
@@ -251,13 +257,18 @@ const Page = () => {
               textAlign={["start", "start", "start", "start", "start", "start"]}
               align={["center", "center", "center", "start", "start"]}
             >
-              <HStack     gap={"20px"}
+              <HStack
+                gap={"20px"}
                 justify={["start", "center", "center", "start", "start"]}
                 align={["center", "center", "center", "start", "start"]}
-
                 mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
               >
-                <HStack spacing={3} alignItems="start" justifyContent="start" ml={"8px"} >
+                <HStack
+                  spacing={3}
+                  alignItems="start"
+                  justifyContent="start"
+                  ml={"8px"}
+                >
                   <Box
                     p={2}
                     rounded="full"
@@ -268,7 +279,7 @@ const Page = () => {
                   >
                     <ShieldCheck size={20} color="white" />
                   </Box>
-                  <VStack gap={0} align="start" >
+                  <VStack gap={0} align="start">
                     <Text
                       fontWeight="bold"
                       color="white"
@@ -294,11 +305,11 @@ const Page = () => {
                       ]}
                       color="cyan.100"
                     >
-                       Protection Cover
+                      Protection Cover
                     </Text>
                   </VStack>
                 </HStack>
-                <HStack spacing={3} alignItems="start" justifyContent="start" >
+                <HStack spacing={3} alignItems="start" justifyContent="start">
                   <Box
                     p={2}
                     rounded="full"
