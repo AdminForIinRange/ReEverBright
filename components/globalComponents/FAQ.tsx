@@ -22,63 +22,54 @@ const faqs = [
     answer:
       "Yes—when done correctly. We adjust PSI and nozzles for each surface and use soft-wash (low pressure + detergents) on delicate areas like render, painted exteriors, roofs and timber. We pre-soak, protect nearby plants, and finish with a thorough rinse. Fully insured for your peace of mind.",
     category: "safety",
-  
   },
   {
     question: "What surfaces can you clean?",
     answer:
       "Driveways, paths, pavers and concrete; brick and retaining walls; house exteriors (soft-wash for render/painted surfaces); roofs (Colorbond and tile via soft-wash), gutters and fascias; decks, pergolas and fences; plus solar panels (streak-free, no harsh chemicals).",
     category: "services",
-
   },
   {
     question: "How often should I book exterior cleaning in Adelaide?",
     answer:
       "Most homes benefit from a house wash every 12–18 months. High-traffic areas like driveways/pavers: every 6–12 months. Gutters: 1–2 times per year. Coastal or hills locations may need more frequent cleans due to salt, pollen and moisture. Ask us for a free, tailored schedule.",
     category: "getting-started",
-  
   },
   {
     question: "Will pressure washing remove oil stains and mould?",
     answer:
       "Yes. We use hot water units, specialty degreasers, and mould-killing detergents to break down tough oil spots, grease, moss and algae. Some older or deep-set stains may lighten rather than disappear completely, but we always achieve the best possible result.",
     category: "results",
-  
   },
   {
     question: "Do you need access to water and power?",
     answer:
       "In most cases, yes—we connect to an outdoor tap and power point. For properties without easy access, we can bring portable water tanks and generators (additional fee). We’ll confirm setup during your free quote so there are no surprises.",
     category: "requirements",
-
   },
   {
     question: "How long does a typical job take?",
     answer:
       "It depends on size and condition. A standard driveway usually takes 1–2 hours. A full house wash can be 3–5 hours. Larger commercial or multi-surface cleans may take a full day. We always provide an estimated timeframe upfront.",
     category: "services",
-  
   },
   {
     question: "Is pressure washing environmentally friendly?",
     answer:
       "We use eco-safe detergents that break down quickly, capture run-off when needed, and adjust water use for efficiency. Pressure washing uses less water than hosing, because it’s faster and more effective. Safe for your garden, pets, and the environment.",
     category: "safety",
-    
   },
   {
     question: "Do you work on commercial properties as well?",
     answer:
       "Absolutely. We clean shopfronts, carparks, warehouses, schools, strata and council facilities. We can schedule after-hours or weekends to minimise disruption and provide ongoing maintenance plans for businesses.",
     category: "services",
-   
   },
   {
     question: "What does it cost to pressure wash a driveway?",
     answer:
       "Pricing depends on size, condition, and access. As a guide, a standard single driveway in Adelaide starts around $180–$250. Larger or heavily stained areas may cost more. We provide clear, no-obligation quotes before starting.",
     category: "pricing",
-  
   },
 ];
 
@@ -89,7 +80,7 @@ const FAQ = ({ type }: { type: string }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [animatedItems, setAnimatedItems] = useState<boolean[]>(
-    Array(selectedFaqs.length).fill(false),
+    Array(selectedFaqs.length).fill(false)
   );
 
   // Staggered animation for FAQ items
@@ -134,27 +125,27 @@ const FAQ = ({ type }: { type: string }) => {
       <Box position="relative">
         <VStack justify={"space-between"} align={"Center"} w="100%" h={"100%"}>
           {/* FAQ Title Section */}
-       <VStack justify="center" align="center" textAlign="center" w="100%">
-    <Text
-      fontSize={["16px", "18px", "24px"]}
-      fontFamily="poppins"
-      fontWeight={700}
-      lineHeight="1.6"
-     color={"black"}
-    >
-    Frequently Asked Questions
-    </Text>
-    <Text
-      fontSize={["36px", "48px", "56px"]}
-      fontWeight={700}
-      fontFamily="poppins"
-      lineHeight="1.1"
-        color={"black"}
-    >
-      FAQ
-    </Text>
-    <Box my="25px" w={["100%", "600px"]} borderWidth="1px" />
-  </VStack>
+          <VStack justify="center" align="center" textAlign="center" w="100%">
+            <Text
+              fontSize={["16px", "18px", "24px"]}
+              fontFamily="poppins"
+              fontWeight={700}
+              lineHeight="1.6"
+              color={"black"}
+            >
+              Frequently Asked Questions
+            </Text>
+            <Text
+              fontSize={["36px", "48px", "56px"]}
+              fontWeight={700}
+              fontFamily="poppins"
+              lineHeight="1.1"
+              color={"black"}
+            >
+              FAQ
+            </Text>
+            <Box my="25px" w={["100%", "600px"]} borderWidth="1px" />
+          </VStack>
 
           {/* Category filters */}
 
@@ -291,25 +282,35 @@ const FAQ = ({ type }: { type: string }) => {
               lineHeight="1.6"
               as={"p"}
             >
-              Our team is ready to provide personalized answers to all your
-              questions about AirBnB management and how we can help maximize
-              your property's potential.
+              Still have questions? Call us on{" "}
+              <Text as="span" color="blue.500">
+                0412 123 456
+              </Text>{" "}
+              or{" "}
+              <Text as="span" color="blue.500">
+                email us
+              </Text>{" "}
+              at{" "}
+              <Text as="span" color="blue.500">
+                0cW2l@example.com
+            </Text>
             </Text>
           </Box>
           <Box
+          w={"100%"}
             aria-label="Contact us"
             as={"button"}
             display="flex"
             alignItems="center"
             justifyContent="center"
-            bg="#0A1029"
+            bg="cyan.500"
             color="white"
             py={3}
             px={6}
             borderRadius="full"
             fontWeight="600"
             cursor="pointer"
-            _hover={{ bg: "#1A2142", transform: "translateY(-2px)" }}
+            _hover={{ bg: "cyan.500", transform: "translateY(-2px)" }}
             transition="all 0.3s"
             boxShadow="0 4px 12px rgba(10, 16, 41, 0.15)"
             whiteSpace="nowrap"

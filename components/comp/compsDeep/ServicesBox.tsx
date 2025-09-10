@@ -2,7 +2,17 @@ import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
 import { BiRightArrow, BiRightArrowAlt } from "react-icons/bi";
 
-function ServicesBox({ title, image }: { title: string; image: string }) {
+function ServicesBox({
+  title,
+  image,
+  desc,
+  badge,
+}: {
+  title: string;
+  image: string;
+  desc: string;
+  badge: string;
+}) {
   return (
     <Box
       w={{ base: "100%", md: "320px", lg: "420px" }}
@@ -103,7 +113,7 @@ function ServicesBox({ title, image }: { title: string; image: string }) {
                 textShadow="0 3px 14px rgba(0,0,0,0.6)"
                 opacity={0.95}
               >
-                Comprehensive management service including all our offerings.
+                {desc}
               </Text>
 
               <HStack w="100%" pt={{ base: 2, md: 3 }} spacing="3">
@@ -164,7 +174,7 @@ function ServicesBox({ title, image }: { title: string; image: string }) {
               border="1px solid"
               borderColor="whiteAlpha.200"
             >
-              Premium
+              {badge}
             </Box>
           </Box>
         </Box>

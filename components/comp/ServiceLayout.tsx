@@ -19,25 +19,40 @@ import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 const services = [
   {
+    key: "Pressure Washing",
     title: "Pressure Washing",
     image:
       "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
     desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
+    badge: "Most Popular",
   },
   {
+    key: "Solar Cleaning",
     title: "Solar Cleaning",
     image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
     desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
+    badge: "Eco Friendly",
   },
   {
+    key: "Roof Cleaning",
     title: "Roof Cleaning",
     image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
     desc: "Safely lift moss and dark streaks to restore curb appeal.",
+    badge: "Premium",
   },
   {
+    key: "Gutter Cleaning",
     title: "Gutter Cleaning",
     image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
+    badge: "Essential",
+  },
+  {
+    key: "Washing",
+    title: "Washing",
+    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
+    desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
+    badge: "Essential",
   },
 ];
 function ServiceLayout() {
@@ -75,7 +90,13 @@ function ServiceLayout() {
              px={{ base: "3%", md: "6%", xl: "16%" }}
       >
         {services.map((s) => (
-          <ServicesBox key={s.title} title={s.title} image={s.image} />
+          <ServicesBox
+            key={s.title}
+            title={s.title}
+            image={s.image}
+            desc={s.desc}
+            badge={s.badge}
+          />
         ))}
       </HStack>
     </>

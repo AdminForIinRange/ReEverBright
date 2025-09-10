@@ -63,7 +63,7 @@ const SlidingCard = () => {
       mt={{ base: 10, md: 12 }}
       position="relative"
     >
-      <Box py={{ base: "56px", md: "80px" }}>
+      <Box pt={{ base: "56px", md: "80px" }}>
         <SectionHeading
           eyebrow="Why Choose Us?"
           title="What We Promise"

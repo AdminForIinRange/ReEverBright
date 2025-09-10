@@ -52,7 +52,7 @@ const HeroText = () => {
 
       <HStack
         as={"p"}
-        fontSize={["14px", "14px", "19px", "19px", "19px", "19px"]}
+        fontSize={["18px", "18px", "19px", "19px", "19px", "19px"]}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         textAlign={["left", "left", "left", "left", "left", "left"]}
         fontFamily={"poppins"}
@@ -67,138 +67,8 @@ const HeroText = () => {
         <CheckCircle size={15} />{" "}
       </HStack>
 
-      <Text
-        as={"p"}
-        fontSize={["14px", "14px", "19px", "19px", "19px", "19px"]}
-        mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-        textAlign={["left", "left", "left", "left", "left", "left"]}
-        fontFamily={"poppins"}
-        color={"WHITE"}
-        w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-        fontWeight={"500"}
-      ></Text>
-      <Box mt={["20px", "20px", "20px", "20px", "20px", "20px"]}>
-        <VStack
-          textAlign={["start", "center", "center", "left", "left", "left"]}
-          align={["start", "center", "center", "start", "start"]}
-        >
-          <HStack
-            justify={["start", "center", "center", "start", "start"]}
-            align={["start", "center", "center", "start", "start"]}
-            gap={"20px"}
-          >
-            <HStack spacing={3} alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-                bg="cyan.900"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Zap size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start">
-                <Text
-                  fontWeight="bold"
-                  color="white"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                >
-                  Fast Service
-                </Text>
-                <Text   fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Same Day Available
-                </Text>
-              </VStack>
-            </HStack>
 
-            <HStack alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-                bg="cyan.900"
-                display="flex"
-                alignItems="start"
-                justifyContent="start"
-              >
-                <Award size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start" justify={"start"}>
-                <Text
-                  fontWeight="bold"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                  color={"white"}
-                >
-                  Premium Quality
-                </Text>
-                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Guaranteed Results
-                </Text>
-              </VStack>
-            </HStack>
-          </HStack>
-        </VStack>
-        <VStack
-          textAlign={["start", "center", "center", "left", "left", "left"]}
-          align={["start", "center", "center", "start", "start"]}
-        >
-          <HStack
-            textAlign={["start", "center", "center", "left", "left", "left"]}
-            align={["start", "center", "center", "start", "start"]}
-            gap={"20px"}
-            mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-          >
-            <HStack spacing={3} alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-                bg="cyan.900"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <ShieldCheck size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start">
-                <Text
-                  fontWeight="bold"
-                  color="white"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                >
-                  Fully Insured
-                </Text>
-                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Complete Protection
-                </Text>
-              </VStack>
-            </HStack>
-            <HStack spacing={3} alignItems="start" justifyContent="start">
-              <Box
-                p={2}
-                rounded="full"
-                bg="cyan.900"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <ShieldCheck size={20} color="white" />
-              </Box>
-              <VStack gap={0} align="start">
-                <Text
-                  fontWeight="bold"
-                  color="white"
-                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
-                >
-                  Fully Insured
-                </Text>
-                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
-                  Complete Protection
-                </Text>
-              </VStack>
-            </HStack>
-          </HStack>
-        </VStack>
-      </Box>
+
 
       <HStack
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
@@ -267,9 +137,7 @@ const HeroText = () => {
           <HStack>
             <Image src={Google} alt="Google" width={34} height={34} />
             <HStack>
-              <Text fonESize="xl" fontWeight="600" color="#fbbf24">
-                5 / 5
-              </Text>
+       
 
               {Array.from({ length: 5 }).map((_, i) => (
                 <FaStar key={i} color="#fbbf24" size={20} />
@@ -286,19 +154,134 @@ const HeroText = () => {
             w={["100%", "100%", "100%", "100%", "100%", "100%"]}
             fontWeight={"700"}
           >
-            Over 160+ Verified 5-Star Reviews
+           Verified 5-Star Reviews
           </Text>
         </VStack>
       </HStack>
-      <HStack
-        rounded={"2xl"}
-        // bg={"gray.50"}
-        // border={"1px solid lightgray"}
-        width={{ base: "100%", md: "100%" }}
-        textAlign={["center", "center", "center", "start", "start", "start"]}
-        justify={["center", "center", "center", "start", "start", "start"]}
-        position="relative"
-      ></HStack>
+      <Box p={"4"} borderRadius={"15px"} mt={["20px", "20px", "20px", "20px", "20px", "20px"]} bg={"cyan.500"} >
+        <VStack
+          textAlign={["start", "start", "start", "start", "start", "start"]}
+          align={["center", "center", "center", "start", "start"]}
+        >
+          <HStack
+            justify={["center", "center", "center", "start", "start"]}
+            align={["center", "center", "center", "start", "start"]}
+            gap={"20px"}
+          >
+            <HStack spacing={3} alignItems="start" justifyContent="start">
+              <Box
+                p={2}
+                rounded="full"
+                bg="cyan.700"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Zap size={20} color="white" />
+              </Box>
+              <VStack gap={0} align="start">
+                <Text
+                  fontWeight="bold"
+                  color="white"
+                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
+                >
+                  Fast Service
+                </Text>
+                <Text   fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
+                  Same Day Available
+                </Text>
+              </VStack>
+            </HStack>
+
+            <HStack alignItems="start" justifyContent="start">
+              <Box
+                p={2}
+                rounded="full"
+              bg="cyan.700"
+                display="flex"
+                alignItems="start"
+                justifyContent="start"
+              >
+                <Award size={20} color="white" />
+              </Box>
+              <VStack gap={0} align="start" justify={"start"}>
+                <Text
+                  fontWeight="bold"
+                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
+                  color={"white"}
+                >
+                  Premium Quality
+                </Text>
+                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
+                  Guaranteed Results
+                </Text>
+              </VStack>
+            </HStack>
+          </HStack>
+        </VStack>
+      <VStack
+          textAlign={["start", "start", "start", "start", "start", "start"]}
+          align={["center", "center", "center", "start", "start"]}
+        >
+          <HStack
+            justify={["center", "center", "center", "start", "start"]}
+            align={["center", "center", "center", "start", "start"]}
+
+          
+            gap={"20px"}
+            mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
+          >
+            <HStack spacing={3} alignItems="start" justifyContent="start">
+              <Box
+                p={2}
+                rounded="full"
+              bg="cyan.700"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <ShieldCheck size={20} color="white" />
+              </Box>
+              <VStack gap={0} align="start">
+                <Text
+                  fontWeight="bold"
+                  color="white"
+                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
+                >
+                  Fully Insured
+                </Text>
+                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
+                  Complete Protection
+                </Text>
+              </VStack>
+            </HStack>
+            <HStack spacing={3} alignItems="start" justifyContent="start">
+              <Box
+                p={2}
+                rounded="full"
+   bg="cyan.700"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <ShieldCheck size={20} color="white" />
+              </Box>
+              <VStack gap={0} align="start">
+                <Text
+                  fontWeight="bold"
+                  color="white"
+                  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]}
+                >
+                  Fully Insured
+                </Text>
+                <Text  fontSize={["12px", "12px", "14px", "14px", "14px", "19px"]} color="cyan.100">
+                  Complete Protection
+                </Text>
+              </VStack>
+            </HStack>
+          </HStack>
+        </VStack>
+      </Box>
     </>
   );
 };
