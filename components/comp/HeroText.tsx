@@ -198,7 +198,8 @@ const HeroText = () => {
       </HStack>
 
             <HStack
-      
+            // RDC
+      display={["flex", "flex", "flex", "none", "none", "none"]}
         mt={"15px"}
         rounded={"2xl"}
         // bg={"gray.50"}
