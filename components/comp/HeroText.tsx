@@ -123,7 +123,7 @@ const HeroText = () => {
                 fontWeight={"500"}
               >
                 {" "}
-                ressure Washing
+                Pressure Washing
               </Span>
             </HStack>
           </HStack>

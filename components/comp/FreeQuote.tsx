@@ -91,15 +91,7 @@ const FreeQuote = () => {
             fontSize="sm"
           />
         </HStack>
-        <Box
-          as="input"
-          placeholder="Address"
-          border="1px solid #e2e8f0"
-          borderRadius="md"
-          py={2}
-          px={3}
-          fontSize="sm"
-        />
+   
         <Box
           as="textarea"
           placeholder="How can we help"

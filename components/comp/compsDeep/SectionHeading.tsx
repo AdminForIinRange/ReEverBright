@@ -31,7 +31,7 @@ const SectionHeading = ({
       fontWeight={700}
       fontFamily="poppins"
       lineHeight="1.1"
-      color={"cyan.400"}
+      color={"cyan.900"}
     >
       {title}
     </Text>

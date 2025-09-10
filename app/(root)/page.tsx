@@ -205,7 +205,7 @@ const Page = () => {
                       ]}
                       color="cyan.100"
                     >
-                      Full Satisfaction
+                      100% Satisfaction
                     </Text>
                   </VStack>
                 </HStack>
