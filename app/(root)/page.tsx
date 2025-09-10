@@ -175,13 +175,13 @@ const Page = () => {
               color="white"
               fontSize={{ base: "12px", md: "14px", xl: "19px" }}
             >
-              Guaranteed
+              100% Guaranteed
             </Text>
             <Text
               fontSize={{ base: "12px", md: "14px", xl: "19px" }}
               color="cyan.100"
             >
-              100% Satisfaction
+     We Guarantee 
             </Text>
           </VStack>
         </HStack>

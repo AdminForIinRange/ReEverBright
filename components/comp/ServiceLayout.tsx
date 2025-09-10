@@ -38,7 +38,7 @@ const services = [
     title: "Roof Cleaning",
     image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
     desc: "Safely lift moss and dark streaks to restore curb appeal.",
-    badge: "Premium",
+    badge: "Value",
   },
   {
     key: "Gutter Cleaning",
