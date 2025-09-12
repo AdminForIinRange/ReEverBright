@@ -113,11 +113,7 @@ export default function WorkBanner() {
                 lineHeight={1.3}
                 fontSize={{ base: "2.25rem", sm: "2.75rem", md: "3.5rem" }}
               >
-              Ready for us to get to
-                <Box as="span" color="cyan.800">
-                  {" "}
-             work
-                </Box>
+                Ready for us to get to work?
               </Text>
 
               <Link
@@ -156,8 +152,10 @@ function CTA({ children }: { children: React.ReactNode }) {
       px="12"
       fontWeight="700"
     >
-      <Text color={"cyan.500"} as="span">{children}</Text>
-      <Box  color={"cyan.500"} as="span" aria-hidden="true">
+      <Text color={"cyan.500"} as="span">
+        {children}
+      </Text>
+      <Box color={"cyan.500"} as="span" aria-hidden="true">
         »
       </Box>
     </Box>
