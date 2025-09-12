@@ -43,7 +43,7 @@ const services = [
   {
     key: "Gutter Cleaning",
     title: "Gutter Cleaning",
-    image: "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
+    image: "https://images.pexels.com/photos/2663254/pexels-photo-2663254.jpeg",
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
     badge: "Essential",
   },

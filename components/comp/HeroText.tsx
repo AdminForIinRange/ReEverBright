@@ -118,7 +118,7 @@ const HeroText = () => {
                   fontWeight={"500"}
                 >
                   {" "}
-                  Gutter Cleaning
+             Solar Cleaning
                 </Span>
               </HStack>
             </HStack>
@@ -159,7 +159,7 @@ const HeroText = () => {
                   fontWeight={"500"}
                 >
                   {" "}
-                  Gutter Cleaning
+     Roof Washing
                 </Span>
               </HStack>
             </HStack>
@@ -186,7 +186,7 @@ const HeroText = () => {
                   fontWeight={"500"}
                 >
                   {" "}
-                  Gutter Cleaning
+             Pressure Washing
                 </Span>
               </HStack>
             </HStack>

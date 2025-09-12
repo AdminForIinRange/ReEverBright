@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, VStack ,Link} from "@chakra-ui/react";
 import {
   ChevronDown,
   ChevronUp,
@@ -349,68 +349,7 @@ const FAQ = ({ type }: { type: string }) => {
         </Box>
 
         {/* Still have questions section */}
-        <Box
-          mt={20}
-          bg="#F9FAFB"
-          p={8}
-          borderRadius="16px"
-          maxWidth="1200px"
-          mx="auto"
-          display="flex"
-          flexDirection={["column", "column", "row"]}
-          alignItems="center"
-          justifyContent="space-between"
-          gap={8}
-          boxShadow="0 4px 20px rgba(0,0,0,0.03)"
-          border="1px solid #E5E7EB"
-        >
-          <Box flex="1">
-            <Text
-              textStyle={"basicText"}
-              fontWeight="700"
-              color="#0A1029"
-              mb={2}
-              as={"h3"}
-            >
-              Still have questions?
-            </Text>
-            <Text
-              textStyle={"basicText"}
-              color="#4B5563"
-              lineHeight="1.6"
-              as={"p"}
-            >
-              Our team is ready to provide personalized answers to all your
-              questions about AirBnB management and how we can help maximize
-              your property's potential.
-            </Text>
-          </Box>
-          <Box
-            aria-label="Contact us"
-            as={"button"}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            bg="#0A1029"
-            color="white"
-            py={3}
-            px={6}
-            borderRadius="full"
-            fontWeight="600"
-            cursor="pointer"
-            _hover={{ bg: "#1A2142", transform: "translateY(-2px)" }}
-            transition="all 0.3s"
-            boxShadow="0 4px 12px rgba(10, 16, 41, 0.15)"
-            whiteSpace="nowrap"
-            onClick={() => router.push("/contact")}
-          >
-            <Text mr={2} textStyle={"basicText"}>
-              Contact us
-            </Text>
-            <ArrowRight size={16} />
-          </Box>
-        </Box>
-
+    
         {/* Stats section */}
       </Box>
     </Box>

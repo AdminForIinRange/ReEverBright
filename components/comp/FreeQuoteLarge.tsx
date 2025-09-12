@@ -54,7 +54,7 @@ const TextareaBox = (props: any) => (
 const FreeQuoteLarge = () => {
   return (
     <Box
-      w={["100%", "100%", "720px"]}
+      w={["100%", "100%", "100%"]}
       position="relative"
       bg="white"
       borderRadius="24px"
@@ -65,23 +65,7 @@ const FreeQuoteLarge = () => {
       overflow="hidden"
     >
       {/* soft background image accent for desktop */}
-      <Box
-        position="absolute"
-        right="-16px"
-        bottom="-16px"
-        w={{ base: "180px", md: "260px" }}
-        h={{ base: "180px", md: "260px" }}
-        opacity={0.08}
-        zIndex={0}
-        pointerEvents="none"
-      >
-        <Image
-          src={Adl}
-          alt=""
-          fill
-          style={{ objectFit: "cover", borderRadius: 16 }}
-        />
-      </Box>
+
 
       {/* Header */}
       <VStack align="flex-start" spacing={2} zIndex={1} position="relative">

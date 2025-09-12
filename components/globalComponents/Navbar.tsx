@@ -239,9 +239,9 @@ const Navbar = () => {
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          maxW="1400px"
-          mx="auto"
-          px={{ base: "20px", lg: "40px" }}
+      
+          mx="auto"    px={{ base: "1%", md: "6%", xl: "16%" }}
+
         >
           {/* Hamburger (mobile only) */}
           <Box

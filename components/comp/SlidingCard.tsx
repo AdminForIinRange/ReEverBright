@@ -59,6 +59,7 @@ const SlidingCard = () => {
   // we keep state/hooks minimal; no arrows, no rotation
   return (
     <Box
+    w={["100%", "100%", "100%"]}
       px={{ base: "2%", md: "6%", xl: "16%" }}
       mt={{ base: 10, md: 12 }}
       position="relative"
@@ -70,7 +71,7 @@ const SlidingCard = () => {
       {/* Single square with 4 quadrants */}
       <Box
         mx="auto"
-        maxW={{ base: "720px", md: "900px" }}
+       
         bg="white"
         borderRadius="xl"
         boxShadow="md"

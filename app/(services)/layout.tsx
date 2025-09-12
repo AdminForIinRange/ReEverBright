@@ -9,7 +9,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     <>
       <Navbar />
       <div className="">{children}</div>
-      <FAQ type={""} />
+  
     </>
   );
 };

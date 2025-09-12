@@ -1,344 +1,153 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
-import {
-  ChevronDown,
-  ChevronUp,
-  Calendar,
-  Star,
-  Shield,
-  Clock,
-  Award,
-  CheckCircle,
-  ArrowRight,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
-import ScheduleConsultation from "./luxeComponents/scheduleConsultation";
-import SectionHeading from "../comp/compsDeep/SectionHeading";
-const faqs = [
-  {
-    question: "Is pressure washing safe for my home?",
-    answer:
-      "Yes—when done correctly. We adjust PSI and nozzles for each surface and use soft-wash (low pressure + detergents) on delicate areas like render, painted exteriors, roofs and timber. We pre-soak, protect nearby plants, and finish with a thorough rinse. Fully insured for your peace of mind.",
-    category: "safety",
-  },
-  {
-    question: "What surfaces can you clean?",
-    answer:
-      "Driveways, paths, pavers and concrete; brick and retaining walls; house exteriors (soft-wash for render/painted surfaces); roofs (Colorbond and tile via soft-wash), gutters and fascias; decks, pergolas and fences; plus solar panels (streak-free, no harsh chemicals).",
-    category: "services",
-  },
-  {
-    question: "How often should I book exterior cleaning in Adelaide?",
-    answer:
-      "Most homes benefit from a house wash every 12–18 months. High-traffic areas like driveways/pavers: every 6–12 months. Gutters: 1–2 times per year. Coastal or hills locations may need more frequent cleans due to salt, pollen and moisture. Ask us for a free, tailored schedule.",
-    category: "getting-started",
-  },
-  {
-    question: "Will pressure washing remove oil stains and mould?",
-    answer:
-      "Yes. We use hot water units, specialty degreasers, and mould-killing detergents to break down tough oil spots, grease, moss and algae. Some older or deep-set stains may lighten rather than disappear completely, but we always achieve the best possible result.",
-    category: "results",
-  },
-  {
-    question: "Do you need access to water and power?",
-    answer:
-      "In most cases, yes—we connect to an outdoor tap and power point. For properties without easy access, we can bring portable water tanks and generators (additional fee). We’ll confirm setup during your free quote so there are no surprises.",
-    category: "requirements",
-  },
-  {
-    question: "How long does a typical job take?",
-    answer:
-      "It depends on size and condition. A standard driveway usually takes 1–2 hours. A full house wash can be 3–5 hours. Larger commercial or multi-surface cleans may take a full day. We always provide an estimated timeframe upfront.",
-    category: "services",
-  },
-  {
-    question: "Is pressure washing environmentally friendly?",
-    answer:
-      "We use eco-safe detergents that break down quickly, capture run-off when needed, and adjust water use for efficiency. Pressure washing uses less water than hosing, because it’s faster and more effective. Safe for your garden, pets, and the environment.",
-    category: "safety",
-  },
-  {
-    question: "Do you work on commercial properties as well?",
-    answer:
-      "Absolutely. We clean shopfronts, carparks, warehouses, schools, strata and council facilities. We can schedule after-hours or weekends to minimise disruption and provide ongoing maintenance plans for businesses.",
-    category: "services",
-  },
-  {
-    question: "What does it cost to pressure wash a driveway?",
-    answer:
-      "Pricing depends on size, condition, and access. As a guide, a standard single driveway in Adelaide starts around $180–$250. Larger or heavily stained areas may cost more. We provide clear, no-obligation quotes before starting.",
-    category: "pricing",
-  },
-];
+import { Box, HStack, Link, Text, VStack } from "@chakra-ui/react";
+import { ChevronDown, ChevronUp, CheckCircle } from "lucide-react";
 
-const FAQ = ({ type }: { type: string }) => {
-  const router = useRouter();
-  const isPricing = type === "pricing";
-  const selectedFaqs = isPricing ? pricingFaqs : faqs;
+type FAQItem = {
+  q: string;
+  a: string;
+  category?: string; // optional, if you want categories
+};
+
+const FAQ = ({ items }: { items: FAQItem[] }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [animatedItems, setAnimatedItems] = useState<boolean[]>(
-    Array(selectedFaqs.length).fill(false)
+    Array(items.length).fill(false)
   );
 
-  // Staggered animation for FAQ items
+  // stagger animation
   useEffect(() => {
     const timer = setTimeout(() => {
-      const newAnimatedItems = [...animatedItems];
-      for (let i = 0; i < selectedFaqs.length; i++) {
+      const newAnimated = [...animatedItems];
+      items.forEach((_, i) => {
         setTimeout(() => {
-          newAnimatedItems[i] = true;
-          setAnimatedItems([...newAnimatedItems]);
+          newAnimated[i] = true;
+          setAnimatedItems([...newAnimated]);
         }, i * 100);
-      }
+      });
     }, 300);
-
     return () => clearTimeout(timer);
-  }, [selectedFaqs]);
+  }, [items]);
 
-  // Get unique categories
-  const categories = [
-    "all",
-    ...Array.from(new Set(selectedFaqs.map((faq) => faq.category))),
-  ];
-
-  // Filter FAQs by category
-  const filteredFaqs =
-    activeCategory === "all"
-      ? selectedFaqs
-      : selectedFaqs.filter((faq) => faq.category === activeCategory);
-
-  // Header section with consultation button and benefits
-
-  // FAQ section
   return (
-    <Box
-      maxWidth="1400px"
-      mx="auto"
-       px={{ base: "2%", md: "6%", xl: "16%" }}
-      mt={"100px"}
-      pb={32}
-    >
-      {/* Decorative elements */}
-      <Box position="relative">
-        <VStack justify={"space-between"} align={"Center"} w="100%" h={"100%"}>
-          {/* FAQ Title Section */}
+    <Box maxWidth="1400px" mx="auto" px={{ base: "2%", md: "6%", xl: "16%" }} mt="100px" pb={32}>
+      <VStack align="center" textAlign="center" spacing={4}>
+        <Text
+          fontSize={["14px", "16px", "18px"]}
+          fontFamily="poppins"
+          fontWeight={600}
+          textTransform="uppercase"
+          letterSpacing="2px"
+          color="cyan.600"
+        >
+          Frequently Asked Questions
+        </Text>
+        <Text
+          fontSize={["28px", "40px", "52px"]}
+          fontWeight={800}
+          fontFamily="poppins"
+          color="black"
+        >
+          FAQ
+        </Text>
+        <Box mt="8px" mb="16px" borderColor="cyan.500" w={["80px", "120px", "160px"]} borderWidth="2px" borderRadius="full" />
+      </VStack>
 
-          <VStack justify="center" align="center" textAlign="center" w="100%">
-            {/* Eyebrow text */}
-            <Text
-              fontSize={["14px", "16px", "18px"]}
-              fontFamily="poppins"
-              fontWeight={600}
-              textTransform="uppercase"
-              letterSpacing="2px"
-              lineHeight="1.4"
-              color="cyan.600"
-            >
-              Frequently Asked Questions
-            </Text>
-
-            {/* Main title */}
-            <Text
-              fontSize={["28px", "40px", "52px"]}
-              fontWeight={800}
-              fontFamily="poppins"
-              lineHeight="1.1"
-              color={"black"}
-            >
-              FAQ
-            </Text>
-
-            {/* Accent line */}
-            <Box
-              mt="16px"
-              mb="8px"
-              borderColor="cyan.500"
-              w={["80px", "120px", "160px"]}
-              borderWidth="2px"
-              borderRadius="full"
-            />
-          </VStack>
-
-          {/* Category filters */}
-
-          {/* FAQ Items */}
+      {/* FAQ list */}
+      <Box maxWidth="1000px" mx="auto" px={{ base: "0", md: "20px" }}>
+        {items.map((faq, i) => (
           <Box
-            maxWidth="1200px"
-            mx="auto"
-            px={["0", "20px", "40px"]}
-            position="relative"
+            key={i}
+            borderBottom="1px solid #E5E7EB"
+            py={5}
+            opacity={animatedItems[i] ? 1 : 0}
+            transform={animatedItems[i] ? "translateY(0)" : "translateY(20px)"}
+            transition="all 0.4s"
           >
-            {filteredFaqs.map((faq, index) => {
-              const IconComponent = faq.icon || CheckCircle;
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-start"
+              cursor="pointer"
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              py={3}
+              px={4}
+              _hover={{ bg: "#F9FAFB" }}
+              borderRadius="8px"
+              transition="all 0.2s"
+            >
+              <Text fontWeight="600" flex="1" pr={10} color={openIndex === i ? "#0A1029" : "#111827"}>
+                {faq.q}
+              </Text>
+              <Box color="#6B7280" p={2} borderRadius="full">
+                {openIndex === i ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </Box>
+            </Box>
 
-              return (
-                <Box
-                  key={index}
-                  borderBottom="1px solid #E5E7EB"
-                  py={5}
-                  opacity={animatedItems[index] ? 1 : 0}
-                  transform={
-                    animatedItems[index] ? "translateY(0)" : "translateY(20px)"
-                  }
-                  transition="all 0.4s"
-                >
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="flex-start"
-                    cursor="pointer"
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? null : index)
-                    }
-                    py={3}
-                    px={4}
-                    _hover={{ bg: "#F9FAFB" }}
-                    transition="all 0.2s"
-                    borderRadius="8px"
-                    position="relative"
-                  >
-                    {/* Icon indicator */}
-
-                    <Text
-                      fontWeight="600"
-                      color={openIndex === index ? "#0A1029" : "#111827"}
-                      pr={10}
-                      flex="1"
-                      transition="all 0.2s"
-                      as={"p"}
-                      textStyle={"basicText"}
-                    >
-                      {faq.question}
-                    </Text>
-                    <Box
-                      color="#6B7280"
-                      bg={openIndex === index ? "#F3F4F6" : "transparent"}
-                      p={2}
-                      borderRadius="full"
-                      transition="all 0.2s"
-                    >
-                      {openIndex === index ? (
-                        <ChevronUp size={20} />
-                      ) : (
-                        <ChevronDown size={20} />
-                      )}
-                    </Box>
-                  </Box>
-
-                  {/* Answer */}
-                  <Box
-                    height={openIndex === index ? "auto" : "0px"}
-                    overflow="hidden"
-                    transition="all 0.4s"
-                    opacity={openIndex === index ? 1 : 0}
-                    mt={openIndex === index ? 3 : 0}
-                    mb={openIndex === index ? 4 : 0}
-                    pl={[4, 4, 6]}
-                    pr={[4, 4, 10]}
-                    position="relative"
-                  >
-                    <Text
-                      as={"p"}
-                      textStyle={"basicText"}
-                      color="#4B5563"
-                      lineHeight="1.8"
-                      position="relative"
-                      _before={{
-                        content: '""',
-                        position: "absolute",
-                        left: "-20px",
-                        top: "12px",
-                        width: "12px",
-                        height: "1px",
-                        background: "#CBD5E1",
-                        display: ["none", "none", "block"],
-                      }}
-                    >
-                      {faq.answer}
-                    </Text>
-                  </Box>
-                </Box>
-              );
-            })}
+            {/* Answer */}
+            <Box
+              height={openIndex === i ? "auto" : "0px"}
+              overflow="hidden"
+              transition="all 0.4s"
+              opacity={openIndex === i ? 1 : 0}
+              mt={openIndex === i ? 3 : 0}
+              mb={openIndex === i ? 4 : 0}
+              pl={[4, 6]}
+              pr={[4, 10]}
+            >
+              <Text color="#4B5563" lineHeight="1.8" fontFamily="poppins">
+                {faq.a}
+              </Text>
+            </Box>
           </Box>
-        </VStack>
-        {/* Still have questions section */}
+        ))}
+      </Box>
+
+      {/* still have questions */}
+      <Box mt="50px" mb={{ base: "40px", md: "70px" }}>
         <Box
-          mt={20}
-          bg="#F9FAFB"
-          p={8}
-          borderRadius="16px"
-          maxWidth="1200px"
-          mx="auto"
+          bg="gray.50"
+          border="1px solid"
+          borderColor="gray.200"
+          borderRadius="18px"
+          p={{ base: "18px", md: "24px" }}
           display="flex"
-          flexDirection={["column", "column", "row"]}
           alignItems="center"
           justifyContent="space-between"
-          gap={8}
-          boxShadow="0 4px 20px rgba(0,0,0,0.03)"
-          border="1px solid #E5E7EB"
+          gap="16px"
+          flexWrap="wrap"
         >
-          <Box flex="1">
-            <Text
-              textStyle={"basicText"}
-              fontWeight="700"
-              color="#0A1029"
-              mb={2}
-              as={"h3"}
-            >
-              Still have questions?
-            </Text>
-            <Text
-              textStyle={"basicText"}
-              color="#4B5563"
-              lineHeight="1.6"
-              as={"p"}
-            >
-              Still have questions? Call us on{" "}
-              <Text as="span" color="blue.500">
+          <VStack align="start" spacing="4px">
+            <Text fontFamily="poppins" fontWeight="700">Still have questions?</Text>
+            <Text fontFamily="poppins" color="gray.600">
+              Call us on{" "}
+              <Link href="tel:+61412123456" color="blue.700" textDecoration="underline">
                 0412 123 456
-              </Text>{" "}
-              or{" "}
-              <Text as="span" color="blue.500">
-                email us
-              </Text>{" "}
-              at{" "}
-              <Text as="span" color="blue.500">
-                0cW2l@example.com
-              </Text>
+              </Link>{" "}
+              or email{" "}
+              <Link href="mailto:hello@everbright.au" color="blue.700" textDecoration="underline">
+                hello@everbright.au
+              </Link>
             </Text>
-          </Box>
-          <Box
-            w={"100%"}
-            aria-label="Contact us"
-            as={"button"}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            bg="cyan.500"
-            color="white"
-            py={3}
-            px={6}
-            borderRadius="full"
-            fontWeight="600"
-            cursor="pointer"
-            _hover={{ bg: "cyan.500", transform: "translateY(-2px)" }}
-            transition="all 0.3s"
-            boxShadow="0 4px 12px rgba(10, 16, 41, 0.15)"
-            whiteSpace="nowrap"
-            onClick={() => router.push("/contact")}
-          >
-            <Text mr={2} textStyle={"basicText"}>
-              Contact us
-            </Text>
-            <ArrowRight size={16} />
-          </Box>
+          </VStack>
+          <Link href="#quote" _hover={{ textDecoration: "none" }}>
+            <Box
+              as="span"
+              px="22px"
+              py="14px"
+              bg="cyan.400"
+              color="#02173a"
+              borderRadius="999px"
+              fontWeight="700"
+              fontFamily="poppins"
+              display="inline-block"
+              boxShadow="0 6px 16px rgba(0,0,0,.08)"
+            >
+              Contact us →
+            </Box>
+          </Link>
         </Box>
-
-        {/* Stats section */}
       </Box>
     </Box>
   );
