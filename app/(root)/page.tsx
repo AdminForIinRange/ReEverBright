@@ -30,6 +30,7 @@ import icon2 from "@/public/images/Icons/2.png";
 import icon3 from "@/public/images/Icons/3.png";
 import icon4 from "@/public/images/Icons/4.png";
 import BannerSlider from "@/components/comp/compsDeep/BannerSlider";
+import WorkBanner from "@/components/comp/compsDeep/WorkBanner";
 
 const Page = () => {
   const services = [
@@ -147,6 +148,7 @@ const Page = () => {
 
           <FreeQuote />
           <Box
+          display={["block", "block", "none", "none", "none", "none"]}
   w="100%"
   p="4"
   borderRadius="15px"
@@ -428,7 +430,11 @@ const Page = () => {
 
       <BannerSlider />
 
+<WorkBanner />
+
       <ReviewSection />
+
+      
 
       {/* Floating geometric shapes */}
 
