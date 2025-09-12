@@ -166,88 +166,94 @@ const Page = () => {
           </Box>
 
           <FreeQuote />
-         
 
-
-
-    
-    
-    <Box px={{ base: "1%", md: "6%", xl: "16%" }}
-       
-    
-        w={"100%"}
-        h={"100%"}>
-      
-      <Box
-  display={["block", "block", "block", "none", "none", "none"]}
-w={"100%"}
-  p="4"
-  borderRadius="15px"
-  mt={{ base: "0", md: "20px" }}
-  bg="cyan.500"
-  // subtle texture + inner shadow for depth
-  sx={{
-    backgroundImage:
-      "radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px)",
-    backgroundSize: "14px 14px",
-  }}
->
-  <Grid templateColumns={{ base: "1fr 1fr" }} gap={4} >
-    {[
-      { Icon: Handshake, title: "100% Guaranteed", sub: "We Guarantee" },
-      { Icon: MapPinCheck, title: "Locally Owned", sub: "Adelaide Owned" },
-      { Icon: ShieldCheck, title: "Fully Insured", sub: "Protection Cover" },
-      { Icon: Sprout, title: "ECO Friendly", sub: "Environment Safe" },
-    ].map(({ Icon, title, sub }, i) => (
-      <GridItem key={i}>
-        <Box
-          // pill card
-          bg="rgba(255,255,255,.08)"
-          border="1px solid rgba(255,255,255,.18)"
-          borderRadius="12px"
-          p={3}
-        >
-          <HStack align="center" spacing={3}>
+          <Box
+          
+            w={"100%"}
+            display={["block", "block", "none", "none", "none", "none"]}
+          >
             <Box
-              p={2.5}
-              rounded="full"
-              bg="cyan.700"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              boxShadow="0 4px 10px rgba(0,0,0,.15)"
-              flexShrink={0}
+              display={["block", "block", "none", "none", "none", "none"]}
+              w={"100%"}
+              p="4"
+              borderRadius="15px"
+              mt={{ base: "0", md: "20px" }}
+              bg="cyan.500"
+              // subtle texture + inner shadow for depth
+              sx={{
+                backgroundImage:
+                  "radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px)",
+                backgroundSize: "14px 14px",
+              }}
             >
-              <Icon size={20} color="white" />
+              <Grid templateColumns={{ base: "1fr 1fr" }} gap={4}>
+                {[
+                  {
+                    Icon: Handshake,
+                    title: "100% Guaranteed",
+                    sub: "We Guarantee",
+                  },
+                  {
+                    Icon: MapPinCheck,
+                    title: "Locally Owned",
+                    sub: "Adelaide Owned",
+                  },
+                  {
+                    Icon: ShieldCheck,
+                    title: "Fully Insured",
+                    sub: "Protection Cover",
+                  },
+                  {
+                    Icon: Sprout,
+                    title: "ECO Friendly",
+                    sub: "Environment Safe",
+                  },
+                ].map(({ Icon, title, sub }, i) => (
+                  <GridItem key={i}>
+                    <Box
+                      // pill card
+                      bg="rgba(255,255,255,.08)"
+                      border="1px solid rgba(255,255,255,.18)"
+                      borderRadius="12px"
+                      p={3}
+                    >
+                      <HStack align="center" spacing={3}>
+                        <Box
+                          p={2.5}
+                          rounded="full"
+                          bg="cyan.700"
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                          boxShadow="0 4px 10px rgba(0,0,0,.15)"
+                          flexShrink={0}
+                        >
+                          <Icon size={20} color="white" />
+                        </Box>
+                        <VStack align="flex-start" spacing={0}>
+                          <Text
+                            fontWeight="bold"
+                            color="white"
+                            fontSize={{ base: "13px", md: "14px" }}
+                            lineHeight="1.2"
+                          >
+                            {title}
+                          </Text>
+                          <Text
+                            fontSize={{ base: "11px", md: "12px" }}
+                            color="cyan.100"
+                            lineHeight="1.2"
+                          >
+                            {sub}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                    </Box>
+                  </GridItem>
+                ))}
+              </Grid>
             </Box>
-            <VStack align="flex-start" spacing={0}>
-              <Text
-                fontWeight="bold"
-                color="white"
-                fontSize={{ base: "13px", md: "14px" }}
-                lineHeight="1.2"
-              >
-                {title}
-              </Text>
-              <Text
-                fontSize={{ base: "11px", md: "12px" }}
-                color="cyan.100"
-                lineHeight="1.2"
-              >
-                {sub}
-              </Text>
-            </VStack>
-          </HStack>
-        </Box>
-      </GridItem>
-    ))}
-  </Grid>
-</Box>
-
-
-      </Box>     
-
-     
+          </Box>
         </HStack>
       </HStack>
 
@@ -372,7 +378,6 @@ w={"100%"}
       </Box>
 
       <BannerSlider />
-
 
       <ReviewSection />
       <WorkBanner />

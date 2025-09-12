@@ -57,7 +57,7 @@ export default function WorkBanner() {
         }}
       >
         {/* Logo watermark using next/image */}
-        <Box
+        {/* <Box
           position="absolute"
           right={{ base: "0", md: "4" }}
           top="50%"
@@ -77,7 +77,7 @@ export default function WorkBanner() {
               filter: "grayscale(100%) brightness(1.1) contrast(0.9)",
             }}
           />
-        </Box>
+        </Box> */}
 
         {/* subtle dot grid */}
         {/* <Box
