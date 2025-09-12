@@ -13,13 +13,7 @@ const SectionHeading = ({
   color = "cyan.900",
   align = "center",
 }: SectionHeadingProps) => (
-  <VStack
-    justify="center"
-    align={align}
-    textAlign={align}
-    spacing={3}
-    w="100%"
-  >
+  <VStack justify="center" align={align} textAlign={align} spacing={3} w="100%">
     {/* Eyebrow text */}
     <Text
       fontSize={["14px", "16px", "18px"]}

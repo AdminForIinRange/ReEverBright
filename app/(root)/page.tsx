@@ -1,5 +1,14 @@
 "use client";
-import { Box, VStack, Text, HStack, Span, Link, GridItem, Grid } from "@chakra-ui/react";
+import {
+  Box,
+  VStack,
+  Text,
+  HStack,
+  Span,
+  Link,
+  GridItem,
+  Grid,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 import Google from "@/public/Google.png";
@@ -20,7 +29,17 @@ import BadgeItem from "@/components/comp/compsDeep/BadgeItem";
 import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import ServiceLayout from "@/components/comp/ServiceLayout";
-import { Shield, Home, Leaf, ShieldCheck, Zap, Award, Sprout, MapPinCheck, Handshake } from "lucide-react";
+import {
+  Shield,
+  Home,
+  Leaf,
+  ShieldCheck,
+  Zap,
+  Award,
+  Sprout,
+  MapPinCheck,
+  Handshake,
+} from "lucide-react";
 import About from "@/components/comp/About";
 import SlidingCard from "@/components/comp/SlidingCard";
 import SlindingBanner from "@/components/comp/SlindingBanner";
@@ -148,141 +167,141 @@ const Page = () => {
 
           <FreeQuote />
           <Box
-          display={["block", "block", "none", "none", "none", "none"]}
-  w="100%"
-  p="4"
-  borderRadius="15px"
-  mt={{ base: "0", md: "20px" }}
-  bg="cyan.500"
->
-  <Grid templateColumns={{ base: "1fr 1fr" }} gap={8}>
-    {/* Left column */}
-    <GridItem>
-      <VStack align="flex-start" spacing={6}>
-        {/* Item 1 */}
-        <HStack align="flex-start" spacing={3}>
-          <Box
-            p={2}
-            rounded="full"
-            bg="cyan.700"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
+            display={["block", "block", "none", "none", "none", "none"]}
+            w="100%"
+            p="4"
+            borderRadius="15px"
+            mt={{ base: "0", md: "20px" }}
+            bg="cyan.500"
           >
-             <Handshake size={20} color="white" />
-          </Box>
-          <VStack gap={0} align="flex-start" spacing={0}>
-            <Text
-              fontWeight="bold"
-              color="white"
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-            >
-              100% Guaranteed
-            </Text>
-            <Text
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-              color="cyan.100"
-            >
-     We Guarantee 
-            </Text>
-          </VStack>
-        </HStack>
+            <Grid templateColumns={{ base: "1fr 1fr" }} gap={8}>
+              {/* Left column */}
+              <GridItem>
+                <VStack align="flex-start" spacing={6}>
+                  {/* Item 1 */}
+                  <HStack align="flex-start" spacing={3}>
+                    <Box
+                      p={2}
+                      rounded="full"
+                      bg="cyan.700"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Handshake size={20} color="white" />
+                    </Box>
+                    <VStack gap={0} align="flex-start" spacing={0}>
+                      <Text
+                        fontWeight="bold"
+                        color="white"
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                      >
+                        100% Guaranteed
+                      </Text>
+                      <Text
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                        color="cyan.100"
+                      >
+                        We Guarantee
+                      </Text>
+                    </VStack>
+                  </HStack>
 
-        {/* Item 2 */}
-        <HStack align="flex-start" spacing={3} mt={"10px"}> 
-          <Box
-            p={2}
-            rounded="full"
-            bg="cyan.700"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-           <MapPinCheck size={20} color="white" />
-          </Box>
-          <VStack gap={0} align="flex-start" spacing={0}>
-            <Text
-              fontWeight="bold"
-              color="white"
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-            >
-              Locally Owned
-            </Text>
-            <Text
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-              color="cyan.100"
-            >
-              Adelaide Owned
-            </Text>
-          </VStack>
-        </HStack>
-      </VStack>
-    </GridItem>
+                  {/* Item 2 */}
+                  <HStack align="flex-start" spacing={3} mt={"10px"}>
+                    <Box
+                      p={2}
+                      rounded="full"
+                      bg="cyan.700"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <MapPinCheck size={20} color="white" />
+                    </Box>
+                    <VStack gap={0} align="flex-start" spacing={0}>
+                      <Text
+                        fontWeight="bold"
+                        color="white"
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                      >
+                        Locally Owned
+                      </Text>
+                      <Text
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                        color="cyan.100"
+                      >
+                        Adelaide Owned
+                      </Text>
+                    </VStack>
+                  </HStack>
+                </VStack>
+              </GridItem>
 
-    {/* Right column */}
-    <GridItem  >
-      <VStack  align="flex-start" spacing={6} >
-        {/* Item 3 */}
-        <HStack align="flex-start" spacing={3} >
-          <Box
-            p={2}
-            rounded="full"
-            bg="cyan.700"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <ShieldCheck size={20} color="white" />
-          </Box>
-          <VStack gap={0} align="flex-start" spacing={0}>
-            <Text
-              fontWeight="bold"
-              color="white"
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-            >
-              Fully Insured
-            </Text>
-            <Text
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-              color="cyan.100"
-            >
-              Protection Cover
-            </Text>
-          </VStack>
-        </HStack>
+              {/* Right column */}
+              <GridItem>
+                <VStack align="flex-start" spacing={6}>
+                  {/* Item 3 */}
+                  <HStack align="flex-start" spacing={3}>
+                    <Box
+                      p={2}
+                      rounded="full"
+                      bg="cyan.700"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <ShieldCheck size={20} color="white" />
+                    </Box>
+                    <VStack gap={0} align="flex-start" spacing={0}>
+                      <Text
+                        fontWeight="bold"
+                        color="white"
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                      >
+                        Fully Insured
+                      </Text>
+                      <Text
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                        color="cyan.100"
+                      >
+                        Protection Cover
+                      </Text>
+                    </VStack>
+                  </HStack>
 
-        {/* Item 4 */}
-        <HStack align="flex-start" spacing={3} mt={"10px"}>
-          <Box
-            p={2}
-            rounded="full"
-            bg="cyan.700"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Sprout size={20} color="white" />
+                  {/* Item 4 */}
+                  <HStack align="flex-start" spacing={3} mt={"10px"}>
+                    <Box
+                      p={2}
+                      rounded="full"
+                      bg="cyan.700"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Sprout size={20} color="white" />
+                    </Box>
+                    <VStack gap={0} align="flex-start" spacing={0}>
+                      <Text
+                        fontWeight="bold"
+                        color="white"
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                      >
+                        ECO Friendly
+                      </Text>
+                      <Text
+                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
+                        color="cyan.100"
+                      >
+                        Environment Safe
+                      </Text>
+                    </VStack>
+                  </HStack>
+                </VStack>
+              </GridItem>
+            </Grid>
           </Box>
-          <VStack gap={0} align="flex-start" spacing={0}>
-            <Text
-              fontWeight="bold"
-              color="white"
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-            >
-              ECO Friendly
-            </Text>
-            <Text
-              fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-              color="cyan.100"
-            >
-              Environment Safe
-            </Text>
-          </VStack>
-        </HStack>
-      </VStack>
-    </GridItem>
-  </Grid>
-</Box>
 
           {/* <Box  
             position="relative"
@@ -324,51 +343,48 @@ const Page = () => {
         <Box pt={"50px"} bg={"cyan.600"}>
           <Box>
             {/* Another spot where SectionHeading matches your style */}
-          
 
-
-
-              <VStack
-  justify={"center"}
+            <VStack
+              justify={"center"}
               align={"center"}
               w={"100%"}
               textAlign={"center"}
               px={{ base: "2%", md: "6%", xl: "16%" }}
-  >
-    {/* Eyebrow text */}
-    <Text
-      fontSize={["14px", "16px", "18px"]}
-      fontFamily="poppins"
-      fontWeight={600}
-      textTransform="uppercase"
-      letterSpacing="2px"
-      lineHeight="1.4"
-   color="cyan.900"
-    >
-                      EVERBRIGHT PRESSURE WASHING
-    </Text>
+            >
+              {/* Eyebrow text */}
+              <Text
+                fontSize={["14px", "16px", "18px"]}
+                fontFamily="poppins"
+                fontWeight={600}
+                textTransform="uppercase"
+                letterSpacing="2px"
+                lineHeight="1.4"
+                color="cyan.900"
+              >
+                EVERBRIGHT PRESSURE WASHING
+              </Text>
 
-    {/* Main title */}
-    <Text
-      fontSize={["28px", "40px", "52px"]}
-      fontWeight={800}
-      fontFamily="poppins"
-      lineHeight="1.1"
-      color="cyan.100"
-    >
-      A Local Business you can rely on
-    </Text>
+              {/* Main title */}
+              <Text
+                fontSize={["28px", "40px", "52px"]}
+                fontWeight={800}
+                fontFamily="poppins"
+                lineHeight="1.1"
+                color="cyan.100"
+              >
+                A Local Business you can rely on
+              </Text>
 
-    {/* Accent line */}
-    <Box
-      mt="16px"
-      mb="8px"
-      borderColor="cyan.500"
-      w={["80px", "120px", "160px"]}
-      borderWidth="2px"
-      borderRadius="full"
-    />
-  </VStack>
+              {/* Accent line */}
+              <Box
+                mt="16px"
+                mb="8px"
+                borderColor="cyan.500"
+                w={["80px", "120px", "160px"]}
+                borderWidth="2px"
+                borderRadius="full"
+              />
+            </VStack>
 
             <HStack
               zIndex={3}
@@ -442,11 +458,9 @@ const Page = () => {
 
       <BannerSlider />
 
-<WorkBanner />
+      <WorkBanner />
 
       <ReviewSection />
-
-      
 
       {/* Floating geometric shapes */}
 

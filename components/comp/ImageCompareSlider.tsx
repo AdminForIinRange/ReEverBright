@@ -77,7 +77,6 @@ const ImageCompareSlider = () => {
 
       {/* Overlay image with vertical clipping */}
       <Box
-      
         as="img"
         src={bottomImage}
         position="absolute"
@@ -91,7 +90,6 @@ const ImageCompareSlider = () => {
           clipPath: `inset(0 0 ${containerHeight - sliderY}px 0)`,
           userSelect: "none",
           pointerEvents: "none",
-      
         }}
       />
 

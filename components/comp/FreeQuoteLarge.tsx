@@ -75,7 +75,12 @@ const FreeQuoteLarge = () => {
         zIndex={0}
         pointerEvents="none"
       >
-        <Image src={Adl} alt="" fill style={{ objectFit: "cover", borderRadius: 16 }} />
+        <Image
+          src={Adl}
+          alt=""
+          fill
+          style={{ objectFit: "cover", borderRadius: 16 }}
+        />
       </Box>
 
       {/* Header */}
@@ -87,7 +92,11 @@ const FreeQuoteLarge = () => {
           color="blue.900"
           lineHeight="1.05"
         >
-          FREE QUOTE <Box as="span" color="cyan.600"> TODAY!</Box>
+          FREE QUOTE{" "}
+          <Box as="span" color="cyan.600">
+            {" "}
+            TODAY!
+          </Box>
         </Text>
 
         <Text
@@ -103,7 +112,12 @@ const FreeQuoteLarge = () => {
         {/* Trust row */}
         <HStack spacing={3} mt={1}>
           <Box position="relative" w="20px" h="20px">
-            <Image src={Google} alt="Google" fill style={{ objectFit: "contain" }} />
+            <Image
+              src={Google}
+              alt="Google"
+              fill
+              style={{ objectFit: "contain" }}
+            />
           </Box>
           <HStack spacing={1} color="yellow.400">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -167,14 +181,19 @@ const FreeQuoteLarge = () => {
           fontSize="md"
           letterSpacing="0.2px"
           transition="all .15s ease"
-          _hover={{ transform: "translateY(-1px)", bg: "cyan.400", boxShadow: "0 12px 24px rgba(6,182,212,.35)" }}
+          _hover={{
+            transform: "translateY(-1px)",
+            bg: "cyan.400",
+            boxShadow: "0 12px 24px rgba(6,182,212,.35)",
+          }}
           _active={{ transform: "translateY(0)" }}
         >
           Get My Free Quote →
         </Box>
 
         <Text fontSize="xs" color="gray.500" textAlign="center">
-          By submitting, you agree to be contacted about your request. We never share your info.
+          By submitting, you agree to be contacted about your request. We never
+          share your info.
         </Text>
       </VStack>
     </Box>

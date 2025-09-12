@@ -27,7 +27,6 @@ const Footer = () => {
         {/* Logo section */}
         <Box mb={{ base: "40px", md: "0" }}>
           <Box display="flex" alignItems="center" gap="12px">
-         
             <Text
               fontSize={{ base: "16px", md: "18px" }}
               fontWeight="700"

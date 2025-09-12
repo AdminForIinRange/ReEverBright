@@ -47,7 +47,6 @@ const services = [
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
     badge: "Essential",
   },
-
 ];
 function ServiceLayout() {
   return (
@@ -58,14 +57,13 @@ function ServiceLayout() {
         align="center"
         w="100%"
         textAlign="center"
-             px={{ base: "2%", md: "6%", xl: "16%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
       >
         <VStack
           justify={"center"}
           align={"center"}
           w={"100%"}
           textAlign={"center"}
-
         >
           <SectionHeading
             eyebrow="See the difference we make"
@@ -80,8 +78,7 @@ function ServiceLayout() {
         justify={"center"}
         align={"center"}
         gap={["20px", "20px", "20px", "20px", "20px", "20px"]}
-       
-             px={{ base: "2%", md: "6%", xl: "16%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
       >
         {services.map((s) => (
           <ServicesBox

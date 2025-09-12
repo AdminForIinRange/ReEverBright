@@ -7,30 +7,24 @@ import SectionHeading from "./compsDeep/SectionHeading";
 const About = () => {
   return (
     <Box as="section" mt={{ base: "100px", xl: "180px" }} aria-label="About">
-
-
-
-          
       {/* Heading */}
       <VStack
-      
         justify="center"
         align="center"
         w="100%"
         textAlign="center"
-             px={{ base: "2%", md: "6%", xl: "16%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
       >
         <SectionHeading
           eyebrow={`Be amazed at your property's`}
           title={`Restoring Your Most\nValuable Asset`}
-         
         />
       </VStack>
 
       {/* Content */}
       <HStack
         zIndex={3}
-             px={{ base: "2%", md: "6%", xl: "16%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
         justify="center"
         align="center"
         w="100%"
@@ -93,7 +87,7 @@ const About = () => {
 
           {/* Image area with decorative frame */}
           <Box
-            my={["50px", "50px", "50px", "0px" ]}
+            my={["50px", "50px", "50px", "0px"]}
             position="relative"
             h={{ base: "550px", md: "550px", xl: "550px" }}
             w={{ base: "100%", md: "100%" }}
@@ -117,7 +111,6 @@ const About = () => {
                 borderRadius="24px"
                 overflow="hidden"
                 bg="gray.200" // fallback
-           
               >
                 <ImageCompareSlider />
               </Box>

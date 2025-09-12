@@ -4,9 +4,9 @@ import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 
 /* ====== Tunables ====== */
-const CARD_W = 340;         // max card width
-const CARD_H = 220;         // card height
-const CARD_GAP = 24;        // px gap between cards
+const CARD_W = 340; // max card width
+const CARD_H = 220; // card height
+const CARD_GAP = 24; // px gap between cards
 const MARQUEE_PX_PER_SEC = 50; // autoplay speed; 40–80 feels good
 
 /* ====== Small utilities ====== */
@@ -24,7 +24,10 @@ const srOnly = {
 
 function StarRating({ value = 5 }) {
   return (
-    <div aria-label={`${value} out of 5 stars`} style={{ display: "flex", gap: 4 }}>
+    <div
+      aria-label={`${value} out of 5 stars`}
+      style={{ display: "flex", gap: 4 }}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
@@ -32,7 +35,10 @@ function StarRating({ value = 5 }) {
           style={{
             fontSize: 16,
             lineHeight: 1,
-            filter: i < value ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))" : "none",
+            filter:
+              i < value
+                ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))"
+                : "none",
             color: i < value ? "#F6AD55" : "#E2E8F0",
           }}
         >
@@ -44,10 +50,22 @@ function StarRating({ value = 5 }) {
 }
 
 /* ====== Review Card ====== */
-function ReviewCard({ name, date, reviewText, stars, platform, avatar, verified = false }) {
+function ReviewCard({
+  name,
+  date,
+  reviewText,
+  stars,
+  platform,
+  avatar,
+  verified = false,
+}) {
   const initial = (name || "•").trim().charAt(0).toUpperCase();
   const platformLabel =
-    platform === "google" ? "Google" : platform === "facebook" ? "Facebook" : "Review";
+    platform === "google"
+      ? "Google"
+      : platform === "facebook"
+        ? "Facebook"
+        : "Review";
 
   return (
     <div
@@ -70,7 +88,14 @@ function ReviewCard({ name, date, reviewText, stars, platform, avatar, verified 
       }}
     >
       {/* header */}
-      <div style={{ display: "flex", gap: 12, alignItems: "center", flexShrink: 0 }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 12,
+          alignItems: "center",
+          flexShrink: 0,
+        }}
+      >
         <div
           style={{
             width: 44,
@@ -108,9 +133,10 @@ function ReviewCard({ name, date, reviewText, stars, platform, avatar, verified 
             >
               {name}
             </div>
-       
           </div>
-          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>{date}</div>
+          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>
+            {date}
+          </div>
         </div>
       </div>
 
@@ -120,7 +146,9 @@ function ReviewCard({ name, date, reviewText, stars, platform, avatar, verified 
       </div>
 
       {/* body */}
-      <div style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}>
+      <div
+        style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
+      >
         <p
           style={{
             margin: 0,
@@ -149,7 +177,9 @@ function ReviewsMarquee({ reviews }) {
   const prefersReducedMotion = useMemo(() => {
     if (typeof window === "undefined" || !window.matchMedia) return false;
     try {
-      return window.matchMedia("(prefers-reduced-motion: reduce)")?.matches || false;
+      return (
+        window.matchMedia("(prefers-reduced-motion: reduce)")?.matches || false
+      );
     } catch {
       return false;
     }
@@ -209,7 +239,12 @@ function ReviewsMarquee({ reviews }) {
             ["--rvw-play"]: prefersReducedMotion ? "paused" : "running",
           }}
         >
-          <div ref={halfRef} className="rvw-half" role="list" aria-label="Customer reviews">
+          <div
+            ref={halfRef}
+            className="rvw-half"
+            role="list"
+            aria-label="Customer reviews"
+          >
             {reviews.map((r, i) => (
               <ReviewCard key={`h1-${i}`} {...r} />
             ))}
@@ -223,8 +258,8 @@ function ReviewsMarquee({ reviews }) {
       </div>
 
       <span style={srOnly}>
-        Reviews auto-scroll horizontally. Hover, focus, or touch to pause. Motion respects your
-        system’s “reduced motion” preference.
+        Reviews auto-scroll horizontally. Hover, focus, or touch to pause.
+        Motion respects your system’s “reduced motion” preference.
       </span>
 
       {/* Scoped styles – no new imports */}

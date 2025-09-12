@@ -39,7 +39,7 @@ function BannerSlider() {
   useEffect(() => {
     const id = setInterval(
       () => setIdx((i) => (i + 1) % services.length),
-      SLIDE_DURATION_MS
+      SLIDE_DURATION_MS,
     );
     return () => clearInterval(id);
   }, [services.length]);
@@ -94,15 +94,7 @@ function BannerSlider() {
 
             {/* Solid / primary button */}
             <HStack
-            
-              justify={[
-                "start",
-                "start",
-                "start",
-                "start",
-                "start",
-                "start",
-              ]}
+              justify={["start", "start", "start", "start", "start", "start"]}
               align={"start"}
               w={"100%"}
               transition={"all 0.2s ease-in-out"}
@@ -135,7 +127,7 @@ function BannerSlider() {
                 p={["2", "4", "4", "4", "4", "4"]}
                 color={"white"}
                 rounded={"30px"}
-                px={[ "6", "8", "10", "12", "12", "12"]}
+                px={["6", "8", "10", "12", "12", "12"]}
                 fontWeight={"500"}
                 onClick={() => router.push("/services")}
               >

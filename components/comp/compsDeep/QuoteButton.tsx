@@ -6,10 +6,8 @@ const QuoteButton = () => {
   const router = useRouter();
   return (
     <Box
-    w={["100%", "100%", "none", "none", "none", "none"]}
-  
+      w={["100%", "100%", "none", "none", "none", "none"]}
       bg="cyan.500"
-   
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -19,7 +17,7 @@ const QuoteButton = () => {
       cursor="pointer"
       _hover={{
         transition: "all 0.2s ease-in-out",
-   
+
         fontWeight: "700",
         px: "80px",
         bg: "cyan",

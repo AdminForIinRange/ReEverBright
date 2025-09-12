@@ -188,7 +188,9 @@ function CTA({ children }: { children: React.ReactNode }) {
       fontWeight="700"
     >
       <Text as="span">{children}</Text>
-      <Box as="span" aria-hidden="true">»</Box>
+      <Box as="span" aria-hidden="true">
+        »
+      </Box>
     </Box>
   );
 }

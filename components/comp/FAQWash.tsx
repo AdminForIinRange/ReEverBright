@@ -121,7 +121,6 @@ const pricingFaqs = [
 
 // Benefits data
 
-
 const FAQ = ({ type }: { type: string }) => {
   const router = useRouter();
   const isPricing = type === "pricing";
@@ -375,7 +374,7 @@ const FAQ = ({ type }: { type: string }) => {
             >
               Still have questions?
             </Text>
-         <Text
+            <Text
               textStyle={"basicText"}
               color="#4B5563"
               lineHeight="1.6"

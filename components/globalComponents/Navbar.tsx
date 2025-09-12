@@ -219,7 +219,6 @@ const Navbar = () => {
     //     { label: "Our Journey", link: "/about/journey", description: "See how EverBright has evolved" },
     //   ],
     // },
-   
   ];
 
   return (
@@ -233,7 +232,6 @@ const Navbar = () => {
       bg={scrolled ? "cyan.500" : "transparent"}
       backdropFilter={scrolled ? "blur(10px)" : "none"}
       transition="background-color 200ms ease"
-   
     >
       {/* Main Nav */}
       <Box w="100%" py="10px" transition="all 0.3s ease">
@@ -276,12 +274,19 @@ const Navbar = () => {
           </Box>
 
           {/* Phone icon (mobile) */}
-          <Box display={{ base: "block", md: "block", lg: "none" }} textAlign={"center"}>
+          <Box
+            display={{ base: "block", md: "block", lg: "none" }}
+            textAlign={"center"}
+          >
             <Phone size={24} color="#F0F0F0" />
           </Box>
 
           {/* Desktop Nav */}
-          <Box display={{ base: "none", md: "none", lg: "flex" }} alignItems="center" justifyContent="flex-end">
+          <Box
+            display={{ base: "none", md: "none", lg: "flex" }}
+            alignItems="center"
+            justifyContent="flex-end"
+          >
             {navigationItems.map((item) => (
               <Box
                 key={item.name}
@@ -296,7 +301,12 @@ const Navbar = () => {
                   if (item.hasDropdown) handleLeave();
                 }}
               >
-                <Box cursor="pointer" onClick={() => handleNavigate(item.path)} position="relative" pb="4px">
+                <Box
+                  cursor="pointer"
+                  onClick={() => handleNavigate(item.path)}
+                  position="relative"
+                  pb="4px"
+                >
                   <Text
                     textStyle={"smallText"}
                     fontWeight={activePage === item.path ? "600" : "500"}
@@ -316,8 +326,8 @@ const Navbar = () => {
                       activePage === item.path
                         ? "100%"
                         : hoveredItem === item.name.toLowerCase()
-                        ? "70%"
-                        : "0%"
+                          ? "70%"
+                          : "0%"
                     }
                     height="2px"
                     bg={activePage === item.path ? "#000000" : "#555555"}
@@ -325,7 +335,10 @@ const Navbar = () => {
                   />
                 </Box>
                 {item.hasDropdown && (
-                  <Dropdown items={item.items || []} category={item.name.toLowerCase()} />
+                  <Dropdown
+                    items={item.items || []}
+                    category={item.name.toLowerCase()}
+                  />
                 )}
               </Box>
             ))}
@@ -346,7 +359,11 @@ const Navbar = () => {
                 <Box textAlign={"center"}>
                   <Phone />
                 </Box>
-                <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+                <Text
+                  textStyle={"smallText"}
+                  fontFamily="poppins"
+                  fontWeight="500"
+                >
                   Get a Quote
                 </Text>
               </HStack>
@@ -437,7 +454,6 @@ const Navbar = () => {
           </Box>
 
           {/* Mobile Contact Info */}
-        
         </Box>
       </Box>
     </Box>

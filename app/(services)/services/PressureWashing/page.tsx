@@ -52,9 +52,24 @@ const PressureWashing = () => {
         />
 
         {/* hero content */}
-        <Box px={{ base: "4%", md: "6%", xl: "16%" }} pt={{ base: "110px", md: "140px" }} pb={{ base: "60px", md: "90px" }}>
-          <Text color="cyan.100" fontFamily="poppins" fontSize={{ base: "12px", md: "14px" }} opacity={0.9}>
-            <Text as="span" color="#FFC107">home</Text> · services · <Text as="span" fontWeight="700">pressure washing</Text>
+        <Box
+          px={{ base: "4%", md: "6%", xl: "16%" }}
+          pt={{ base: "110px", md: "140px" }}
+          pb={{ base: "60px", md: "90px" }}
+        >
+          <Text
+            color="cyan.100"
+            fontFamily="poppins"
+            fontSize={{ base: "12px", md: "14px" }}
+            opacity={0.9}
+          >
+            <Text as="span" color="#FFC107">
+              home
+            </Text>{" "}
+            · services ·{" "}
+            <Text as="span" fontWeight="700">
+              pressure washing
+            </Text>
           </Text>
 
           <Text
@@ -70,8 +85,16 @@ const PressureWashing = () => {
             A Clean Home Feels Like a New Home
           </Text>
 
-          <Text color="cyan.100" mt={{ base: "10px", md: "14px" }} textAlign="start" fontFamily="poppins" fontSize={{ base: "14px", md: "16px" }} maxW="860px">
-            Professional pressure washing across Adelaide—fast quotes, careful workmanship, and a satisfaction guarantee.
+          <Text
+            color="cyan.100"
+            mt={{ base: "10px", md: "14px" }}
+            textAlign="start"
+            fontFamily="poppins"
+            fontSize={{ base: "14px", md: "16px" }}
+            maxW="860px"
+          >
+            Professional pressure washing across Adelaide—fast quotes, careful
+            workmanship, and a satisfaction guarantee.
           </Text>
 
           <HStack mt={{ base: "18px", md: "24px" }}>
@@ -100,7 +123,7 @@ const PressureWashing = () => {
 
       {/* INTRO SPLIT */}
       <HStack
-             px={{ base: "2%", md: "6%", xl: "16%" }}
+        px={{ base: "2%", md: "6%", xl: "16%" }}
         justify="center"
         align="center"
         w="100%"
@@ -115,7 +138,12 @@ const PressureWashing = () => {
         >
           {/* copy */}
           <Box w={["100%", "100%", "600px"]}>
-            <Text color="#FFC107" textAlign="start" fontFamily="poppins" fontSize={{ base: "13px", md: "18px" }}>
+            <Text
+              color="#FFC107"
+              textAlign="start"
+              fontFamily="poppins"
+              fontSize={{ base: "13px", md: "18px" }}
+            >
               High Pressure Cleaning Adelaide
             </Text>
 
@@ -138,28 +166,51 @@ const PressureWashing = () => {
               lineHeight={{ base: "1.75", md: "1.9" }}
               mt={{ base: "6px", md: "10px" }}
             >
-              Our Adelaide pressure washing removes dirt, grime, algae, and stains using calibrated pressure and the right detergents.
-              We deliver safe, consistent results—and we back it with our no-hassle satisfaction guarantee. Get a quick, clear quote
-              and let EverBright bring your property back to life.
+              Our Adelaide pressure washing removes dirt, grime, algae, and
+              stains using calibrated pressure and the right detergents. We
+              deliver safe, consistent results—and we back it with our no-hassle
+              satisfaction guarantee. Get a quick, clear quote and let
+              EverBright bring your property back to life.
             </Text>
 
             {/* bullet list */}
-            <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
+            <VStack
+              align="start"
+              spacing="6px"
+              mt={{ base: "12px", md: "16px" }}
+            >
               {[
                 "Pressure Cleaning",
                 "Driveway & Pathway Cleaning",
                 "House & Roof Washing",
                 "Commercial Exterior Cleaning",
               ].map((item) => (
-                <Text key={item} fontFamily="poppins" fontSize={{ base: "16px", md: "18px" }}>
+                <Text
+                  key={item}
+                  fontFamily="poppins"
+                  fontSize={{ base: "16px", md: "18px" }}
+                >
                   {/* leading checkmark without new imports */}
-                  <Text as="span" mr="8px">✓</Text>{item}
+                  <Text as="span" mr="8px">
+                    ✓
+                  </Text>
+                  {item}
                 </Text>
               ))}
             </VStack>
 
-            <HStack justify={["center", "center", "start"]} mt={{ base: "14px", md: "20px" }}>
-              <Link href="#quote" _hover={{ textDecoration: "none", transform: "translateY(-1px)" }} transition="all 0.15s ease">
+            <HStack
+              justify={["center", "center", "start"]}
+              mt={{ base: "14px", md: "20px" }}
+            >
+              <Link
+                href="#quote"
+                _hover={{
+                  textDecoration: "none",
+                  transform: "translateY(-1px)",
+                }}
+                transition="all 0.15s ease"
+              >
                 <Box
                   as="span"
                   px="18px"
@@ -194,7 +245,11 @@ const PressureWashing = () => {
               fill
               style={{ objectFit: "cover", objectPosition: "center" }}
             />
-            <Box position="absolute" inset={0} bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)" />
+            <Box
+              position="absolute"
+              inset={0}
+              bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)"
+            />
           </Box>
         </HStack>
       </HStack>
@@ -213,10 +268,18 @@ const PressureWashing = () => {
           gap="16px"
         >
           <VStack align="start" spacing={0}>
-            <Text fontFamily="poppins" fontWeight="700" fontSize={{ base: "18px", md: "22px" }}>
+            <Text
+              fontFamily="poppins"
+              fontWeight="700"
+              fontSize={{ base: "18px", md: "22px" }}
+            >
               Get a fast, no-obligation quote
             </Text>
-            <Text fontFamily="poppins" fontSize={{ base: "13px", md: "14px" }} color="cyan.700">
+            <Text
+              fontFamily="poppins"
+              fontSize={{ base: "13px", md: "14px" }}
+              color="cyan.700"
+            >
               Fully insured · Police Checked · Satisfaction Guaranteed
             </Text>
           </VStack>
@@ -239,26 +302,43 @@ const PressureWashing = () => {
       </Box>
 
       {/* SIMPLE QUOTE ANCHOR (so #quote works even without a form component) */}
-      <Box id="quote" px={{ base: "4%", md: "6%", xl: "16%" }} mt={{ base: "30px", md: "50px" }}>
+      <Box
+        id="quote"
+        px={{ base: "4%", md: "6%", xl: "16%" }}
+        mt={{ base: "30px", md: "50px" }}
+      >
         <Box
           border="2px dashed"
           borderColor="cyan.200"
           borderRadius="16px"
           p={{ base: "18px", md: "22px" }}
         >
-          <Text fontFamily="poppins" fontWeight="700" mb="6px" color="blue.700">Prefer to message?</Text>
+          <Text fontFamily="poppins" fontWeight="700" mb="6px" color="blue.700">
+            Prefer to message?
+          </Text>
           <Text fontFamily="poppins" mb="12px">
             Email us at{" "}
-            <Link href="mailto:hello@everbright.au" color="blue.700" textDecoration="underline">
+            <Link
+              href="mailto:hello@everbright.au"
+              color="blue.700"
+              textDecoration="underline"
+            >
               hello@everbright.au
             </Link>{" "}
             or{" "}
-            <Link href="tel:+61000000000" color="blue.700" textDecoration="underline">
+            <Link
+              href="tel:+61000000000"
+              color="blue.700"
+              textDecoration="underline"
+            >
               call 0000 000 000
             </Link>
             . Include your suburb and a couple of photos for the fastest quote.
           </Text>
-          <Link href="mailto:hello@everbright.au?subject=Pressure%20Washing%20Quote" _hover={{ textDecoration: "none" }}>
+          <Link
+            href="mailto:hello@everbright.au?subject=Pressure%20Washing%20Quote"
+            _hover={{ textDecoration: "none" }}
+          >
             <Box
               as="span"
               px="18px"
@@ -276,10 +356,7 @@ const PressureWashing = () => {
         </Box>
       </Box>
 
-      
-
       {/* FAQ (no new imports; simple toggle) */}
-      
     </Box>
   );
 };

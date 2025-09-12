@@ -30,7 +30,7 @@ const FreeQuote = () => {
         FREE QUOTE <br /> TODAY!
       </Text>
       <Text
-       mb={4}
+        mb={4}
         fontFamily={"poppins"}
         textAlign={"center"}
         fontSize="sm"
@@ -38,12 +38,9 @@ const FreeQuote = () => {
         fontWeight="700"
         px={4}
         color="blue.900"
-   
       >
         30 Seconds to Your Free Quote No Commitments
       </Text>
-
-
 
       {/* Inputs (styled boxes only, since no Chakra Input) */}
       <VStack spacing={3} align="stretch">
@@ -69,7 +66,7 @@ const FreeQuote = () => {
             fontSize="sm"
           />
         </HStack>
-          <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
+        <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
           <Box
             as="input"
             placeholder="Email"
@@ -91,7 +88,7 @@ const FreeQuote = () => {
             fontSize="sm"
           />
         </HStack>
-   
+
         <Box
           as="textarea"
           placeholder="How can we help your home"

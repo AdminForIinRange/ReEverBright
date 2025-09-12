@@ -80,7 +80,7 @@ const FAQ = ({ type }: { type: string }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [animatedItems, setAnimatedItems] = useState<boolean[]>(
-    Array(selectedFaqs.length).fill(false)
+    Array(selectedFaqs.length).fill(false),
   );
 
   // Staggered animation for FAQ items
@@ -293,11 +293,11 @@ const FAQ = ({ type }: { type: string }) => {
               at{" "}
               <Text as="span" color="blue.500">
                 0cW2l@example.com
-            </Text>
+              </Text>
             </Text>
           </Box>
           <Box
-          w={"100%"}
+            w={"100%"}
             aria-label="Contact us"
             as={"button"}
             display="flex"

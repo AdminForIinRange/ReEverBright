@@ -17,7 +17,6 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <div className="">{children}</div>
       <FAQ type={""} />
       <Footer />
-      
     </>
   );
 };
