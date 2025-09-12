@@ -6,27 +6,27 @@ import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
-const PressureWashing = () => {
-  const PressureWashingfaqs = [
+const RoofCleaning = () => {
+  const RoofCleaningfaqs = [
     {
-      q: "What surfaces can be pressure washed?",
-      a: "EverBright pressure washing in Adelaide restores driveways, footpaths, patios, fences, walls, pavers, decks, and other hard exterior surfaces.",
+      q: "Why should I clean my roof?",
+      a: "Roof cleaning removes moss, mould, lichen, and stains, restoring your roof's appearance while extending its lifespan. A clean roof improves street appeal and protects your biggest investment.",
     },
     {
-      q: "Will pressure washing damage my driveway or pavers?",
-      a: "No. Our commercial grade equipment allows us to adjust the water pressure for each surface, ensuring a deep clean without causing damage.",
+      q: "Will roof cleaning damage my tiles or Colorbond?",
+      a: "No. EverBright uses safe roof cleaning methods tailored to your roof type. For tiled roofs, we use controlled pressure; for Colorbond roofs, we use soft washing to protect the surface.",
     },
     {
-      q: "How long does a driveway clean take?",
-      a: "Most residential driveways take 1–2 hours, depending on size and stains. Larger areas or heavily soiled surfaces may take longer.",
+      q: "How often should roofs be cleaned?",
+      a: "Roofs in Adelaide should be professionally cleaned every 2–3 years to prevent heavy moss and lichen build-up.",
     },
     {
-      q: "How long will my driveway stay clean after pressure washing?",
-      a: "Typically 12–18 months, depending on weather, traffic, and nearby trees.",
+      q: "Can you remove moss and lichen?",
+      a: "Yes. We apply roof treatments that kill moss and lichen at the root, helping your roof stay cleaner for longer.",
     },
     {
-      q: "Do you use chemicals for pressure washing?",
-      a: "Only when needed. Most surfaces are cleaned with high pressure water, but for oil stains, mould, or algae, we may use eco-friendly detergents.",
+      q: "Do I need to be home during roof cleaning?",
+      a: "Not necessarily. As long as we can access your roof safely, we can complete the job while you're away.",
     },
   ];
   const [open, setOpen] = React.useState<number | null>(0);
@@ -64,7 +64,7 @@ const PressureWashing = () => {
             </Text>{" "}
             · services ·{" "}
             <Text as="span" fontWeight="700">
-              pressure washing
+              Roof washing
             </Text>
           </Text>
 
@@ -87,7 +87,7 @@ const PressureWashing = () => {
             color="cyan.100"
             maxW="760px"
           >
-            Professional pressure washing across Adelaide—fast quotes, careful
+            Professional Roof washing across Adelaide—fast quotes, careful
             workmanship, and a satisfaction guarantee.
           </Text>
 
@@ -129,7 +129,7 @@ const PressureWashing = () => {
             fontSize={{ base: "14px", md: "18px" }}
             color="cyan.600"
           >
-            High Pressure Cleaning Adelaide
+            High Roof Cleaning Adelaide
           </Text>
 
           <Text
@@ -140,7 +140,7 @@ const PressureWashing = () => {
             color="cyan.900"
             py="8px"
           >
-            Expert Pressure Cleaning Services in Adelaide
+            Expert Roof Cleaning Services in Adelaide
           </Text>
 
           <Text
@@ -149,19 +149,19 @@ const PressureWashing = () => {
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
           >
-            Restore your property’s curb appeal with professional pressure
-            washing in Adelaide. We deep-clean driveways, patios, concrete, and
-            paving to remove stubborn dirt, grime, mould, and algae. Our
-            commercial-grade equipment delivers powerful, streak-free results
-            that last—making your home look brand new.
+            Protect your biggest investment with expert roof cleaning in
+            Adelaide. We safely remove moss, lichen, and dark stains without
+            causing damage to your tiles or Colorbond. A professionally cleaned
+            roof not only looks better but also extends its lifespan and
+            prevents costly repairs.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {[
-              "Pressure Cleaning",
-              "Driveway & Pathway Cleaning",
-              "House & Roof Washing",
-              "Commercial Exterior Cleaning",
+              "Tiled Roofs",
+              "Colorbond & metal roofs",
+              "Single & double storey homes",
+              "Moss, mould & lichen removal",
             ].map((item) => (
               <Text
                 key={item}
@@ -228,8 +228,8 @@ const PressureWashing = () => {
           <Image
             quality={70}
             loading="lazy"
-            src="https://images.pexels.com/photos/20296972/pexels-photo-20296972.jpeg"
-            alt="Pressure washing driveway in Adelaide"
+            src="https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg"
+            alt="Roof  washing driveway in Adelaide"
             fill
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
@@ -249,9 +249,9 @@ const PressureWashing = () => {
 
       {/* ===== FOOTER CARD ===== */}
 
-      <FAQ items={PressureWashingfaqs} />
+      <FAQ items={RoofCleaningfaqs} />
     </Box>
   );
 };
 
-export default PressureWashing;
+export default RoofCleaning;

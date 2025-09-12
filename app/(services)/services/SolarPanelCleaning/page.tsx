@@ -6,27 +6,27 @@ import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
-const PressureWashing = () => {
-  const PressureWashingfaqs = [
+const SolarPanelCleaning = () => {
+  const SolarPanelCleaningfaqs = [
     {
-      q: "What surfaces can be pressure washed?",
-      a: "EverBright pressure washing in Adelaide restores driveways, footpaths, patios, fences, walls, pavers, decks, and other hard exterior surfaces.",
+      q: "Why clean solar panels?",
+      a: "Dirty solar panels lose efficiency. Dust, dirt, and bird droppings can reduce output by up to 30%. Solar panel cleaning ensures you get the most from your investment.",
     },
     {
-      q: "Will pressure washing damage my driveway or pavers?",
-      a: "No. Our commercial grade equipment allows us to adjust the water pressure for each surface, ensuring a deep clean without causing damage.",
+      q: "Is solar panel cleaning safe?",
+      a: "Yes. We use purified water and soft brushes — no harsh chemicals — to clean panels without scratching or damaging the glass.",
     },
     {
-      q: "How long does a driveway clean take?",
-      a: "Most residential driveways take 1–2 hours, depending on size and stains. Larger areas or heavily soiled surfaces may take longer.",
+      q: "How often should solar panels be cleaned?",
+      a: "At least once a year. In dusty areas or where birds are active, cleaning every 6 months is recommended to maintain maximum efficiency.",
     },
     {
-      q: "How long will my driveway stay clean after pressure washing?",
-      a: "Typically 12–18 months, depending on weather, traffic, and nearby trees.",
+      q: "Do I need to turn off my solar system before cleaning?",
+      a: "No. Our cleaning process is safe and doesn’t interfere with your solar system’s operation.",
     },
     {
-      q: "Do you use chemicals for pressure washing?",
-      a: "Only when needed. Most surfaces are cleaned with high pressure water, but for oil stains, mould, or algae, we may use eco-friendly detergents.",
+      q: "Do I need to be home during solar panel cleaning?",
+      a: "Not at all. As long as we can safely access your roof, we’ll complete the clean and you’ll see the results immediately in your energy output.",
     },
   ];
   const [open, setOpen] = React.useState<number | null>(0);
@@ -64,7 +64,7 @@ const PressureWashing = () => {
             </Text>{" "}
             · services ·{" "}
             <Text as="span" fontWeight="700">
-              pressure washing
+              Solar Panel washing
             </Text>
           </Text>
 
@@ -87,7 +87,7 @@ const PressureWashing = () => {
             color="cyan.100"
             maxW="760px"
           >
-            Professional pressure washing across Adelaide—fast quotes, careful
+            Professional Solar Panel washing across Adelaide—fast quotes, careful
             workmanship, and a satisfaction guarantee.
           </Text>
 
@@ -129,7 +129,7 @@ const PressureWashing = () => {
             fontSize={{ base: "14px", md: "18px" }}
             color="cyan.600"
           >
-            High Pressure Cleaning Adelaide
+            High Solar Panel Cleaning Adelaide
           </Text>
 
           <Text
@@ -140,7 +140,7 @@ const PressureWashing = () => {
             color="cyan.900"
             py="8px"
           >
-            Expert Pressure Cleaning Services in Adelaide
+            Expert Solar Panel Cleaning Services in Adelaide
           </Text>
 
           <Text
@@ -149,19 +149,17 @@ const PressureWashing = () => {
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
           >
-            Restore your property’s curb appeal with professional pressure
-            washing in Adelaide. We deep-clean driveways, patios, concrete, and
-            paving to remove stubborn dirt, grime, mould, and algae. Our
-            commercial-grade equipment delivers powerful, streak-free results
-            that last—making your home look brand new.
+      
+Boost your energy savings with solar panel cleaning in Adelaide. Our eco-friendly, streak-free cleaning process removes dust, bird droppings, and debris that block sunlight. Clean solar panels can improve efficiency by up to 30%, helping you get the most out of your investment.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {[
-              "Pressure Cleaning",
-              "Driveway & Pathway Cleaning",
-              "House & Roof Washing",
-              "Commercial Exterior Cleaning",
+         
+              "Increase efficiency & energy savings",
+              "Extend panel lifespan",
+              "Protect manufacturer warranty",
+              "Eco-friendly, chemical-free cleaning",
             ].map((item) => (
               <Text
                 key={item}
@@ -228,8 +226,8 @@ const PressureWashing = () => {
           <Image
             quality={70}
             loading="lazy"
-            src="https://images.pexels.com/photos/20296972/pexels-photo-20296972.jpeg"
-            alt="Pressure washing driveway in Adelaide"
+            src="https://images.pexels.com/photos/33379364/pexels-photo-33379364.jpeg"
+            alt="Solar Panel washing driveway in Adelaide"
             fill
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
@@ -249,9 +247,9 @@ const PressureWashing = () => {
 
       {/* ===== FOOTER CARD ===== */}
 
-      <FAQ items={PressureWashingfaqs} />
+      <FAQ items={SolarPanelCleaningfaqs} />
     </Box>
   );
 };
 
-export default PressureWashing;
+export default SolarPanelCleaning;

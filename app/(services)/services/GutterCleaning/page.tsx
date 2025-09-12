@@ -6,27 +6,27 @@ import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
-const PressureWashing = () => {
-  const PressureWashingfaqs = [
+const GutterCleaning = () => {
+  const GutterCleaningfaqs = [
     {
-      q: "What surfaces can be pressure washed?",
-      a: "EverBright pressure washing in Adelaide restores driveways, footpaths, patios, fences, walls, pavers, decks, and other hard exterior surfaces.",
+      q: "How often should gutters be cleaned?",
+      a: "In Adelaide, gutters should be cleaned at least twice a year — once before winter and once before summer — to avoid costly water damage and blocked downpipes.",
     },
     {
-      q: "Will pressure washing damage my driveway or pavers?",
-      a: "No. Our commercial grade equipment allows us to adjust the water pressure for each surface, ensuring a deep clean without causing damage.",
+      q: "Can blocked gutters damage my home?",
+      a: "Yes. Blocked gutters can cause roof leaks, mould growth, fascia board rot, and even internal ceiling damage. Routine gutter cleaning prevents these expensive repairs.",
     },
     {
-      q: "How long does a driveway clean take?",
-      a: "Most residential driveways take 1–2 hours, depending on size and stains. Larger areas or heavily soiled surfaces may take longer.",
+      q: "What do you remove during gutter cleaning?",
+      a: "EverBright removes leaves, mud, dirt, twigs, and other debris. We also check and clear downpipes to ensure water flows properly.",
     },
     {
-      q: "How long will my driveway stay clean after pressure washing?",
-      a: "Typically 12–18 months, depending on weather, traffic, and nearby trees.",
+      q: "Is gutter cleaning messy?",
+      a: "No. We use a professional gutter vacuum system, leaving no mess behind and taking all debris off-site.",
     },
     {
-      q: "Do you use chemicals for pressure washing?",
-      a: "Only when needed. Most surfaces are cleaned with high pressure water, but for oil stains, mould, or algae, we may use eco-friendly detergents.",
+      q: "Do I need to be home for gutter cleaning?",
+      a: "No. Many of our Adelaide customers book gutter cleaning while they’re at work — we just need access to your roof and gutters.",
     },
   ];
   const [open, setOpen] = React.useState<number | null>(0);
@@ -64,7 +64,7 @@ const PressureWashing = () => {
             </Text>{" "}
             · services ·{" "}
             <Text as="span" fontWeight="700">
-              pressure washing
+              Gutter washing
             </Text>
           </Text>
 
@@ -87,7 +87,7 @@ const PressureWashing = () => {
             color="cyan.100"
             maxW="760px"
           >
-            Professional pressure washing across Adelaide—fast quotes, careful
+            Professional Gutter washing across Adelaide—fast quotes, careful
             workmanship, and a satisfaction guarantee.
           </Text>
 
@@ -129,7 +129,7 @@ const PressureWashing = () => {
             fontSize={{ base: "14px", md: "18px" }}
             color="cyan.600"
           >
-            High Pressure Cleaning Adelaide
+            High Gutter Cleaning Adelaide
           </Text>
 
           <Text
@@ -140,7 +140,7 @@ const PressureWashing = () => {
             color="cyan.900"
             py="8px"
           >
-            Expert Pressure Cleaning Services in Adelaide
+            Expert Gutter Cleaning Services in Adelaide
           </Text>
 
           <Text
@@ -149,19 +149,20 @@ const PressureWashing = () => {
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
           >
-            Restore your property’s curb appeal with professional pressure
-            washing in Adelaide. We deep-clean driveways, patios, concrete, and
-            paving to remove stubborn dirt, grime, mould, and algae. Our
-            commercial-grade equipment delivers powerful, streak-free results
-            that last—making your home look brand new.
+            Prevent water damage and protect your home with gutter cleaning in
+            Adelaide. We clear leaves, dirt, and blockages so your gutters flow
+            freely all year round. Regular gutter maintenance reduces the risk
+            of leaks, flooding, and costly structural repairs—keeping your home
+            safe and sound.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {[
-              "Pressure Cleaning",
-              "Driveway & Pathway Cleaning",
-              "House & Roof Washing",
-              "Commercial Exterior Cleaning",
+            
+              "Gutters & downpipes cleared",
+              "Blockages removed",
+              "Roof valleys checked",
+              "Safe & fully insured service",
             ].map((item) => (
               <Text
                 key={item}
@@ -228,8 +229,8 @@ const PressureWashing = () => {
           <Image
             quality={70}
             loading="lazy"
-            src="https://images.pexels.com/photos/20296972/pexels-photo-20296972.jpeg"
-            alt="Pressure washing driveway in Adelaide"
+            src="https://images.pexels.com/photos/2663254/pexels-photo-2663254.jpeg"
+            alt="Gutter washing driveway in Adelaide"
             fill
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
@@ -249,9 +250,9 @@ const PressureWashing = () => {
 
       {/* ===== FOOTER CARD ===== */}
 
-      <FAQ items={PressureWashingfaqs} />
+      <FAQ items={GutterCleaningfaqs} />
     </Box>
   );
 };
 
-export default PressureWashing;
+export default GutterCleaning;
