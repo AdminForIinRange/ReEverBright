@@ -208,17 +208,17 @@ const Navbar = () => {
   }, []);
 
   const navigationItems = [
-    {
-      name: "About",
-      path: "/about",
-      hasDropdown: true,
-      items: [
-        { label: "Our Story", link: "/about/#story", description: "Learn about our journey and values" },
-        { label: "Our Team", link: "/about/#team", description: "Meet the experts behind EverBright" },
-        { label: "Testimonials", link: "/about/#testimonials", description: "What our clients say about us" },
-        { label: "Our Journey", link: "/about/journey", description: "See how EverBright has evolved" },
-      ],
-    },
+    // {
+    //   name: "About",
+    //   path: "/about",
+    //   hasDropdown: true,
+    //   items: [
+    //     { label: "Our Story", link: "/about/#story", description: "Learn about our journey and values" },
+    //     { label: "Our Team", link: "/about/#team", description: "Meet the experts behind EverBright" },
+    //     { label: "Testimonials", link: "/about/#testimonials", description: "What our clients say about us" },
+    //     { label: "Our Journey", link: "/about/journey", description: "See how EverBright has evolved" },
+    //   ],
+    // },
    
   ];
 

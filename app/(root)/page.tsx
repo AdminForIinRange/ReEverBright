@@ -324,39 +324,51 @@ const Page = () => {
         <Box pt={"50px"} bg={"cyan.600"}>
           <Box>
             {/* Another spot where SectionHeading matches your style */}
-            <VStack
-              justify={"center"}
+          
+
+
+
+              <VStack
+  justify={"center"}
               align={"center"}
               w={"100%"}
               textAlign={"center"}
               px={{ base: "2%", md: "6%", xl: "16%" }}
-            >
-              <VStack
-                justify="center"
-                align="center"
-                textAlign="center"
-                w="100%"
-              >
-                <Text
-                  fontSize={["16px", "18px", "24px"]}
-                  fontFamily="poppins"
-                  fontWeight={700}
-                  lineHeight="1.6"
-                  color="cyan.900"
-                >
-                  EVERBRIGHT PRESSURE WASHING
-                </Text>
-                <Text
-                  fontSize={["36px", "48px", "56px"]}
-                  fontWeight={700}
-                  fontFamily="poppins"
-                  lineHeight="1.1"
-                  color="cyan.100"
-                >
-                  A Local Business you can rely on
-                </Text>
-              </VStack>
-            </VStack>
+  >
+    {/* Eyebrow text */}
+    <Text
+      fontSize={["14px", "16px", "18px"]}
+      fontFamily="poppins"
+      fontWeight={600}
+      textTransform="uppercase"
+      letterSpacing="2px"
+      lineHeight="1.4"
+   color="cyan.900"
+    >
+                      EVERBRIGHT PRESSURE WASHING
+    </Text>
+
+    {/* Main title */}
+    <Text
+      fontSize={["28px", "40px", "52px"]}
+      fontWeight={800}
+      fontFamily="poppins"
+      lineHeight="1.1"
+      color="cyan.100"
+    >
+      A Local Business you can rely on
+    </Text>
+
+    {/* Accent line */}
+    <Box
+      mt="16px"
+      mb="8px"
+      borderColor="cyan.500"
+      w={["80px", "120px", "160px"]}
+      borderWidth="2px"
+      borderRadius="full"
+    />
+  </VStack>
 
             <HStack
               zIndex={3}
