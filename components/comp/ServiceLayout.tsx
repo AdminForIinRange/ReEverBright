@@ -19,37 +19,37 @@ import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 const services = [
   {
-    key: "Pressure Washing",
+    key: "pressure-washing",
     title: "Pressure Washing",
     image:
       "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
     desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
     badge: "Most Popular",
-      link:"PressureWashing"
+    link: "pressure-washing"
   },
   {
-    key: "Solar Cleaning",
+    key: "solar-cleaning",
     title: "Solar Cleaning",
     image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
     desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
     badge: "Eco Friendly",
-      link:"SolarPanelCleaning"
+    link: "solar-panel-cleaning"
   },
   {
-    key: "Roof Cleaning",
+    key: "roof-cleaning",
     title: "Roof Cleaning",
     image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
     desc: "Safely lift moss and dark streaks to restore curb appeal.",
     badge: "Value",
-      link:"RoofCleaning"
+    link: "roof-cleaning"
   },
   {
-    key: "Gutter Cleaning",
+    key: "gutter-cleaning",
     title: "Gutter Cleaning",
     image: "https://images.pexels.com/photos/2663254/pexels-photo-2663254.jpeg",
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
     badge: "Essential",
-    link:"GutterCleaning"
+    link: "gutter-cleaning"
 
   },
 ];
@@ -93,7 +93,7 @@ function ServiceLayout() {
             image={s.image}
             desc={s.desc}
             badge={s.badge}
-            link={s.key}
+            link={s.link}
           />
         ))}
       </HStack>
