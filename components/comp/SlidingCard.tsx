@@ -63,7 +63,7 @@ const SlidingCard = () => {
       mt={{ base: 10, md: 12 }}
       position="relative"
     >
-      <Box pt={{ base: "56px", md: "80px" }}>
+      <Box pt={{ base: "20px", md: "80px" }}>
         <SectionHeading eyebrow="Why Choose Us?" title="What We Promise" />
       </Box>
 
@@ -142,8 +142,9 @@ const SlidingCard = () => {
                 <Text
                   color="cyan.600"
                   fontWeight="700"
-                  fontSize={{ base: "clamp(14px, 2.8vw, 16px)", md: "lg" }}
+                  fontSize={{ base: "15px", md: "20px" }}
                   noOfLines={2}
+                
                 >
                   {slide.title}
                 </Text>
@@ -151,7 +152,7 @@ const SlidingCard = () => {
                 <Box overflowY="auto">
                   <Text
                     color="cyan.900"
-                    fontSize={{ base: "clamp(13px, 2.6vw, 15px)", md: "md" }}
+       fontSize={{ base: "13px", md: "16px" }}
                     lineHeight="1.6"
                   >
                     {slide.body}
