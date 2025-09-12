@@ -166,173 +166,88 @@ const Page = () => {
           </Box>
 
           <FreeQuote />
-          <Box
-            display={["block", "block", "none", "none", "none", "none"]}
-            w="100%"
-            p="4"
-            borderRadius="15px"
-            mt={{ base: "0", md: "20px" }}
-            bg="cyan.500"
-          >
-            <Grid templateColumns={{ base: "1fr 1fr" }} gap={8}>
-              {/* Left column */}
-              <GridItem>
-                <VStack align="flex-start" spacing={6}>
-                  {/* Item 1 */}
-                  <HStack align="flex-start" spacing={3}>
-                    <Box
-                      p={2}
-                      rounded="full"
-                      bg="cyan.700"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <Handshake size={20} color="white" />
-                    </Box>
-                    <VStack gap={0} align="flex-start" spacing={0}>
-                      <Text
-                        fontWeight="bold"
-                        color="white"
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                      >
-                        100% Guaranteed
-                      </Text>
-                      <Text
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                        color="cyan.100"
-                      >
-                        We Guarantee
-                      </Text>
-                    </VStack>
-                  </HStack>
+         
 
-                  {/* Item 2 */}
-                  <HStack align="flex-start" spacing={3} mt={"10px"}>
-                    <Box
-                      p={2}
-                      rounded="full"
-                      bg="cyan.700"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <MapPinCheck size={20} color="white" />
-                    </Box>
-                    <VStack gap={0} align="flex-start" spacing={0}>
-                      <Text
-                        fontWeight="bold"
-                        color="white"
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                      >
-                        Locally Owned
-                      </Text>
-                      <Text
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                        color="cyan.100"
-                      >
-                        Adelaide Owned
-                      </Text>
-                    </VStack>
-                  </HStack>
-                </VStack>
-              </GridItem>
 
-              {/* Right column */}
-              <GridItem>
-                <VStack align="flex-start" spacing={6}>
-                  {/* Item 3 */}
-                  <HStack align="flex-start" spacing={3}>
-                    <Box
-                      p={2}
-                      rounded="full"
-                      bg="cyan.700"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <ShieldCheck size={20} color="white" />
-                    </Box>
-                    <VStack gap={0} align="flex-start" spacing={0}>
-                      <Text
-                        fontWeight="bold"
-                        color="white"
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                      >
-                        Fully Insured
-                      </Text>
-                      <Text
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                        color="cyan.100"
-                      >
-                        Protection Cover
-                      </Text>
-                    </VStack>
-                  </HStack>
 
-                  {/* Item 4 */}
-                  <HStack align="flex-start" spacing={3} mt={"10px"}>
-                    <Box
-                      p={2}
-                      rounded="full"
-                      bg="cyan.700"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <Sprout size={20} color="white" />
-                    </Box>
-                    <VStack gap={0} align="flex-start" spacing={0}>
-                      <Text
-                        fontWeight="bold"
-                        color="white"
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                      >
-                        ECO Friendly
-                      </Text>
-                      <Text
-                        fontSize={{ base: "12px", md: "14px", xl: "19px" }}
-                        color="cyan.100"
-                      >
-                        Environment Safe
-                      </Text>
-                    </VStack>
-                  </HStack>
-                </VStack>
-              </GridItem>
-            </Grid>
-          </Box>
-
-          {/* <Box  
-            position="relative"
-            h={{ base: "100%", md: "100%", xl: "100%" }}
-            w={{ base: "100%", md: "100%" }}
-            display="flex"
-            justifyContent="end"
-          >
+    
+    
+    <Box px={{ base: "1%", md: "6%", xl: "16%" }}
+       
+    
+        w={"100%"}
+        h={"100%"}>
+      
+      <Box
+  display={["block", "block", "block", "none", "none", "none"]}
+w={"100%"}
+  p="4"
+  borderRadius="15px"
+  mt={{ base: "0", md: "20px" }}
+  bg="cyan.500"
+  // subtle texture + inner shadow for depth
+  sx={{
+    backgroundImage:
+      "radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px)",
+    backgroundSize: "14px 14px",
+  }}
+>
+  <Grid templateColumns={{ base: "1fr 1fr" }} gap={4} >
+    {[
+      { Icon: Handshake, title: "100% Guaranteed", sub: "We Guarantee" },
+      { Icon: MapPinCheck, title: "Locally Owned", sub: "Adelaide Owned" },
+      { Icon: ShieldCheck, title: "Fully Insured", sub: "Protection Cover" },
+      { Icon: Sprout, title: "ECO Friendly", sub: "Environment Safe" },
+    ].map(({ Icon, title, sub }, i) => (
+      <GridItem key={i}>
+        <Box
+          // pill card
+          bg="rgba(255,255,255,.08)"
+          border="1px solid rgba(255,255,255,.18)"
+          borderRadius="12px"
+          p={3}
+        >
+          <HStack align="center" spacing={3}>
             <Box
-              position="relative"
-              h={{ base: "100%", md: "100%" }}
-              w={{ base: "100%", md: "100%" }}
+              p={2.5}
+              rounded="full"
+              bg="cyan.700"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              boxShadow="0 4px 10px rgba(0,0,0,.15)"
+              flexShrink={0}
             >
-              <Box
-                bgGradient="linear(to-br, blue.100, white)"
-                boxShadow="0 0px 100px rgba(0, 0, 0, 0.2)"
-                border={"10px solid white"}
-                borderRadius={"50px"}
-                backgroundImage={`url('/images/aerial-city-adelaide.jpeg')`}
-                backgroundRepeat="no-repeat"
-                backgroundPosition="center"
-                backgroundSize="cover"
-                h="600px"
-                w="100%"
-                overflow="hidden"
-                position="relative"
-              >
-          
-              </Box>
+              <Icon size={20} color="white" />
             </Box>
-          </Box> */}
+            <VStack align="flex-start" spacing={0}>
+              <Text
+                fontWeight="bold"
+                color="white"
+                fontSize={{ base: "13px", md: "14px" }}
+                lineHeight="1.2"
+              >
+                {title}
+              </Text>
+              <Text
+                fontSize={{ base: "11px", md: "12px" }}
+                color="cyan.100"
+                lineHeight="1.2"
+              >
+                {sub}
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
+      </GridItem>
+    ))}
+  </Grid>
+</Box>
+
+
+      </Box>     
+
+     
         </HStack>
       </HStack>
 

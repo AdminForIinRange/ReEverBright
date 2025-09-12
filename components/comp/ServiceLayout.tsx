@@ -52,7 +52,7 @@ function ServiceLayout() {
   return (
     <>
       <VStack
-        mt={{ base: "80px", xl: "280px" }}
+        mt={{ base: "80px", sm: "100px", md: "100px", lg: "220px", xl: "280px" }}
         justify="center"
         align="center"
         w="100%"
@@ -68,12 +68,13 @@ function ServiceLayout() {
           <SectionHeading
             eyebrow="See the difference we make"
             title="How we can help you home"
-            color="cyan.600"
+  
           />
         </VStack>
       </VStack>
 
       <HStack
+      mt={"50px"}
         wrap={["wrap", "wrap", "wrap", "wrap", "wrap", "wrap"]}
         justify={"center"}
         align={"center"}
