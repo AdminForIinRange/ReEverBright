@@ -7,82 +7,61 @@ const ImageCompareSlider = () => {
   const topImage = goodImg.src;
   const bottomImage = badImg.src;
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef(null);
   const [sliderY, setSliderY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
 
-  // Keep height/slider in sync with container size (ResizeObserver is more reliable on mobile)
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    const el = containerRef.current;
-    const ro = new ResizeObserver(() => {
-      const h = el.offsetHeight || 0;
-      setContainerHeight(h);
-      setSliderY((y) => (y === 0 ? h / 2 : Math.min(Math.max(y, 0), h)));
-    });
-
-    ro.observe(el);
-    return () => ro.disconnect();
+    const updateHeight = () => {
+      if (containerRef.current) {
+        const height = containerRef.current.offsetHeight;
+        setContainerHeight(height);
+        setSliderY(height / 2);
+      }
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
-  const clampY = (y: number) => Math.min(Math.max(y, 0), containerHeight);
-
-  const updateFromClientY = (clientY: number) => {
-    const el = containerRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    setSliderY(clampY(clientY - rect.top));
+  const handleMouseDown = () => setIsDragging(true);
+  const handleMouseMove = (e) => {
+    if (!isDragging || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    let newY = e.clientY - rect.top;
+    if (newY < 0) newY = 0;
+    if (newY > containerHeight) newY = containerHeight;
+    setSliderY(newY);
   };
+  const handleMouseUp = () => setIsDragging(false);
 
-  const handlePointerDown: React.PointerEventHandler<HTMLDivElement> = (e) => {
-    setIsDragging(true);
-    try {
-      (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
-    } catch {}
-    // Prevent the browser from initiating native scroll/zoom
-    e.preventDefault();
-    updateFromClientY(e.clientY);
+  const handleTouchStart = () => setIsDragging(true);
+  const handleTouchMove = (e) => {
+    if (!isDragging || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    let newY = e.touches[0].clientY - rect.top;
+    if (newY < 0) newY = 0;
+    if (newY > containerHeight) newY = containerHeight;
+    setSliderY(newY);
   };
-
-  const handlePointerMove: React.PointerEventHandler<HTMLDivElement> = (e) => {
-    if (!isDragging) return;
-    e.preventDefault(); // keep the page from scrolling while dragging
-    updateFromClientY(e.clientY);
-  };
-
-  const endDrag: React.PointerEventHandler<HTMLDivElement> = (e) => {
-    setIsDragging(false);
-    try {
-      (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId);
-    } catch {}
-  };
+  const handleTouchEnd = () => setIsDragging(false);
 
   return (
     <Box
-
       ref={containerRef}
       position="relative"
       width="100%"
-      // pick one: set a fixed height, or wrap in an AspectRatio
-      height="320px"
+      height="100%"
       overflow="hidden"
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={endDrag}
-      onPointerCancel={endDrag}
-      onPointerLeave={endDrag}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       cursor={isDragging ? "grabbing" : "grab"}
-      // Key: disable native touch gestures inside the slider
-      sx={{
-        touchAction: "none",
-        overscrollBehavior: "contain",
-        WebkitUserSelect: "none",
-        userSelect: "none",
-      }}
-      aria-label="Image comparison slider"
-      role="group"
+      style={{ userSelect: "none" }}
     >
       {/* Base image */}
       <Box
@@ -93,13 +72,12 @@ const ImageCompareSlider = () => {
         display="block"
         objectFit="cover"
         draggable={false}
-        pointerEvents="none"
-        sx={{ WebkitUserDrag: "none", userSelect: "none" }}
-        alt="After"
+        style={{ userSelect: "none", pointerEvents: "none" }}
       />
 
       {/* Overlay image with vertical clipping */}
       <Box
+      
         as="img"
         src={bottomImage}
         position="absolute"
@@ -109,13 +87,12 @@ const ImageCompareSlider = () => {
         height="100%"
         objectFit="cover"
         draggable={false}
-        pointerEvents="none"
-        sx={{
-          clipPath: `inset(0 0 ${Math.max(containerHeight - sliderY, 0)}px 0)`,
-          WebkitUserDrag: "none",
+        style={{
+          clipPath: `inset(0 0 ${containerHeight - sliderY}px 0)`,
           userSelect: "none",
+          pointerEvents: "none",
+      
         }}
-        alt="Before"
       />
 
       {/* Labels */}
@@ -157,26 +134,23 @@ const ImageCompareSlider = () => {
         height="4px"
         bg="white"
         zIndex="2"
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         cursor="ns-resize"
-        onPointerDown={handlePointerDown}
-        // Also disable native gestures on the draggable bar itself
-        sx={{ touchAction: "none" }}
-        aria-label="Drag to compare images"
       >
         <Box
           position="absolute"
           left="50%"
           top="-15px"
           transform="translateX(-50%)"
-          width="36px"
-          height="36px"
+          width="30px"
+          height="30px"
           bg="white"
           borderRadius="full"
           border="2px solid teal"
           boxShadow="lg"
-          _hover={{ transform: "translateX(-50%) scale(1.06)" }}
+          _hover={{ transform: "translateX(-50%) scale(1.1)" }}
           transition="transform 0.2s ease"
-          pointerEvents="none"
         />
       </Box>
     </Box>

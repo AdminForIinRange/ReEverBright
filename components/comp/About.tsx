@@ -93,12 +93,13 @@ const About = () => {
 
           {/* Image area with decorative frame */}
           <Box
-            my={"50px"}
+            my={["50px", "50px", "50px", "0px" ]}
             position="relative"
             h={{ base: "550px", md: "550px", xl: "550px" }}
             w={{ base: "100%", md: "100%" }}
             display="flex"
-            justifyContent="end"
+            alignContent={"start"}
+            justifyContent="start"
           >
             <Box
               position="relative"

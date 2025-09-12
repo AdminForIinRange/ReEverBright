@@ -7,6 +7,7 @@ import {
   GridItem,
   Grid,
 } from "@chakra-ui/react";
+import Image from "next/image";
 import Presure from "@/public/Presure washing- Driveways, houses, patios and more-3.png";
 
 export default function WorkBanner() {
@@ -56,22 +57,31 @@ export default function WorkBanner() {
           filter: "blur(6px)",
           borderTopRightRadius: "56px",
         }}
-        _after={{
-          content: '""',
-          position: "absolute",
-          right: { base: "-10", md: "4" },
-          top: "50%",
-          transform: "translateY(-50%) rotate(8deg)",
-          w: { base: "220px", md: "380px", lg: "460px" },
-          h: { base: "220px", md: "380px", lg: "460px" },
-          backgroundImage: `url(${(Presure as any).src || Presure})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          opacity: 0.08,
-          pointerEvents: "none",
-          filter: "grayscale(100%) contrast(80%)",
-        }}
       >
+        {/* Logo watermark using next/image */}
+        <Box
+          position="absolute"
+          right={{ base: "0", md: "4" }}
+          top="50%"
+          transform="translateY(-50%) rotate(6deg)"
+          w={{ base: "220px", md: "380px", lg: "460px" }}
+          h={{ base: "220px", md: "380px", lg: "460px" }}
+          opacity={0.15}
+          zIndex={0}
+          pointerEvents="none"
+        >
+          <Image
+            src={Presure}
+            alt="Watermark Logo"
+            layout="fill"
+            objectFit="contain"
+            style={{
+              filter: "grayscale(100%) brightness(1.1) contrast(0.9)",
+            }}
+          />
+        </Box>
+
+        {/* subtle dot grid */}
         <Box
           position="absolute"
           inset={0}
@@ -125,9 +135,8 @@ export default function WorkBanner() {
                 <BadgePill>5★ Local Service</BadgePill>
               </HStack>
 
-              {/* Moved CTA under text */}
               <Link
-              pt={"20px"}
+                pt={"20px"}
                 href="/quote"
                 _hover={{ textDecoration: "none" }}
                 role="button"
@@ -162,32 +171,24 @@ function BadgePill({ children }: { children: React.ReactNode }) {
 function CTA({ children }: { children: React.ReactNode }) {
   return (
     <Box
-      w={["100%", "100%", "none", "none", "none", "none"]}
+      w={["100%", "100%", "auto"]}
       bg="cyan.600"
       display="flex"
       alignItems="center"
       justifyContent="center"
-      gap="15px"
+      gap="12px"
       fontFamily="poppins"
       transition="all 0.2s ease-in-out"
       cursor="pointer"
-      _hover={{
-        transition: "all 0.2s ease-in-out",
-
-        fontWeight: "700",
-        px: "80px",
-        bg: "cyan",
-      }}
+      _hover={{ transform: "translateY(-2px)", bg: "cyan.400" }}
       p={4}
       color="white"
       rounded="30px"
       px="12"
-      fontWeight="500"
-      onClick={() => router.push("/services")}
+      fontWeight="700"
     >
-      <Text as="span" pr={{ base: 6, md: 7 }}>
-        {children}
-      </Text>
+      <Text as="span">{children}</Text>
+      <Box as="span" aria-hidden="true">»</Box>
     </Box>
   );
 }
