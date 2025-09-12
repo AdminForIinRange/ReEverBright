@@ -77,15 +77,15 @@ const HeroText = () => {
               <HStack
                 textWrap={"none"}
                 w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
-                align={["end", "end", "end", "start", "start", "start"]}
-                justify={["end", "end", "end", "start", "start", "start"]}
+                align={["start", "end", "end", "start", "start", "start"]}
+                justify={["start", "end", "end", "start", "start", "start"]}
                 color="green.300"
                 fontWeight={"700"}
                 fontSize="24px"
               >
                 <CheckCircle />
                 <Span
-                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
                   fontFamily={"poppins"}
                   color="WHITE"
                   fontWeight={"500"}
@@ -112,7 +112,7 @@ const HeroText = () => {
               >
                 <CheckCircle />
                 <Span
-                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
                   fontFamily={"poppins"}
                   color="WHITE"
                   fontWeight={"500"}
@@ -145,21 +145,23 @@ const HeroText = () => {
               <HStack
                 textWrap={"none"}
                 w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
-                align={["end", "end", "end", "start", "start", "start"]}
-                justify={["end", "end", "end", "start", "start", "start"]}
+                align={["start", "end", "end", "start", "start", "start"]}
+                justify={["start", "end", "end", "start", "start", "start"]}
                 color="green.300"
                 fontWeight={"700"}
                 fontSize="24px"
-              >
+                   mr={"15px"}
+              >    
                 <CheckCircle />
                 <Span
-                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
                   fontFamily={"poppins"}
                   color="WHITE"
                   fontWeight={"500"}
+               
                 >
-                  {" "}
-     Roof Washing
+              
+     Roof Washing 
                 </Span>
               </HStack>
             </HStack>
@@ -180,12 +182,12 @@ const HeroText = () => {
               >
                 <CheckCircle />
                 <Span
-                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
                   fontFamily={"poppins"}
                   color="WHITE"
                   fontWeight={"500"}
                 >
-                  {" "}
+                 
              Pressure Washing
                 </Span>
               </HStack>

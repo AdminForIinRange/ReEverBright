@@ -7,11 +7,13 @@ function ServicesBox({
   image,
   desc,
   badge,
+  link,
 }: {
   title: string;
   image: string;
   desc: string;
   badge: string;
+  link: string;
 }) {
   return (
     <Box
@@ -121,7 +123,7 @@ function ServicesBox({
 
                 {/* Solid / primary button */}
                 <Link
-                  href="/services/PressureWashing"
+                  href={`/services/${link}`}
                   role="button"
                   aria-label="Learn more about Pressure Washing"
                   py="2"

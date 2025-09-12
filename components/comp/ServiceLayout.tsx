@@ -25,6 +25,7 @@ const services = [
       "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
     desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
     badge: "Most Popular",
+      link:"PressureWashing"
   },
   {
     key: "Solar Cleaning",
@@ -32,6 +33,7 @@ const services = [
     image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
     desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
     badge: "Eco Friendly",
+      link:"SolarPanelCleaning"
   },
   {
     key: "Roof Cleaning",
@@ -39,6 +41,7 @@ const services = [
     image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
     desc: "Safely lift moss and dark streaks to restore curb appeal.",
     badge: "Value",
+      link:"RoofCleaning"
   },
   {
     key: "Gutter Cleaning",
@@ -46,6 +49,8 @@ const services = [
     image: "https://images.pexels.com/photos/2663254/pexels-photo-2663254.jpeg",
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
     badge: "Essential",
+    link:"GutterCleaning"
+
   },
 ];
 function ServiceLayout() {
@@ -88,6 +93,7 @@ function ServiceLayout() {
             image={s.image}
             desc={s.desc}
             badge={s.badge}
+            link={s.key}
           />
         ))}
       </HStack>
