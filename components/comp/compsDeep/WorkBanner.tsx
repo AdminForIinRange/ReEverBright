@@ -107,16 +107,16 @@ export default function WorkBanner() {
             <VStack align="flex-start" spacing={5}>
               <Text
                 as="h2"
-                color={"cyan.900"}
+                color={"white"}
                 fontWeight="extrabold"
                 letterSpacing="-0.02em"
                 lineHeight={1.3}
                 fontSize={{ base: "2.25rem", sm: "2.75rem", md: "3.5rem" }}
               >
               Ready for us to get to
-                <Box as="span" color="white">
+                <Box as="span" color="cyan.800">
                   {" "}
-             work!
+             work
                 </Box>
               </Text>
 

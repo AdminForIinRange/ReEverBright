@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import SectionHeading from "./compsDeep/SectionHeading";
+import React, { useMemo } from "react";
+import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 
@@ -7,7 +7,7 @@ import Image from "next/image";
 const CARD_W = 340; // max card width
 const CARD_H = 220; // card height
 const CARD_GAP = 24; // px gap between cards
-const MARQUEE_PX_PER_SEC = 50; // autoplay speed; 40–80 feels good
+const MARQUEE_PX_PER_SEC = 50; // unused
 
 /* ====== Small utilities ====== */
 const srOnly = {
@@ -24,10 +24,7 @@ const srOnly = {
 
 function StarRating({ value = 5 }) {
   return (
-    <div
-      aria-label={`${value} out of 5 stars`}
-      style={{ display: "flex", gap: 4 }}
-    >
+    <div aria-label={`${value} out of 5 stars`} style={{ display: "flex", gap: 4 }}>
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
@@ -35,10 +32,7 @@ function StarRating({ value = 5 }) {
           style={{
             fontSize: 16,
             lineHeight: 1,
-            filter:
-              i < value
-                ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))"
-                : "none",
+            filter: i < value ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))" : "none",
             color: i < value ? "#F6AD55" : "#E2E8F0",
           }}
         >
@@ -61,11 +55,7 @@ function ReviewCard({
 }) {
   const initial = (name || "•").trim().charAt(0).toUpperCase();
   const platformLabel =
-    platform === "google"
-      ? "Google"
-      : platform === "facebook"
-        ? "Facebook"
-        : "Review";
+    platform === "google" ? "Google" : platform === "facebook" ? "Facebook" : "Review";
 
   return (
     <div
@@ -88,14 +78,7 @@ function ReviewCard({
       }}
     >
       {/* header */}
-      <div
-        style={{
-          display: "flex",
-          gap: 12,
-          alignItems: "center",
-          flexShrink: 0,
-        }}
-      >
+      <div style={{ display: "flex", gap: 12, alignItems: "center", flexShrink: 0 }}>
         <div
           style={{
             width: 44,
@@ -134,9 +117,7 @@ function ReviewCard({
               {name}
             </div>
           </div>
-          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>
-            {date}
-          </div>
+          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>{date}</div>
         </div>
       </div>
 
@@ -146,9 +127,7 @@ function ReviewCard({
       </div>
 
       {/* body */}
-      <div
-        style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
-      >
+      <div style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}>
         <p
           style={{
             margin: 0,
@@ -170,137 +149,37 @@ function ReviewCard({
   );
 }
 
-/* ====== Reviews Marquee (CSS-driven, seamless, no extra imports) ====== */
-function ReviewsMarquee({ reviews }) {
-  const halfRef = useRef(null);
-  const [duration, setDuration] = useState(20); // seconds, recalculated
-  const prefersReducedMotion = useMemo(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    try {
-      return (
-        window.matchMedia("(prefers-reduced-motion: reduce)")?.matches || false
-      );
-    } catch {
-      return false;
-    }
-  }, []);
-
-  // Measure first half width -> compute duration based on MARQUEE_PX_PER_SEC
-  useEffect(() => {
-    const el = halfRef.current;
-    if (!el) return;
-
-    const compute = () => {
-      const halfWidth = el.offsetWidth || 0;
-      if (halfWidth > 0) {
-        const seconds = halfWidth / MARQUEE_PX_PER_SEC;
-        setDuration(Math.max(6, Math.min(seconds, 120))); // clamp sane range
-      }
-    };
-
-    compute();
-
-    // Keep fresh on resize / content changes
-    let ro;
-    if (typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(() => compute());
-      ro.observe(el);
-    } else {
-      const onResize = () => compute();
-      window.addEventListener("resize", onResize);
-      return () => window.removeEventListener("resize", onResize);
-    }
-
-    return () => {
-      if (ro) ro.disconnect();
-    };
-  }, [reviews]);
-
+/* ====== Reviews – Manual horizontal scroll with a plain scrollbar ====== */
+function ReviewsRow({ reviews }) {
+  const note = useMemo(() => "Scroll horizontally to browse reviews.", []);
   return (
     <div className="rvw-wrap" style={{ padding: "0 24px" }}>
       <div
         className="rvw-viewport"
         role="region"
-        aria-label="Customer reviews (marquee; hover or focus to pause)"
+        aria-label="Customer reviews (manual horizontal scroll)"
         tabIndex={0}
-        style={{
-          outline: "none",
-        }}
       >
-        {/* Track = two equal halves for seamless wrap.
-            We animate the track from 0 to -50% so the second half slides into place. */}
-        <div
-          className="rvw-track"
-          style={{
-            gap: CARD_GAP,
-            // expose vars for CSS
-            ["--rvw-gap"]: `${CARD_GAP}px`,
-            ["--rvw-dur"]: `${duration}s`,
-            ["--rvw-play"]: prefersReducedMotion ? "paused" : "running",
-          }}
-        >
-          <div
-            ref={halfRef}
-            className="rvw-half"
-            role="list"
-            aria-label="Customer reviews"
-          >
-            {reviews.map((r, i) => (
-              <ReviewCard key={`h1-${i}`} {...r} />
-            ))}
-          </div>
-          <div className="rvw-half" aria-hidden="true">
-            {reviews.map((r, i) => (
-              <ReviewCard key={`h2-${i}`} {...r} />
-            ))}
-          </div>
+        <div className="rvw-track" role="list" aria-label="Customer reviews">
+          {reviews.map((r, i) => (
+            <ReviewCard key={i} {...r} />
+          ))}
         </div>
       </div>
 
-      <span style={srOnly}>
-        Reviews auto-scroll horizontally. Hover, focus, or touch to pause.
-        Motion respects your system’s “reduced motion” preference.
-      </span>
+      <span style={srOnly}>{note}</span>
 
-      {/* Scoped styles – no new imports */}
+      {/* scoped styles */}
       <style>{`
         .rvw-viewport {
-          overflow: hidden;
+          overflow-x: auto;   /* <-- visible scrollbar */
+          overflow-y: hidden;
           padding-bottom: 8px;
         }
-
         .rvw-track {
           display: flex;
-          width: max-content;           /* track is as wide as its contents */
-          will-change: transform;
-          animation: rvw-scroll var(--rvw-dur, 20s) linear infinite;
-          animation-play-state: var(--rvw-play, running);
-        }
-
-        /* Pause on hover/focus within for user control */
-        .rvw-viewport:hover .rvw-track,
-        .rvw-viewport:focus-within .rvw-track {
-          animation-play-state: paused;
-        }
-
-        .rvw-half {
-          display: flex;
-          gap: var(--rvw-gap, 24px);
-        }
-
-        @keyframes rvw-scroll {
-          from { transform: translate3d(0,0,0); }
-          to   { transform: translate3d(-50%,0,0); } /* exactly one half width */
-        }
-
-        /* Touch devices: allow tap to pause with :active */
-        @media (hover: none) and (pointer: coarse) {
-          .rvw-viewport:active .rvw-track { animation-play-state: paused; }
-        }
-
-        /* Reduced motion – stop animation entirely */
-        @media (prefers-reduced-motion: reduce) {
-          .rvw-track { animation: none; transform: translate3d(0,0,0); }
+          gap: ${CARD_GAP}px;
+          width: max-content;
         }
       `}</style>
     </div>
@@ -309,51 +188,158 @@ function ReviewsMarquee({ reviews }) {
 
 /* ====== Main Section ====== */
 export default function ReviewSection() {
-  const reviews = [
+   const reviews = [
     {
-      name: "Jill Bills",
-      date: "30 June 2025",
+      name: "Anjesh Bhattarai",
+      date: "recent",
       reviewText:
-        "The Calibre team was excellent. Polite and on time service before and after photos that clearly showed the results. Very happy",
+        "Had my Airbnb cleaned by Shayal and his team, they did an amazing job! They arrived on time, had excellent communication, and left everything spotless. We will definitely be hiring them again for our other properties.",
       stars: 5,
       platform: "google",
-      verified: true,
     },
     {
-      name: "Trevor Smith",
-      date: "26 June 2025",
+      name: "Inshaaf Bhattarai",
+      date: "3 weeks ago",
       reviewText:
-        "Caleb was a very hard-working deliverer of a great service...hard to believe the before and after photos. Highly recommend this pressure clean service.",
+        "Highly recommended better then spending $1000 on a bunch of pressure washing equipment just to use it once they were respectful and did a fantastic job driveway was left spotless and not too expensive only needs to be one 1 time every couple years so this would definitely be worth very satisfied customer",
       stars: 5,
       platform: "google",
-      verified: true,
     },
     {
-      name: "Robert Swann",
-      date: "11 January 2025",
+      name: "Winnie Taban",
+      date: "2 weeks ago",
       reviewText:
-        "Great job done cleaning Solar panels and Gutters. Fantastic, prompt and friendly service. Highly recommend them for jobs.",
-      stars: 5,
-      platform: "facebook",
-      verified: false,
-    },
-    {
-      name: "Sarah Johnson",
-      date: "15 June 2025",
-      reviewText:
-        "Outstanding service! The team was professional, punctual, and delivered exceptional results. Will definitely use again.",
+        "Absolutely top tier customer service. Was able to enquire and received a reply not long after. Top quality service, would highly recommend.",
       stars: 5,
       platform: "google",
-      verified: true,
     },
     {
-      name: "Mike Wilson",
-      date: "8 June 2025",
+      name: "Janice Croser",
+      date: "2 months ago",
       reviewText:
-        "Excellent work on our driveway cleaning. The difference is remarkable. Highly recommend their services!",
+        "Had my gutters cleaned and solar panels also. Shayal did a great job. Very polite and courteous. Was really pleased. Would highly recommend him.",
       stars: 5,
-      platform: "facebook",
-      verified: false,
+      platform: "google",
+    },
+    {
+      name: "Pasty Strange",
+      date: "3 weeks ago",
+      reviewText:
+        "These guys did the best job EVER. My gutters are the cleanest they have ever been. They did a fantastic job. I would happily recommend them to everyone.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "abbas habib",
+      date: "4 weeks ago",
+      reviewText:
+        "Shayal offered me a great quote to clean my solar panels. The job was done quickly and well. This will be a regular service for me from now on since my panels performance has increased since.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Marie Mullins",
+      date: "1 month ago",
+      reviewText:
+        "Shayal did an amazing job cleaning my gutters, very happy with the clean up afterwards too. Would highly recommend",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Harry deakin",
+      date: "3 months ago",
+      reviewText:
+        "Had our back area done for a birthday party. Shayal got everything looking fresh and clean just in time. Easy to deal with and very responsive.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "J D",
+      date: "3 months ago",
+      reviewText:
+        "Got Shayal in to clean the solar panels. I hadn’t done it in over two years and they were filthy. After he cleaned them, you could instantly see the difference.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "carl pernito",
+      date: "3 months ago",
+      reviewText:
+        "Got my roof cleaned by these guys and honestly, I didn’t think it’d make such a big difference but it really did. The roof was covered in crap from years of weather and now it looks fresh again. Shayal was easy to deal with, turned up on time.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Wendy Dobrucki",
+      date: "1 month ago",
+      reviewText:
+        "They came on time. Did an excellent job. Left nice and clean. Would definitely recommend.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Oli Parashos",
+      date: "3 months ago",
+      reviewText:
+        "Our solar panels were long overdue for a clean. Shayal came by and now they’re spotless.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Sudip Ramdam",
+      date: "3 months ago",
+      reviewText:
+        "We had our roof soft-washed by Shayal from EverBright. The results were honestly better than we expected. The roof had years of built-up grime, moss, and black streaks, now it looks clean and refreshed without any damage to the tiles.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Qasim ali",
+      date: "3 months ago",
+      reviewText:
+        "Had Shayal come in to clean out gutter, he came on time and left our gutter looking super clean, thanks mate.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Zahir Najafi",
+      date: "3 months ago",
+      reviewText:
+        "Big thanks to Shayal. Our patio was covered in grime and now it’s spotless. Professional and hardworking guy.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Asghar Lalee",
+      date: "3 months ago",
+      reviewText:
+        "My verandah was slippery and gross. Called Shayal, now it’s clean, safe, and looks great for entertaining. Cheers Shayal, appreciate the effort you put in.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Janice Renfrey",
+      date: "1 month ago",
+      reviewText:
+        "Flexible, responsive, punctual. I'm very happy with their work and price.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "David Wilson",
+      date: "5 days ago",
+      reviewText:
+        "Shayal and his team did a great job cleaning my gutters. It was a big job on a two storey house and good to see them taking safety seriously. They were friendly and professional so I'm very happy to recommend them.",
+      stars: 5,
+      platform: "google",
+    },
+    {
+      name: "Sita Khadka",
+      date: "3 months ago",
+      reviewText:
+        "We had our roof cleaned by Shayal. Excellent results and very professional service.",
+      stars: 5,
+      platform: "google",
     },
   ];
 
@@ -364,7 +350,7 @@ export default function ReviewSection() {
         title={"Read Some Of Our Reviews!"}
         color="black"
       />
-      <ReviewsMarquee reviews={reviews} />
+      <ReviewsRow reviews={reviews} />
     </Box>
   );
 }
