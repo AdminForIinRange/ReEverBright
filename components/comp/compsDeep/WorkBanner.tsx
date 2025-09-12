@@ -107,17 +107,17 @@ export default function WorkBanner() {
             <VStack align="flex-start" spacing={5}>
               <Text
                 as="h2"
+                color={"cyan.900"}
                 fontWeight="extrabold"
                 letterSpacing="-0.02em"
                 lineHeight={1.3}
                 fontSize={{ base: "2.25rem", sm: "2.75rem", md: "3.5rem" }}
               >
-                Let us handle your 
-                <Box as="span" color="cyan.400">
+              Ready for us to get to
+                <Box as="span" color="white">
                   {" "}
-                  Pressure Washing
+             work!
                 </Box>
-          
               </Text>
 
               <Link
@@ -141,7 +141,7 @@ function CTA({ children }: { children: React.ReactNode }) {
   return (
     <Box
       w={["100%", "100%", "auto"]}
-      bg="cyan.500"
+      bg="white"
       display="flex"
       alignItems="center"
       justifyContent="center"
@@ -156,8 +156,8 @@ function CTA({ children }: { children: React.ReactNode }) {
       px="12"
       fontWeight="700"
     >
-      <Text as="span">{children}</Text>
-      <Box as="span" aria-hidden="true">
+      <Text color={"cyan.500"} as="span">{children}</Text>
+      <Box  color={"cyan.500"} as="span" aria-hidden="true">
         »
       </Box>
     </Box>
