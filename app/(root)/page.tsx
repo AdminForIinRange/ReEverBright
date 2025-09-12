@@ -458,9 +458,9 @@ const Page = () => {
 
       <BannerSlider />
 
-      <WorkBanner />
 
       <ReviewSection />
+      <WorkBanner />
 
       {/* Floating geometric shapes */}
 

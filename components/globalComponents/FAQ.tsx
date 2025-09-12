@@ -80,7 +80,7 @@ const FAQ = ({ type }: { type: string }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [animatedItems, setAnimatedItems] = useState<boolean[]>(
-    Array(selectedFaqs.length).fill(false),
+    Array(selectedFaqs.length).fill(false)
   );
 
   // Staggered animation for FAQ items
@@ -117,7 +117,7 @@ const FAQ = ({ type }: { type: string }) => {
     <Box
       maxWidth="1400px"
       mx="auto"
-      px={["20px", "30px", "40px"]}
+       px={{ base: "2%", md: "6%", xl: "16%" }}
       mt={"100px"}
       pb={32}
     >
@@ -125,26 +125,41 @@ const FAQ = ({ type }: { type: string }) => {
       <Box position="relative">
         <VStack justify={"space-between"} align={"Center"} w="100%" h={"100%"}>
           {/* FAQ Title Section */}
+
           <VStack justify="center" align="center" textAlign="center" w="100%">
+            {/* Eyebrow text */}
             <Text
-              fontSize={["16px", "18px", "24px"]}
+              fontSize={["14px", "16px", "18px"]}
               fontFamily="poppins"
-              fontWeight={700}
-              lineHeight="1.6"
-              color={"black"}
+              fontWeight={600}
+              textTransform="uppercase"
+              letterSpacing="2px"
+              lineHeight="1.4"
+              color="cyan.600"
             >
               Frequently Asked Questions
             </Text>
+
+            {/* Main title */}
             <Text
-              fontSize={["36px", "48px", "56px"]}
-              fontWeight={700}
+              fontSize={["28px", "40px", "52px"]}
+              fontWeight={800}
               fontFamily="poppins"
               lineHeight="1.1"
               color={"black"}
             >
               FAQ
             </Text>
-            <Box my="25px" w={["100%", "600px"]} borderWidth="1px" />
+
+            {/* Accent line */}
+            <Box
+              mt="16px"
+              mb="8px"
+              borderColor="cyan.500"
+              w={["80px", "120px", "160px"]}
+              borderWidth="2px"
+              borderRadius="full"
+            />
           </VStack>
 
           {/* Category filters */}

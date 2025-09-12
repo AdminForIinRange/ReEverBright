@@ -14,7 +14,6 @@ export default function WorkBanner() {
   return (
     <Box
       fontFamily={"poppins"}
-      px={{ base: "2%", md: "6%", xl: "16%" }}
       mt={"100px"}
       justify={"center"}
       align={["center", "center", "center", "start"]}
@@ -25,11 +24,10 @@ export default function WorkBanner() {
         as="section"
         position="relative"
         overflow="hidden"
-        borderRadius={{ base: "xl", md: "2xl" }}
         px={{ base: 6, md: 10 }}
         py={{ base: 12, md: 16 }}
         color="white"
-        bg="cyan.500"
+        bg="cyan.600"
         sx={{
           "--g1":
             "radial-gradient(1200px 400px at 0% 0%, rgba(34,211,238,.25), transparent 60%)",
@@ -66,7 +64,7 @@ export default function WorkBanner() {
           transform="translateY(-50%) rotate(6deg)"
           w={{ base: "220px", md: "380px", lg: "460px" }}
           h={{ base: "220px", md: "380px", lg: "460px" }}
-          opacity={0.15}
+          opacity={0.2}
           zIndex={0}
           pointerEvents="none"
         >
@@ -82,7 +80,7 @@ export default function WorkBanner() {
         </Box>
 
         {/* subtle dot grid */}
-        <Box
+        {/* <Box
           position="absolute"
           inset={0}
           opacity={0.15}
@@ -95,9 +93,10 @@ export default function WorkBanner() {
             maskImage:
               "linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%)",
           }}
-        />
+        /> */}
 
         <Grid
+          px={{ base: "2%", md: "6%", xl: "16%" }}
           alignItems="center"
           gap={{ base: 8, md: 10 }}
           templateColumns={{ base: "1fr", md: "1fr" }}
@@ -110,30 +109,16 @@ export default function WorkBanner() {
                 as="h2"
                 fontWeight="extrabold"
                 letterSpacing="-0.02em"
-                lineHeight={1.05}
+                lineHeight={1.3}
                 fontSize={{ base: "2.25rem", sm: "2.75rem", md: "3.5rem" }}
               >
-                Ready for us to{" "}
-                <Box as="span" color="cyan.200">
-                  get to work
+                Let us handle your 
+                <Box as="span" color="cyan.400">
+                  {" "}
+                  Pressure Washing
                 </Box>
-                ?
+          
               </Text>
-
-              <Text
-                maxW="3xl"
-                opacity={0.9}
-                fontSize={{ base: "md", md: "lg" }}
-              >
-                Same-week scheduling. Crystal-clean driveways, homes, patios &
-                more—guaranteed.
-              </Text>
-
-              <HStack spacing={4} fontSize="sm" flexWrap="wrap" opacity={0.9}>
-                <BadgePill>Licensed & Insured</BadgePill>
-                <BadgePill>Eco-friendly Solutions</BadgePill>
-                <BadgePill>5★ Local Service</BadgePill>
-              </HStack>
 
               <Link
                 pt={"20px"}
@@ -152,27 +137,11 @@ export default function WorkBanner() {
   );
 }
 
-function BadgePill({ children }: { children: React.ReactNode }) {
-  return (
-    <Box
-      as="span"
-      px={3}
-      py={1}
-      borderRadius="full"
-      bg="rgba(255,255,255,.08)"
-      border="1px solid rgba(255,255,255,.18)"
-      backdropFilter="saturate(140%) blur(2px)"
-    >
-      <Text as="span">{children}</Text>
-    </Box>
-  );
-}
-
 function CTA({ children }: { children: React.ReactNode }) {
   return (
     <Box
       w={["100%", "100%", "auto"]}
-      bg="cyan.600"
+      bg="cyan.500"
       display="flex"
       alignItems="center"
       justifyContent="center"
