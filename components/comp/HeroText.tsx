@@ -27,7 +27,7 @@ const HeroText = () => {
         fontWeight={600}
         fontFamily={"poppins"}
         bgClip="text"
-        textAlign={["left", "center", "center", "left", "left", "left"]}
+        textAlign={["start", "center", "center", "start", "start", "start"]}
         color={"cyan.300"}
         bgGradient="linear(to-r, teal, blue)"
         lineHeight={"0.9"}
@@ -41,7 +41,7 @@ const HeroText = () => {
         as={"p"}
         textStyle={"subheading"}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
-        textAlign={["left", "center", "center", "left", "left", "left"]}
+        textAlign={["start", "center", "center", "start", "start", "start"]}
         fontFamily={"poppins"}
         color={"cyan.100"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
@@ -50,166 +50,169 @@ const HeroText = () => {
         Adelaide’s #1 Choice for Remarkable Exterior Cleaning!
       </Text>
 
-      <VStack w={["100%", "100%", "100%", "100%", "100%", "100%"]} h={["100%", "100%", "100%", "100%", "100%", "100%"]} mt={["20px", "20px", "20px", "20px", "20px", "20px"]}   align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]} >
+      <VStack
+        w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+        h={["100%", "100%", "100%", "100%", "100%", "100%"]}
+        mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
+        align={["start", "start", "start", "start", "start", "start"]}
+        justify={["start", "start", "start", "start", "start", "start"]}
+      >
         <VStack
-          textAlign={["left", "center", "center", "left", "left", "left"]}
-          align={["left", "center", "center", "left", "left", "left"]}
-        >
-          <HStack
-            justify={["left", "center", "center", "left", "left", "left"]}
-            align={["left", "center", "center", "left", "left", "left"]}
-            gap={"20px"}
-          >
-            <HStack
-              align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]}
-                  w={"250px"}
-              color="green.300"
-              fontWeight={"700"}
-              fontSize="24px"
-            >
-              <CheckCircle />
-              <Span
-                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
-                fontFamily={"poppins"}
-                color="WHITE"
-                fontWeight={"500"}
-              >
-                {" "}
-                Gutter Cleaning
-              </Span>
-            </HStack>
-            <HStack
-              align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]}
-                  w={"250px"}
-              color="green.300"
-              fontWeight={"700"}
-              fontSize="24px"
-            >
-              <CheckCircle />
-              <Span
-                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
-                fontFamily={"poppins"}
-                color="WHITE"
-                fontWeight={"500"}
-              >
-                {" "}
-                Roof Washing
-              </Span>
-            </HStack>
-          </HStack>
-        </VStack>
-
-
-
-
-  <VStack
-          textAlign={["left", "center", "left", "left", "left", "left"]}
-          align={["left", "center", "center", "left", "left", "left"]}
-        >
-          <HStack
-            justify={["left", "center", "center", "left", "left", "left"]}
-            align={["left", "center", "center", "left", "left", "left"]}
-            gap={"20px"}
-          >
-            <HStack
-              align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]}
-                 w={"250px"}
-              color="green.300"
-              fontWeight={"700"}
-              fontSize="24px"
-            >
-              <CheckCircle />
-              <Span
-                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
-                fontFamily={"poppins"}
-                color="WHITE"
-                fontWeight={"500"}
-              >
-                {" "}
-                Solar Cleaning
-              </Span>
-            </HStack>
-            <HStack
-              align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]}
-              w={"250px"}
-              color="green.300"
-              fontWeight={"700"}
-              fontSize="24px"
-            >
-              <CheckCircle />
-              <Span
-                fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
-                fontFamily={"poppins"}
-                color="WHITE"
-                fontWeight={"500"}
-              >
-                {" "}
-                  Pressure Washing
-              </Span>
-            </HStack>
-          </HStack>
-        </VStack>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* 
-
-
-
-
-        <VStack
-          justify={["left", "center", "center", "left", "left", "left"]}
+          w={"100%"}
           textAlign={["start", "center", "center", "start", "start", "start"]}
-          align={["left", "center", "center", "left", "left", "left"]}
+          align={["start", "center", "center", "start", "start", "start"]}
         >
           <HStack
-            textAlign={["left", "center", "center", "left", "left", "left"]}
-            align={["left", "center", "center", "left", "left", "left"]}
+            w={["250px", "250px", "250px", "250px", "250px", "250px"]}
+            justify={["start", "center", "center", "start", "start", "start"]}
+            align={["start", "center", "center", "start", "start", "start"]}
+            gap={"20px"}
+          >
+            <HStack
+              w={["160px", "250px", "250px", "250px", "250px", "250px"]}
+              align={["start", "center", "center", "start", "start", "start"]}
+              justify={["start", "center", "center", "start", "start", "start"]}
+              gap={"20px"}
+            >
+              <HStack
+                textWrap={"none"}
+                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                align={["end", "end", "end", "start", "start", "start"]}
+                justify={["end", "end", "end", "start", "start", "start"]}
+                color="green.300"
+                fontWeight={"700"}
+                fontSize="24px"
+              >
+                <CheckCircle />
+                <Span
+                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontFamily={"poppins"}
+                  color="WHITE"
+                  fontWeight={"500"}
+                >
+                  {" "}
+                  Gutter Cleaning
+                </Span>
+              </HStack>
+            </HStack>
+            <HStack
+              w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+              align={["start", "center", "center", "start", "start", "start"]}
+              justify={["start", "center", "center", "start", "start", "start"]}
+              gap={"20px"}
+            >
+              <HStack
+                textWrap={"none"}
+                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                align={["start", "start", "start", "start", "start", "start"]}
+                justify={["start", "start", "start", "start", "start", "start"]}
+                color="green.300"
+                fontWeight={"700"}
+                fontSize="24px"
+              >
+                <CheckCircle />
+                <Span
+                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontFamily={"poppins"}
+                  color="WHITE"
+                  fontWeight={"500"}
+                >
+                  {" "}
+                  Gutter Cleaning
+                </Span>
+              </HStack>
+            </HStack>
+          </HStack>
+        </VStack>
+
+        <VStack
+          w={"100%"}
+          textAlign={["start", "center", "center", "start", "start", "start"]}
+          align={["start", "center", "center", "start", "start", "start"]}
+        >
+          <HStack
+            w={["250px", "250px", "250px", "250px", "250px", "250px"]}
+            justify={["start", "center", "center", "start", "start", "start"]}
+            align={["start", "center", "center", "start", "start", "start"]}
+            gap={"20px"}
+          >
+           <HStack
+              w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+              align={["start", "center", "center", "start", "start", "start"]}
+              justify={["start", "center", "center", "start", "start", "start"]}
+              gap={"20px"}
+            >
+              <HStack
+                textWrap={"none"}
+                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                align={["end", "end", "end", "start", "start", "start"]}
+                justify={["end", "end", "end", "start", "start", "start"]}
+                color="green.300"
+                fontWeight={"700"}
+                fontSize="24px"
+              >
+                <CheckCircle />
+                <Span
+                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontFamily={"poppins"}
+                  color="WHITE"
+                  fontWeight={"500"}
+                >
+                  {" "}
+                  Gutter Cleaning
+                </Span>
+              </HStack>
+            </HStack>
+            <HStack
+              w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+              align={["start", "center", "center", "start", "start", "start"]}
+              justify={["start", "center", "center", "start", "start", "start"]}
+              gap={"20px"}
+            >
+              <HStack
+                textWrap={"none"}
+                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                align={["start", "start", "start", "start", "start", "start"]}
+                justify={["start", "start", "start", "start", "start", "start"]}
+                color="green.300"
+                fontWeight={"700"}
+                fontSize="24px"
+              >
+                <CheckCircle />
+                <Span
+                  fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
+                  fontFamily={"poppins"}
+                  color="WHITE"
+                  fontWeight={"500"}
+                >
+                  {" "}
+                  Gutter Cleaning
+                </Span>
+              </HStack>
+            </HStack>
+          </HStack>
+        </VStack>
+
+        {/* 
+
+
+
+
+        <VStack
+          justify={["start", "center", "center", "start", "start", "start"]}
+          textAlign={["start", "center", "center", "start", "start", "start"]}
+          align={["start", "center", "center", "start", "start", "start"]}
+        >
+          <HStack
+            textAlign={["start", "center", "center", "start", "start", "start"]}
+            align={["start", "center", "center", "start", "start", "start"]}
             gap={"20px"}
             mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
           >
             <HStack
               w={"200px"}
-              align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]}
+              align={["start", "center", "center", "start", "start", "start"]}
+              justify={["start", "center", "center", "start", "start", "start"]}
               color="green.300"
               fontWeight={"700"}
               fontSize="24px"
@@ -231,8 +234,8 @@ const HeroText = () => {
               color="green.300"
               fontWeight={"700"}
               fontSize="24px"
-                align={["left", "center", "center", "left", "left", "left"]}
-              justify={["left", "center", "center", "left", "left", "left"]}
+                align={["start", "center", "center", "start", "start", "start"]}
+              justify={["start", "center", "center", "start", "start", "start"]}
             >
               <CheckCircle />
               <Span
@@ -324,7 +327,7 @@ const HeroText = () => {
           <Text
             textShadow={"0px 0px 100px black"}
             as={"p"}
-            textAlign={["center", "center", "left", "left", "left", "left"]}
+            textAlign={["center", "center", "start", "start", "start", "start"]}
             fontFamily={"poppins"}
             color={"cyan.900"}
             w={["100%", "100%", "100%", "100%", "100%", "100%"]}
