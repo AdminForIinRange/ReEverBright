@@ -264,7 +264,7 @@ const Navbar = () => {
             display="flex"
             alignItems="center"
             cursor="pointer"
-            onClick={() => handleNavigate("/services/")}
+            onClick={() => handleNavigate("/")}
             position="relative"
           >
             <VStack>
