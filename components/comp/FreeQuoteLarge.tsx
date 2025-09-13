@@ -108,7 +108,7 @@ const FreeQuoteLarge = () => {
             ))}
           </HStack>
           <Text fontSize="xs" color="gray.600" fontWeight="600">
-            5.0 • 200+ local reviews
+            5.0
           </Text>
         </HStack>
       </VStack>

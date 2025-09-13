@@ -110,62 +110,62 @@ const Page = () => {
     "Only Professional Equipment",
   ];
 
-  const Standredfaqs = [
-    {
-      q: "Is pressure washing safe for my home?",
-      a:
-        "Yes—when done correctly. We adjust PSI and nozzles for each surface and use soft-wash (low pressure + detergents) on delicate areas like render, painted exteriors, roofs and timber. We pre-soak, protect nearby plants, and finish with a thorough rinse. Fully insured for your peace of mind.",
-      category: "safety",
-    },
-    {
-      q: "What surfaces can you clean?",
-      a:
-        "Driveways, paths, pavers and concrete; brick and retaining walls; house exteriors (soft-wash for render/painted surfaces); roofs (Colorbond and tile via soft-wash), gutters and fascias; decks, pergolas and fences; plus solar panels (streak-free, no harsh chemicals).",
-      category: "services",
-    },
-    {
-      q: "How often should I book exterior cleaning in Adelaide?",
-      a:
-        "Most homes benefit from a house wash every 12–18 months. High-traffic areas like driveways/pavers: every 6–12 months. Gutters: 1–2 times per year. Coastal or hills locations may need more frequent cleans due to salt, pollen and moisture. Ask us for a free, tailored schedule.",
-      category: "getting-started",
-    },
-    {
-      q: "Will pressure washing remove oil stains and mould?",
-      a:
-        "Yes. We use hot water units, specialty degreasers, and mould-killing detergents to break down tough oil spots, grease, moss and algae. Some older or deep-set stains may lighten rather than disappear completely, but we always achieve the best possible result.",
-      category: "results",
-    },
-    {
-      q: "Do you need access to water and power?",
-      a:
-        "In most cases, yes—we connect to an outdoor tap and power point. For properties without easy access, we can bring portable water tanks and generators (additional fee). We’ll confirm setup during your free quote so there are no surprises.",
-      category: "requirements",
-    },
-    {
-      q: "How long does a typical job take?",
-      a:
-        "It depends on size and condition. A standard driveway usually takes 1–2 hours. A full house wash can be 3–5 hours. Larger commercial or multi-surface cleans may take a full day. We always provide an estimated timeframe upfront.",
-      category: "services",
-    },
-    {
-      q: "Is pressure washing environmentally friendly?",
-      a:
-        "We use eco-safe detergents that break down quickly, capture run-off when needed, and adjust water use for efficiency. Pressure washing uses less water than hosing, because it’s faster and more effective. Safe for your garden, pets, and the environment.",
-      category: "safety",
-    },
-    {
-      q: "Do you work on commercial properties as well?",
-      a:
-        "Absolutely. We clean shopfronts, carparks, warehouses, schools, strata and council facilities. We can schedule after-hours or weekends to minimise disruption and provide ongoing maintenance plans for businesses.",
-      category: "services",
-    },
-    {
-      q: "What does it cost to pressure wash a driveway?",
-      a:
-        "Pricing depends on size, condition, and access. As a guide, a standard single driveway in Adelaide starts around $180–$250. Larger or heavily stained areas may cost more. We provide clear, no-obligation quotes before starting.",
-      category: "pricing",
-    },
-  ];
+const Standredfaqs = [
+  {
+    q: "How do I book a service?",
+    a:
+      "You can easily book with us via phone or SMS. Just send us a message and we’ll confirm your booking time with you.",
+    category: "getting-started",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a:
+      "We accept cash, bank transfer, and card payments (including tap & go).",
+    category: "pricing",
+  },
+  {
+    q: "Do you need a deposit before booking?",
+    a:
+      "No deposit is required — you simply pay once the job is completed to your satisfaction.",
+    category: "pricing",
+  },
+  {
+    q: "Do I need to be home while you’re working?",
+    a:
+      "Not necessarily. As long as we have access through the side gate and a working outdoor tap, we can complete the job without you being there.",
+    category: "requirements",
+  },
+  {
+    q: "What areas/suburbs do you service?",
+    a:
+      "We service all of Greater Adelaide and surrounding suburbs.",
+    category: "services",
+  },
+  {
+    q: "Can roof cleaning extend the life of my tiles or Colorbond?",
+    a:
+      "Yes — removing moss, lichen, and built-up dirt not only improves appearance but also helps prevent long-term damage, extending the life of your roof.",
+    category: "results",
+  },
+  {
+    q: "Do you offer driveway sealing after pressure washing?",
+    a:
+      "Yes, we can apply a protective seal after cleaning to help keep your driveway looking fresh for longer and protect it from stains.",
+    category: "services",
+  },
+  {
+    q: "Do you bring your own water, or do I need to provide it?",
+    a:
+      "We can supply our own water if needed, but this comes at an extra cost. It’s usually cheaper and easier to use your outdoor tap.",
+    category: "requirements",
+  },
+  {
+    q: "Do you use eco-friendly cleaning solutions?",
+    a:
+      "Yes — we use safe, eco-friendly products that won’t harm pets, plants, or your property.",
+    category: "safety",
+  },
+];
 
   return (
     <Box mt={"-70px"}>

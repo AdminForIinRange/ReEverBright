@@ -122,12 +122,12 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
             <Text fontFamily="poppins" fontWeight="700">Still have questions?</Text>
             <Text fontFamily="poppins" color="gray.600">
               Call us on{" "}
-              <Link href="tel:+61412123456" color="blue.700" textDecoration="underline">
-                0412 123 456
+              <Link href="tel:+61411017366" color="blue.700" textDecoration="underline">
+               0411 017 366
               </Link>{" "}
               or email{" "}
-              <Link href="mailto:hello@everbright.au" color="blue.700" textDecoration="underline">
-                hello@everbright.au
+              <Link href="mailto:everbrightpropertycare@gmail.au" color="blue.700" textDecoration="underline">
+                everbrightpropertycare@gmail.au
               </Link>
             </Text>
           </VStack>
