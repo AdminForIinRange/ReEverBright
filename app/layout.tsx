@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ever Bright Pressure Washing",
-  description: "Ever Bright Pressure Washing",
+  title: "EverBright Pressure Washing",
+  description: "EverBright Pressure Washing",
 };
 
 const ClientProvider = dynamic(

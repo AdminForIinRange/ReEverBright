@@ -352,7 +352,7 @@ const Navbar = () => {
               borderRadius="4px"
               cursor="pointer"
               _hover={{ bg: "#000" }}
-              onClick={() => handleNavigate("/services/contact")}
+              onClick={() => handleNavigate("#quote")}
             >
               <HStack>
                 <Box textAlign={"center"}>
