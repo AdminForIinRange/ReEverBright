@@ -113,7 +113,7 @@ const Navbar = () => {
           </Text>
         </Box>
       </Box>
-    ),
+    )
   );
   Dropdown.displayName = "Dropdown";
 
@@ -169,7 +169,7 @@ const Navbar = () => {
           </Text>
         </Box>
       </Box>
-    ),
+    )
   );
   MobileDropdown.displayName = "MobileDropdown";
 
@@ -200,7 +200,7 @@ const Navbar = () => {
       router.push(path);
       setMobileMenuOpen(false);
     },
-    [router],
+    [router]
   );
 
   const toggleMobileDropdown = useCallback((name: string) => {
@@ -264,7 +264,7 @@ const Navbar = () => {
             display="flex"
             alignItems="center"
             cursor="pointer"
-            onClick={() => handleNavigate("/")}
+            onClick={() => handleNavigate("/services/")}
             position="relative"
           >
             <VStack>
@@ -352,7 +352,7 @@ const Navbar = () => {
               borderRadius="4px"
               cursor="pointer"
               _hover={{ bg: "#000" }}
-              onClick={() => handleNavigate("/contact")}
+              onClick={() => handleNavigate("/services/contact")}
             >
               <HStack>
                 <Box textAlign={"center"}>
@@ -367,10 +367,6 @@ const Navbar = () => {
                 </Text>
               </HStack>
             </Box>
-
-            
-
-            
           </Box>
         </Box>
       </Box>
@@ -456,8 +452,71 @@ const Navbar = () => {
             </Text>
           </Box>
 
+          <Box
+            mt="24px"
+            bg="cyan.100"
+            color="white"
+            py="12px"
+            borderRadius="4px"
+            cursor="pointer"
+            _hover={{ bg: "#000" }}
+            onClick={() => handleNavigate("/services/pressure-washing")}
+            textAlign="center"
+          >
+            <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
+              Pressure Washing
+            </Text>
+          </Box>
 
-  <Box
+          <Box
+            mt="24px"
+            bg="cyan.100"
+            color="white"
+            py="12px"
+            borderRadius="4px"
+            cursor="pointer"
+            _hover={{ bg: "#000" }}
+            onClick={() => handleNavigate("/services/solar-panel-cleaning")}
+            textAlign="center"
+          >
+            <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
+              Solar Cleaning
+            </Text>
+          </Box>
+
+          <Box
+            mt="24px"
+            bg="cyan.100"
+            color="white"
+            py="12px"
+            borderRadius="4px"
+            cursor="pointer"
+            _hover={{ bg: "#000" }}
+            onClick={() => handleNavigate("/services/roof-cleaning")}
+            textAlign="center"
+          >
+            <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
+              Roof Cleaning
+            </Text>
+          </Box>
+
+          <Box
+            mt="24px"
+            bg="cyan.100"
+            color="white"
+            py="12px"
+            borderRadius="4px"
+            cursor="pointer"
+            _hover={{ bg: "#000" }}
+            onClick={() => handleNavigate("/services/gutter-cleaning")}
+            textAlign="center"
+          >
+            <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
+              Gutter Cleaning
+            </Text>
+          </Box>
+
+          <Box
             mt="24px"
             bg="cyan.100"
             color="white"
@@ -469,9 +528,10 @@ const Navbar = () => {
             textAlign="center"
           >
             <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
-      FAQ
+              FAQ
             </Text>
           </Box>
+
           {/* Mobile Contact Info */}
         </Box>
       </Box>

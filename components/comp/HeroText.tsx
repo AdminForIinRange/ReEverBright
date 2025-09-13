@@ -16,8 +16,10 @@ import {
   Zap,
 } from "lucide-react";
 import router from "next/router";
+import { useRouter } from "next/navigation";
 
 const HeroText = () => {
+    const router = useRouter();
   return (
     <>
       <Text

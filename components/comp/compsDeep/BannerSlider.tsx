@@ -5,6 +5,7 @@ import SectionHeading from "./SectionHeading";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { Phone } from "lucide-react";
 import router from "next/router";
+import { useRouter } from "next/navigation";
 const SLIDE_DURATION_MS = 4000; // Duration in milliseconds for each slide
 
 function BannerSlider() {
@@ -43,7 +44,7 @@ function BannerSlider() {
     );
     return () => clearInterval(id);
   }, [services.length]);
-
+  const router = useRouter();
   return (
     <Box px={{ base: "0%", md: "6%", xl: "16%" }} py={"50px"}>
       <div

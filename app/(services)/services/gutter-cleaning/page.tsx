@@ -4,6 +4,7 @@ import FreeQuote from "@/components/comp/FreeQuote";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import router from "next/router";
 import React from "react";
 
@@ -31,7 +32,7 @@ const GutterCleaning = () => {
     },
   ];
   const [open, setOpen] = React.useState<number | null>(0);
-
+  const router = useRouter();
   return (
     <Box bg="white" mt="-100px">
       {/* ===== HERO ===== */}
@@ -208,7 +209,7 @@ const GutterCleaning = () => {
                 rounded="30px"
                 px="12"
                 fontWeight="500"
-                onClick={() => router.push("/services")}
+                     onClick={() => router.push("#quote")}
               >
                 Call for a Quote!
               </Box>
