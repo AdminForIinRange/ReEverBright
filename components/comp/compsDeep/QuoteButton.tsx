@@ -27,7 +27,7 @@ const QuoteButton = () => {
       rounded="30px"
       px="12"
       fontWeight="500"
-      onClick={() => router.push("/services")}
+ onClick={() => router.push("#quote")}
     >
       Call for a Quote!
     </Box>

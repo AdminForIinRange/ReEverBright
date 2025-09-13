@@ -118,7 +118,7 @@ export default function WorkBanner() {
 
               <Link
                 pt={"20px"}
-                href="/quote"
+                href="#quote"
                 _hover={{ textDecoration: "none" }}
                 role="button"
                 aria-label="Arrange a Quote"

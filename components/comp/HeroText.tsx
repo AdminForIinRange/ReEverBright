@@ -15,6 +15,7 @@ import {
   Trophy,
   Zap,
 } from "lucide-react";
+import router from "next/router";
 
 const HeroText = () => {
   return (
@@ -282,7 +283,7 @@ const HeroText = () => {
           rounded={"30px"}
           px={"12"}
           fontWeight={"500"}
-          onClick={() => router.push("/services")}
+ onClick={() => router.push("#quote")}
         >
           <HStack>
             <Phone /> Call for a Quote!

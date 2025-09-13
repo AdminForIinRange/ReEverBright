@@ -4,6 +4,7 @@ import FreeQuote from "@/components/comp/FreeQuote";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
+import router from "next/router";
 import React from "react";
 
 const SolarPanelCleaning = () => {
