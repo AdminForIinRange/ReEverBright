@@ -1,14 +1,20 @@
 "use client";
-import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
-import Image from "next/image";
+
 import React from "react";
-import Google from "@/public/Google.png";
-import Adl from "@/public/images/aerial-city-adelaide.jpeg";
-import { FaStar } from "react-icons/fa";
+import { Box, VStack, Text, HStack } from "@chakra-ui/react";
+import { useActionState } from "react";
+import { submitLeadAction, type LeadState } from "@/lib/actions/leadActions";
+
 
 const FreeQuote = () => {
+  const [state, formAction, isPending] = useActionState<LeadState, FormData>(
+    submitLeadAction,
+    { ok: false }
+  );
+
   return (
     <Box
+      as="section"
       w={["100%", "100%", "600px"]}
       bg="white"
       borderRadius={["20px", "20px"]}
@@ -18,7 +24,6 @@ const FreeQuote = () => {
       border={"5px solid #06b6d4"}
     >
       {/* Heading */}
-
       <Text
         fontFamily={"poppins"}
         fontSize={["32px", "36px"]}
@@ -29,8 +34,9 @@ const FreeQuote = () => {
       >
         FREE QUOTE <br /> TODAY!
       </Text>
+
       <Text
-       mb={4}
+        mb={4}
         fontFamily={"poppins"}
         textAlign={"center"}
         fontSize="sm"
@@ -38,86 +44,130 @@ const FreeQuote = () => {
         fontWeight="700"
         px={4}
         color="blue.900"
-   
       >
         30 Seconds to Your Free Quote No Commitments
       </Text>
 
-
-
-      {/* Inputs (styled boxes only, since no Chakra Input) */}
-      <VStack spacing={3} align="stretch">
-        <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
-          <Box
-            as="input"
-            placeholder="Name"
-            flex="1"
-            border="1px solid #e2e8f0"
-            borderRadius="md"
-            py={2}
-            px={3}
-            fontSize="sm"
-          />
-          <Box
-            as="input"
-            placeholder="Phone"
-            flex="1"
-            border="1px solid #e2e8f0"
-            borderRadius="md"
-            py={2}
-            px={3}
-            fontSize="sm"
-          />
-        </HStack>
+      {/* FORM */}
+      <Box as="form" action={formAction}>
+        <VStack spacing={3} align="stretch">
           <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
-          <Box
-            as="input"
-            placeholder="Email"
-            flex="1"
-            border="1px solid #e2e8f0"
-            borderRadius="md"
-            py={2}
-            px={3}
-            fontSize="sm"
-          />
-          <Box
-            as="input"
-            placeholder="Suburb"
-            flex="1"
-            border="1px solid #e2e8f0"
-            borderRadius="md"
-            py={2}
-            px={3}
-            fontSize="sm"
-          />
-        </HStack>
-   
-        <Box
-          as="textarea"
-          placeholder="How can we help your home"
-          border="1px solid #e2e8f0"
-          borderRadius="md"
-          py={2}
-          px={3}
-          fontSize="sm"
-        />
-        <Box
-          as="button"
-          w="100%"
-          mt={5}
-          py={3}
-          borderRadius="md"
-          bg="cyan.500"
-          color="white"
-          fontWeight="700"
-          fontSize="md"
-          _hover={{ opacity: 0.9 }}
-        >
-          Submit
-        </Box>
-      </VStack>
+            <Box
+              as="input"
+              name="fullName"
+              placeholder="Name"
+              flex="1"
+              border="1px solid #e2e8f0"
+              borderRadius="md"
+              py={2}
+              px={3}
+              fontSize="sm"
+              required
+            />
+            <Box
+              as="input"
+              name="phone"
+              placeholder="Phone"
+              flex="1"
+              border="1px solid #e2e8f0"
+              borderRadius="md"
+              py={2}
+              px={3}
+              fontSize="sm"
+              type="tel"
+              required
+            />
+          </HStack>
 
-      {/* CTA Button */}
+          <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
+            <Box
+              as="input"
+              name="email"
+              placeholder="Email"
+              flex="1"
+              border="1px solid #e2e8f0"
+              borderRadius="md"
+              py={2}
+              px={3}
+              fontSize="sm"
+              type="email"
+              required
+            />
+            <Box
+              as="input"
+              name="suburb"
+              placeholder="Suburb"
+              flex="1"
+              border="1px solid #e2e8f0"
+              borderRadius="md"
+              py={2}
+              px={3}
+              fontSize="sm"
+              required
+            />
+          </HStack>
+
+          <Box
+            as="textarea"
+            name="helpMessage"
+            placeholder="How can we help your home"
+            border="1px solid #e2e8f0"
+            borderRadius="md"
+            py={2}
+            px={3}
+            fontSize="sm"
+          />
+
+          <Box
+            as="button"
+            type="submit"
+            w="100%"
+            mt={5}
+            py={3}
+            borderRadius="md"
+            bg="cyan.500"
+            color="white"
+            fontWeight="700"
+            fontSize="md"
+            _hover={{ opacity: 0.9 }}
+            disabled={isPending}
+          >
+            {isPending ? "Submitting..." : "Submit"}
+          </Box>
+        </VStack>
+      </Box>
+
+      {/* Result */}
+      <Box mt={3}>
+        {state?.ok && state.data ? (
+          <Box
+            role="status"
+            className="success"
+            bg="green.50"
+            border="1px solid"
+            borderColor="green.200"
+            color="green.700"
+            p={3}
+            borderRadius="md"
+            fontSize="sm"
+          >
+            Submitted! 
+          </Box>
+        ) : state?.error ? (
+          <Box
+            role="alert"
+            bg="red.50"
+            border="1px solid"
+            borderColor="red.200"
+            color="red.700"
+            p={3}
+            borderRadius="md"
+            fontSize="sm"
+          >
+            {state.error}
+          </Box>
+        ) : null}
+      </Box>
     </Box>
   );
 };

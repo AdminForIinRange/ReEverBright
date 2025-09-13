@@ -2,9 +2,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 
 export function getEnvVariable(name: string): string {
-  // Ensure that the function is executed at runtime
-  noStore();
-
+  noStore(); // ensure runtime read (no static caching)
   const value = process.env[name];
   if (!value) {
     throw new Error(`Missing environment variable: ${name}`);

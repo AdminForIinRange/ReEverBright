@@ -5,9 +5,6 @@ export const appwriteConfig = {
   endpointUrl: getEnvVariable("APPWRITE_ENDPOINT"),
   projectId: getEnvVariable("APPWRITE_PROJECT"),
   databaseId: getEnvVariable("APPWRITE_DATABASE"),
-  usersCollectionId: getEnvVariable("APPWRITE_USERS_COLLECTION"),
-  listingsCollectionId: getEnvVariable("APPWRITE_LISTINGS_COLLECTION"),
-  bucketId: getEnvVariable("APPWRITE_BUCKET"),
+  leadsCollectionId: getEnvVariable("APPWRITE_LEADS_COLLECTION"),
   secretKey: getEnvVariable("NEXT_APPWRITE_KEY"),
 };
-
