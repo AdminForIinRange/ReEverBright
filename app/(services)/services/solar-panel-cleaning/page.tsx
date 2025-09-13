@@ -87,8 +87,8 @@ const SolarPanelCleaning = () => {
             color="cyan.100"
             maxW="760px"
           >
-            Professional Solar Panel washing across Adelaide—fast quotes, careful
-            workmanship, and a satisfaction guarantee.
+            Professional Solar Panel washing across Adelaide—fast quotes,
+            careful workmanship, and a satisfaction guarantee.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -149,13 +149,15 @@ const SolarPanelCleaning = () => {
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
           >
-      
-Boost your energy savings with solar panel cleaning in Adelaide. Our eco-friendly, streak-free cleaning process removes dust, bird droppings, and debris that block sunlight. Clean solar panels can improve efficiency by up to 30%, helping you get the most out of your investment.
+            Boost your energy savings with solar panel cleaning in Adelaide. Our
+            eco-friendly, streak-free cleaning process removes dust, bird
+            droppings, and debris that block sunlight. Clean solar panels can
+            improve efficiency by up to 30%, helping you get the most out of
+            your investment.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {[
-         
               "Increase efficiency & energy savings",
               "Extend panel lifespan",
               "Protect manufacturer warranty",

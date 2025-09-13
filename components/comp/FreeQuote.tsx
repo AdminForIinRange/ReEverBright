@@ -5,15 +5,15 @@ import { Box, VStack, Text, HStack } from "@chakra-ui/react";
 import { useActionState } from "react";
 import { submitLeadAction, type LeadState } from "@/lib/actions/leadActions";
 
-
 const FreeQuote = () => {
   const [state, formAction, isPending] = useActionState<LeadState, FormData>(
     submitLeadAction,
-    { ok: false }
+    { ok: false },
   );
 
   return (
     <Box
+    id="quote"
       as="section"
       w={["100%", "100%", "600px"]}
       bg="white"
@@ -51,7 +51,9 @@ const FreeQuote = () => {
       {/* FORM */}
       <Box as="form" action={formAction}>
         <VStack spacing={3} align="stretch">
-          <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
+          <HStack
+            wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}
+          >
             <Box
               as="input"
               name="fullName"
@@ -79,7 +81,9 @@ const FreeQuote = () => {
             />
           </HStack>
 
-          <HStack wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}>
+          <HStack
+            wrap={["wrap", "wrap", "nowrap", "nowrap", "nowrap", "nowrap"]}
+          >
             <Box
               as="input"
               name="email"
@@ -151,7 +155,7 @@ const FreeQuote = () => {
             borderRadius="md"
             fontSize="sm"
           >
-            Submitted! 
+            Submitted!
           </Box>
         ) : state?.error ? (
           <Box

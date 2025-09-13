@@ -239,9 +239,8 @@ const Navbar = () => {
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-      
-          mx="auto"    px={{ base: "1%", md: "6%", xl: "16%" }}
-
+          mx="auto"
+          px={{ base: "1%", md: "6%", xl: "16%" }}
         >
           {/* Hamburger (mobile only) */}
           <Box
@@ -368,6 +367,10 @@ const Navbar = () => {
                 </Text>
               </HStack>
             </Box>
+
+            
+
+            
           </Box>
         </Box>
       </Box>
@@ -445,7 +448,7 @@ const Navbar = () => {
             borderRadius="4px"
             cursor="pointer"
             _hover={{ bg: "#000" }}
-            onClick={() => handleNavigate("/contact")}
+            onClick={() => handleNavigate("#quote")}
             textAlign="center"
           >
             <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
@@ -453,6 +456,22 @@ const Navbar = () => {
             </Text>
           </Box>
 
+
+  <Box
+            mt="24px"
+            bg="cyan.100"
+            color="white"
+            py="12px"
+            borderRadius="4px"
+            cursor="pointer"
+            _hover={{ bg: "#000" }}
+            onClick={() => handleNavigate("#faq")}
+            textAlign="center"
+          >
+            <Text color={"cyan.900"} textStyle={"smallText"} fontWeight="700">
+      FAQ
+            </Text>
+          </Box>
           {/* Mobile Contact Info */}
         </Box>
       </Box>

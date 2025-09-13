@@ -24,7 +24,10 @@ const srOnly = {
 
 function StarRating({ value = 5 }) {
   return (
-    <div aria-label={`${value} out of 5 stars`} style={{ display: "flex", gap: 4 }}>
+    <div
+      aria-label={`${value} out of 5 stars`}
+      style={{ display: "flex", gap: 4 }}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
@@ -32,7 +35,10 @@ function StarRating({ value = 5 }) {
           style={{
             fontSize: 16,
             lineHeight: 1,
-            filter: i < value ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))" : "none",
+            filter:
+              i < value
+                ? "drop-shadow(0 1px 2px rgba(246,173,85,.35))"
+                : "none",
             color: i < value ? "#F6AD55" : "#E2E8F0",
           }}
         >
@@ -55,7 +61,11 @@ function ReviewCard({
 }) {
   const initial = (name || "•").trim().charAt(0).toUpperCase();
   const platformLabel =
-    platform === "google" ? "Google" : platform === "facebook" ? "Facebook" : "Review";
+    platform === "google"
+      ? "Google"
+      : platform === "facebook"
+        ? "Facebook"
+        : "Review";
 
   return (
     <div
@@ -78,7 +88,14 @@ function ReviewCard({
       }}
     >
       {/* header */}
-      <div style={{ display: "flex", gap: 12, alignItems: "center", flexShrink: 0 }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 12,
+          alignItems: "center",
+          flexShrink: 0,
+        }}
+      >
         <div
           style={{
             width: 44,
@@ -117,7 +134,9 @@ function ReviewCard({
               {name}
             </div>
           </div>
-          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>{date}</div>
+          <div style={{ fontSize: 12, color: "#718096", fontWeight: 500 }}>
+            {date}
+          </div>
         </div>
       </div>
 
@@ -127,7 +146,9 @@ function ReviewCard({
       </div>
 
       {/* body */}
-      <div style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}>
+      <div
+        style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
+      >
         <p
           style={{
             margin: 0,
@@ -188,7 +209,7 @@ function ReviewsRow({ reviews }) {
 
 /* ====== Main Section ====== */
 export default function ReviewSection() {
-   const reviews = [
+  const reviews = [
     {
       name: "Anjesh Bhattarai",
       date: "recent",

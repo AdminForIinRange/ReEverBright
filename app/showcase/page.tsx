@@ -3,10 +3,12 @@
 
 import React from "react";
 import { Box, VStack, Text, HStack } from "@chakra-ui/react";
-import { getRecentLeadsAction, type LeadsResult } from "@/lib/actions/getRecentLeads";
+import {
+  getRecentLeadsAction,
+  type LeadsResult,
+} from "@/lib/actions/getRecentLeads";
 
 // Required by your instruction (we import it; not used on this page)
-
 
 function formatWhen(s?: string) {
   if (!s) return "";
@@ -18,10 +20,10 @@ function formatWhen(s?: string) {
 }
 
 export default function Page() {
-  const [state, formAction, isPending] = React.useActionState<LeadsResult, FormData>(
-    getRecentLeadsAction,
-    { ok: false }
-  );
+  const [state, formAction, isPending] = React.useActionState<
+    LeadsResult,
+    FormData
+  >(getRecentLeadsAction, { ok: false });
 
   return (
     <Box as="main" minH="100vh" bg="gray.50" py={10} px={4}>
@@ -103,7 +105,8 @@ export default function Page() {
             boxShadow="0 8px 24px rgba(0,0,0,0.06)"
           >
             <Text fontSize="lg" fontWeight="800" color="blue.900" mb={3}>
-              {state.data.length} recent {state.data.length === 1 ? "lead" : "leads"}
+              {state.data.length} recent{" "}
+              {state.data.length === 1 ? "lead" : "leads"}
             </Text>
 
             <VStack align="stretch" spacing={3}>
@@ -126,9 +129,15 @@ export default function Page() {
                   </HStack>
 
                   <VStack align="start" spacing={1} mt={2} fontSize="sm">
-                    <Text><b>Email:</b> {lead.email || "—"}</Text>
-                    <Text><b>Phone:</b> {lead.phone || "—"}</Text>
-                    <Text><b>Message:</b> {lead.helpMessage || "—"}</Text>
+                    <Text>
+                      <b>Email:</b> {lead.email || "—"}
+                    </Text>
+                    <Text>
+                      <b>Phone:</b> {lead.phone || "—"}
+                    </Text>
+                    <Text>
+                      <b>Message:</b> {lead.helpMessage || "—"}
+                    </Text>
                     <Text fontSize="xs" color="gray.500">
                       ID: {lead.$id}
                     </Text>

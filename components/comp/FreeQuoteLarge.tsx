@@ -57,7 +57,7 @@ const TextareaBox = (props: any) => (
 const FreeQuoteLarge = () => {
   const [state, formAction, isPending] = useActionState<LeadState, FormData>(
     submitLeadAction,
-    { ok: false }
+    { ok: false },
   );
 
   return (
@@ -100,7 +100,12 @@ const FreeQuoteLarge = () => {
         {/* Trust row */}
         <HStack spacing={3} mt={1}>
           <Box position="relative" w="20px" h="20px">
-            <Image src={Google} alt="Google" fill style={{ objectFit: "contain" }} />
+            <Image
+              src={Google}
+              alt="Google"
+              fill
+              style={{ objectFit: "contain" }}
+            />
           </Box>
           <HStack spacing={1} color="yellow.400">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -115,7 +120,13 @@ const FreeQuoteLarge = () => {
 
       {/* FORM */}
       <Box as="form" action={formAction}>
-        <VStack spacing={4} mt={6} align="stretch" zIndex={1} position="relative">
+        <VStack
+          spacing={4}
+          mt={6}
+          align="stretch"
+          zIndex={1}
+          position="relative"
+        >
           <HStack spacing={4} flexWrap="wrap">
             <InputBox
               placeholder="Full name"
@@ -183,19 +194,19 @@ const FreeQuoteLarge = () => {
 
           {/* Result */}
           {state?.ok && state.data ? (
-             <Box
-                      role="status"
-                      className="success"
-                      bg="green.50"
-                      border="1px solid"
-                      borderColor="green.200"
-                      color="green.700"
-                      p={3}
-                      borderRadius="md"
-                      fontSize="sm"
-                    >
-                      Submitted! 
-                    </Box>
+            <Box
+              role="status"
+              className="success"
+              bg="green.50"
+              border="1px solid"
+              borderColor="green.200"
+              color="green.700"
+              p={3}
+              borderRadius="md"
+              fontSize="sm"
+            >
+              Submitted!
+            </Box>
           ) : state?.error ? (
             <Box
               role="alert"
@@ -213,8 +224,8 @@ const FreeQuoteLarge = () => {
           ) : null}
 
           <Text fontSize="xs" color="gray.500" textAlign="center">
-            By submitting, you agree to be contacted about your request. We never
-            share your info.
+            By submitting, you agree to be contacted about your request. We
+            never share your info.
           </Text>
         </VStack>
       </Box>

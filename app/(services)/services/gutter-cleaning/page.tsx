@@ -158,7 +158,6 @@ const GutterCleaning = () => {
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {[
-            
               "Gutters & downpipes cleared",
               "Blockages removed",
               "Roof valleys checked",

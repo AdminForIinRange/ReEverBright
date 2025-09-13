@@ -110,67 +110,56 @@ const Page = () => {
     "Only Professional Equipment",
   ];
 
-const Standredfaqs = [
-  {
-    q: "How do I book a service?",
-    a:
-      "You can easily book with us via phone or SMS. Just send us a message and we’ll confirm your booking time with you.",
-    category: "getting-started",
-  },
-  {
-    q: "What payment methods do you accept?",
-    a:
-      "We accept cash, bank transfer, and card payments (including tap & go).",
-    category: "pricing",
-  },
-  {
-    q: "Do you need a deposit before booking?",
-    a:
-      "No deposit is required — you simply pay once the job is completed to your satisfaction.",
-    category: "pricing",
-  },
-  {
-    q: "Do I need to be home while you’re working?",
-    a:
-      "Not necessarily. As long as we have access through the side gate and a working outdoor tap, we can complete the job without you being there.",
-    category: "requirements",
-  },
-  {
-    q: "What areas/suburbs do you service?",
-    a:
-      "We service all of Greater Adelaide and surrounding suburbs.",
-    category: "services",
-  },
-  {
-    q: "Can roof cleaning extend the life of my tiles or Colorbond?",
-    a:
-      "Yes — removing moss, lichen, and built-up dirt not only improves appearance but also helps prevent long-term damage, extending the life of your roof.",
-    category: "results",
-  },
-  {
-    q: "Do you offer driveway sealing after pressure washing?",
-    a:
-      "Yes, we can apply a protective seal after cleaning to help keep your driveway looking fresh for longer and protect it from stains.",
-    category: "services",
-  },
-  {
-    q: "Do you bring your own water, or do I need to provide it?",
-    a:
-      "We can supply our own water if needed, but this comes at an extra cost. It’s usually cheaper and easier to use your outdoor tap.",
-    category: "requirements",
-  },
-  {
-    q: "Do you use eco-friendly cleaning solutions?",
-    a:
-      "Yes — we use safe, eco-friendly products that won’t harm pets, plants, or your property.",
-    category: "safety",
-  },
-];
+  const Standredfaqs = [
+    {
+      q: "How do I book a service?",
+      a: "You can easily book with us via phone or SMS. Just send us a message and we’ll confirm your booking time with you.",
+      category: "getting-started",
+    },
+    {
+      q: "What payment methods do you accept?",
+      a: "We accept cash, bank transfer, and card payments (including tap & go).",
+      category: "pricing",
+    },
+    {
+      q: "Do you need a deposit before booking?",
+      a: "No deposit is required — you simply pay once the job is completed to your satisfaction.",
+      category: "pricing",
+    },
+    {
+      q: "Do I need to be home while you’re working?",
+      a: "Not necessarily. As long as we have access through the side gate and a working outdoor tap, we can complete the job without you being there.",
+      category: "requirements",
+    },
+    {
+      q: "What areas/suburbs do you service?",
+      a: "We service all of Greater Adelaide and surrounding suburbs.",
+      category: "services",
+    },
+    {
+      q: "Can roof cleaning extend the life of my tiles or Colorbond?",
+      a: "Yes — removing moss, lichen, and built-up dirt not only improves appearance but also helps prevent long-term damage, extending the life of your roof.",
+      category: "results",
+    },
+    {
+      q: "Do you offer driveway sealing after pressure washing?",
+      a: "Yes, we can apply a protective seal after cleaning to help keep your driveway looking fresh for longer and protect it from stains.",
+      category: "services",
+    },
+    {
+      q: "Do you bring your own water, or do I need to provide it?",
+      a: "We can supply our own water if needed, but this comes at an extra cost. It’s usually cheaper and easier to use your outdoor tap.",
+      category: "requirements",
+    },
+    {
+      q: "Do you use eco-friendly cleaning solutions?",
+      a: "Yes — we use safe, eco-friendly products that won’t harm pets, plants, or your property.",
+      category: "safety",
+    },
+  ];
 
   return (
     <Box mt={"-70px"}>
-
-  
       <HStack justifyContent={"center"} align={"center"}>
         <Box
           borderRadius={"50px"}
@@ -459,7 +448,6 @@ const Standredfaqs = [
 
       <FAQ items={Standredfaqs} />
       <Footer />
-
     </Box>
   );
 };

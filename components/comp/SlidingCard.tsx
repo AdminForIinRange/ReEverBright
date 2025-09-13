@@ -59,7 +59,7 @@ const SlidingCard = () => {
   // we keep state/hooks minimal; no arrows, no rotation
   return (
     <Box
-    w={["100%", "100%", "100%"]}
+      w={["100%", "100%", "100%"]}
       px={{ base: "2%", md: "6%", xl: "16%" }}
       mt={{ base: 10, md: 12 }}
       position="relative"
@@ -71,7 +71,6 @@ const SlidingCard = () => {
       {/* Single square with 4 quadrants */}
       <Box
         mx="auto"
-       
         bg="white"
         borderRadius="xl"
         boxShadow="md"
@@ -145,7 +144,6 @@ const SlidingCard = () => {
                   fontWeight="700"
                   fontSize={{ base: "15px", md: "20px" }}
                   noOfLines={2}
-                
                 >
                   {slide.title}
                 </Text>
@@ -153,7 +151,7 @@ const SlidingCard = () => {
                 <Box overflowY="auto">
                   <Text
                     color="cyan.900"
-       fontSize={{ base: "13px", md: "16px" }}
+                    fontSize={{ base: "13px", md: "16px" }}
                     lineHeight="1.6"
                   >
                     {slide.body}

@@ -76,7 +76,7 @@ const HeroText = () => {
             >
               <HStack
                 textWrap={"none"}
-                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                w={["160px", "250px", "250px", "250px", "250px", "250px"]}
                 align={["start", "end", "end", "start", "start", "start"]}
                 justify={["start", "end", "end", "start", "start", "start"]}
                 color="green.300"
@@ -96,14 +96,14 @@ const HeroText = () => {
               </HStack>
             </HStack>
             <HStack
-              w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+              w={["160px", "250px", "250px", "250px", "250px", "250px"]}
               align={["start", "center", "center", "start", "start", "start"]}
               justify={["start", "center", "center", "start", "start", "start"]}
               gap={"20px"}
             >
               <HStack
                 textWrap={"none"}
-                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                w={["160px", "250px", "250px", "250px", "250px", "250px"]}
                 align={["start", "start", "start", "start", "start", "start"]}
                 justify={["start", "start", "start", "start", "start", "start"]}
                 color="green.300"
@@ -118,7 +118,7 @@ const HeroText = () => {
                   fontWeight={"500"}
                 >
                   {" "}
-             Solar Cleaning
+                  Solar Cleaning
                 </Span>
               </HStack>
             </HStack>
@@ -136,44 +136,42 @@ const HeroText = () => {
             align={["start", "center", "center", "start", "start", "start"]}
             gap={"20px"}
           >
-           <HStack
-              w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+            <HStack
+              w={["160px", "250px", "250px", "250px", "250px", "250px"]}
               align={["start", "center", "center", "start", "start", "start"]}
               justify={["start", "center", "center", "start", "start", "start"]}
               gap={"20px"}
             >
               <HStack
                 textWrap={"none"}
-                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                w={["160px", "250px", "250px", "250px", "250px", "250px"]}
                 align={["start", "end", "end", "start", "start", "start"]}
                 justify={["start", "end", "end", "start", "start", "start"]}
                 color="green.300"
                 fontWeight={"700"}
                 fontSize="24px"
-                   mr={"15px"}
-              >    
+                mr={"15px"}
+              >
                 <CheckCircle />
                 <Span
                   fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
                   fontFamily={"poppins"}
                   color="WHITE"
                   fontWeight={"500"}
-               
                 >
-              
-     Roof Washing 
+                  Roof Washing
                 </Span>
               </HStack>
             </HStack>
             <HStack
-              w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+              w={["160px", "250px", "250px", "250px", "250px", "250px"]}
               align={["start", "center", "center", "start", "start", "start"]}
               justify={["start", "center", "center", "start", "start", "start"]}
               gap={"20px"}
             >
               <HStack
                 textWrap={"none"}
-                w={["160px", "250px",  "250px", "250px", "250px", "250px"]}
+                w={["160px", "250px", "250px", "250px", "250px", "250px"]}
                 align={["start", "start", "start", "start", "start", "start"]}
                 justify={["start", "start", "start", "start", "start", "start"]}
                 color="green.300"
@@ -187,8 +185,7 @@ const HeroText = () => {
                   color="WHITE"
                   fontWeight={"500"}
                 >
-                 
-             Pressure Washing
+                  Pressure Washing
                 </Span>
               </HStack>
             </HStack>

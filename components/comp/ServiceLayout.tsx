@@ -25,7 +25,7 @@ const services = [
       "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
     desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
     badge: "Most Popular",
-    link: "pressure-washing"
+    link: "pressure-washing",
   },
   {
     key: "solar-cleaning",
@@ -33,7 +33,7 @@ const services = [
     image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
     desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
     badge: "Eco Friendly",
-    link: "solar-panel-cleaning"
+    link: "solar-panel-cleaning",
   },
   {
     key: "roof-cleaning",
@@ -41,7 +41,7 @@ const services = [
     image: "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
     desc: "Safely lift moss and dark streaks to restore curb appeal.",
     badge: "Value",
-    link: "roof-cleaning"
+    link: "roof-cleaning",
   },
   {
     key: "gutter-cleaning",
@@ -49,15 +49,20 @@ const services = [
     image: "https://images.pexels.com/photos/2663254/pexels-photo-2663254.jpeg",
     desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
     badge: "Essential",
-    link: "gutter-cleaning"
-
+    link: "gutter-cleaning",
   },
 ];
 function ServiceLayout() {
   return (
     <>
       <VStack
-        mt={{ base: "80px", sm: "100px", md: "100px", lg: "220px", xl: "280px" }}
+        mt={{
+          base: "80px",
+          sm: "100px",
+          md: "100px",
+          lg: "220px",
+          xl: "280px",
+        }}
         justify="center"
         align="center"
         w="100%"
@@ -73,13 +78,12 @@ function ServiceLayout() {
           <SectionHeading
             eyebrow="See the difference we make"
             title="How we can help you home"
-  
           />
         </VStack>
       </VStack>
 
       <HStack
-      mt={"50px"}
+        mt={"50px"}
         wrap={["wrap", "wrap", "wrap", "wrap", "wrap", "wrap"]}
         justify={"center"}
         align={"center"}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, Text, VStack ,Link} from "@chakra-ui/react";
+import { Box, Text, VStack, Link } from "@chakra-ui/react";
 import {
   ChevronDown,
   ChevronUp,
@@ -349,7 +349,7 @@ const FAQ = ({ type }: { type: string }) => {
         </Box>
 
         {/* Still have questions section */}
-    
+
         {/* Stats section */}
       </Box>
     </Box>
