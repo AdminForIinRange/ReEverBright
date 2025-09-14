@@ -210,10 +210,10 @@ const RoofCleaning = () => {
                 rounded="30px"
                 px="12"
                 fontWeight="500"
-                  onClick={() => {
-   router.push("#quote");
-   window.open("tel:+1-555-555-5555");
- }}
+                onClick={() => {
+                  router.push("#quote");
+                  window.open("tel:+1-555-555-5555");
+                }}
               >
                 Call for a Quote!
               </Box>
@@ -254,7 +254,8 @@ const RoofCleaning = () => {
       {/* ===== QUOTE BOX ===== */}
 
       {/* ===== FOOTER CARD ===== */}
-   <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote">
+
+      <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote" style={{ scrollMarginTop: "100px" }}>
         <FreeQuoteLarge />
       </Box>
       <FAQ items={RoofCleaningfaqs} />

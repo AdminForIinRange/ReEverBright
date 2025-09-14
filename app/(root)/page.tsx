@@ -436,6 +436,7 @@ const Page = () => {
 
       <SlidingCard />
       <HStack
+      
         px={{ base: "2%", md: "6%", xl: "16%" }}
         mt={"100px"}
         justify={"center"}
