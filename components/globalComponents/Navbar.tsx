@@ -276,6 +276,11 @@ const Navbar = () => {
           <Box
             display={{ base: "block", md: "block", lg: "none" }}
             textAlign={"center"}
+                  onClick={() => {
+   router.push("#quote");
+    window.location.href = "tel:+61411017366";;
+ }}
+      
           >
             <Phone size={24} color="#F0F0F0" />
           </Box>
