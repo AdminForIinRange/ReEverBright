@@ -77,7 +77,7 @@ function ServiceLayout() {
         >
           <SectionHeading
             eyebrow="See the difference we make"
-            title="How we can help you home"
+            title="How we can help your home"
           />
         </VStack>
       </VStack>

@@ -118,7 +118,7 @@ export default function WorkBanner() {
 
               <Link
                 pt={"20px"}
-            href="tel:+61411017366#quote"
+            href="tel:+61411017366"
                 _hover={{ textDecoration: "none" }}
                 role="button"
                 aria-label="Arrange a Quote"

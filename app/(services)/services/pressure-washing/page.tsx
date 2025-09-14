@@ -97,7 +97,7 @@ const PressureWashing = () => {
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
             <Link
-       href="tel:+61411017366#quote"
+       href="tel:+61411017366"
               _hover={{ textDecoration: "none", transform: "translateY(-1px)" }}
               transition="all .15s ease"
             >
