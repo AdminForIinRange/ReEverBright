@@ -4,6 +4,7 @@ import FreeQuote from "@/components/comp/FreeQuote";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
+import { Phone } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import router from "next/router";
@@ -216,7 +217,14 @@ const RoofCleaning = () => {
                    window.location.href = "tel:+61411017366";;
                 }}
               >
-                Call for a Quote!
+               <HStack>
+        <Box textAlign={"center"}>
+          <Phone />
+        </Box>
+        <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+          Get a Quote
+        </Text>
+      </HStack>
               </Box>
             </Link>
           </HStack>

@@ -1,5 +1,6 @@
 "use client";
-import { Box } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
+import { Phone } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const QuoteButton = () => {
@@ -27,12 +28,18 @@ const QuoteButton = () => {
       rounded="30px"
       px="12"
       fontWeight="500"
- onClick={() => {
-   router.push("#quote");
-
- }}
+      onClick={() => {
+        router.push("#quote");
+      }}
     >
-      Call for a Quote!
+      <HStack>
+        <Box textAlign={"center"}>
+          <Phone />
+        </Box>
+        <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+          Get a Quote
+        </Text>
+      </HStack>
     </Box>
   );
 };
