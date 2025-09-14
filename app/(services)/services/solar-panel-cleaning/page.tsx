@@ -210,7 +210,10 @@ const SolarPanelCleaning = () => {
                 rounded="30px"
                 px="12"
                 fontWeight="500"
-                onClick={() => router.push("#quote")}
+          onClick={() => {
+   router.push("#quote");
+   window.open("tel:+1-555-555-5555");
+ }}
               >
                 Call for a Quote!
               </Box>

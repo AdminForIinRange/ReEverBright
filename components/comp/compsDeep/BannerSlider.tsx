@@ -130,7 +130,10 @@ function BannerSlider() {
                 rounded={"30px"}
                 px={["6", "8", "10", "12", "12", "12"]}
                 fontWeight={"500"}
- onClick={() => router.push("#quote")}
+ onClick={() => {
+   router.push("#quote");
+   window.open("tel:+1-555-555-5555");
+ }}
               >
                 <HStack>
                   <Phone /> Call for a Quote!
