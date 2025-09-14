@@ -252,12 +252,10 @@ const SolarPanelCleaning = () => {
 
       {/* ===== FOOTER CARD ===== */}
 
-<Box  px={{ base: "2%", md: "6%", xl: "16%" }} id="quote" >
-
-      <FreeQuoteLarge />
-</Box>
+      <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote">
+        <FreeQuoteLarge />
+      </Box>
       <FAQ items={SolarPanelCleaningfaqs} />
-
     </Box>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import FreeQuote from "@/components/comp/FreeQuote";
+import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
@@ -250,7 +251,9 @@ const RoofCleaning = () => {
       {/* ===== QUOTE BOX ===== */}
 
       {/* ===== FOOTER CARD ===== */}
-
+   <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote">
+        <FreeQuoteLarge />
+      </Box>
       <FAQ items={RoofCleaningfaqs} />
     </Box>
   );
