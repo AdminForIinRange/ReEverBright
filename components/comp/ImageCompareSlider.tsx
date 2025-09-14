@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Box } from "@chakra-ui/react";
+import React, { useEffect, useRef, useState } from "react";
+import { Box, AspectRatio } from "@chakra-ui/react";
 import badImg from "@/public/images/houseImg/badhouse.png";
 import goodImg from "@/public/images/houseImg/goodHouse.png";
 
@@ -7,151 +7,163 @@ const ImageCompareSlider = () => {
   const topImage = goodImg.src;
   const bottomImage = badImg.src;
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [sliderY, setSliderY] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [containerHeight, setContainerHeight] = useState(0);
+  const [containerH, setContainerH] = useState(0);
+  const draggingRef = useRef(false);
+
+  // measure & center slider initially
+  const measure = () => {
+    if (!containerRef.current) return;
+    const h = containerRef.current.clientHeight;
+    setContainerH(h);
+    if (sliderY === 0 && h > 0) setSliderY(h / 2);
+  };
 
   useEffect(() => {
-    const updateHeight = () => {
-      if (containerRef.current) {
-        const height = containerRef.current.offsetHeight;
-        setContainerHeight(height);
-        setSliderY(height / 2);
-      }
-    };
-    updateHeight();
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleMouseDown = () => setIsDragging(true);
-  const handleMouseMove = (e) => {
-    if (!isDragging || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    let newY = e.clientY - rect.top;
-    if (newY < 0) newY = 0;
-    if (newY > containerHeight) newY = containerHeight;
-    setSliderY(newY);
-  };
-  const handleMouseUp = () => setIsDragging(false);
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
 
-  const handleTouchStart = () => setIsDragging(true);
-  const handleTouchMove = (e) => {
-    if (!isDragging || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    let newY = e.touches[0].clientY - rect.top;
-    if (newY < 0) newY = 0;
-    if (newY > containerHeight) newY = containerHeight;
-    setSliderY(newY);
-  };
-  const handleTouchEnd = () => setIsDragging(false);
+    const onPointerDown = (e: PointerEvent) => {
+      draggingRef.current = true;
+      (e.target as HTMLElement)?.setPointerCapture?.(e.pointerId);
+      e.preventDefault();
+      updateFromEvent(e);
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!draggingRef.current) return;
+      e.preventDefault();
+      updateFromEvent(e);
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      draggingRef.current = false;
+      (e.target as HTMLElement)?.releasePointerCapture?.(e.pointerId);
+    };
+
+    const updateFromEvent = (e: PointerEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      let y = e.clientY - rect.top;
+      if (y < 0) y = 0;
+      if (y > rect.height) y = rect.height;
+      setSliderY(y);
+    };
+
+    el.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove, { passive: false });
+    window.addEventListener("pointerup", onPointerUp);
+
+    return () => {
+      el.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove as any);
+      window.removeEventListener("pointerup", onPointerUp);
+    };
+  }, []);
 
   return (
-    <Box
-      ref={containerRef}
-      position="relative"
-      width="100%"
-      height="100%"
-      overflow="hidden"
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      cursor={isDragging ? "grabbing" : "grab"}
-      style={{ userSelect: "none" }}
-    >
-      {/* Base image */}
+    <AspectRatio ratio={16 / 9} width="100%">
       <Box
-        as="img"
-        src={topImage}
-        width="100%"
-        height="100%"
-        display="block"
-        objectFit="cover"
-        draggable={false}
-        style={{ userSelect: "none", pointerEvents: "none" }}
-      />
-
-      {/* Overlay image with vertical clipping */}
-      <Box
-        as="img"
-        src={bottomImage}
-        position="absolute"
-        top="0"
-        left="0"
-        width="100%"
-        height="100%"
-        objectFit="cover"
-        draggable={false}
-        style={{
-          clipPath: `inset(0 0 ${containerHeight - sliderY}px 0)`,
-          userSelect: "none",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Labels */}
-      <Box
-        position="absolute"
-        top="10px"
-        left="10px"
-        zIndex="3"
-        bg="rgba(255, 255, 255, 0.8)"
-        px="3"
-        py="1"
-        borderRadius="20px"
-        fontSize="sm"
-        fontWeight="bold"
+        ref={containerRef}
+        position="relative"
+        overflow="hidden"
+        // critical for mobile: prevents page from scrolling while dragging
+        style={{ touchAction: "none", userSelect: "none" }}
+        onLoad={measure as any}
       >
-        Before
-      </Box>
-      <Box
-        position="absolute"
-        bottom="10px"
-        left="10px"
-        zIndex="3"
-        bg="rgba(255, 255, 255, 0.8)"
-        px="3"
-        py="1"
-        borderRadius="20px"
-        fontSize="sm"
-        fontWeight="bold"
-      >
-        After
-      </Box>
+        {/* Base image */}
+        <Box
+          as="img"
+          src={topImage}
+          alt="After"
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          draggable={false}
+          pointerEvents="none"
+        />
 
-      {/* Draggable horizontal slider */}
-      <Box
-        position="absolute"
-        top={`${sliderY}px`}
-        left="0"
-        width="100%"
-        height="4px"
-        bg="white"
-        zIndex="2"
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
-        cursor="ns-resize"
-      >
+        {/* Overlay with vertical clip */}
+        <Box
+          as="img"
+          src={bottomImage}
+          alt="Before"
+          position="absolute"
+          inset="0"
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          draggable={false}
+          pointerEvents="none"
+          style={{
+            clipPath: `inset(0 0 ${Math.max(containerH - sliderY, 0)}px 0)`,
+          }}
+        />
+
+        {/* Labels */}
         <Box
           position="absolute"
-          left="50%"
-          top="-15px"
-          transform="translateX(-50%)"
-          width="30px"
-          height="30px"
+          top="10px"
+          left="10px"
+          zIndex={3}
+          bg="rgba(255,255,255,0.8)"
+          px="3"
+          py="1"
+          borderRadius="20px"
+          fontSize="sm"
+          fontWeight="bold"
+        >
+          Before
+        </Box>
+        <Box
+          position="absolute"
+          bottom="10px"
+          left="10px"
+          zIndex={3}
+          bg="rgba(255,255,255,0.8)"
+          px="3"
+          py="1"
+          borderRadius="20px"
+          fontSize="sm"
+          fontWeight="bold"
+        >
+          After
+        </Box>
+
+        {/* Slider bar + handle */}
+        <Box
+          position="absolute"
+          top={`${sliderY}px`}
+          left="0"
+          width="100%"
+          height="4px"
           bg="white"
-          borderRadius="full"
-          border="2px solid teal"
-          boxShadow="lg"
-          _hover={{ transform: "translateX(-50%) scale(1.1)" }}
-          transition="transform 0.2s ease"
-        />
+          zIndex={2}
+          // pointer events handled on container via pointerdown
+        >
+          <Box
+            position="absolute"
+            left="50%"
+            top="-15px"
+            transform="translateX(-50%)"
+            width="30px"
+            height="30px"
+            bg="white"
+            borderRadius="full"
+            border="2px solid teal"
+            boxShadow="lg"
+          />
+        </Box>
       </Box>
-    </Box>
+    </AspectRatio>
   );
 };
 
