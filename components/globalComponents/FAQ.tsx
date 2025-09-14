@@ -170,7 +170,7 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
               px="22px"
               py="14px"
               bg="cyan.400"
-              color="#02173a"
+              color="white"
               borderRadius="999px"
               fontWeight="700"
               fontFamily="poppins"
