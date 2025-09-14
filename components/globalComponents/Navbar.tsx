@@ -352,7 +352,10 @@ const Navbar = () => {
               borderRadius="4px"
               cursor="pointer"
               _hover={{ bg: "#000" }}
-              onClick={() => handleNavigate("#quote")}
+              onClick={() => {handleNavigate("#quote")
+                  window.location.href = "tel:+61411017366";
+              }
+              }
             >
               <HStack>
                 <Box textAlign={"center"}>

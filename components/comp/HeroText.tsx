@@ -287,7 +287,7 @@ const HeroText = () => {
           fontWeight={"500"}
  onClick={() => {
    router.push("#quote");
-   window.open("tel:+1-555-555-5555");
+    window.location.href = "tel:+61411017366";;
  }}
  
         >
