@@ -29,7 +29,7 @@ const QuoteButton = () => {
       fontWeight="500"
  onClick={() => {
    router.push("#quote");
-    window.location.href = "tel:+61411017366";;
+
  }}
     >
       Call for a Quote!
