@@ -10,6 +10,15 @@ import { useRouter } from "next/navigation";
 import router from "next/router";
 import React from "react";
 
+import one from "@/public/images/serviceImages/one.png";
+import two from "@/public/images/serviceImages/two.png";
+import three from "@/public/images/serviceImages/three.png";
+import four from "@/public/images/serviceImages/four.png";
+import five from "@/public/images/serviceImages/five.png";
+import six from "@/public/images/serviceImages/six.png";
+import seven from "@/public/images/serviceImages/seven.png";
+import eight from "@/public/images/serviceImages/eight.png";
+
 const PressureWashing = () => {
   const PressureWashingfaqs = [
     {
@@ -242,7 +251,7 @@ const PressureWashing = () => {
           <Image
             quality={70}
             loading="lazy"
-            src="https://images.pexels.com/photos/20296972/pexels-photo-20296972.jpeg"
+            src={four}
             alt="Pressure washing driveway in Adelaide"
             fill
             style={{ objectFit: "cover", objectPosition: "bottom" }}

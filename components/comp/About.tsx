@@ -1,10 +1,13 @@
 import React from "react";
+
 import ImageCompareSlider from "./ImageCompareSlider";
 import { VStack, HStack, Box, Text } from "@chakra-ui/react";
 import QuoteButton from "./compsDeep/QuoteButton";
 import SectionHeading from "./compsDeep/SectionHeading";
-import ImageCompareFullPage from "./ImageCompareSlider";
 
+import badImg from "@/public/images/houseImg/badhouse.png";
+import goodImg from "@/public/images/houseImg/goodHouse.png";
+import Image from "next/image";
 const About = () => {
   return (
     <Box as="section" mt={{ base: "100px", xl: "180px" }} aria-label="About">
@@ -90,7 +93,7 @@ const About = () => {
           <Box
             my={["50px", "50px", "50px", "0px"]}
             position="relative"
-            h={{ base: "550px", md: "550px", xl: "550px" }}
+            h={{ base: "500px", md: "500px", xl: "500px" }}
             w={{ base: "100%", md: "100%" }}
             display="flex"
             alignContent={"start"}
@@ -113,8 +116,26 @@ const About = () => {
                 overflow="hidden"
                 bg="gray.200" // fallback
               >
-                {/* <ImageCompareSlider /> */}
-                    <ImageCompareFullPage />
+<HStack justify="center" w="100%" h="100%" >
+  <Box flex="1" h="100%" position="relative">
+    <Image
+      src={badImg.src}
+      alt="bad house"
+      fill
+      style={{ objectFit: "cover" }}
+    />
+  </Box>
+  <Box flex="1" h="100%" position="relative">
+    <Image
+      src={goodImg.src}
+      alt="good house"
+      fill
+      style={{ objectFit: "cover" }}
+    />
+  </Box>
+</HStack>
+
+
               </Box>
             </Box>
           </Box>
