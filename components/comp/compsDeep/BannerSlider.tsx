@@ -52,7 +52,7 @@ function BannerSlider() {
           overflow: "hidden",
           position: "relative",
           height: "100%",
-          padding: "10px",
+        
         }}
       >
         <VStack

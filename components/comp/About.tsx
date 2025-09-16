@@ -93,7 +93,7 @@ const About = () => {
           <Box
             my={["50px", "50px", "50px", "0px"]}
             position="relative"
-            h={{ base: "500px", md: "500px", xl: "500px" }}
+            h={{ base: "350px", md: "500px", xl: "100px" }}
             w={{ base: "100%", md: "100%" }}
             display="flex"
             alignContent={"start"}
@@ -114,28 +114,26 @@ const About = () => {
                 w="100%"
                 borderRadius="24px"
                 overflow="hidden"
-                bg="gray.200" // fallback
+
               >
-<HStack justify="center" w="100%" h="100%" >
-  <Box flex="1" h="100%" position="relative">
-    <Image
-      src={badImg.src}
-      alt="bad house"
-      fill
-      style={{ objectFit: "cover" }}
-    />
-  </Box>
-  <Box flex="1" h="100%" position="relative">
-    <Image
-      src={goodImg.src}
-      alt="good house"
-      fill
-      style={{ objectFit: "cover" }}
-    />
-  </Box>
-</HStack>
-
-
+                <HStack justify="center" w="100%" h="100%">
+                  <Box flex="1" h="100%" position="relative">
+                    <Image
+                      src={goodImg.src}
+                      alt="good house"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </Box>
+                  <Box flex="1" h="100%" position="relative">
+                    <Image
+                      src={badImg.src}
+                      alt="bad house"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                  </Box>
+                </HStack>
               </Box>
             </Box>
           </Box>

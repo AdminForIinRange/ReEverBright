@@ -58,7 +58,7 @@ const Footer = () => {
               <Text
                 as="a"
                 title="EverBright Instagram"
-                href="https://www.instagram.com/luxemanagements/"
+                href="https://www.instagram.com/everbrightpressurewashing"
                 fontSize="14px"
                 color="gray.600"
                 _dark={{ color: "gray.400" }}
@@ -85,7 +85,7 @@ const Footer = () => {
               <Text
                 as="a"
                 title="EverBright Instagram"
-                href="https://www.instagram.com/luxemanagements/"
+                href="https://www.instagram.com/everbrightpressurewashing"
                 fontSize="14px"
                 color="gray.600"
                 _dark={{ color: "gray.400" }}
@@ -95,20 +95,7 @@ const Footer = () => {
                 Instagram
               </Text>
             </Box>
-            <Box>
-              <Text
-                as="a"
-                title="EverBright Tiktok"
-                href="https://www.tiktok.com/@luxe_managements"
-                fontSize="14px"
-                color="gray.600"
-                _dark={{ color: "gray.400" }}
-                display="block"
-                mb="10px"
-              >
-                Tiktok
-              </Text>
-            </Box>
+           
           </Box>
 
           {/* Legal column */}
@@ -126,7 +113,7 @@ const Footer = () => {
               <Text
                 as="a"
                 title="EverBright Privacy Policy"
-                href="https://abr.business.gov.au/ABN/View?id=83943962982"
+                href="https://abr.business.gov.au/ABN/View?abn=11984284254"
                 fontSize="14px"
                 color="gray.600"
                 _dark={{ color: "gray.400" }}
@@ -138,7 +125,7 @@ const Footer = () => {
               <Text
                 as="a"
                 title="EverBright Terms & Conditions"
-                href="https://abr.business.gov.au/ABN/View?id=83943962982"
+                href="https://abr.business.gov.au/ABN/View?abn=11984284254"
                 fontSize="14px"
                 color="gray.600"
                 _dark={{ color: "gray.400" }}

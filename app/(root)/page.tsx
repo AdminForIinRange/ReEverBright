@@ -241,7 +241,7 @@ const Page = () => {
                 {[
                   {
                     Icon: Handshake,
-                    title: "100% Guaranteed",
+                    title: "100% Satisfaction",
                     sub: "We Guarantee",
                   },
                   {
