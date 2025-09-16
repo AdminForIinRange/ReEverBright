@@ -95,6 +95,20 @@ const Footer = () => {
                 Instagram
               </Text>
             </Box>
+             <Box>
+              <Text
+                as="a"
+                title="EverBright Instagram"
+                href="https://www.facebook.com/everbrightpressurewashing"
+                fontSize="14px"
+                color="gray.600"
+                _dark={{ color: "gray.400" }}
+                display="block"
+                mb="10px"
+              >
+                Facebook
+              </Text>
+            </Box>
            
           </Box>
 
