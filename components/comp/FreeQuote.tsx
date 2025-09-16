@@ -13,8 +13,8 @@ const FreeQuote = () => {
 
   return (
     <Box
-    style={{ scrollMarginTop: "100px" }}
-    id="quote"
+      style={{ scrollMarginTop: "100px" }}
+      id="quote"
       as="section"
       w={["100%", "100%", "600px"]}
       bg="white"

@@ -109,13 +109,7 @@ const About = () => {
               bgGradient="linear(to-br, blue.100, white)"
               boxShadow="0 10px 30px rgba(10,15,41,0.12)"
             >
-              <Box
-                h="100%"
-                w="100%"
-                borderRadius="24px"
-                overflow="hidden"
-
-              >
+              <Box h="100%" w="100%" borderRadius="24px" overflow="hidden">
                 <HStack justify="center" w="100%" h="100%">
                   <Box flex="1" h="100%" position="relative">
                     <Image

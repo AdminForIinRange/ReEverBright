@@ -19,7 +19,7 @@ import router from "next/router";
 import { useRouter } from "next/navigation";
 
 const HeroText = () => {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <>
       <Text
@@ -285,11 +285,10 @@ const HeroText = () => {
           rounded={"30px"}
           px={"12"}
           fontWeight={"500"}
- onClick={() => {
-   router.push("#quote");
-    window.location.href = "tel:+61411017366";;
- }}
- 
+          onClick={() => {
+            router.push("#quote");
+            window.location.href = "tel:+61411017366";
+          }}
         >
           <HStack>
             <Phone /> Call for a Quote!

@@ -62,7 +62,6 @@ const FreeQuoteLarge = () => {
 
   return (
     <Box
-                 
       w={["100%", "100%", "100%"]}
       position="relative"
       bg="white"

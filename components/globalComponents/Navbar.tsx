@@ -113,7 +113,7 @@ const Navbar = () => {
           </Text>
         </Box>
       </Box>
-    )
+    ),
   );
   Dropdown.displayName = "Dropdown";
 
@@ -169,7 +169,7 @@ const Navbar = () => {
           </Text>
         </Box>
       </Box>
-    )
+    ),
   );
   MobileDropdown.displayName = "MobileDropdown";
 
@@ -200,7 +200,7 @@ const Navbar = () => {
       router.push(path);
       setMobileMenuOpen(false);
     },
-    [router]
+    [router],
   );
 
   const toggleMobileDropdown = useCallback((name: string) => {
@@ -276,11 +276,10 @@ const Navbar = () => {
           <Box
             display={{ base: "block", md: "block", lg: "none" }}
             textAlign={"center"}
-                  onClick={() => {
-   router.push("#quote");
-    window.location.href = "tel:+61411017366";;
- }}
-      
+            onClick={() => {
+              router.push("#quote");
+              window.location.href = "tel:+61411017366";
+            }}
           >
             <Phone size={24} color="#F0F0F0" />
           </Box>
@@ -357,10 +356,10 @@ const Navbar = () => {
               borderRadius="4px"
               cursor="pointer"
               _hover={{ bg: "#000" }}
-              onClick={() => {handleNavigate("#quote")
-                  window.location.href = "tel:+61411017366";
-              }
-              }
+              onClick={() => {
+                handleNavigate("#quote");
+                window.location.href = "tel:+61411017366";
+              }}
             >
               <HStack>
                 <Box textAlign={"center"}>

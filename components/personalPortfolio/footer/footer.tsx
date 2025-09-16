@@ -95,7 +95,7 @@ const Footer = () => {
                 Instagram
               </Text>
             </Box>
-             <Box>
+            <Box>
               <Text
                 as="a"
                 title="EverBright Instagram"
@@ -109,7 +109,6 @@ const Footer = () => {
                 Facebook
               </Text>
             </Box>
-           
           </Box>
 
           {/* Legal column */}

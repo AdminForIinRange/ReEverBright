@@ -32,7 +32,7 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
 
   return (
     <Box
-    id="faq"
+      id="faq"
       maxWidth="1400px"
       mx="auto"
       px={{ base: "2%", md: "6%", xl: "16%" }}

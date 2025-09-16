@@ -31,8 +31,7 @@ const services = [
   {
     key: "pressure-washing",
     title: "Pressure Washing",
-    image:
-     three,
+    image: three,
     desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
     badge: "Most Popular",
     link: "pressure-washing",

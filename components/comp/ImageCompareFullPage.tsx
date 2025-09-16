@@ -74,8 +74,6 @@ const ImageCompareFullPage = () => {
       ml="calc(50% - 50vw)"
       mr="calc(50% - 50vw)"
       overflow="hidden"
-      
-      
       // mobile drag: don't scroll the page while sliding
       style={{ touchAction: "none", userSelect: "none" }}
     >
@@ -149,7 +147,7 @@ const ImageCompareFullPage = () => {
         h="100%"
         bg="white"
         zIndex={2}
-      > 
+      >
         <Box
           position="absolute"
           top="50%"

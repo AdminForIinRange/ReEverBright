@@ -105,7 +105,7 @@ const SolarPanelCleaning = () => {
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
             <Link
-             href="tel:+61411017366"
+              href="tel:+61411017366"
               _hover={{ textDecoration: "none", transform: "translateY(-1px)" }}
               transition="all .15s ease"
             >
@@ -219,19 +219,23 @@ const SolarPanelCleaning = () => {
                 rounded="30px"
                 px="12"
                 fontWeight="500"
-          onClick={() => {
-   router.push("#quote");
-    window.location.href = "tel:+61411017366";;
- }}
+                onClick={() => {
+                  router.push("#quote");
+                  window.location.href = "tel:+61411017366";
+                }}
               >
-            <HStack>
-        <Box textAlign={"center"}>
-          <Phone />
-        </Box>
-        <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
-          Get a Quote
-        </Text>
-      </HStack>
+                <HStack>
+                  <Box textAlign={"center"}>
+                    <Phone />
+                  </Box>
+                  <Text
+                    textStyle={"smallText"}
+                    fontFamily="poppins"
+                    fontWeight="500"
+                  >
+                    Get a Quote
+                  </Text>
+                </HStack>
               </Box>
             </Link>
           </HStack>
@@ -271,7 +275,11 @@ const SolarPanelCleaning = () => {
 
       {/* ===== FOOTER CARD ===== */}
 
-    <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote" style={{ scrollMarginTop: "100px" }}>
+      <Box
+        px={{ base: "2%", md: "6%", xl: "16%" }}
+        id="quote"
+        style={{ scrollMarginTop: "100px" }}
+      >
         <FreeQuoteLarge />
       </Box>
       <FAQ items={SolarPanelCleaningfaqs} />

@@ -54,7 +54,6 @@ import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import Footer from "@/components/personalPortfolio/footer/footer";
 
-
 const Page = () => {
   const services = [
     {
@@ -437,7 +436,6 @@ const Page = () => {
 
       <SlidingCard />
       <HStack
-      
         px={{ base: "2%", md: "6%", xl: "16%" }}
         mt={"100px"}
         justify={"center"}
