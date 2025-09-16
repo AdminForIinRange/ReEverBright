@@ -93,7 +93,7 @@ const About = () => {
           <Box
             my={["50px", "50px", "50px", "0px"]}
             position="relative"
-            h={{ base: "350px", md: "500px", xl: "100px" }}
+            h={{ base: "350px", md: "500px", xl: "500px" }}
             w={{ base: "100%", md: "100%" }}
             display="flex"
             alignContent={"start"}
