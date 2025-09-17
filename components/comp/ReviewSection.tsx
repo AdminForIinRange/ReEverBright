@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useRef, useState } from "react";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
@@ -64,8 +64,25 @@ function ReviewCard({
     platform === "google"
       ? "Google"
       : platform === "facebook"
-        ? "Facebook"
-        : "Review";
+      ? "Facebook"
+      : "Review";
+
+  // --- detect overflow to decide whether to show "…" ---
+  const textRef = useRef(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const check = () => {
+      // give layout a tick to settle
+      const overflowing = el.scrollHeight > el.clientHeight + 1; // +1 avoids off-by-1
+      setIsOverflowing(overflowing);
+    };
+    check();
+    // re-check on window resize (orientation changes etc.)
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <div
@@ -147,9 +164,16 @@ function ReviewCard({
 
       {/* body */}
       <div
-        style={{ marginTop: 12, flex: 1, overflow: "visible", display: "flex" }}
+        className="rvw-body"
+        style={{
+          marginTop: 12,
+          flex: 1,
+          position: "relative", // for the ellipsis marker
+          display: "flex",
+        }}
       >
         <p
+          ref={textRef}
           style={{
             margin: 0,
             fontSize: 14,
@@ -159,12 +183,31 @@ function ReviewCard({
             display: "-webkit-box",
             WebkitLineClamp: 6,
             WebkitBoxOrient: "vertical",
-            overflow: "visible",
+            overflow: "hidden", // hide overflow so clamp + ellipsis look clean
           }}
           title={reviewText}
         >
           {reviewText}
         </p>
+
+        {/* literal "…" only when text actually overflows */}
+        {isOverflowing && (
+          <span
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              right: 8,
+              bottom: 6,
+              fontWeight: 700,
+              lineHeight: 1,
+              padding: "0 4px",
+              background:
+                "linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 30%)",
+            }}
+          >
+            …
+          </span>
+        )}
       </div>
     </div>
   );
@@ -193,14 +236,47 @@ function ReviewsRow({ reviews }) {
       {/* scoped styles */}
       <style>{`
         .rvw-viewport {
-          overflow-x: auto;   /* <-- visible scrollbar */
+          overflow-x: auto;   /* visible scrollbar */
           overflow-y: hidden;
-          padding-bottom: 8px;
+          padding-bottom: 10px;
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior-x: contain;
+          scroll-behavior: smooth;
+          scrollbar-width: thin;            /* Firefox */
+          scrollbar-color: #CBD5E0 #EDF2F7; /* thumb track */
         }
         .rvw-track {
           display: flex;
           gap: ${CARD_GAP}px;
           width: max-content;
+        }
+
+        /* WebKit scrollbar styling (Chrome/Safari/Edge) */
+        .rvw-viewport::-webkit-scrollbar {
+          height: 10px; /* thicker on mobile */
+        }
+        .rvw-viewport::-webkit-scrollbar-track {
+          background: #EDF2F7;
+          border-radius: 999px;
+        }
+        .rvw-viewport::-webkit-scrollbar-thumb {
+          background: #CBD5E0;
+          border-radius: 999px;
+          border: 2px solid #EDF2F7;
+        }
+        .rvw-viewport::-webkit-scrollbar-thumb:active {
+          background: #A0AEC0;
+        }
+
+        /* Make sure it's obvious on small screens */
+        @media (max-width: 768px) {
+          .rvw-viewport {
+            padding-bottom: 14px;
+            scrollbar-width: auto;
+          }
+          .rvw-viewport::-webkit-scrollbar {
+            height: 12px;
+          }
         }
       `}</style>
     </div>
