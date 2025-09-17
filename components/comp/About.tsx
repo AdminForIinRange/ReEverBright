@@ -20,7 +20,7 @@ const About = () => {
         px={{ base: "2%", md: "6%", xl: "16%" }}
       >
         <SectionHeading
-          eyebrow={`Be amazed at your property's`}
+          eyebrow={`Be amazed at your properties`}
           title={`Restoring Your Most\nValuable Asset`}
         />
       </VStack>

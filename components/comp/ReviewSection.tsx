@@ -16,7 +16,7 @@ const srOnly = {
   height: 1,
   padding: 0,
   margin: -1,
-  overflow: "hidden",
+  overflow: "visible",
   clip: "rect(0,0,0,0)",
   whiteSpace: "nowrap",
   border: 0,
@@ -147,7 +147,7 @@ function ReviewCard({
 
       {/* body */}
       <div
-        style={{ marginTop: 12, flex: 1, overflow: "hidden", display: "flex" }}
+        style={{ marginTop: 12, flex: 1, overflow: "visible", display: "flex" }}
       >
         <p
           style={{
@@ -159,7 +159,7 @@ function ReviewCard({
             display: "-webkit-box",
             WebkitLineClamp: 6,
             WebkitBoxOrient: "vertical",
-            overflow: "hidden",
+            overflow: "visible",
           }}
           title={reviewText}
         >
