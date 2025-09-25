@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "EverBright Pressure Washing",
+    default: "Adelaide Pressure Washing | EverBright Pressure Washing ",
     template: "%s | EverBright Pressure Washing",
   },
   description:
