@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useActionState } from "react";
 import { submitLeadAction, type LeadState } from "@/lib/actions/leadActions";
 
-import Google from "@/public/Google.png";
+import Google from  "@/public/images/Google.png";
 import { FaStar } from "react-icons/fa";
 
 const InputBox = (props: any) => (

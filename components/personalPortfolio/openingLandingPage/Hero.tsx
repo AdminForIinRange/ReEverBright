@@ -2,7 +2,7 @@
 // import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
 // import Image from "next/image";
 // import React from "react";
-// import Google from "@/public/Google.png";
+// import Google from  "@/public/images/Google.png";
 
 // import { FaStar } from "react-icons/fa";
 // import ImageCompareSlider from "@/components/comp/ImageCompareSlider";

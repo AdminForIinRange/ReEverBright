@@ -11,9 +11,9 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
-import Google from "@/public/Google.png";
+import Google from "@/public//Google.png";
 import Adl from "@/public/Shayal.png";
-import shayalv2 from "@/public/shayalv2.png";
+import shayalv2 from "@/public/images/shayalv2.png";
 import Shayal from "@/public/Shayal.png"; // <-- Add this line (update path/filename as needed)
 import { FaStar } from "react-icons/fa";
 import FreeQuote from "@/components/comp/FreeQuote";

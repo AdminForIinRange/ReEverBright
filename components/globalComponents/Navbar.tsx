@@ -5,7 +5,7 @@ import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Menu, Phone, X } from "lucide-react";
-import Presure from "@/public/Presure washing- Driveways, houses, patios and more-3.png";
+import Presure from "@/public/images/Presure washing- Driveways, houses, patios and more-3.png";
 
 const Navbar = () => {
   const router = useRouter();

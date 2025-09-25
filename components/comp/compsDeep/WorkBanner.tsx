@@ -8,7 +8,7 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import Presure from "@/public/Presure washing- Driveways, houses, patios and more-3.png";
+import Presure from "@/public/images/Presure washing- Driveways, houses, patios and more-3.png";
 
 export default function WorkBanner() {
   return (
