@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Loading from "@/app/loading";
 import Script from "next/script";
 import "animate.css";
-
+import { StructuredData } from "@/components/seo/StructuredData"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -161,6 +161,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+                <StructuredData />
         {/* Fonts & libs */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
