@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+        "postbuild": "next-sitemap",
     "prettier": "prettier --write '{src,components,app,public,styles}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
