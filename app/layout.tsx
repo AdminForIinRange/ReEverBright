@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Loading from "@/app/loading";
 import Script from "next/script";
 import "animate.css";
-import { StructuredData } from "@/components/seo/StructuredData"
+import { StructuredData } from "@/components/seo/StructuredData";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -112,7 +112,9 @@ export const metadata: Metadata = {
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
     other: [
       {
         rel: "mask-icon",
@@ -145,7 +147,7 @@ export const metadata: Metadata = {
 
 const ClientProvider = dynamic(
   () => import("../components/chakra-snippets/ClientProvider"),
-  { loading: () => <Loading /> },
+  { loading: () => <Loading /> }
 );
 
 export default function RootLayout({
@@ -161,51 +163,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-                <StructuredData />
+        <StructuredData />
         {/* Fonts & libs */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        />
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-        {/* JSON-LD structured data (edit business details!) */}
-        <Script id="ld-org" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "EverBright Pressure Washing",
-            url: "https://www.everbrightpressurewashing.au",
-            image: "https://www.everbrightpressurewashing.au/og-image.jpg",
-            telephone: "+61 4 0000 0000", // ← update
-            priceRange: "$$",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Your City",
-              addressRegion: "Your State",
-              postalCode: "0000",
-              addressCountry: "AU",
-            },
-            sameAs: [
-              "https://www.facebook.com/everbright", // ← update/remove
-              "https://www.instagram.com/everbright",
-            ],
-            openingHours: "Mo,Tu,We,Th,Fr 08:00-18:00",
-            areaServed: "Local Region",
-            description:
-              "Professional pressure washing for residential and commercial properties. House washing, driveways, roofs, gutters, and more.",
-          })}
-        </Script>
       </head>
       <body>
         <ClientProvider>{children}</ClientProvider>
