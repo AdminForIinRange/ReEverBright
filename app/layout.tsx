@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.everbrightpressurewashing.au"),
+  metadataBase: new URL("https://www.everbrightpressurewashing.au/"),
   title: {
     default: "Adelaide Pressure Washing | EverBright Pressure Washing",
     template: "%s | EverBright Pressure Washing",

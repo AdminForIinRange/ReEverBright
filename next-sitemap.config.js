@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://www.everbrightpressurewashing.au',
+  siteUrl: 'https://www.everbrightpressurewashing.au/',
   outDir: './public',
   generateRobotsTxt: true,
   changefreq: 'daily',

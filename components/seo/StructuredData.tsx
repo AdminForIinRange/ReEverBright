@@ -2,7 +2,7 @@
 import Script from "next/script";
 
 export function StructuredData() {
-  const base = "https://www.everbrightpressurewashing.au";
+  const base = "https://www.everbrightpressurewashing.au/";
 
   const organizationSchema = {
     "@context": "https://schema.org",
