@@ -8,7 +8,10 @@ import "animate.css";
 import { StructuredData } from "@/components/seo/StructuredData";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.everbrightpressurewashing.au"),
@@ -57,23 +60,37 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@everbright",   // TODO: update to real handle or remove
-    creator: "@everbright",// TODO: update to real handle or remove
+    site: "@everbright", // TODO: update to real handle or remove
+    creator: "@everbright", // TODO: update to real handle or remove
     title: "EverBright Pressure Washing",
     description:
       "Professional exterior cleaning: house washing, concrete, roofs, gutters, and more.",
     images: "/images/og-image.png",
   },
+
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#0b62ff" }],
+    apple: [
+      {
+        url: "/images/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/images/safari-pinned-tab.svg",
+        color: "#0b62ff",
+      },
+    ],
   },
   manifest: "/site.webmanifest",
+
   viewport: { width: "device-width", initialScale: 1, maximumScale: 1 },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -81,11 +98,18 @@ export const metadata: Metadata = {
   ],
 };
 
-const ClientProvider = dynamic(() => import("../components/chakra-snippets/ClientProvider"), {
-  loading: () => <Loading />,
-});
+const ClientProvider = dynamic(
+  () => import("../components/chakra-snippets/ClientProvider"),
+  {
+    loading: () => <Loading />,
+  }
+);
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -95,7 +119,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <StructuredData />
-         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -109,7 +133,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+        <link
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <ClientProvider>{children}</ClientProvider>
