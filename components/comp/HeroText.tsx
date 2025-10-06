@@ -36,7 +36,7 @@ const HeroText = () => {
         lineHeight={"0.9"}
         className="animate__animated animate__fadeInDownBig"
       >
-       Test Because a Clean Home Feels Like a <Span color={"WHITE"}>New Home</Span>
+        Because a Clean Home Feels Like a <Span color={"WHITE"}>New Home</Span>
       </Text>
 
       <Text
