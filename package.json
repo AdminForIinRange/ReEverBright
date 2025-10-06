@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-        "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap",
     "prettier": "prettier --write '{src,components,app,public,styles}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "next-sitemap": "^4.2.3",
     "tailwindcss": "^4",
     "typescript": "5.8.3"
   }
