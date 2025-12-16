@@ -56,7 +56,6 @@ const PressureWashing = () => {
       a: "Only when needed. Most surfaces are cleaned with high pressure water, but for oil stains, mould, or algae, we may use eco-friendly detergents.",
     },
   ];
-  const [open, setOpen] = React.useState<number | null>(0);
   return (
     <Box bg="white" mt="-100px">
       {/* ===== HERO ===== */}
@@ -294,4 +293,3 @@ const PressureWashing = () => {
 };
 
 export default PressureWashing;
-
