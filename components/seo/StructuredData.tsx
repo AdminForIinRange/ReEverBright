@@ -25,6 +25,11 @@ export function StructuredData() {
       "https://www.facebook.com/everbrightpressurewashing",
       "https://www.instagram.com/everbrightpressurewashing",
     ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "120",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+61 411 017 366",
@@ -59,6 +64,11 @@ export function StructuredData() {
         closes: "18:00",
       },
     ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "120",
+    },
     parentOrganization: { "@id": `${base}/#organization` },
   };
 
