@@ -267,7 +267,10 @@ const Navbar = () => {
             onClick={() => handleNavigate("/")}
             position="relative"
           >
-         
+            <VStack>
+              <Image src={Presure} alt="logo" width={100} height={100} />
+       
+            </VStack>
           </Box>
 
           {/* Phone icon (mobile) */}
