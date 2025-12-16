@@ -267,12 +267,7 @@ const Navbar = () => {
             onClick={() => handleNavigate("/")}
             position="relative"
           >
-            <VStack>
-              <Image src={Presure} alt="logo" width={100} height={100} />
-              <Text fontSize="xs" color="white" fontWeight="600">
-                Adelaide, SA - 0411 017 366
-              </Text>
-            </VStack>
+         
           </Box>
 
           {/* Phone icon (mobile) */}

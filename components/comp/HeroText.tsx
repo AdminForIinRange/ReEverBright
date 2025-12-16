@@ -35,7 +35,7 @@ const HeroText = () => {
         lineHeight={"0.9"}
         className="animate__animated animate__fadeInDownBig"
       >
-        Adelaide Pressure Washing & Exterior Cleaning
+        Adelaide Exterior Cleaning
       </Text>
 
       <Text
@@ -49,7 +49,7 @@ const HeroText = () => {
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         fontWeight={"700"}
       >
-        Adelaide's #1 Choice for Remarkable Exterior Cleaning
+        Adelaide's leading Choice for Remarkable Exterior Cleaning
       </Text>
 
       <VStack
