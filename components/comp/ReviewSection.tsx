@@ -5,10 +5,10 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 /* ====== Tunables ====== */
-const CARD_W = 340;
-const CARD_H = 220;
+const CARD_W = 360;
+const CARD_MIN_H = 280;
 const CARD_GAP = 24;
-const CLAMP_LINES = 6;
+const CLAMP_LINES = 8;
 
 /* ====== Small utilities ====== */
 const srOnly = {
@@ -102,12 +102,12 @@ function ReviewCard({ name, date, reviewText, stars, platform, avatar }) {
       style={{
         width: `clamp(260px, 80vw, ${CARD_W}px)`,
         minWidth: `clamp(260px, 80vw, ${CARD_W}px)`,
-        height: CARD_H,
-        background: "#fff",
-        border: "1px solid #E2E8F0",
-        borderRadius: 12,
-        padding: 20,
-        boxShadow: "0 1px 2px rgba(16,24,40,0.04)",
+        minHeight: CARD_MIN_H,
+        background: "#ffffff",
+        border: "1px solid #E5E7EB",
+        borderRadius: 14,
+        padding: 24,
+        boxShadow: "0 8px 24px rgba(16,24,40,0.06)",
         display: "flex",
         flexDirection: "column",
         position: "relative",
@@ -187,7 +187,7 @@ function ReviewCard({ name, date, reviewText, stars, platform, avatar }) {
             margin: 0,
             fontSize: 14,
             color: "#2D3748",
-            lineHeight: 1.7,
+            lineHeight: 1.6,
             letterSpacing: ".01em",
             display: "-webkit-box",
             WebkitLineClamp: CLAMP_LINES,
