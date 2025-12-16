@@ -49,7 +49,7 @@ const HeroText = () => {
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         fontWeight={"700"}
       >
-        Adelaide's leading Choice for Remarkable Exterior Cleaning
+        Adelaide's Leading Choice for Exterior Cleaning
       </Text>
 
       <VStack
