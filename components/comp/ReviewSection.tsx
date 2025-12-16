@@ -2,6 +2,7 @@
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
+import { FaStar } from "react-icons/fa";
 
 /* ====== Tunables ====== */
 const CARD_W = 340;
@@ -29,11 +30,10 @@ function StarRating({ value = 5 }) {
       style={{ display: "flex", gap: 4 }}
     >
       {Array.from({ length: 5 }).map((_, i) => (
-        <span
+        <FaStar
           key={i}
           aria-hidden="true"
           style={{
-            fontSize: 16,
             lineHeight: 1,
             filter:
               i < value
@@ -41,9 +41,8 @@ function StarRating({ value = 5 }) {
                 : "none",
             color: i < value ? "#F6AD55" : "#E2E8F0",
           }}
-        >
-          *
-        </span>
+          size={18}
+        />
       ))}
     </div>
   );
