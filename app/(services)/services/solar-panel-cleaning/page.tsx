@@ -160,6 +160,8 @@ const SolarPanelCleaning = () => {
             droppings, and debris that block sunlight. Clean solar panels can
             improve efficiency by up to 30%, helping you get the most out of
             your investment.
+            We serve Greater Adelaide and surrounding suburbs across South
+            Australia.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>

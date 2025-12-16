@@ -133,7 +133,7 @@ const RoofCleaning = () => {
 
           <Text fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
             Protect your biggest investment with expert roof cleaning in Adelaide. We safely remove moss, lichen, and dark stains without causing damage to your tiles or Colorbond.
-            A professionally cleaned roof looks better, lasts longer, and helps prevent costly repairs.
+            A professionally cleaned roof looks better, lasts longer, and helps prevent costly repairs. We serve Greater Adelaide and surrounding suburbs across South Australia.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>

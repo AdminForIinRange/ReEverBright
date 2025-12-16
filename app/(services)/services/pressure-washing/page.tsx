@@ -179,6 +179,8 @@ const PressureWashing = () => {
             paving to remove stubborn dirt, grime, mould, and algae. Our
             commercial-grade equipment delivers powerful, streak-free results
             that last, making your home look brand new.
+            We serve Greater Adelaide and surrounding suburbs across South
+            Australia with fully insured technicians.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>

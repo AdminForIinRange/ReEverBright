@@ -104,6 +104,64 @@ const Footer = () => {
             </Box>
           </Box>
 
+          {/* Services column */}
+          <Box>
+            <Text
+              fontSize="14px"
+              fontWeight="600"
+              textTransform="uppercase"
+              mb="16px"
+              letterSpacing="0.5px"
+            >
+              Services
+            </Text>
+            <Box>
+              <Text
+                as="a"
+                href="/services/pressure-washing"
+                fontSize="14px"
+                color="gray.600"
+                _dark={{ color: "gray.400" }}
+                display="block"
+                mb="10px"
+              >
+                Pressure Washing Adelaide
+              </Text>
+              <Text
+                as="a"
+                href="/services/roof-cleaning"
+                fontSize="14px"
+                color="gray.600"
+                _dark={{ color: "gray.400" }}
+                display="block"
+                mb="10px"
+              >
+                Roof Cleaning Adelaide
+              </Text>
+              <Text
+                as="a"
+                href="/services/gutter-cleaning"
+                fontSize="14px"
+                color="gray.600"
+                _dark={{ color: "gray.400" }}
+                display="block"
+                mb="10px"
+              >
+                Gutter Cleaning Adelaide
+              </Text>
+              <Text
+                as="a"
+                href="/services/solar-panel-cleaning"
+                fontSize="14px"
+                color="gray.600"
+                _dark={{ color: "gray.400" }}
+                display="block"
+              >
+                Solar Panel Cleaning Adelaide
+              </Text>
+            </Box>
+          </Box>
+
           {/* Follow Us column */}
           <Box>
             <Text
@@ -206,4 +264,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

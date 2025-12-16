@@ -191,6 +191,25 @@ export function StructuredData() {
     ],
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: base,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `${base}services`,
+      },
+    ],
+  };
+
   return (
     <>
       <Script id="organization-schema" type="application/ld+json" strategy="beforeInteractive"
@@ -203,6 +222,8 @@ export function StructuredData() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <Script id="faq-schema" type="application/ld+json" strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <Script id="breadcrumb-schema" type="application/ld+json" strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );
 }

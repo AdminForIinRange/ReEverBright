@@ -133,7 +133,7 @@ const GutterCleaning = () => {
 
           <Text fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
             Prevent water damage and protect your home with gutter cleaning in Adelaide. We clear leaves, dirt, and blockages so your gutters flow freely all year round.
-            Regular gutter maintenance reduces the risk of leaks, flooding, and costly structural repairs — keeping your home safe and sound.
+            Regular gutter maintenance reduces the risk of leaks, flooding, and costly structural repairs - keeping your home safe and sound. We serve Greater Adelaide and surrounding suburbs across South Australia.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
