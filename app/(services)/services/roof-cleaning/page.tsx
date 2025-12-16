@@ -1,12 +1,10 @@
-﻿"use client";
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 import six from "@/public/images/serviceImages/six.png";
@@ -50,7 +48,6 @@ const RoofCleaning = () => {
       a: "Not necessarily. As long as we can access your roof safely, we can complete the job while you're away.",
     },
   ];
-  const router = useRouter();
   return (
     <Box bg="white" mt="-100px">
       {/* ===== HERO ===== */}
@@ -150,7 +147,7 @@ const RoofCleaning = () => {
 
           <HStack mt="18px">
             <Link
-              href="#quote"
+              href="tel:+61411017366"
               _hover={{ textDecoration: "none", transform: "translateY(-1px)" }}
               transition="all .15s ease"
             >
@@ -170,10 +167,6 @@ const RoofCleaning = () => {
                 rounded="30px"
                 px="12"
                 fontWeight="500"
-                onClick={() => {
-                  router.push("#quote");
-                  window.location.href = "tel:+61411017366";
-                }}
               >
                 <HStack>
                   <Box textAlign={"center"}>
