@@ -1,4 +1,4 @@
-// app/leads-admin/page.tsx
+﻿// app/leads-admin/page.tsx
 "use client";
 
 import React from "react";
@@ -71,7 +71,7 @@ export default function Page() {
                 _hover={{ bg: "cyan.500" }}
                 disabled={isPending}
               >
-                {isPending ? "Checking…" : "Unlock"}
+                {isPending ? "Checking..." : "Unlock"}
               </Box>
             </HStack>
           </Box>
@@ -121,7 +121,7 @@ export default function Page() {
                 >
                   <HStack justify="space-between" align="start" flexWrap="wrap">
                     <Text fontWeight="700" color="blue.900">
-                      {lead.fullName || "Unnamed"} — {lead.suburb || "—"}
+                      {lead.fullName || "Unnamed"} - {lead.suburb || "-"}
                     </Text>
                     <Text fontSize="xs" color="gray.600">
                       {formatWhen(lead.$createdAt)}
@@ -130,13 +130,13 @@ export default function Page() {
 
                   <VStack align="start" spacing={1} mt={2} fontSize="sm">
                     <Text>
-                      <b>Email:</b> {lead.email || "—"}
+                      <b>Email:</b> {lead.email || "-"}
                     </Text>
                     <Text>
-                      <b>Phone:</b> {lead.phone || "—"}
+                      <b>Phone:</b> {lead.phone || "-"}
                     </Text>
                     <Text>
-                      <b>Message:</b> {lead.helpMessage || "—"}
+                      <b>Message:</b> {lead.helpMessage || "-"}
                     </Text>
                     <Text fontSize="xs" color="gray.500">
                       ID: {lead.$id}
@@ -157,3 +157,4 @@ export default function Page() {
     </Box>
   );
 }
+

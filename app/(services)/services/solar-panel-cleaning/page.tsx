@@ -1,22 +1,31 @@
-"use client";
+﻿"use client";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
-import FreeQuote from "@/components/comp/FreeQuote";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import router from "next/router";
 import React from "react";
-import one from "@/public/images/serviceImages/one.png";
-import two from "@/public/images/serviceImages/two.png";
-import three from "@/public/images/serviceImages/three.png";
-import four from "@/public/images/serviceImages/four.png";
-import five from "@/public/images/serviceImages/five.png";
-import six from "@/public/images/serviceImages/six.png";
-import seven from "@/public/images/serviceImages/seven.png";
+
 import eight from "@/public/images/serviceImages/eight.png";
+
+export const metadata: Metadata = {
+  title: "Solar Panel Cleaning Adelaide | EverBright Pressure Washing",
+  description:
+    "Solar panel cleaning across Adelaide, SA to boost efficiency and protect your investment. Streak-free, chemical-free cleans for residential and commercial systems.",
+  alternates: {
+    canonical: "https://www.everbrightpressurewashing.au/services/solar-panel-cleaning",
+  },
+  openGraph: {
+    title: "Solar Panel Cleaning Adelaide | EverBright Pressure Washing",
+    description:
+      "Professional solar panel cleaning in Adelaide and surrounding suburbs. Increase output with purified water cleaning.",
+    url: "https://www.everbrightpressurewashing.au/services/solar-panel-cleaning",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
 const SolarPanelCleaning = () => {
   const SolarPanelCleaningfaqs = [
@@ -26,7 +35,7 @@ const SolarPanelCleaning = () => {
     },
     {
       q: "Is solar panel cleaning safe?",
-      a: "Yes. We use purified water and soft brushes — no harsh chemicals — to clean panels without scratching or damaging the glass.",
+      a: "Yes. We use purified water and soft brushes - no harsh chemicals - to clean panels without scratching or damaging the glass.",
     },
     {
       q: "How often should solar panels be cleaned?",
@@ -34,21 +43,18 @@ const SolarPanelCleaning = () => {
     },
     {
       q: "Do I need to turn off my solar system before cleaning?",
-      a: "No. Our cleaning process is safe and doesn’t interfere with your solar system’s operation.",
+      a: "No. Our cleaning process is safe and does not interfere with your solar system's operation.",
     },
     {
       q: "Do I need to be home during solar panel cleaning?",
-      a: "Not at all. As long as we can safely access your roof, we’ll complete the clean and you’ll see the results immediately in your energy output.",
+      a: "Not at all. As long as we can safely access your roof, we'll complete the clean and you'll see the results immediately in your energy output.",
     },
   ];
-  const [open, setOpen] = React.useState<number | null>(0);
   const router = useRouter();
   return (
     <Box bg="white" mt="-100px">
       {/* ===== HERO ===== */}
       <Box position="relative">
-        {/* bg image */}
-        <Box />
         {/* tint */}
         <Box
           borderRadius={{ base: "0 0 60px 60px", md: "0 0 90px 90px" }}
@@ -73,23 +79,24 @@ const SolarPanelCleaning = () => {
           >
             <Text as="span" color="cyan.900">
               home
-            </Text>{" "}
-            · services ·{" "}
+            </Text>{" > "}
+            services{" > "}
             <Text as="span" fontWeight="700">
-              Solar Panel washing
+              solar panel cleaning
             </Text>
           </Text>
 
           <Text
+            as="h1"
             mt="12px"
             fontFamily="poppins"
-            fontWeight="700"
+            fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            A Clean Home Feels Like a New Home
+            Solar Panel Cleaning Adelaide — Boost Your System's Output
           </Text>
 
           <Text
@@ -99,8 +106,7 @@ const SolarPanelCleaning = () => {
             color="cyan.100"
             maxW="760px"
           >
-            Professional Solar Panel washing across Adelaide—fast quotes,
-            careful workmanship, and a satisfaction guarantee.
+            Professional solar panel cleaning across Adelaide and surrounding suburbs — purified water, soft brushes, and spotless results to improve efficiency.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -111,15 +117,6 @@ const SolarPanelCleaning = () => {
             >
               <QuoteButton />
             </Link>
-            {/* <Link href="#faqs" _hover={{ textDecoration: "none" }}>
-              <Text
-                fontFamily="poppins"
-                color="cyan.100"
-                textDecoration="underline"
-              >
-                Questions? See FAQs
-              </Text>
-            </Link> */}
           </HStack>
         </Box>
       </Box>
@@ -141,7 +138,7 @@ const SolarPanelCleaning = () => {
             fontSize={{ base: "14px", md: "18px" }}
             color="cyan.600"
           >
-            High Solar Panel Cleaning Adelaide
+            Solar Panel Cleaning Adelaide
           </Text>
 
           <Text
@@ -169,27 +166,13 @@ const SolarPanelCleaning = () => {
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
-            {[
-              "Increase efficiency & energy savings",
-              "Extend panel lifespan",
-              "Protect manufacturer warranty",
-              "Eco-friendly, chemical-free cleaning",
-            ].map((item) => (
-              <Text
-                key={item}
-                fontFamily="poppins"
-                fontSize={{ base: "16px", md: "18px" }}
-              >
-                {/* leading checkmark without new imports */}
-                <Text as="span" mr="8px">
-                  ✓
-                </Text>
+            {["Increase efficiency & energy savings", "Extend panel lifespan", "Protect manufacturer warranty", "Eco-friendly, chemical-free cleaning"].map((item) => (
+              <Text key={item} fontFamily="poppins" fontSize={{ base: "16px", md: "18px" }}>
+                <Text as="span" mr="8px">-</Text>
                 {item}
               </Text>
             ))}
           </VStack>
-
-          {/* quick features */}
 
           <HStack mt="18px">
             <Link
@@ -209,7 +192,6 @@ const SolarPanelCleaning = () => {
                 cursor="pointer"
                 _hover={{
                   transition: "all 0.2s ease-in-out",
-
                   fontWeight: "700",
                   px: "80px",
                   bg: "cyan",
@@ -228,11 +210,7 @@ const SolarPanelCleaning = () => {
                   <Box textAlign={"center"}>
                     <Phone />
                   </Box>
-                  <Text
-                    textStyle={"smallText"}
-                    fontFamily="poppins"
-                    fontWeight="500"
-                  >
+                  <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
                     Get a Quote
                   </Text>
                 </HStack>
@@ -255,31 +233,15 @@ const SolarPanelCleaning = () => {
             quality={70}
             loading="lazy"
             src={eight}
-            alt="Solar Panel washing driveway in Adelaide"
+            alt="Solar panel cleaning in Adelaide"
             fill
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
-          <Box
-            position="absolute"
-            inset={0}
-            bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)"
-          />
+          <Box position="absolute" inset={0} bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)" />
         </Box>
       </HStack>
 
-      {/* ===== WHY CHOOSE US STRIP ===== */}
-
-      {/* ===== CTA BAR ===== */}
-
-      {/* ===== QUOTE BOX ===== */}
-
-      {/* ===== FOOTER CARD ===== */}
-
-      <Box
-        px={{ base: "2%", md: "6%", xl: "16%" }}
-        id="quote"
-        style={{ scrollMarginTop: "100px" }}
-      >
+      <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote" style={{ scrollMarginTop: "100px" }}>
         <FreeQuoteLarge />
       </Box>
       <FAQ items={SolarPanelCleaningfaqs} />

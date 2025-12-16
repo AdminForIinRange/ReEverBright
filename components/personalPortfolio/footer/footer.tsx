@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+﻿import { Box, Text } from "@chakra-ui/react";
 import Presure from "@/public/images/Presure washing- Driveways, houses, patios and more-3.png";
 
 import Image from "next/image";
@@ -43,6 +43,40 @@ const Footer = () => {
           flexDirection={{ base: "column", md: "row" }}
           gap={{ base: "30px", md: "80px" }}
         >
+          {/* Contact column */}
+          <Box>
+            <Text
+              fontSize="14px"
+              fontWeight="600"
+              textTransform="uppercase"
+              mb="16px"
+              letterSpacing="0.5px"
+            >
+              Contact
+            </Text>
+            <Box>
+              <Text
+                as="a"
+                title="Call EverBright Pressure Washing"
+                href="tel:+61411017366"
+                fontSize="14px"
+                color="gray.600"
+                _dark={{ color: "gray.400" }}
+                display="block"
+                mb="10px"
+                fontWeight="700"
+              >
+                0411 017 366
+              </Text>
+              <Text fontSize="14px" color="gray.600" _dark={{ color: "gray.400" }} display="block" mb="6px">
+                Adelaide, South Australia
+              </Text>
+              <Text fontSize="14px" color="gray.600" _dark={{ color: "gray.400" }} display="block">
+                Serving Greater Adelaide and nearby suburbs
+              </Text>
+            </Box>
+          </Box>
+
           {/* Resources column */}
           <Box>
             <Text
@@ -163,11 +197,7 @@ const Footer = () => {
           justifyContent={{ base: "center", md: "flex-start" }}
         >
           <Text fontSize="12px" color="gray.500" _dark={{ color: "gray.400" }}>
-            © 2023{" "}
-            <Text as="span" textDecor="underline">
-              EverBright™
-            </Text>
-            . All Rights Reserved.
+            (c) 2025 <Text as="span" textDecor="underline">EverBright Pressure Washing</Text>. All Rights Reserved.
           </Text>
         </Box>
       </Box>
@@ -176,3 +206,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

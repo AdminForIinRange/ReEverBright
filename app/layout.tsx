@@ -1,4 +1,4 @@
-// app/layout.tsx
+﻿// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | EverBright Pressure Washing",
   },
   description:
-    "Professional exterior cleaning by EverBright Pressure Washing. House washing, driveway & concrete cleaning, roof & gutter cleaning, soft wash, and commercial pressure washing.",
+    "Adelaide, South Australia exterior cleaning by EverBright Pressure Washing: house washing, driveway and concrete cleaning, roof and gutter cleaning, soft washing, and commercial pressure washing.",
   alternates: { canonical: "https://www.everbrightpressurewashing.au/" },
   robots: {
     index: true,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EverBright Pressure Washing",
     description:
-      "Top-rated pressure washing for homes and businesses. Safe soft-wash, powerful deep clean, and spotless results.",
+      "Top-rated pressure washing for homes and businesses across Adelaide, SA. Safe soft-wash, powerful deep clean, and spotless results.",
     url: "https://www.everbrightpressurewashing.au/",
     siteName: "EverBright Pressure Washing",
     locale: "en_AU",
@@ -46,28 +46,18 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "EverBright Pressure Washing – Professional exterior cleaning",
-        type: "image/png",
-      },
-      {
-        url: "/images/og-image-square.png", // optional file; remove if you don't have it
-        width: 1200,
-        height: 1200,
-        alt: "EverBright Pressure Washing Logo",
+        alt: "EverBright Pressure Washing — Professional exterior cleaning in Adelaide, SA",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@everbright", // TODO: update to real handle or remove
-    creator: "@everbright", // TODO: update to real handle or remove
     title: "EverBright Pressure Washing",
     description:
-      "Professional exterior cleaning: house washing, concrete, roofs, gutters, and more.",
+      "Professional exterior cleaning across Adelaide, SA: house washing, concrete, roofs, gutters, and more.",
     images: "/images/og-image.png",
   },
-
   icons: {
     icon: [
       { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -91,7 +81,12 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
 
-  viewport: { width: "device-width", initialScale: 1, maximumScale: 1 },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0b0b0b" },
@@ -144,3 +139,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+

@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import FreeQuote from "@/components/comp/FreeQuote";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
@@ -7,7 +8,6 @@ import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import router from "next/router";
 import React from "react";
 
 import one from "@/public/images/serviceImages/one.png";
@@ -18,6 +18,22 @@ import five from "@/public/images/serviceImages/five.png";
 import six from "@/public/images/serviceImages/six.png";
 import seven from "@/public/images/serviceImages/seven.png";
 import eight from "@/public/images/serviceImages/eight.png";
+
+export const metadata: Metadata = {
+  title: "Pressure Washing Adelaide | EverBright Pressure Washing",
+  description:
+    "Pressure washing and exterior cleaning across Adelaide, South Australia. Driveways, patios, concrete, and walls cleaned safely with commercial-grade equipment.",
+  alternates: {
+    canonical: "https://www.everbrightpressurewashing.au/services/pressure-washing",
+  },
+  openGraph: {
+    title: "Pressure Washing Adelaide | EverBright Pressure Washing",
+    description:
+      "Professional pressure washing for homes and businesses across Adelaide, SA. Driveways, concrete, patios, and walls cleaned with care.",
+    url: "https://www.everbrightpressurewashing.au/services/pressure-washing",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
 const PressureWashing = () => {
   const PressureWashingfaqs = [
@@ -31,11 +47,11 @@ const PressureWashing = () => {
     },
     {
       q: "How long does a driveway clean take?",
-      a: "Most residential driveways take 1–2 hours, depending on size and stains. Larger areas or heavily soiled surfaces may take longer.",
+      a: "Most residential driveways take 1-2 hours, depending on size and stains. Larger areas or heavily soiled surfaces may take longer.",
     },
     {
       q: "How long will my driveway stay clean after pressure washing?",
-      a: "Typically 12–18 months, depending on weather, traffic, and nearby trees.",
+      a: "Typically 12-18 months, depending on weather, traffic, and nearby trees.",
     },
     {
       q: "Do you use chemicals for pressure washing?",
@@ -74,23 +90,24 @@ const PressureWashing = () => {
           >
             <Text as="span" color="cyan.900">
               home
-            </Text>{" "}
-            · services ·{" "}
+            </Text>{" > "}
+            services{" > "}
             <Text as="span" fontWeight="700">
               pressure washing
             </Text>
           </Text>
 
           <Text
+            as="h1"
             mt="12px"
             fontFamily="poppins"
-            fontWeight="700"
+            fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            A Clean Home Feels Like a New Home
+            Pressure Washing Adelaide — Driveways, Concrete, Patios, and Walls
           </Text>
 
           <Text
@@ -100,8 +117,7 @@ const PressureWashing = () => {
             color="cyan.100"
             maxW="760px"
           >
-            Professional pressure washing across Adelaide—fast quotes, careful
-            workmanship, and a satisfaction guarantee.
+            Professional pressure washing across Adelaide and surrounding suburbs — fast quotes, careful workmanship, and a satisfaction guarantee.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -162,11 +178,11 @@ const PressureWashing = () => {
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
           >
-            Restore your property’s curb appeal with professional pressure
+            Restore your property's curb appeal with professional pressure
             washing in Adelaide. We deep-clean driveways, patios, concrete, and
             paving to remove stubborn dirt, grime, mould, and algae. Our
             commercial-grade equipment delivers powerful, streak-free results
-            that last—making your home look brand new.
+            that last, making your home look brand new.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
@@ -181,10 +197,7 @@ const PressureWashing = () => {
                 fontFamily="poppins"
                 fontSize={{ base: "16px", md: "18px" }}
               >
-                {/* leading checkmark without new imports */}
-                <Text as="span" mr="8px">
-                  ✓
-                </Text>
+                <Text as="span" mr="8px">-</Text>
                 {item}
               </Text>
             ))}

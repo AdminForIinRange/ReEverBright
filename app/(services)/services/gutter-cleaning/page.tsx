@@ -1,29 +1,37 @@
-"use client";
+﻿"use client";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
-import FreeQuote from "@/components/comp/FreeQuote";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import router from "next/router";
 import React from "react";
 
-import one from "@/public/images/serviceImages/one.png";
 import two from "@/public/images/serviceImages/two.png";
-import three from "@/public/images/serviceImages/three.png";
-import four from "@/public/images/serviceImages/four.png";
-import five from "@/public/images/serviceImages/five.png";
-import six from "@/public/images/serviceImages/six.png";
-import seven from "@/public/images/serviceImages/seven.png";
-import eight from "@/public/images/serviceImages/eight.png";
+
+export const metadata: Metadata = {
+  title: "Gutter Cleaning Adelaide | EverBright Pressure Washing",
+  description:
+    "Gutter cleaning and vacuuming across Adelaide, South Australia. Clear leaves and debris to prevent leaks, overflow, and water damage.",
+  alternates: {
+    canonical: "https://www.everbrightpressurewashing.au/services/gutter-cleaning",
+  },
+  openGraph: {
+    title: "Gutter Cleaning Adelaide | EverBright Pressure Washing",
+    description:
+      "Professional gutter cleaning and downpipe clearing across Adelaide and surrounding suburbs. Prevent leaks and protect your home.",
+    url: "https://www.everbrightpressurewashing.au/services/gutter-cleaning",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
 const GutterCleaning = () => {
   const GutterCleaningfaqs = [
     {
       q: "How often should gutters be cleaned?",
-      a: "In Adelaide, gutters should be cleaned at least twice a year — once before winter and once before summer — to avoid costly water damage and blocked downpipes.",
+      a: "In Adelaide, gutters should be cleaned at least twice a year - once before winter and once before summer - to avoid costly water damage and blocked downpipes.",
     },
     {
       q: "Can blocked gutters damage my home?",
@@ -31,7 +39,7 @@ const GutterCleaning = () => {
     },
     {
       q: "What do you remove during gutter cleaning?",
-      a: "EverBright removes leaves, mud, dirt, twigs, and other debris. We also check and clear downpipes to ensure water flows properly.",
+      a: "We remove leaves, mud, dirt, twigs, and other debris, and we check and clear downpipes so water flows properly.",
     },
     {
       q: "Is gutter cleaning messy?",
@@ -39,18 +47,14 @@ const GutterCleaning = () => {
     },
     {
       q: "Do I need to be home for gutter cleaning?",
-      a: "No. Many of our Adelaide customers book gutter cleaning while they’re at work — we just need access to your roof and gutters.",
+      a: "No. Many of our Adelaide customers book gutter cleaning while they're at work - we just need access to your roof and gutters.",
     },
   ];
-  const [open, setOpen] = React.useState<number | null>(0);
   const router = useRouter();
   return (
     <Box bg="white" mt="-100px">
       {/* ===== HERO ===== */}
       <Box position="relative">
-        {/* bg image */}
-        <Box />
-        {/* tint */}
         <Box
           borderRadius={{ base: "0 0 60px 60px", md: "0 0 90px 90px" }}
           position="absolute"
@@ -60,48 +64,37 @@ const GutterCleaning = () => {
           zIndex={-1}
         />
 
-        {/* content */}
         <Box
           px={{ base: "1%", md: "6%", xl: "16%" }}
           pt={"150px"}
           pb={"50px"}
           bg={"cyan.600"}
         >
-          <Text
-            fontFamily="poppins"
-            fontSize={{ base: "14px", md: "16px" }}
-            color="white"
-          >
+          <Text fontFamily="poppins" fontSize={{ base: "14px", md: "16px" }} color="white">
             <Text as="span" color="cyan.900">
               home
-            </Text>{" "}
-            · services ·{" "}
+            </Text>{" > "}
+            services{" > "}
             <Text as="span" fontWeight="700">
-              Gutter washing
+              gutter cleaning
             </Text>
           </Text>
 
           <Text
+            as="h1"
             mt="12px"
             fontFamily="poppins"
-            fontWeight="700"
+            fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            A Clean Home Feels Like a New Home
+            Gutter Cleaning Adelaide — Clear, Safe, and Ready for Rain
           </Text>
 
-          <Text
-            mt="12px"
-            fontFamily="poppins"
-            fontSize={{ base: "15px", md: "17px" }}
-            color="cyan.100"
-            maxW="760px"
-          >
-            Professional Gutter washing across Adelaide—fast quotes, careful
-            workmanship, and a satisfaction guarantee.
+          <Text mt="12px" fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} color="cyan.100" maxW="760px">
+            Professional gutter cleaning across Adelaide — we clear gutters and downpipes to stop leaks, overflow, and water damage.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -112,20 +105,10 @@ const GutterCleaning = () => {
             >
               <QuoteButton />
             </Link>
-            {/* <Link href="#faqs" _hover={{ textDecoration: "none" }}>
-              <Text
-                fontFamily="poppins"
-                color="cyan.100"
-                textDecoration="underline"
-              >
-                Questions? See FAQs
-              </Text>
-            </Link> */}
           </HStack>
         </Box>
       </Box>
 
-      {/* ===== INTRO + IMAGE ===== */}
       <HStack
         px={{ base: "4%", md: "6%", xl: "16%" }}
         my={{ base: "40px", md: "70px" }}
@@ -135,14 +118,9 @@ const GutterCleaning = () => {
         flexWrap={{ base: "wrap", md: "nowrap" }}
         mx="auto"
       >
-        {/* copy */}
         <Box flex="1" minW={{ base: "100%", md: "520px" }}>
-          <Text
-            fontFamily="poppins"
-            fontSize={{ base: "14px", md: "18px" }}
-            color="cyan.600"
-          >
-            High Gutter Cleaning Adelaide
+          <Text fontFamily="poppins" fontSize={{ base: "14px", md: "18px" }} color="cyan.600">
+            Gutter Cleaning Adelaide
           </Text>
 
           <Text
@@ -156,41 +134,19 @@ const GutterCleaning = () => {
             Expert Gutter Cleaning Services in Adelaide
           </Text>
 
-          <Text
-            fontFamily="poppins"
-            fontSize={{ base: "15px", md: "17px" }}
-            lineHeight={{ base: "1.75", md: "1.9" }}
-            mt="8px"
-          >
-            Prevent water damage and protect your home with gutter cleaning in
-            Adelaide. We clear leaves, dirt, and blockages so your gutters flow
-            freely all year round. Regular gutter maintenance reduces the risk
-            of leaks, flooding, and costly structural repairs—keeping your home
-            safe and sound.
+          <Text fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
+            Prevent water damage and protect your home with gutter cleaning in Adelaide. We clear leaves, dirt, and blockages so your gutters flow freely all year round.
+            Regular gutter maintenance reduces the risk of leaks, flooding, and costly structural repairs — keeping your home safe and sound.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
-            {[
-              "Gutters & downpipes cleared",
-              "Blockages removed",
-              "Roof valleys checked",
-              "Safe & fully insured service",
-            ].map((item) => (
-              <Text
-                key={item}
-                fontFamily="poppins"
-                fontSize={{ base: "16px", md: "18px" }}
-              >
-                {/* leading checkmark without new imports */}
-                <Text as="span" mr="8px">
-                  ✓
-                </Text>
+            {["Gutters & downpipes cleared", "Blockages removed", "Roof valleys checked", "Safe & fully insured service"].map((item) => (
+              <Text key={item} fontFamily="poppins" fontSize={{ base: "16px", md: "18px" }}>
+                <Text as="span" mr="8px">-</Text>
                 {item}
               </Text>
             ))}
           </VStack>
-
-          {/* quick features */}
 
           <HStack mt="18px">
             <Link
@@ -208,13 +164,7 @@ const GutterCleaning = () => {
                 fontFamily="poppins"
                 transition="all 0.2s ease-in-out"
                 cursor="pointer"
-                _hover={{
-                  transition: "all 0.2s ease-in-out",
-
-                  fontWeight: "700",
-                  px: "80px",
-                  bg: "cyan",
-                }}
+                _hover={{ transition: "all 0.2s ease-in-out", fontWeight: "700", px: "80px", bg: "cyan" }}
                 p={4}
                 color="white"
                 rounded="30px"
@@ -229,11 +179,7 @@ const GutterCleaning = () => {
                   <Box textAlign={"center"}>
                     <Phone />
                   </Box>
-                  <Text
-                    textStyle={"smallText"}
-                    fontFamily="poppins"
-                    fontWeight="500"
-                  >
+                  <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
                     Get a Quote
                   </Text>
                 </HStack>
@@ -242,7 +188,6 @@ const GutterCleaning = () => {
           </HStack>
         </Box>
 
-        {/* image */}
         <Box
           position="relative"
           h={{ base: "300px", md: "420px" }}
@@ -256,30 +201,15 @@ const GutterCleaning = () => {
             quality={70}
             loading="lazy"
             src={two}
-            alt="Gutter washing driveway in Adelaide"
+            alt="Gutter cleaning in Adelaide"
             fill
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
-          <Box
-            position="absolute"
-            inset={0}
-            bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)"
-          />
+          <Box position="absolute" inset={0} bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)" />
         </Box>
       </HStack>
 
-      {/* ===== WHY CHOOSE US STRIP ===== */}
-
-      {/* ===== CTA BAR ===== */}
-
-      {/* ===== QUOTE BOX ===== */}
-
-      {/* ===== FOOTER CARD ===== */}
-      <Box
-        px={{ base: "2%", md: "6%", xl: "16%" }}
-        id="quote"
-        style={{ scrollMarginTop: "100px" }}
-      >
+      <Box px={{ base: "2%", md: "6%", xl: "16%" }} id="quote" style={{ scrollMarginTop: "100px" }}>
         <FreeQuoteLarge />
       </Box>
       <FAQ items={GutterCleaningfaqs} />

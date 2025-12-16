@@ -1,4 +1,4 @@
-import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
+﻿import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 import Google from  "@/public/images/Google.png";
@@ -15,7 +15,6 @@ import {
   Trophy,
   Zap,
 } from "lucide-react";
-import router from "next/router";
 import { useRouter } from "next/navigation";
 
 const HeroText = () => {
@@ -23,11 +22,11 @@ const HeroText = () => {
   return (
     <>
       <Text
-        as={"h2"}
+        as="h1"
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         mt={["15px", "15px", "15px", "15px", "15px", "15px"]}
         fontSize={{ base: "42px", md: "52px", lg: "72px" }}
-        fontWeight={600}
+        fontWeight={700}
         fontFamily={"poppins"}
         bgClip="text"
         textAlign={["start", "center", "center", "start", "start", "start"]}
@@ -36,7 +35,7 @@ const HeroText = () => {
         lineHeight={"0.9"}
         className="animate__animated animate__fadeInDownBig"
       >
-        Because a Clean Home Feels Like a <Span color={"WHITE"}>New Home</Span>
+        Adelaide Pressure Washing & Exterior Cleaning
       </Text>
 
       <Text
@@ -50,7 +49,7 @@ const HeroText = () => {
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         fontWeight={"700"}
       >
-        Adelaide’s #1 Choice for Remarkable Exterior Cleaning!
+        Adelaide's #1 Choice for Remarkable Exterior Cleaning
       </Text>
 
       <VStack

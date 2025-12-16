@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useCallback, memo, useEffect } from "react";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
@@ -109,7 +109,7 @@ const Navbar = () => {
             _hover={{ color: "#F5F5F5" }}
             onClick={() => router.push(`/${category}`)}
           >
-            View all {category} →
+            View all {category} >
           </Text>
         </Box>
       </Box>
@@ -165,7 +165,7 @@ const Navbar = () => {
               setMobileMenuOpen(false);
             }}
           >
-            View all {category} →
+            View all {category} >
           </Text>
         </Box>
       </Box>
@@ -269,6 +269,9 @@ const Navbar = () => {
           >
             <VStack>
               <Image src={Presure} alt="logo" width={100} height={100} />
+              <Text fontSize="xs" color="white" fontWeight="600">
+                Adelaide, SA - 0411 017 366
+              </Text>
             </VStack>
           </Box>
 
@@ -428,7 +431,7 @@ const Navbar = () => {
                     }
                     transition="transform 0.3s ease"
                   >
-                    <Text textStyle={"smallText"}>↓</Text>
+                    <Text textStyle={"smallText"}>{">"}</Text>
                   </Box>
                 )}
               </Box>
@@ -547,3 +550,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

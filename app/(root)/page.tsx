@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import {
   Box,
   VStack,
@@ -19,7 +19,6 @@ import { FaStar } from "react-icons/fa";
 import FreeQuote from "@/components/comp/FreeQuote";
 import HeroText from "@/components/comp/HeroText";
 import ImageCompareSlider from "@/components/comp/ImageCompareSlider";
-import router from "next/router";
 import ServicesBox from "@/components/comp/compsDeep/ServicesBox";
 import ReviewSection from "@/components/comp/ReviewSection";
 
@@ -102,18 +101,18 @@ const Page = () => {
   ];
 
   const promises = [
-    "100% Satisfaction Guarantee – Or We Will Fix It!",
-    "We’ll Be On Time",
+    "100% Satisfaction Guarantee - Or We Will Fix It!",
+    "We'll Be On Time",
     "We Leave Things CLEAN",
     "All Our Quotes Are Clear, Fast and No Obligation",
-    "We Are Fully Insured and Police Cheaked",
+    "We Are Fully Insured and Police Checked",
     "Only Professional Equipment",
   ];
 
   const Standredfaqs = [
     {
       q: "How do I book a service?",
-      a: "You can easily book with us via phone or SMS. Just send us a message and we’ll confirm your booking time with you.",
+      a: "You can easily book with us via phone or SMS. Just send us a message and we'll confirm your booking time with you.",
       category: "getting-started",
     },
     {
@@ -123,11 +122,11 @@ const Page = () => {
     },
     {
       q: "Do you need a deposit before booking?",
-      a: "No deposit is required — you simply pay once the job is completed to your satisfaction.",
+      a: "No deposit is required - you simply pay once the job is completed to your satisfaction.",
       category: "pricing",
     },
     {
-      q: "Do I need to be home while you’re working?",
+      q: "Do I need to be home while you're working?",
       a: "Not necessarily. As long as we have access through the side gate and a working outdoor tap, we can complete the job without you being there.",
       category: "requirements",
     },
@@ -138,7 +137,7 @@ const Page = () => {
     },
     {
       q: "Can roof cleaning extend the life of my tiles or Colorbond?",
-      a: "Yes — removing moss, lichen, and built-up dirt not only improves appearance but also helps prevent long-term damage, extending the life of your roof.",
+      a: "Yes - removing moss, lichen, and built-up dirt not only improves appearance but also helps prevent long-term damage, extending the life of your roof.",
       category: "results",
     },
     {
@@ -148,12 +147,12 @@ const Page = () => {
     },
     {
       q: "Do you bring your own water, or do I need to provide it?",
-      a: "We can supply our own water if needed, but this comes at an extra cost. It’s usually cheaper and easier to use your outdoor tap.",
+      a: "We can supply our own water if needed, but this comes at an extra cost. It's usually cheaper and easier to use your outdoor tap.",
       category: "requirements",
     },
     {
       q: "Do you use eco-friendly cleaning solutions?",
-      a: "Yes — we use safe, eco-friendly products that won’t harm pets, plants, or your property.",
+      a: "Yes - we use safe, eco-friendly products that won't harm pets, plants, or your property.",
       category: "safety",
     },
   ];

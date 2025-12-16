@@ -20,14 +20,14 @@ export function StructuredData() {
     description:
       "Professional exterior cleaning and pressure washing in Adelaide, South Australia. Driveways, roofs, gutters, solar panels, and more.",
     foundingDate: "2024",
-    founders: [{ "@type": "Person", name: "EverBright Team" }],
+    founders: [{ "@type": "Person", name: "Shayal" }],
     sameAs: [
-      "https://www.facebook.com/everbrightpressurewashing", // TODO
-      "https://www.instagram.com/everbrightpressurewashing", // TODO
+      "https://www.facebook.com/everbrightpressurewashing",
+      "https://www.instagram.com/everbrightpressurewashing",
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+61-4xx-xxx-xxx", // TODO
+      telephone: "+61 411 017 366",
       contactType: "customer service",
       availableLanguage: "English",
       areaServed: "Adelaide, South Australia",
@@ -41,7 +41,7 @@ export function StructuredData() {
     name: "EverBright Pressure Washing",
     image: `${base}/images/og-image.png`,
     url: base,
-    telephone: "+61 4xx xxx xxx", // TODO
+    telephone: "+61 411 017 366",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -127,11 +127,57 @@ export function StructuredData() {
     publisher: { "@id": `${base}/#organization` },
     potentialAction: [
       {
-        "@type": "SearchAction",
-        target: { "@type": "EntryPoint", urlTemplate: `${base}/search?q={search_term_string}` },
-        "query-input": "required name=search_term_string",
+        "@type": "ContactAction",
+        target: "tel:+61411017366",
+        name: "Call EverBright Pressure Washing",
       },
-      { "@type": "ContactAction", target: `${base}/contact`, name: "Get a Free Quote" },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do I book a service?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Book by phone or SMS and we will confirm a time that suits you.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What areas do you service?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We service all of Greater Adelaide and surrounding suburbs in South Australia.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you offer roof and gutter cleaning?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We clean roofs, gutters, solar panels, driveways, concrete, and more with the right method for each surface.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are you insured?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. EverBright Pressure Washing is fully insured for residential and commercial work across Adelaide, SA.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do I need to be home during the job?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Not necessarily. If we have safe access and a working outdoor tap, we can complete the job while you are away.",
+        },
+      },
     ],
   };
 
@@ -145,6 +191,8 @@ export function StructuredData() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       <Script id="website-schema" type="application/ld+json" strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <Script id="faq-schema" type="application/ld+json" strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     </>
   );
 }
