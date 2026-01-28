@@ -1,7 +1,4 @@
-﻿import { Box, Text } from "@chakra-ui/react";
-import Presure from "@/public/images/Presure washing- Driveways, houses, patios and more-3.png";
-
-import Image from "next/image";
+import { Box, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
@@ -264,3 +261,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

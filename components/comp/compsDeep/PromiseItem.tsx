@@ -10,3 +10,4 @@ const PromiseItem = ({ text }: { text: string }) => (
 );
 
 export default PromiseItem;
+

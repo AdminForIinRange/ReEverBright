@@ -1,52 +1,28 @@
-﻿"use client";
+"use client";
 import {
   Box,
   VStack,
   Text,
   HStack,
-  Span,
-  Link,
   GridItem,
   Grid,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import React from "react";
-import Google from "@/public//Google.png";
-import Adl from "@/public/Shayal.png";
 import shayalv2 from "@/public/images/shayalv2.png";
-import Shayal from "@/public/Shayal.png"; // <-- Add this line (update path/filename as needed)
-import { FaStar } from "react-icons/fa";
 import FreeQuote from "@/components/comp/FreeQuote";
 import HeroText from "@/components/comp/HeroText";
-import ImageCompareSlider from "@/components/comp/ImageCompareSlider";
-import ServicesBox from "@/components/comp/compsDeep/ServicesBox";
 import ReviewSection from "@/components/comp/ReviewSection";
 
-// ✅ NEW: import your de-dupe components
-import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
-import BadgeItem from "@/components/comp/compsDeep/BadgeItem";
-import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
-import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import ServiceLayout from "@/components/comp/ServiceLayout";
 import {
-  Shield,
-  Home,
-  Leaf,
   ShieldCheck,
-  Zap,
-  Award,
   Sprout,
   MapPinCheck,
   Handshake,
 } from "lucide-react";
 import About from "@/components/comp/About";
 import SlidingCard from "@/components/comp/SlidingCard";
-import SlindingBanner from "@/components/comp/SlindingBanner";
 
-import icon1 from "@/public/images/Icons/1.png";
-import icon2 from "@/public/images/Icons/2.png";
-import icon3 from "@/public/images/Icons/3.png";
-import icon4 from "@/public/images/Icons/4.png";
 import BannerSlider from "@/components/comp/compsDeep/BannerSlider";
 import WorkBanner from "@/components/comp/compsDeep/WorkBanner";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
@@ -54,61 +30,6 @@ import FAQ from "@/components/globalComponents/FAQ";
 import Footer from "@/components/personalPortfolio/footer/footer";
 
 const Page = () => {
-  const services = [
-    {
-      title: "Pressure Washing",
-      image:
-        "https://images.pexels.com/photos/14965464/pexels-photo-14965464.jpeg",
-      desc: "Deep-clean hard surfaces to remove grime, algae, and stubborn stains.",
-    },
-    {
-      title: "Solar Cleaning",
-      image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg",
-      desc: "Maximize panel efficiency with streak-free, residue-free cleaning.",
-    },
-    {
-      title: "Roof Cleaning",
-      image:
-        "https://images.pexels.com/photos/2513975/pexels-photo-2513975.jpeg",
-      desc: "Safely lift moss and dark streaks to restore curb appeal.",
-    },
-    {
-      title: "Gutter Cleaning",
-      image:
-        "https://images.pexels.com/photos/3258128/pexels-photo-3258128.jpeg",
-      desc: "Clear debris to prevent overflow, leaks, and foundation damage.",
-    },
-  ];
-
-  // ✅ NEW: small data arrays to map the repeated items
-  const badges = [
-    {
-      text: "Guarantee Satisfaction",
-      Images: icon1,
-    },
-    {
-      text: "Fully Insured",
-      Images: icon2,
-    },
-    {
-      text: "Locally Owned",
-      Images: icon3,
-    },
-    {
-      text: "ECO Friendly",
-      Images: icon4,
-    },
-  ];
-
-  const promises = [
-    "100% Satisfaction Guarantee - Or We Will Fix It!",
-    "We'll Be On Time",
-    "We Leave Things CLEAN",
-    "All Our Quotes Are Clear, Fast and No Obligation",
-    "We Are Fully Insured and Police Checked",
-    "Only Professional Equipment",
-  ];
-
   const Standredfaqs = [
     {
       q: "How do I book a service?",
@@ -167,7 +88,7 @@ const Page = () => {
           backgroundPosition="center"
           backgroundSize="cover"
           position={"absolute"}
-          backgroundAttachment="fixed"
+          backgroundAttachment={{ base: "scroll", md: "fixed" }}
           zIndex={-1}
           w={["100%", "100%", "100%", "100%", "100%", "100%"]}
           h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
@@ -182,6 +103,7 @@ const Page = () => {
           backgroundPosition="center"
           backgroundSize="cover"
           position={"absolute"}
+          backgroundAttachment={{ base: "scroll", md: "fixed" }}
           zIndex={-1}
           w={["100%", "100%", "100%", "100%", "100%", "100%"]}
           h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
@@ -324,7 +246,7 @@ const Page = () => {
               {/* Eyebrow text */}
               <Text
                 fontSize={["14px", "16px", "18px"]}
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 fontWeight={600}
                 textTransform="uppercase"
                 letterSpacing="2px"
@@ -338,7 +260,7 @@ const Page = () => {
               <Text
                 fontSize={["28px", "40px", "52px"]}
                 fontWeight={800}
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 lineHeight="1.1"
                 color="cyan.100"
               >
@@ -385,19 +307,19 @@ const Page = () => {
                     align="start"
                     color="white"
                     fontSize="lg"
-                    fontFamily={"poppins"}
+                    fontFamily="var(--font-poppins)"
                   >
                     <Text>
                       I started EverBright Pressure Washing here in South
                       Australia to help homeowners feel proud of their property.
                       I treat every home as if it were my own, offering honest
                       advice, paying close attention to detail, and making sure
-                      the job's done right the first time.
+                      the job&apos;s done right the first time.
                     </Text>
 
                     <Text>
                       My team shares that approach. We know life is busy, so
-                      we'll take care of the dirty work, giving you more time to
+                      we&apos;ll take care of the dirty work, giving you more time to
                       enjoy what matters most.
                     </Text>
 
@@ -406,7 +328,7 @@ const Page = () => {
                     {/* CTA line */}
                     <Box pt={2}>
                       <Text
-                        fontFamily={"poppins"}
+                        fontFamily="var(--font-poppins)"
                         fontWeight="700"
                         color="white"
                       >
@@ -452,3 +374,6 @@ const Page = () => {
 };
 
 export default Page;
+
+
+

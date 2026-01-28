@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, HStack, Link, Text, VStack } from "@chakra-ui/react";
-import { ChevronDown, ChevronUp, CheckCircle } from "lucide-react";
+import { Box, Link, Text, VStack } from "@chakra-ui/react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 type FAQItem = {
   q: string;
@@ -12,23 +12,30 @@ type FAQItem = {
 
 const FAQ = ({ items }: { items: FAQItem[] }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const itemCount = items.length;
   const [animatedItems, setAnimatedItems] = useState<boolean[]>(
-    Array(items.length).fill(false),
+    Array(itemCount).fill(false),
   );
 
   // stagger animation
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const newAnimated = [...animatedItems];
-      items.forEach((_, i) => {
+    setAnimatedItems(Array(itemCount).fill(false));
+    const timeouts: Array<ReturnType<typeof setTimeout>> = [];
+    for (let i = 0; i < itemCount; i++) {
+      timeouts.push(
         setTimeout(() => {
-          newAnimated[i] = true;
-          setAnimatedItems([...newAnimated]);
-        }, i * 100);
-      });
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [items]);
+          setAnimatedItems((prev) => {
+            const next = [...prev];
+            next[i] = true;
+            return next;
+          });
+        }, i * 100),
+      );
+    }
+    return () => {
+      timeouts.forEach((timeout) => clearTimeout(timeout));
+    };
+  }, [itemCount]);
 
   return (
     <Box
@@ -42,7 +49,7 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
       <VStack align="center" textAlign="center" spacing={4}>
         <Text
           fontSize={["14px", "16px", "18px"]}
-          fontFamily="poppins"
+          fontFamily="var(--font-poppins)"
           fontWeight={600}
           textTransform="uppercase"
           letterSpacing="2px"
@@ -53,7 +60,7 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
         <Text
           fontSize={["28px", "40px", "52px"]}
           fontWeight={800}
-          fontFamily="poppins"
+          fontFamily="var(--font-poppins)"
           color="black"
         >
           FAQ
@@ -119,7 +126,7 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
               pl={[4, 6]}
               pr={[4, 10]}
             >
-              <Text color="#4B5563" lineHeight="1.8" fontFamily="poppins">
+              <Text color="#4B5563" lineHeight="1.8" fontFamily="var(--font-poppins)">
                 {faq.a}
               </Text>
             </Box>
@@ -142,10 +149,10 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
           flexWrap="wrap"
         >
           <VStack align="start" spacing="4px">
-            <Text fontFamily="poppins" fontWeight="700">
+            <Text fontFamily="var(--font-poppins)" fontWeight="700">
               Still have questions?
             </Text>
-            <Text fontFamily="poppins" color="gray.600">
+            <Text fontFamily="var(--font-poppins)" color="gray.600">
               Call us on{" "}
               <Link
                 href="tel:+61411017366"
@@ -173,11 +180,11 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
               color="white"
               borderRadius="999px"
               fontWeight="700"
-              fontFamily="poppins"
+              fontFamily="var(--font-poppins)"
               display="inline-block"
               boxShadow="0 6px 16px rgba(0,0,0,.08)"
             >
-              Contact us →
+              Contact us {"->"}
             </Box>
           </Link>
         </Box>
@@ -187,3 +194,4 @@ const FAQ = ({ items }: { items: FAQItem[] }) => {
 };
 
 export default FAQ;
+

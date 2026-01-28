@@ -15,3 +15,4 @@ export const CloseButton = React.forwardRef<
     </ChakraIconButton>
   );
 });
+

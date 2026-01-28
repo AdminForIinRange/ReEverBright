@@ -1,9 +1,6 @@
 import React from "react";
-import "../globals.css";
 import Navbar from "@/components/globalComponents/Navbar";
-import FAQ from "@/components/globalComponents/FAQ";
 
-export const dynamic = "force-dynamic";
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <>
@@ -14,3 +11,4 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
 };
 
 export default Layout;
+

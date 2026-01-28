@@ -2,18 +2,16 @@ import {
   Box,
   VStack,
   Text,
-  HStack,
   Link,
   GridItem,
   Grid,
 } from "@chakra-ui/react";
-import Image from "next/image";
-import Presure from "@/public/images/Presure washing- Driveways, houses, patios and more-3.png";
+import type { ReactNode } from "react";
 
 export default function WorkBanner() {
   return (
     <Box
-      fontFamily={"poppins"}
+      fontFamily="var(--font-poppins)"
       mt={"100px"}
       justify={"center"}
       align={["center", "center", "center", "start"]}
@@ -133,7 +131,7 @@ export default function WorkBanner() {
   );
 }
 
-function CTA({ children }: { children: React.ReactNode }) {
+function CTA({ children }: { children: ReactNode }) {
   return (
     <Box
       w={["100%", "100%", "auto"]}
@@ -142,7 +140,7 @@ function CTA({ children }: { children: React.ReactNode }) {
       alignItems="center"
       justifyContent="center"
       gap="12px"
-      fontFamily="poppins"
+      fontFamily="var(--font-poppins)"
       transition="all 0.2s ease-in-out"
       cursor="pointer"
       _hover={{ transform: "translateY(-2px)", bg: "cyan.400" }}
@@ -156,8 +154,9 @@ function CTA({ children }: { children: React.ReactNode }) {
         {children}
       </Text>
       <Box color={"cyan.500"} as="span" aria-hidden="true">
-        »
+        {" >"}
       </Box>
     </Box>
   );
 }
+

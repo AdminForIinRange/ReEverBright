@@ -1,24 +1,10 @@
-﻿import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
+import { Box, VStack, Text, HStack, Span } from "@chakra-ui/react";
 import Image from "next/image";
-import React from "react";
 import Google from  "@/public/images/Google.png";
-import Adl from "@/public/images/aerial-city-adelaide.jpeg";
 import { FaStar } from "react-icons/fa";
-import FreeQuote from "@/components/comp/FreeQuote";
-import {
-  Award,
-  CheckCircle,
-  Medal,
-  Phone,
-  ShieldCheck,
-  Star,
-  Trophy,
-  Zap,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
+import { CheckCircle, Phone } from "lucide-react";
 
 const HeroText = () => {
-  const router = useRouter();
   return (
     <>
       <Text
@@ -27,13 +13,13 @@ const HeroText = () => {
         mt={["15px", "15px", "15px", "15px", "15px", "15px"]}
         fontSize={{ base: "42px", md: "52px", lg: "72px" }}
         fontWeight={700}
-        fontFamily={"poppins"}
+        fontFamily="var(--font-poppins)"
         bgClip="text"
         textAlign={["start", "center", "center", "start", "start", "start"]}
         color={"cyan.300"}
         bgGradient="linear(to-r, teal, blue)"
         lineHeight={"0.9"}
-        className="animate__animated animate__fadeInDownBig"
+        className="hero-fade-in"
       >
         Adelaide Exterior Cleaning
       </Text>
@@ -44,12 +30,12 @@ const HeroText = () => {
         textStyle={"subheading"}
         mt={["20px", "20px", "20px", "20px", "20px", "20px"]}
         textAlign={["start", "center", "center", "start", "start", "start"]}
-        fontFamily={"poppins"}
+        fontFamily="var(--font-poppins)"
         color={"cyan.100"}
         w={["100%", "100%", "100%", "100%", "100%", "100%"]}
         fontWeight={"700"}
       >
-        Adelaide's Leading Choice for Exterior Cleaning
+        Adelaide&apos;s Leading Choice for Exterior Cleaning
       </Text>
 
       <VStack
@@ -88,7 +74,7 @@ const HeroText = () => {
                 <CheckCircle />
                 <Span
                   fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
-                  fontFamily={"poppins"}
+                  fontFamily="var(--font-poppins)"
                   color="WHITE"
                   fontWeight={"500"}
                 >
@@ -115,7 +101,7 @@ const HeroText = () => {
                 <CheckCircle />
                 <Span
                   fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
-                  fontFamily={"poppins"}
+                  fontFamily="var(--font-poppins)"
                   color="WHITE"
                   fontWeight={"500"}
                 >
@@ -157,7 +143,7 @@ const HeroText = () => {
                 <CheckCircle />
                 <Span
                   fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
-                  fontFamily={"poppins"}
+                  fontFamily="var(--font-poppins)"
                   color="WHITE"
                   fontWeight={"500"}
                 >
@@ -183,7 +169,7 @@ const HeroText = () => {
                 <CheckCircle />
                 <Span
                   fontSize={["14px", "16px", "14px", "14px", "14px", "19px"]}
-                  fontFamily={"poppins"}
+                  fontFamily="var(--font-poppins)"
                   color="WHITE"
                   fontWeight={"500"}
                 >
@@ -221,7 +207,7 @@ const HeroText = () => {
               <CheckCircle />
               <Span
                 fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
-                fontFamily={"poppins"}
+                fontFamily="var(--font-poppins)"
                 color="WHITE"
                 fontWeight={"500"}
               >
@@ -241,7 +227,7 @@ const HeroText = () => {
               <CheckCircle />
               <Span
                 fontSize={["16px", "16px", "14px", "14px", "14px", "19px"]}
-                fontFamily={"poppins"}
+                fontFamily="var(--font-poppins)"
                 color="WHITE"
                 fontWeight={"500"}
               >
@@ -262,6 +248,8 @@ const HeroText = () => {
         zIndex={4}
       >
         <Box
+          as="a"
+          href="tel:+61411017366"
           w={["400px"]}
           bg={"cyan.500"}
           my={"15px"}
@@ -269,7 +257,7 @@ const HeroText = () => {
           alignItems={"center"}
           justifyContent={["center"]}
           gap={"15px"}
-          fontFamily={"poppins"}
+          fontFamily="var(--font-poppins)"
           transition={"all 0.2s ease-in-out"}
           cursor={"pointer"}
           _hover={{
@@ -284,10 +272,6 @@ const HeroText = () => {
           rounded={"30px"}
           px={"12"}
           fontWeight={"500"}
-          onClick={() => {
-            router.push("#quote");
-            window.location.href = "tel:+61411017366";
-          }}
         >
           <HStack>
             <Phone /> Call for a Quote!
@@ -332,7 +316,7 @@ const HeroText = () => {
             textShadow={"0px 0px 100px black"}
             as={"p"}
             textAlign={["center", "center", "start", "start", "start", "start"]}
-            fontFamily={"poppins"}
+            fontFamily="var(--font-poppins)"
             color={"cyan.900"}
             w={["100%", "100%", "100%", "100%", "100%", "100%"]}
             fontWeight={"700"}
@@ -346,3 +330,4 @@ const HeroText = () => {
 };
 
 export default HeroText;
+

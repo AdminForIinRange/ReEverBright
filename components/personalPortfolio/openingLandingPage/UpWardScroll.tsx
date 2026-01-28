@@ -30,3 +30,4 @@ export default function index(): JSX.Element {
     </ReactLenis>
   );
 }
+

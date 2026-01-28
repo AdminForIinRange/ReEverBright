@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Box, VStack, Text, HStack } from "@chakra-ui/react";
+import { Box, VStack, Text, HStack, type HTMLChakraProps } from "@chakra-ui/react";
 import Image from "next/image";
 import { useActionState } from "react";
 import { submitLeadAction, type LeadState } from "@/lib/actions/leadActions";
@@ -9,7 +8,10 @@ import { submitLeadAction, type LeadState } from "@/lib/actions/leadActions";
 import Google from  "@/public/images/Google.png";
 import { FaStar } from "react-icons/fa";
 
-const InputBox = (props: any) => (
+type InputBoxProps = HTMLChakraProps<"input">;
+type TextareaBoxProps = HTMLChakraProps<"textarea">;
+
+const InputBox = (props: InputBoxProps) => (
   <Box
     as="input"
     {...props}
@@ -31,7 +33,7 @@ const InputBox = (props: any) => (
   />
 );
 
-const TextareaBox = (props: any) => (
+const TextareaBox = (props: TextareaBoxProps) => (
   <Box
     as="textarea"
     {...props}
@@ -75,7 +77,7 @@ const FreeQuoteLarge = () => {
       {/* Header */}
       <VStack align="flex-start" spacing={2} zIndex={1} position="relative">
         <Text
-          fontFamily="poppins"
+          fontFamily="var(--font-poppins)"
           fontSize={{ base: "30px", md: "40px" }}
           fontWeight="800"
           color="blue.900"
@@ -88,13 +90,13 @@ const FreeQuoteLarge = () => {
         </Text>
 
         <Text
-          fontFamily="poppins"
+          fontFamily="var(--font-poppins)"
           fontSize={{ base: "sm", md: "md" }}
           fontWeight="600"
           color="blue.900"
           opacity={0.9}
         >
-          30 seconds to your free quote — no commitments.
+          30 seconds to your free quote - no commitments.
         </Text>
 
         {/* Trust row */}
@@ -104,6 +106,7 @@ const FreeQuoteLarge = () => {
               src={Google}
               alt="Google"
               fill
+              sizes="20px"
               style={{ objectFit: "contain" }}
             />
           </Box>
@@ -189,7 +192,7 @@ const FreeQuoteLarge = () => {
             _active={{ transform: "translateY(0)" }}
             disabled={isPending}
           >
-            {isPending ? "Submitting…" : "Get My Free Quote →"}
+            {isPending ? "Submitting..." : "Get My Free Quote ->"}
           </Box>
 
           {/* Result */}

@@ -1,31 +1,15 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
-import {
-  Box,
-  HStack,
-  VStack,
-  Text,
-  Icon,
-  IconButton,
-  useToken,
-} from "@chakra-ui/react";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Quote,
-  ShieldCheck,
-  ThumbsUp,
-  Star,
-  Sparkles,
-} from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
+import { Box, VStack, Text, Icon } from "@chakra-ui/react";
+import { ShieldCheck, ThumbsUp, Star, Sparkles } from "lucide-react";
 import SectionHeading from "./compsDeep/SectionHeading";
 
 type Slide = {
   id: number;
   title: string;
   body: string;
-  icon: React.ComponentType<any>;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
 const SLIDES: Slide[] = [
@@ -167,3 +151,4 @@ const SlidingCard = () => {
 };
 
 export default SlidingCard;
+

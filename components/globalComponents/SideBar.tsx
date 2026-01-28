@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // ← only if you want real navigation
+import { useState } from "react";
+import { useRouter } from "next/navigation"; // â† only if you want real navigation
 import { Box, Text } from "@chakra-ui/react";
 import {
   Home,
@@ -11,17 +11,15 @@ import {
   Bell,
   Search,
   ChevronRight,
-  Zap,
   Menu,
   X,
 } from "lucide-react";
-import { Tooltip } from "@/components/chakra-snippets/tooltip";
 
 const SideBar = () => {
-  const router = useRouter(); // ← for navigation
+  const router = useRouter(); // â† for navigation
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // 👇 remove `isActive` from here—instead just store icon/label/path
+  // ðŸ‘‡ remove `isActive` from hereâ€”instead just store icon/label/path
   const menuItems = [
     { icon: Home, label: "Dashboard", path: "/dashboard" },
     { icon: TrendingUp, label: "Markets", path: "/markets" },
@@ -32,17 +30,17 @@ const SideBar = () => {
     { icon: Settings, label: "Settings", path: "/settings" },
   ];
 
-  // 👇 new piece of state to track which index is “active”
+  // ðŸ‘‡ new piece of state to track which index is â€œactiveâ€
   const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // 👇 click handler
+  // ðŸ‘‡ click handler
   const handleItemClick = (idx: number, path: string) => {
     setActiveIndex(idx);
-    router.push(path); // ← comment this out if you don’t want to navigate
+    router.push(path); // â† comment this out if you donâ€™t want to navigate
   };
 
   return (
@@ -102,7 +100,7 @@ const SideBar = () => {
       <Box flex="1" pt="8px" pb="0">
         {menuItems.map((item, idx) => {
           const IconComponent = item.icon;
-          const isActive = idx === activeIndex; // ← dynamic
+          const isActive = idx === activeIndex; // â† dynamic
           return (
             <Box
               key={item.label}
@@ -119,7 +117,7 @@ const SideBar = () => {
                 borderColor: isActive ? "gray.600" : "gray.700",
               }}
               position="relative"
-              onClick={() => handleItemClick(idx, item.path)} // ← click!
+              onClick={() => handleItemClick(idx, item.path)} // â† click!
             >
               <Box
                 display="flex"
@@ -162,3 +160,4 @@ const SideBar = () => {
 };
 
 export default SideBar;
+

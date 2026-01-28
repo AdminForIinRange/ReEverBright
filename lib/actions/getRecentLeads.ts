@@ -4,11 +4,12 @@
 import { Query } from "node-appwrite";
 import { createAdminClient } from "@/lib/appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
+import type { Lead } from "@/lib/types/lead";
 
 export type LeadsResult = {
   ok: boolean;
   error?: string;
-  data?: any[];
+  data?: Lead[];
 };
 
 export async function getRecentLeadsAction(
@@ -32,9 +33,11 @@ export async function getRecentLeadsAction(
       [Query.orderDesc("$createdAt"), Query.limit(50)]
     );
 
-    return { ok: true, data: res.documents as any[] };
-  } catch (err: any) {
+    return { ok: true, data: res.documents as Lead[] };
+  } catch (err: unknown) {
     console.error("getRecentLeadsAction error:", err);
-    return { ok: false, error: err?.message ?? "Failed to load leads" };
+    const message =
+      err instanceof Error ? err.message : "Failed to load leads";
+    return { ok: false, error: message };
   }
 }

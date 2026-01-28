@@ -1,21 +1,12 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
-import FreeQuote from "@/components/comp/FreeQuote";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
-import one from "@/public/images/serviceImages/one.png";
-import two from "@/public/images/serviceImages/two.png";
-import three from "@/public/images/serviceImages/three.png";
 import four from "@/public/images/serviceImages/four.png";
-import five from "@/public/images/serviceImages/five.png";
-import six from "@/public/images/serviceImages/six.png";
-import seven from "@/public/images/serviceImages/seven.png";
-import eight from "@/public/images/serviceImages/eight.png";
 
 export const metadata: Metadata = {
   title: "Pressure Washing Adelaide | EverBright Pressure Washing",
@@ -80,7 +71,7 @@ const PressureWashing = () => {
           bg={"cyan.600"}
         >
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "14px", md: "16px" }}
             color="white"
           >
@@ -96,24 +87,24 @@ const PressureWashing = () => {
           <Text
             as="h1"
             mt="12px"
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            Pressure Washing Adelaide — Driveways, Concrete, Patios, and Walls
+            Pressure Washing Adelaide  -  Driveways, Concrete, Patios, and Walls
           </Text>
 
           <Text
             mt="12px"
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "15px", md: "17px" }}
             color="cyan.100"
             maxW="760px"
           >
-            Professional pressure washing across Adelaide and surrounding suburbs — fast quotes, careful workmanship, and a satisfaction guarantee.
+            Professional pressure washing across Adelaide and surrounding suburbs  -  fast quotes, careful workmanship, and a satisfaction guarantee.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -126,7 +117,7 @@ const PressureWashing = () => {
             </Link>
             {/* <Link href="#faqs" _hover={{ textDecoration: "none" }}>
               <Text
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 color="cyan.100"
                 textDecoration="underline"
               >
@@ -150,7 +141,7 @@ const PressureWashing = () => {
         {/* copy */}
         <Box flex="1" minW={{ base: "100%", md: "520px" }}>
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "14px", md: "18px" }}
             color="cyan.600"
           >
@@ -158,7 +149,7 @@ const PressureWashing = () => {
           </Text>
 
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "30px", md: "36px" }}
             fontWeight="700"
             lineHeight="1.1"
@@ -169,12 +160,12 @@ const PressureWashing = () => {
           </Text>
 
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "15px", md: "17px" }}
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
           >
-            Restore your property's curb appeal with professional pressure
+            Restore your property&apos;s curb appeal with professional pressure
             washing in Adelaide. We deep-clean driveways, patios, concrete, and
             paving to remove stubborn dirt, grime, mould, and algae. Our
             commercial-grade equipment delivers powerful, streak-free results
@@ -192,7 +183,7 @@ const PressureWashing = () => {
             ].map((item) => (
               <Text
                 key={item}
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 fontSize={{ base: "16px", md: "18px" }}
               >
                 <Text as="span" mr="8px">-</Text>
@@ -216,7 +207,7 @@ const PressureWashing = () => {
                 alignItems="center"
                 justifyContent="center"
                 gap="15px"
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 transition="all 0.2s ease-in-out"
                 cursor="pointer"
                 _hover={{
@@ -238,7 +229,7 @@ const PressureWashing = () => {
                   </Box>
                   <Text
                     textStyle={"smallText"}
-                    fontFamily="poppins"
+                    fontFamily="var(--font-poppins)"
                     fontWeight="500"
                   >
                     Get a Quote
@@ -265,6 +256,7 @@ const PressureWashing = () => {
             src={four}
             alt="Pressure washing driveway in Adelaide"
             fill
+            sizes="(max-width: 768px) 100vw, 52vw"
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
           <Box
@@ -295,3 +287,4 @@ const PressureWashing = () => {
 };
 
 export default PressureWashing;
+

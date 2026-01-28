@@ -17,7 +17,7 @@ const SectionHeading = ({
     {/* Eyebrow text */}
     <Text
       fontSize={["14px", "16px", "18px"]}
-      fontFamily="poppins"
+      fontFamily="var(--font-poppins)"
       fontWeight={600}
       textTransform="uppercase"
       letterSpacing="2px"
@@ -31,7 +31,7 @@ const SectionHeading = ({
     <Text
       fontSize={["28px", "40px", "52px"]}
       fontWeight={800}
-      fontFamily="poppins"
+      fontFamily="var(--font-poppins)"
       lineHeight="1.1"
       color={color}
     >
@@ -51,3 +51,4 @@ const SectionHeading = ({
 );
 
 export default SectionHeading;
+

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useCallback, memo, useEffect } from "react";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
-  const timeoutRef = useRef<any>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // NEW: track scroll state
   const [scrolled, setScrolled] = useState(false);
@@ -65,9 +65,11 @@ const Navbar = () => {
         transition="all 0.25s ease-in-out"
         overflow="hidden"
         display={{ base: "none", md: "block" }}
-        onMouseEnter={() => clearTimeout(timeoutRef.current)}
+        onMouseEnter={() => {
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        }}
         onMouseLeave={() => {
-          clearTimeout(timeoutRef.current);
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
           timeoutRef.current = setTimeout(() => setActiveDropdown(null), 300);
         }}
       >
@@ -109,7 +111,7 @@ const Navbar = () => {
             _hover={{ color: "#F5F5F5" }}
             onClick={() => router.push(`/${category}`)}
           >
-            View all {category} >
+            View all {category} {" >"}
           </Text>
         </Box>
       </Box>
@@ -165,7 +167,7 @@ const Navbar = () => {
               setMobileMenuOpen(false);
             }}
           >
-            View all {category} >
+            View all {category} {" >"}
           </Text>
         </Box>
       </Box>
@@ -174,13 +176,13 @@ const Navbar = () => {
   MobileDropdown.displayName = "MobileDropdown";
 
   const handleEnter = useCallback((name: string) => {
-    clearTimeout(timeoutRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveDropdown(name);
     setHoveredItem(name);
   }, []);
 
   const handleLeave = useCallback(() => {
-    clearTimeout(timeoutRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
       setHoveredItem(null);
@@ -314,7 +316,7 @@ const Navbar = () => {
                   <Text
                     textStyle={"smallText"}
                     fontWeight={activePage === item.path ? "600" : "500"}
-                    fontFamily="poppins"
+                    fontFamily="var(--font-poppins)"
                     transition="all 0.2s ease"
                     color="white"
                     letterSpacing="0.3px"
@@ -368,7 +370,7 @@ const Navbar = () => {
                 </Box>
                 <Text
                   textStyle={"smallText"}
-                  fontFamily="poppins"
+                  fontFamily="var(--font-poppins)"
                   fontWeight="500"
                 >
                   Get a Quote
@@ -548,5 +550,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 

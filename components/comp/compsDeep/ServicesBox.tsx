@@ -1,6 +1,6 @@
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import Image from "next/image";
-import { BiRightArrow, BiRightArrowAlt } from "react-icons/bi";
+import { BiRightArrowAlt } from "react-icons/bi";
 
 function ServicesBox({
   title,
@@ -62,6 +62,7 @@ function ServicesBox({
               src={image || "/placeholder.svg"}
               alt={title ? `${title} service` : "Service image"}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 320px, 420px"
               style={{
                 objectFit: "cover",
                 objectPosition: "center",
@@ -101,7 +102,7 @@ function ServicesBox({
                 fontWeight="800"
                 textAlign="start"
                 textShadow="0 4px 18px rgba(0,0,0,0.55)"
-                fontFamily="Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+                fontFamily="var(--font-poppins)"
                 letterSpacing="0.2px"
               >
                 {title}
@@ -186,3 +187,4 @@ function ServicesBox({
 }
 
 export default ServicesBox;
+

@@ -80,3 +80,4 @@ export const StepsCompletedContent = ChakraSteps.CompletedContent;
 
 export const StepsNextTrigger = ChakraSteps.NextTrigger;
 export const StepsPrevTrigger = ChakraSteps.PrevTrigger;
+

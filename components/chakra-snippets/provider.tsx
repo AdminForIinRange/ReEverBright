@@ -1,15 +1,16 @@
 // components/chakra-snippets/provider.tsx
 "use client";
 
-import { ChakraProvider } from "@chakra-ui/react"; // 👈 import from @chakra-ui/react
-import { system } from "./theme"; // 👈 your createSystem(...) export
+import { useEmotionCache } from "@chakra-ui/next-js/use-emotion-cache";
+import { ChakraProvider } from "@chakra-ui/react";
+import { CacheProvider } from "@emotion/react";
+import { system } from "./theme";
 
 export function Provider({ children }: { children: React.ReactNode }) {
+  const cache = useEmotionCache();
   return (
-    <ChakraProvider value={system}>
-      {" "}
-      {/* 👈 pass it as `value` */}
-      {children}
-    </ChakraProvider>
+    <CacheProvider value={cache}>
+      <ChakraProvider value={system}>{children}</ChakraProvider>
+    </CacheProvider>
   );
 }

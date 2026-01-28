@@ -1,6 +1,3 @@
-import React from "react";
-
-import ImageCompareSlider from "./ImageCompareSlider";
 import { VStack, HStack, Box, Text } from "@chakra-ui/react";
 import QuoteButton from "./compsDeep/QuoteButton";
 import SectionHeading from "./compsDeep/SectionHeading";
@@ -49,7 +46,7 @@ const About = () => {
               color="gray.800"
               fontSize="lg"
               lineHeight="1.8"
-              fontFamily={"poppins"}
+              fontFamily="var(--font-poppins)"
             >
               <Text>
                 EverBright Pressure Washing Adelaide restores your property’s
@@ -74,7 +71,7 @@ const About = () => {
               {/* CTA line */}
               <Box pt={2}>
                 <Text
-                  fontFamily={"poppins"}
+                  fontFamily="var(--font-poppins)"
                   fontWeight="700"
                   color="#0a0f29"
                   mb={3}
@@ -116,6 +113,7 @@ const About = () => {
                       src={goodImg.src}
                       alt="good house"
                       fill
+                      sizes="50vw"
                       style={{ objectFit: "cover" }}
                     />
                   </Box>
@@ -124,6 +122,7 @@ const About = () => {
                       src={badImg.src}
                       alt="bad house"
                       fill
+                      sizes="50vw"
                       style={{ objectFit: "cover" }}
                     />
                   </Box>
@@ -138,3 +137,4 @@ const About = () => {
 };
 
 export default About;
+

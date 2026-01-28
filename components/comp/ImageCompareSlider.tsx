@@ -58,7 +58,7 @@ const ImageCompareFullPage = () => {
 
     return () => {
       el.removeEventListener("pointerdown", onDown);
-      window.removeEventListener("pointermove", onMove as any);
+      window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
     };
   }, []);
@@ -166,3 +166,4 @@ const ImageCompareFullPage = () => {
 };
 
 export default ImageCompareFullPage;
+

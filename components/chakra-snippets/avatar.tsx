@@ -72,3 +72,4 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
     );
   },
 );
+

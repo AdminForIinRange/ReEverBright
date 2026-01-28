@@ -1,31 +1,12 @@
 "use client";
-import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
-import Image from "next/image";
-import React from "react";
-import Google from  "@/public/images/Google.png";
-import Adl from "@/public/images/aerial-city-adelaide.jpeg";
-import { FaStar } from "react-icons/fa";
-import FreeQuote from "@/components/comp/FreeQuote";
-import HeroText from "@/components/comp/HeroText";
-import ImageCompareSlider from "@/components/comp/ImageCompareSlider";
-import router from "next/router";
+import { VStack, HStack } from "@chakra-ui/react";
 import ServicesBox from "@/components/comp/compsDeep/ServicesBox";
-import ReviewSection from "@/components/comp/ReviewSection";
-
-// ✅ NEW: import your de-dupe components
-import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
-import BadgeItem from "@/components/comp/compsDeep/BadgeItem";
-import PromiseItem from "@/components/comp/compsDeep/PromiseItem";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 
 import one from "@/public/images/serviceImages/one.png";
-import two from "@/public/images/serviceImages/two.png";
 import three from "@/public/images/serviceImages/three.png";
-import four from "@/public/images/serviceImages/four.png";
 import five from "@/public/images/serviceImages/five.png";
-import six from "@/public/images/serviceImages/six.png";
 import seven from "@/public/images/serviceImages/seven.png";
-import eight from "@/public/images/serviceImages/eight.png";
 
 const services = [
   {
@@ -115,3 +96,4 @@ function ServiceLayout() {
 }
 
 export default ServiceLayout;
+

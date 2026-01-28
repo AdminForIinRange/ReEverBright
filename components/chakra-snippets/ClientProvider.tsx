@@ -1,12 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-// Dynamically import Chakra Provider and disable SSR
-const Provider = dynamic(
-  () => import("./provider").then((mod) => mod.Provider),
-  { ssr: false },
-);
+import { Provider } from "./provider";
 
 export default function ClientProvider({
   children,
@@ -15,3 +9,4 @@ export default function ClientProvider({
 }) {
   return <Provider>{children}</Provider>;
 }
+

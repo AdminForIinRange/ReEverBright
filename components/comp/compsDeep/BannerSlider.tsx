@@ -1,11 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Box, HStack, Link, VStack, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, HStack, VStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import SectionHeading from "./SectionHeading";
-import { BiRightArrowAlt } from "react-icons/bi";
 import { Phone } from "lucide-react";
-import router from "next/router";
-import { useRouter } from "next/navigation";
 const SLIDE_DURATION_MS = 4000; // Duration in milliseconds for each slide
 
 function BannerSlider() {
@@ -44,7 +40,6 @@ function BannerSlider() {
     );
     return () => clearInterval(id);
   }, [services.length]);
-  const router = useRouter();
   return (
     <Box px={{ base: "0%", md: "6%", xl: "16%" }} py={"50px"}>
       <div
@@ -71,7 +66,7 @@ function BannerSlider() {
             fontWeight="800"
             textAlign="start"
             textShadow="0 4px 18px rgba(0,0,0,0.55)"
-            fontFamily="Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+            fontFamily="var(--font-poppins)"
             letterSpacing="0.2px"
           >
             {services[idx].title}
@@ -101,6 +96,8 @@ function BannerSlider() {
               zIndex={4}
             >
               <Box
+                as="a"
+                href="tel:+61411017366"
                 w={[
                   "fit-content",
                   "fit-content",
@@ -114,7 +111,7 @@ function BannerSlider() {
                 alignItems={"start"}
                 justifyContent={["start"]}
                 gap={"15px"}
-                fontFamily={"poppins"}
+                fontFamily="var(--font-poppins)"
                 transition={"all 0.2s ease-in-out"}
                 cursor={"pointer"}
                 _hover={{
@@ -129,10 +126,6 @@ function BannerSlider() {
                 rounded={"30px"}
                 px={["6", "8", "10", "12", "12", "12"]}
                 fontWeight={"500"}
-                onClick={() => {
-                  router.push("#quote");
-                  window.location.href = "tel:+61411017366";
-                }}
               >
                 <HStack>
                   <Phone /> Call for a Quote!
@@ -169,6 +162,7 @@ function BannerSlider() {
                   src={service.image}
                   alt={`${service.title} service`}
                   fill
+                  sizes="100vw"
                   style={{
                     borderRadius: " 20px",
                     objectFit: "cover",
@@ -211,3 +205,4 @@ function BannerSlider() {
 }
 
 export default BannerSlider;
+

@@ -1,4 +1,4 @@
-import { Box, VStack, Text, HStack, Span, Link } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 const SlindingBanner = () => {
   return (
@@ -38,3 +38,4 @@ const SlindingBanner = () => {
 };
 
 export default SlindingBanner;
+

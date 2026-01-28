@@ -11,6 +11,7 @@
     "prettier": "prettier --write '{src,components,app,public,styles}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.4.2",
     "@chakra-ui/react": "^3.19.0",
     "@emotion/react": "^11.14.0",
     "animate.css": "^4.1.1",

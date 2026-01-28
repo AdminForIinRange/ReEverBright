@@ -13,7 +13,7 @@ const QuoteButton = () => {
       alignItems="center"
       justifyContent="center"
       gap="15px"
-      fontFamily="poppins"
+      fontFamily="var(--font-poppins)"
       transition="all 0.2s ease-in-out"
       cursor="pointer"
       _hover={{
@@ -36,7 +36,7 @@ const QuoteButton = () => {
         <Box textAlign={"center"}>
           <Phone />
         </Box>
-        <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+        <Text textStyle={"smallText"} fontFamily="var(--font-poppins)" fontWeight="500">
           Get a Quote
         </Text>
       </HStack>
@@ -45,3 +45,4 @@ const QuoteButton = () => {
 };
 
 export default QuoteButton;
+

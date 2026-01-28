@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Box, Heading, List, ListItem, Text } from "@chakra-ui/react";
 
@@ -46,3 +46,4 @@ const Services = () => {
 };
 
 export default Services;
+

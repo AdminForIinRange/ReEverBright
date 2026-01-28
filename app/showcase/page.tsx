@@ -1,4 +1,4 @@
-﻿// app/leads-admin/page.tsx
+// app/leads-admin/page.tsx
 "use client";
 
 import React from "react";
@@ -7,6 +7,7 @@ import {
   getRecentLeadsAction,
   type LeadsResult,
 } from "@/lib/actions/getRecentLeads";
+import type { Lead } from "@/lib/types/lead";
 
 // Required by your instruction (we import it; not used on this page)
 
@@ -37,7 +38,7 @@ export default function Page() {
           boxShadow="0 8px 24px rgba(0,0,0,0.06)"
         >
           <Text fontSize="2xl" fontWeight="800" color="blue.900">
-            Admin · Recent Leads
+            Admin - Recent Leads
           </Text>
           <Text fontSize="sm" color="gray.600" mt={1}>
             Enter the PIN to view the latest submissions.
@@ -110,7 +111,7 @@ export default function Page() {
             </Text>
 
             <VStack align="stretch" spacing={3}>
-              {state.data.map((lead: any) => (
+              {state.data.map((lead: Lead) => (
                 <Box
                   key={lead.$id}
                   border="1px solid"
@@ -157,4 +158,5 @@ export default function Page() {
     </Box>
   );
 }
+
 

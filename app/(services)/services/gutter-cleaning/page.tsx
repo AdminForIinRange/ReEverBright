@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
@@ -67,7 +67,7 @@ const GutterCleaning = () => {
           pb={"50px"}
           bg={"cyan.600"}
         >
-          <Text fontFamily="poppins" fontSize={{ base: "14px", md: "16px" }} color="white">
+          <Text fontFamily="var(--font-poppins)" fontSize={{ base: "14px", md: "16px" }} color="white">
             <Text as="span" color="cyan.900">
               home
             </Text>{" > "}
@@ -80,18 +80,18 @@ const GutterCleaning = () => {
           <Text
             as="h1"
             mt="12px"
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            Gutter Cleaning Adelaide — Clear, Safe, and Ready for Rain
+            Gutter Cleaning Adelaide  -  Clear, Safe, and Ready for Rain
           </Text>
 
-          <Text mt="12px" fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} color="cyan.100" maxW="760px">
-            Professional gutter cleaning across Adelaide — we clear gutters and downpipes to stop leaks, overflow, and water damage.
+          <Text mt="12px" fontFamily="var(--font-poppins)" fontSize={{ base: "15px", md: "17px" }} color="cyan.100" maxW="760px">
+            Professional gutter cleaning across Adelaide  -  we clear gutters and downpipes to stop leaks, overflow, and water damage.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -116,12 +116,12 @@ const GutterCleaning = () => {
         mx="auto"
       >
         <Box flex="1" minW={{ base: "100%", md: "520px" }}>
-          <Text fontFamily="poppins" fontSize={{ base: "14px", md: "18px" }} color="cyan.600">
+          <Text fontFamily="var(--font-poppins)" fontSize={{ base: "14px", md: "18px" }} color="cyan.600">
             Gutter Cleaning Adelaide
           </Text>
 
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "30px", md: "36px" }}
             fontWeight="700"
             lineHeight="1.1"
@@ -131,14 +131,14 @@ const GutterCleaning = () => {
             Expert Gutter Cleaning Services in Adelaide
           </Text>
 
-          <Text fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
+          <Text fontFamily="var(--font-poppins)" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
             Prevent water damage and protect your home with gutter cleaning in Adelaide. We clear leaves, dirt, and blockages so your gutters flow freely all year round.
             Regular gutter maintenance reduces the risk of leaks, flooding, and costly structural repairs - keeping your home safe and sound. We serve Greater Adelaide and surrounding suburbs across South Australia.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {["Gutters & downpipes cleared", "Blockages removed", "Roof valleys checked", "Safe & fully insured service"].map((item) => (
-              <Text key={item} fontFamily="poppins" fontSize={{ base: "16px", md: "18px" }}>
+              <Text key={item} fontFamily="var(--font-poppins)" fontSize={{ base: "16px", md: "18px" }}>
                 <Text as="span" mr="8px">-</Text>
                 {item}
               </Text>
@@ -158,7 +158,7 @@ const GutterCleaning = () => {
                 alignItems="center"
                 justifyContent="center"
                 gap="15px"
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 transition="all 0.2s ease-in-out"
                 cursor="pointer"
                 _hover={{ transition: "all 0.2s ease-in-out", fontWeight: "700", px: "80px", bg: "cyan" }}
@@ -172,7 +172,7 @@ const GutterCleaning = () => {
                   <Box textAlign={"center"}>
                     <Phone />
                   </Box>
-                  <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+                  <Text textStyle={"smallText"} fontFamily="var(--font-poppins)" fontWeight="500">
                     Get a Quote
                   </Text>
                 </HStack>
@@ -196,6 +196,7 @@ const GutterCleaning = () => {
             src={two}
             alt="Gutter cleaning in Adelaide"
             fill
+            sizes="(max-width: 768px) 100vw, 52vw"
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
           <Box position="absolute" inset={0} bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)" />
@@ -211,3 +212,4 @@ const GutterCleaning = () => {
 };
 
 export default GutterCleaning;
+

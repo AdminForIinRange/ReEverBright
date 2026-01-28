@@ -1,11 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
 import { Box, VStack, Text, HStack, Link } from "@chakra-ui/react";
 import { Phone } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
 import eight from "@/public/images/serviceImages/eight.png";
 
@@ -70,7 +69,7 @@ const SolarPanelCleaning = () => {
           bg={"cyan.600"}
         >
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "14px", md: "16px" }}
             color="white"
           >
@@ -86,24 +85,24 @@ const SolarPanelCleaning = () => {
           <Text
             as="h1"
             mt="12px"
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            Solar Panel Cleaning Adelaide — Boost Your System's Output
+            Solar Panel Cleaning Adelaide  -  Boost Your System&apos;s Output
           </Text>
 
           <Text
             mt="12px"
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "15px", md: "17px" }}
             color="cyan.100"
             maxW="760px"
           >
-            Professional solar panel cleaning across Adelaide and surrounding suburbs — purified water, soft brushes, and spotless results to improve efficiency.
+            Professional solar panel cleaning across Adelaide and surrounding suburbs  -  purified water, soft brushes, and spotless results to improve efficiency.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -131,7 +130,7 @@ const SolarPanelCleaning = () => {
         {/* copy */}
         <Box flex="1" minW={{ base: "100%", md: "520px" }}>
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "14px", md: "18px" }}
             color="cyan.600"
           >
@@ -139,7 +138,7 @@ const SolarPanelCleaning = () => {
           </Text>
 
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "30px", md: "36px" }}
             fontWeight="700"
             lineHeight="1.1"
@@ -150,7 +149,7 @@ const SolarPanelCleaning = () => {
           </Text>
 
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "15px", md: "17px" }}
             lineHeight={{ base: "1.75", md: "1.9" }}
             mt="8px"
@@ -166,7 +165,7 @@ const SolarPanelCleaning = () => {
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {["Increase efficiency & energy savings", "Extend panel lifespan", "Protect manufacturer warranty", "Eco-friendly, chemical-free cleaning"].map((item) => (
-              <Text key={item} fontFamily="poppins" fontSize={{ base: "16px", md: "18px" }}>
+              <Text key={item} fontFamily="var(--font-poppins)" fontSize={{ base: "16px", md: "18px" }}>
                 <Text as="span" mr="8px">-</Text>
                 {item}
               </Text>
@@ -186,7 +185,7 @@ const SolarPanelCleaning = () => {
                 alignItems="center"
                 justifyContent="center"
                 gap="15px"
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 transition="all 0.2s ease-in-out"
                 cursor="pointer"
                 _hover={{
@@ -205,7 +204,7 @@ const SolarPanelCleaning = () => {
                   <Box textAlign={"center"}>
                     <Phone />
                   </Box>
-                  <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+                  <Text textStyle={"smallText"} fontFamily="var(--font-poppins)" fontWeight="500">
                     Get a Quote
                   </Text>
                 </HStack>
@@ -230,6 +229,7 @@ const SolarPanelCleaning = () => {
             src={eight}
             alt="Solar panel cleaning in Adelaide"
             fill
+            sizes="(max-width: 768px) 100vw, 52vw"
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
           <Box position="absolute" inset={0} bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)" />
@@ -245,3 +245,4 @@ const SolarPanelCleaning = () => {
 };
 
 export default SolarPanelCleaning;
+

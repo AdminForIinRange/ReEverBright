@@ -26,7 +26,7 @@ const FreeQuote = () => {
     >
       {/* Heading */}
       <Text
-        fontFamily={"poppins"}
+        fontFamily="var(--font-poppins)"
         fontSize={["32px", "36px"]}
         fontWeight="700"
         color="blue.900"
@@ -38,7 +38,7 @@ const FreeQuote = () => {
 
       <Text
         mb={4}
-        fontFamily={"poppins"}
+        fontFamily="var(--font-poppins)"
         textAlign={"center"}
         fontSize="sm"
         w={"100%"}
@@ -178,3 +178,4 @@ const FreeQuote = () => {
 };
 
 export default FreeQuote;
+

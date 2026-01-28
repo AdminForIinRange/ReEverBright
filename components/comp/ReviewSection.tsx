@@ -1,7 +1,6 @@
-﻿import React, { useMemo, useEffect, useRef, useState } from "react";
+import { useMemo, useEffect, useRef, useState } from "react";
 import SectionHeading from "@/components/comp/compsDeep/SectionHeading";
 import { Box } from "@chakra-ui/react";
-import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
 /* ====== Tunables ====== */
@@ -522,3 +521,4 @@ export default function ReviewSection() {
     </Box>
   );
 }
+

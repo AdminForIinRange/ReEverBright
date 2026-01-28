@@ -25,7 +25,7 @@ const BadgeItem = ({ text, image }: BadgeItemProps) => (
       textAlign="center"
       fontSize={["9px", "9px", "12px", "12px", "12px", "12px"]}
       fontWeight="700"
-      fontFamily="poppins"
+      fontFamily="var(--font-poppins)"
       color="cyan.900"
     >
       {text}
@@ -34,3 +34,4 @@ const BadgeItem = ({ text, image }: BadgeItemProps) => (
 );
 
 export default BadgeItem;
+

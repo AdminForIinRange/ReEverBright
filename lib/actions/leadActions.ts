@@ -5,11 +5,12 @@ import { revalidatePath } from "next/cache";
 import { ID } from "node-appwrite";
 import { createAdminClient } from "@/lib/appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
+import type { Lead } from "@/lib/types/lead";
 
 export type LeadState = {
   ok: boolean;
   error?: string;
-  data?: any;
+  data?: Lead;
 };
 
 function sanitize(input: unknown) {
@@ -56,9 +57,11 @@ export async function submitLeadAction(
     // so the page shows the latest confirmation if you re-render
     revalidatePath("/free-quote");
 
-    return { ok: true, data: doc };
-  } catch (err: any) {
+    return { ok: true, data: doc as Lead };
+  } catch (err: unknown) {
     console.error("submitLeadAction error:", err);
-    return { ok: false, error: err?.message ?? "Failed to submit quote request" };
+    const message =
+      err instanceof Error ? err.message : "Failed to submit quote request";
+    return { ok: false, error: message };
   }
 }

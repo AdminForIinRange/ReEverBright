@@ -212,18 +212,19 @@ export function StructuredData() {
 
   return (
     <>
-      <Script id="organization-schema" type="application/ld+json" strategy="beforeInteractive"
+      <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <Script id="local-business-schema" type="application/ld+json" strategy="beforeInteractive"
+      <Script id="local-business-schema" type="application/ld+json" strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <Script id="services-schema" type="application/ld+json" strategy="beforeInteractive"
+      <Script id="services-schema" type="application/ld+json" strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
-      <Script id="website-schema" type="application/ld+json" strategy="beforeInteractive"
+      <Script id="website-schema" type="application/ld+json" strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-      <Script id="faq-schema" type="application/ld+json" strategy="beforeInteractive"
+      <Script id="faq-schema" type="application/ld+json" strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Script id="breadcrumb-schema" type="application/ld+json" strategy="beforeInteractive"
+      <Script id="breadcrumb-schema" type="application/ld+json" strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );
 }
+

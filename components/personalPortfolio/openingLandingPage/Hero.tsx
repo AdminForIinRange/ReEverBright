@@ -10,7 +10,7 @@
 //   return (
 //     <Box mt={"20px"}>
 //       <VStack>
-//         <Box w={"100%"} h={"100vh"} fontFamily={"poppins"}>
+//         <Box w={"100%"} h={"100vh"} fontFamily="var(--font-poppins)">
 //           <Text
 //             px={["4%", "4%", "6%", "6%", "6%", "10%"]}
 //             color={"white"}
@@ -18,7 +18,7 @@
 //             letterSpacing="-2px"
 //             textAlign={"start"}
 //             fontWeight={"700"}
-//             fontFamily={"poppins"}
+//             fontFamily="var(--font-poppins)"
 //             fontSize={"40px"}
 //           >
 //             A Clean Home Feels Like a New Home
@@ -29,7 +29,7 @@
 //             mt={"20px"}
 //             textAlign={"start"}
 //             fontWeight={"700"}
-//             fontFamily={"poppins"}
+//             fontFamily="var(--font-poppins)"
 //             textStyle={"subheading"}
 //           >
 //             Adelaide's #1 choice for remarkable exterior results
@@ -190,7 +190,7 @@
 //                 justifyContent={"center"}
 //                 textAlign={"start"}
 //                 fontWeight={"700"}
-//                 fontFamily={"poppins"}
+//                 fontFamily="var(--font-poppins)"
 //                 fontSize={"26px"}
 //               >
 //                 <Text color={"white"}>
@@ -200,7 +200,7 @@
 //                 <Text
 //                   textAlign={"center"}
 //                   fontWeight={"500"}
-//                   fontFamily={"poppins"}
+//                   fontFamily="var(--font-poppins)"
 //                   textStyle={"tinyText"}
 //                   color={"white"}
 //                 >
@@ -334,7 +334,7 @@
 //               justifyContent={"start"}
 //               alignContent={"start"}
 //               fontWeight={"700"}
-//               fontFamily={"poppins"}
+//               fontFamily="var(--font-poppins)"
 //               textStyle={"heading"}
 //               w={"100%"}
 //               color={"blue.500"}
@@ -407,7 +407,7 @@
 //               justifyContent={"start"}
 //               alignContent={"start"}
 //               fontWeight={"700"}
-//               fontFamily={"poppins"}
+//               fontFamily="var(--font-poppins)"
 //               textStyle={"heading"}
 //               w={"100%"}
 //               color={"blue.500"}
@@ -444,7 +444,7 @@
 //                 justifyContent={"start"}
 //                 alignContent={"start"}
 //                 fontWeight={"700"}
-//                 fontFamily={"poppins"}
+//                 fontFamily="var(--font-poppins)"
 //                 textStyle={"heading"}
 //                 w={"100%"}
 //               >
@@ -540,7 +540,7 @@
 //                 justifyContent={"start"}
 //                 alignContent={"start"}
 //                 fontWeight={"700"}
-//                 fontFamily={"poppins"}
+//                 fontFamily="var(--font-poppins)"
 //                 textStyle={"heading"}
 //                 w={"100%"}
 //                 color={"white"}
@@ -555,7 +555,7 @@
 //               justifyContent={"start"}
 //               alignContent={"start"}
 //               fontWeight={"700"}
-//               fontFamily={"poppins"}
+//               fontFamily="var(--font-poppins)"
 //               textStyle={"heading"}
 //               w={"100%"}
 //               color={"blue.500"}
@@ -658,7 +658,7 @@
 //                 justifyContent={"center"}
 //                 textAlign={"start"}
 //                 fontWeight={"700"}
-//                 fontFamily={"poppins"}
+//                 fontFamily="var(--font-poppins)"
 //                 fontSize={"26px"}
 //               >
 //                 <Text color={"white"}>
@@ -668,7 +668,7 @@
 //                 <Text
 //                   textAlign={"center"}
 //                   fontWeight={"500"}
-//                   fontFamily={"poppins"}
+//                   fontFamily="var(--font-poppins)"
 //                   textStyle={"tinyText"}
 //                   color={"white"}
 //                 >
@@ -788,3 +788,4 @@
 //   );
 // };
 // export default Hero;
+

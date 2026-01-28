@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import QuoteButton from "@/components/comp/compsDeep/QuoteButton";
 import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
 import FAQ from "@/components/globalComponents/FAQ";
@@ -67,7 +67,7 @@ const RoofCleaning = () => {
           pb={"50px"}
           bg={"cyan.600"}
         >
-          <Text fontFamily="poppins" fontSize={{ base: "14px", md: "16px" }} color="white">
+          <Text fontFamily="var(--font-poppins)" fontSize={{ base: "14px", md: "16px" }} color="white">
             <Text as="span" color="cyan.900">
               home
             </Text>{" > "}
@@ -80,18 +80,18 @@ const RoofCleaning = () => {
           <Text
             as="h1"
             mt="12px"
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontWeight="800"
             fontSize={{ base: "34px", md: "46px" }}
             lineHeight="1.1"
             color="white"
             maxW="840px"
           >
-            Roof Cleaning Adelaide — Safe Soft Washing & Moss Removal
+            Roof Cleaning Adelaide - Safe Soft Washing & Moss Removal
           </Text>
 
-          <Text mt="12px" fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} color="cyan.100" maxW="760px">
-            Professional roof cleaning across Adelaide — soft washing and controlled pressure to lift moss, lichen, and dark streaks without damage.
+          <Text mt="12px" fontFamily="var(--font-poppins)" fontSize={{ base: "15px", md: "17px" }} color="cyan.100" maxW="760px">
+            Professional roof cleaning across Adelaide - soft washing and controlled pressure to lift moss, lichen, and dark streaks without damage.
           </Text>
 
           <HStack mt={{ base: "18px", md: "22px" }} spacing="14px">
@@ -116,12 +116,12 @@ const RoofCleaning = () => {
         mx="auto"
       >
         <Box flex="1" minW={{ base: "100%", md: "520px" }}>
-          <Text fontFamily="poppins" fontSize={{ base: "14px", md: "18px" }} color="cyan.600">
+          <Text fontFamily="var(--font-poppins)" fontSize={{ base: "14px", md: "18px" }} color="cyan.600">
             Roof Cleaning Adelaide
           </Text>
 
           <Text
-            fontFamily="poppins"
+            fontFamily="var(--font-poppins)"
             fontSize={{ base: "30px", md: "36px" }}
             fontWeight="700"
             lineHeight="1.1"
@@ -131,14 +131,14 @@ const RoofCleaning = () => {
             Expert Roof Cleaning Services in Adelaide
           </Text>
 
-          <Text fontFamily="poppins" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
+          <Text fontFamily="var(--font-poppins)" fontSize={{ base: "15px", md: "17px" }} lineHeight={{ base: "1.75", md: "1.9" }} mt="8px">
             Protect your biggest investment with expert roof cleaning in Adelaide. We safely remove moss, lichen, and dark stains without causing damage to your tiles or Colorbond.
             A professionally cleaned roof looks better, lasts longer, and helps prevent costly repairs. We serve Greater Adelaide and surrounding suburbs across South Australia.
           </Text>
 
           <VStack align="start" spacing="6px" mt={{ base: "12px", md: "16px" }}>
             {["Tiled Roofs", "Colorbond & metal roofs", "Single & double storey homes", "Moss, mould & lichen removal"].map((item) => (
-              <Text key={item} fontFamily="poppins" fontSize={{ base: "16px", md: "18px" }}>
+              <Text key={item} fontFamily="var(--font-poppins)" fontSize={{ base: "16px", md: "18px" }}>
                 <Text as="span" mr="8px">-</Text>
                 {item}
               </Text>
@@ -158,7 +158,7 @@ const RoofCleaning = () => {
                 alignItems="center"
                 justifyContent="center"
                 gap="15px"
-                fontFamily="poppins"
+                fontFamily="var(--font-poppins)"
                 transition="all 0.2s ease-in-out"
                 cursor="pointer"
                 _hover={{ transition: "all 0.2s ease-in-out", fontWeight: "700", px: "80px", bg: "cyan" }}
@@ -172,7 +172,7 @@ const RoofCleaning = () => {
                   <Box textAlign={"center"}>
                     <Phone />
                   </Box>
-                  <Text textStyle={"smallText"} fontFamily="poppins" fontWeight="500">
+                  <Text textStyle={"smallText"} fontFamily="var(--font-poppins)" fontWeight="500">
                     Get a Quote
                   </Text>
                 </HStack>
@@ -196,6 +196,7 @@ const RoofCleaning = () => {
             src={six}
             alt="Roof cleaning in Adelaide"
             fill
+            sizes="(max-width: 768px) 100vw, 52vw"
             style={{ objectFit: "cover", objectPosition: "bottom" }}
           />
           <Box position="absolute" inset={0} bgGradient="linear(to-t, rgba(2,23,58,0.25), transparent)" />
@@ -211,3 +212,4 @@ const RoofCleaning = () => {
 };
 
 export default RoofCleaning;
+

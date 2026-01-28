@@ -1,19 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, Text, VStack, Link } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import {
   ChevronDown,
   ChevronUp,
   Calendar,
   Star,
   Shield,
-  Clock,
   Award,
   CheckCircle,
-  ArrowRight,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const faqs = [
   {
@@ -122,7 +119,6 @@ const pricingFaqs = [
 // Benefits data
 
 const FAQ = ({ type }: { type: string }) => {
-  const router = useRouter();
   const isPricing = type === "pricing";
   const selectedFaqs = isPricing ? pricingFaqs : faqs;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -133,18 +129,23 @@ const FAQ = ({ type }: { type: string }) => {
 
   // Staggered animation for FAQ items
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const newAnimatedItems = [...animatedItems];
-      for (let i = 0; i < selectedFaqs.length; i++) {
+    setAnimatedItems(Array(selectedFaqs.length).fill(false));
+    const timeouts: Array<ReturnType<typeof setTimeout>> = [];
+    for (let i = 0; i < selectedFaqs.length; i++) {
+      timeouts.push(
         setTimeout(() => {
-          newAnimatedItems[i] = true;
-          setAnimatedItems([...newAnimatedItems]);
-        }, i * 100);
-      }
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [selectedFaqs]);
+          setAnimatedItems((prev) => {
+            const next = [...prev];
+            next[i] = true;
+            return next;
+          });
+        }, i * 100),
+      );
+    }
+    return () => {
+      timeouts.forEach((timeout) => clearTimeout(timeout));
+    };
+  }, [isPricing, selectedFaqs.length]);
 
   // Get unique categories
   const categories = [
@@ -255,8 +256,6 @@ const FAQ = ({ type }: { type: string }) => {
           position="relative"
         >
           {filteredFaqs.map((faq, index) => {
-            const IconComponent = faq.icon || CheckCircle;
-
             return (
               <Box
                 key={index}
@@ -357,3 +356,4 @@ const FAQ = ({ type }: { type: string }) => {
 };
 
 export default FAQ;
+
