@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Box, Heading, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, Heading, ListItem, ListRoot, Text } from "@chakra-ui/react";
 
 export const metadata: Metadata = {
   title: "Exterior Cleaning Services Adelaide | EverBright Pressure Washing",
@@ -27,7 +27,7 @@ const Services = () => {
       <Text fontSize="lg" color="gray.700" maxW="760px" mb={6}>
         Choose the right service for your home or business across Adelaide and surrounding suburbs. Every job is fully insured and backed by our satisfaction guarantee.
       </Text>
-      <List spacing={3} fontSize="lg" color="cyan.800">
+      <ListRoot spacing={3} fontSize="lg" color="cyan.800">
         <ListItem>
           <Link href="/services/pressure-washing">Pressure Washing Adelaide</Link>
         </ListItem>
@@ -40,7 +40,7 @@ const Services = () => {
         <ListItem>
           <Link href="/services/solar-panel-cleaning">Solar Panel Cleaning Adelaide</Link>
         </ListItem>
-      </List>
+      </ListRoot>
     </Box>
   );
 };
