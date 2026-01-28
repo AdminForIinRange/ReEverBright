@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import {
   Box,
   VStack,
@@ -8,10 +9,10 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import shayalv2 from "@/public/images/shayalv2.png";
 import FreeQuote from "@/components/comp/FreeQuote";
 import HeroText from "@/components/comp/HeroText";
-import ReviewSection from "@/components/comp/ReviewSection";
 
 import ServiceLayout from "@/components/comp/ServiceLayout";
 import {
@@ -21,15 +22,58 @@ import {
   Handshake,
 } from "lucide-react";
 import About from "@/components/comp/About";
-import SlidingCard from "@/components/comp/SlidingCard";
 
-import BannerSlider from "@/components/comp/compsDeep/BannerSlider";
-import WorkBanner from "@/components/comp/compsDeep/WorkBanner";
-import FreeQuoteLarge from "@/components/comp/FreeQuoteLarge";
-import FAQ from "@/components/globalComponents/FAQ";
-import Footer from "@/components/personalPortfolio/footer/footer";
+const BannerSlider = dynamic(
+  () => import("@/components/comp/compsDeep/BannerSlider"),
+  { ssr: false },
+);
+const ReviewSection = dynamic(() => import("@/components/comp/ReviewSection"), {
+  ssr: false,
+});
+const SlidingCard = dynamic(() => import("@/components/comp/SlidingCard"), {
+  ssr: false,
+});
+const WorkBanner = dynamic(
+  () => import("@/components/comp/compsDeep/WorkBanner"),
+  { ssr: false },
+);
+const FreeQuoteLarge = dynamic(
+  () => import("@/components/comp/FreeQuoteLarge"),
+  { ssr: false },
+);
+const FAQ = dynamic(() => import("@/components/globalComponents/FAQ"), {
+  ssr: false,
+});
+const Footer = dynamic(
+  () => import("@/components/personalPortfolio/footer/footer"),
+  { ssr: false },
+);
 
 const Page = () => {
+  const [showBelowFold, setShowBelowFold] = useState(false);
+
+  useEffect(() => {
+    type IdleDeadline = {
+      didTimeout: boolean;
+      timeRemaining: () => number;
+    };
+    const w = window as unknown as {
+      requestIdleCallback?: (
+        cb: (deadline: IdleDeadline) => void,
+        opts?: { timeout: number },
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    const onIdle = () => setShowBelowFold(true);
+    if (typeof w.requestIdleCallback === "function") {
+      const id = w.requestIdleCallback(() => onIdle(), { timeout: 2000 });
+      return () => w.cancelIdleCallback?.(id);
+    }
+    const id = window.setTimeout(onIdle, 1200);
+    return () => window.clearTimeout(id);
+  }, []);
+
   const Standredfaqs = [
     {
       q: "How do I book a service?",
@@ -348,14 +392,15 @@ const Page = () => {
         </Box>
       </Box>
 
-      <BannerSlider />
-
-      <ReviewSection />
-      <WorkBanner />
-
-      {/* Floating geometric shapes */}
-
-      <SlidingCard />
+      {showBelowFold ? (
+        <>
+          <BannerSlider />
+          <ReviewSection />
+          <WorkBanner />
+          {/* Floating geometric shapes */}
+          <SlidingCard />
+        </>
+      ) : null}
       <HStack
         px={{ base: "2%", md: "6%", xl: "16%" }}
         mt={"100px"}
@@ -364,11 +409,11 @@ const Page = () => {
         w={"100%"}
         h={"100%"}
       >
-        <FreeQuoteLarge />
+        {showBelowFold ? <FreeQuoteLarge /> : null}
       </HStack>
 
-      <FAQ items={Standredfaqs} />
-      <Footer />
+      {showBelowFold ? <FAQ items={Standredfaqs} /> : null}
+      {showBelowFold ? <Footer /> : null}
     </Box>
   );
 };
