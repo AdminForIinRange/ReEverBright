@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import shayalv2 from "@/public/images/shayalv2.png";
+import heroImage from "@/public/images/aerial-city-adelaide.jpeg";
 import FreeQuote from "@/components/comp/FreeQuote";
 import HeroText from "@/components/comp/HeroText";
 
@@ -126,36 +127,37 @@ const Page = () => {
     <Box mt={"-70px"}>
       <HStack justifyContent={"center"} align={"center"}>
         <Box
-          borderRadius={"50px"}
-          backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
-          backgroundRepeat="no-repeat"
-          backgroundPosition="center"
-          backgroundSize="cover"
           position={"absolute"}
-          backgroundAttachment={{ base: "scroll", md: "fixed" }}
           zIndex={-1}
           w={["100%", "100%", "100%", "100%", "100%", "100%"]}
           h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
-          opacity={1}
-          borderBottomRightRadius={["500px", "500px", "500px", "2000px"]}
-          borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
-        ></Box>
-        <Box
-          borderRadius={"50px"}
-          backgroundImage={` url('/images/aerial-city-adelaide.jpeg')`}
-          backgroundRepeat="no-repeat"
-          backgroundPosition="center"
-          backgroundSize="cover"
-          position={"absolute"}
-          backgroundAttachment={{ base: "scroll", md: "fixed" }}
-          zIndex={-1}
-          w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-          h={["1650px", "1650px", "1650px", "1650px", "1650px", "1650px"]}
-          bg="cyan.700"
-          opacity={0.8}
-          borderBottomRightRadius={["500px", "500px", "500px", "2000px"]}
-          borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
-        ></Box>
+        >
+          <Box
+            position="relative"
+            w="100%"
+            h="100%"
+            overflow="hidden"
+            borderRadius={"50px"}
+            borderBottomRightRadius={["500px", "500px", "500px", "2000px"]}
+            borderBottomLeftRadius={["500px", "500px", "500px", "1000px"]}
+          >
+            <Image
+              src={heroImage}
+              alt=""
+              fill
+              priority
+              quality={100}
+              sizes="(max-width: 768px) 2048px, 100vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+            <Box
+              position="absolute"
+              inset={0}
+              bg="cyan.700"
+              opacity={0.8}
+            />
+          </Box>
+        </Box>
       </HStack>
 
       <HStack
@@ -419,6 +421,5 @@ const Page = () => {
 };
 
 export default Page;
-
 
 
