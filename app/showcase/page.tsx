@@ -120,7 +120,11 @@ export default function Page() {
                   p={3}
                   bg="gray.50"
                 >
-                  <HStack justify="space-between" align="start" flexWrap="wrap">
+                  <HStack
+                    justify="space-between"
+                    align="start"
+                    flexWrap="wrap"
+                  >
                     <Text fontWeight="700" color="blue.900">
                       {lead.fullName || "Unnamed"} - {lead.suburb || "-"}
                     </Text>
@@ -138,6 +142,18 @@ export default function Page() {
                     </Text>
                     <Text>
                       <b>Message:</b> {lead.helpMessage || "-"}
+                    </Text>
+                    <Text>
+                      <b>Roof condition:</b> {lead.roofCondition || "-"}
+                    </Text>
+                    <Text>
+                      <b>Roof type:</b> {lead.roofType || "-"}
+                    </Text>
+                    <Text>
+                      <b>New message:</b> {lead.message || "-"}
+                    </Text>
+                    <Text>
+                      <b>Address:</b> {lead.Address || lead.address || "-"}
                     </Text>
                     <Text fontSize="xs" color="gray.500">
                       ID: {lead.$id}

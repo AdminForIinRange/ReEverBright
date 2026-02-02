@@ -6,4 +6,9 @@ export type Lead = {
   phone?: string;
   suburb?: string;
   helpMessage?: string;
+  roofCondition?: string;
+  roofType?: string;
+  message?: string;
+  address?: string;
+  Address?: string;
 };
