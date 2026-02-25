@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import ClientProvider from "@/components/chakra-snippets/ClientProvider";
 import { StructuredData } from "@/components/seo/StructuredData";
+import GtmPageView from "@/components/analytics/GtmPageView";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -127,6 +128,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <GtmPageView />
         <ClientProvider>{children}</ClientProvider>
       </body>
     </html>
