@@ -1,4 +1,5 @@
 // app/layout.tsx
+import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -128,7 +129,9 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <GtmPageView />
+        <Suspense fallback={null}>
+          <GtmPageView />
+        </Suspense>
         <ClientProvider>{children}</ClientProvider>
       </body>
     </html>
