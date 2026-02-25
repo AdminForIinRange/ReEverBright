@@ -105,6 +105,20 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-1FHQHKSEN8"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-1FHQHKSEN8');
+            `,
+          }}
+        />
         <StructuredData />
       </head>
       <body>
